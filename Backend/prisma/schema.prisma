@@ -1,0 +1,294 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  SUPER_ADMIN
+  GOVT_ADMIN
+  TECHNICIAN
+}
+
+enum DeviceStatus {
+  ONLINE
+  OFFLINE
+  MAINTENANCE
+}
+
+enum PowerSource {
+  SOLAR
+  GRID
+  BATTERY
+}
+
+enum AlertType {
+  PREFILTER_CRITICAL
+  DEVICE_OFFLINE
+  HIGH_POLLUTION
+  HEPA_LOW
+  BATTERY_LOW
+  SYSTEM
+}
+
+enum AlertSeverity {
+  INFO
+  WARNING
+  CRITICAL
+}
+
+enum EnquiryStatus {
+  NEW
+  CONTACTED
+  QUALIFIED
+  CLOSED
+}
+
+enum DeviceCommandType {
+  RESTART
+  BOOST
+  FORCE_SYNC
+  EMERGENCY_MODE
+  FAN_SPEED
+}
+
+enum DeviceCommandStatus {
+  PENDING
+  SENT
+  ACKNOWLEDGED
+  FAILED
+}
+
+model User {
+  id           String    @id @default(uuid())
+  email        String    @unique
+  passwordHash String    @map("password_hash")
+  name         String
+  role         UserRole  @default(TECHNICIAN)
+  region       String    @default("ap-south-1")
+  isActive     Boolean   @default(true) @map("is_active")
+  lastLoginAt  DateTime? @map("last_login_at")
+  createdAt    DateTime  @default(now()) @map("created_at")
+  updatedAt    DateTime  @updatedAt @map("updated_at")
+
+  refreshTokens RefreshToken[]
+  auditLogs     AuditLog[]
+  deviceCommands DeviceCommand[] @relation("IssuedCommands")
+  resolvedAlerts Alert[]         @relation("ResolvedAlerts")
+
+  @@index([role])
+  @@index([email])
+  @@map("users")
+}
+
+model RefreshToken {
+  id        String   @id @default(uuid())
+  token     String   @unique
+  userId    String   @map("user_id")
+  expiresAt DateTime @map("expires_at")
+  createdAt DateTime @default(now()) @map("created_at")
+  revokedAt DateTime? @map("revoked_at")
+  userAgent String?  @map("user_agent")
+  ipAddress String?  @map("ip_address")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([token])
+  @@map("refresh_tokens")
+}
+
+model Zone {
+  id        String   @id @default(uuid())
+  name      String
+  slug      String   @unique
+  city      String   @default("Bengaluru")
+  beforeAqi Int      @map("before_aqi")
+  afterAqi  Int      @map("after_aqi")
+  lat       Float?
+  lng       Float?
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  devices Device[]
+  alerts  Alert[]
+  aiInsights AiInsight[]
+
+  @@index([city])
+  @@map("zones")
+}
+
+model Device {
+  id                     String       @id
+  zoneId                 String       @map("zone_id")
+  location               String
+  status                 DeviceStatus @default(OFFLINE)
+  firmware               String       @default("v3.1.4")
+  lat                    Float?
+  lng                    Float?
+  powerSource            PowerSource  @default(SOLAR) @map("power_source")
+  solarPercent           Int?         @map("solar_percent")
+  batteryPercent         Int?         @map("battery_percent")
+  coverageRadius         Int          @default(250) @map("coverage_radius")
+  fanSpeed               Int          @default(80) @map("fan_speed")
+  airIntake              Int          @default(75) @map("air_intake")
+  purificationEfficiency Int          @default(92) @map("purification_efficiency")
+  uptimePercent          Float        @default(99.0) @map("uptime_percent")
+  lastSyncAt             DateTime?    @map("last_sync_at")
+  createdAt              DateTime     @default(now()) @map("created_at")
+  updatedAt              DateTime     @updatedAt @map("updated_at")
+
+  zone           Zone            @relation(fields: [zoneId], references: [id])
+  sensorReadings SensorReading[]
+  filterStatus   FilterStatus[]
+  alerts         Alert[]
+  commands       DeviceCommand[]
+  aiInsights     AiInsight[]
+
+  @@index([zoneId])
+  @@index([status])
+  @@map("devices")
+}
+
+model SensorReading {
+  id        String   @id @default(uuid())
+  deviceId  String   @map("device_id")
+  aqi       Int
+  pm1       Float?
+  pm25      Float?
+  pm10      Float?
+  co2       Int?
+  voc       Float?
+  temp      Float?
+  humidity  Float?
+  recordedAt DateTime @default(now()) @map("recorded_at")
+
+  device Device @relation(fields: [deviceId], references: [id], onDelete: Cascade)
+
+  @@index([deviceId, recordedAt(sort: Desc)])
+  @@index([recordedAt(sort: Desc)])
+  @@map("sensor_readings")
+}
+
+model FilterStatus {
+  id               String   @id @default(uuid())
+  deviceId         String   @map("device_id")
+  hepaPercent      Int      @map("hepa_percent")
+  carbonPercent    Int      @map("carbon_percent")
+  prefilterPercent Int      @map("prefilter_percent")
+  uvLight          Boolean  @default(true) @map("uv_light")
+  ionizer          Boolean  @default(true)
+  mossChamber      Boolean  @default(true) @map("moss_chamber")
+  cycloneSeparator Boolean  @default(true) @map("cyclone_separator")
+  recordedAt       DateTime @default(now()) @map("recorded_at")
+
+  device Device @relation(fields: [deviceId], references: [id], onDelete: Cascade)
+
+  @@index([deviceId, recordedAt(sort: Desc)])
+  @@map("filter_status")
+}
+
+model Alert {
+  id         String        @id @default(uuid())
+  type       AlertType
+  severity   AlertSeverity @default(WARNING)
+  deviceId   String?       @map("device_id")
+  zoneId     String?       @map("zone_id")
+  message    String
+  isRead     Boolean       @default(false) @map("is_read")
+  resolvedAt DateTime?     @map("resolved_at")
+  resolvedBy String?       @map("resolved_by")
+  createdAt  DateTime      @default(now()) @map("created_at")
+
+  device   Device? @relation(fields: [deviceId], references: [id], onDelete: SetNull)
+  zone     Zone?   @relation(fields: [zoneId], references: [id], onDelete: SetNull)
+  resolver User?   @relation("ResolvedAlerts", fields: [resolvedBy], references: [id], onDelete: SetNull)
+
+  @@index([isRead, createdAt(sort: Desc)])
+  @@index([deviceId])
+  @@index([severity])
+  @@map("alerts")
+}
+
+model AiInsight {
+  id            String   @id @default(uuid())
+  zoneId        String?  @map("zone_id")
+  deviceId      String?  @map("device_id")
+  message       String
+  confidence    Float
+  modelVersion  String   @map("model_version")
+  predictedAt   DateTime @default(now()) @map("predicted_at")
+  expiresAt     DateTime @map("expires_at")
+
+  zone   Zone?   @relation(fields: [zoneId], references: [id], onDelete: SetNull)
+  device Device? @relation(fields: [deviceId], references: [id], onDelete: SetNull)
+
+  @@index([predictedAt(sort: Desc)])
+  @@map("ai_insights")
+}
+
+model Enquiry {
+  id          String        @id @default(uuid())
+  name        String
+  email       String
+  mobile      String?
+  purpose     String?
+  description String?
+  status      EnquiryStatus @default(NEW)
+  ipAddress   String?       @map("ip_address")
+  createdAt   DateTime      @default(now()) @map("created_at")
+
+  @@index([status, createdAt(sort: Desc)])
+  @@index([email])
+  @@map("enquiries")
+}
+
+model NewsletterSubscriber {
+  id           String   @id @default(uuid())
+  email        String   @unique
+  source       String   @default("website")
+  subscribedAt DateTime @default(now()) @map("subscribed_at")
+  isActive     Boolean  @default(true) @map("is_active")
+
+  @@map("newsletter_subscribers")
+}
+
+model DeviceCommand {
+  id          String              @id @default(uuid())
+  deviceId    String?             @map("device_id")
+  commandType DeviceCommandType   @map("command_type")
+  payload     Json?
+  status      DeviceCommandStatus @default(PENDING)
+  issuedBy    String              @map("issued_by")
+  issuedAt    DateTime            @default(now()) @map("issued_at")
+  completedAt DateTime?           @map("completed_at")
+  errorMessage String?            @map("error_message")
+
+  device Device? @relation(fields: [deviceId], references: [id], onDelete: SetNull)
+  issuer User    @relation("IssuedCommands", fields: [issuedBy], references: [id])
+
+  @@index([status, issuedAt(sort: Desc)])
+  @@index([deviceId])
+  @@map("device_commands")
+}
+
+model AuditLog {
+  id         String   @id @default(uuid())
+  userId     String?  @map("user_id")
+  action     String
+  resource   String
+  resourceId String?  @map("resource_id")
+  metadata   Json?
+  ipAddress  String?  @map("ip_address")
+  userAgent  String?  @map("user_agent")
+  createdAt  DateTime @default(now()) @map("created_at")
+
+  user User? @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([userId, createdAt(sort: Desc)])
+  @@index([action])
+  @@map("audit_logs")
+}
