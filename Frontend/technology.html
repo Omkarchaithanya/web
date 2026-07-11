@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technology | UrbanTree by SunEx Technologies</title>
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <meta name="description" content="UrbanTree's bio-mechanical air purification technology — 9-stage multi-layer purification system combining advanced engineering and biological intelligence.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Sora', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: { emerald: '#10b981', cyan: '#06b6d4' }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #e8e8e8;
+            color: #111827;
+            overflow-x: hidden;
+        }
+
+        /* ── NAVBAR ── */
+        #navbar {
+            background: transparent !important;
+            transition: background 0.3s ease, backdrop-filter 0.3s ease;
+        }
+
+        /* ── FADE UP ── */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(36px);
+            transition: opacity 0.9s cubic-bezier(0.2,0.8,0.2,1), transform 0.9s cubic-bezier(0.2,0.8,0.2,1);
+        }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+        /* ── HOVER GLOW ── */
+        .hover-glow-emerald {
+            transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+        }
+        .hover-glow-emerald:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 25px rgba(16,185,129,0.6), 0 0 50px rgba(16,185,129,0.3);
+            background-color: #10b981 !important;
+        }
+
+        /* ── SECTION LABEL ── */
+        .section-label {
+            display: inline-block;
+            padding: 5px 18px;
+            border-radius: 30px;
+            border: 1px solid rgba(16,185,129,0.4);
+            background: rgba(16,185,129,0.08);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.25em;
+            color: #10b981;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        /* ── HERO ── */
+        #tech-hero {
+            background: #0a0a0a;
+            min-height: 100vh;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .hero-grid {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(16,185,129,0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(16,185,129,0.05) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+        }
+
+        /* ── COMPONENT CARD ── */
+        .component-card {
+            background: rgba(255,255,255,0.7);
+            border: 1px solid rgba(255,255,255,0.6);
+            backdrop-filter: blur(16px);
+            border-radius: 24px;
+            transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+            position: relative;
+            overflow: hidden;
+        }
+        .component-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #10b981, #06b6d4);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+        .component-card:hover::before { transform: scaleX(1); }
+        .component-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 24px 50px rgba(16,185,129,0.1);
+            border-color: rgba(16,185,129,0.3);
+        }
+
+        /* ── IMAGE PLACEHOLDER ── */
+        .img-placeholder {
+            background: linear-gradient(135deg, rgba(16,185,129,0.08), rgba(6,182,212,0.05));
+            border: 2px dashed rgba(16,185,129,0.25);
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            color: #10b981;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+
+        /* ── DARK CARD ── */
+        .dark-card {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+        .dark-card:hover {
+            background: rgba(16,185,129,0.08);
+            border-color: rgba(16,185,129,0.3);
+        }
+
+        /* ── STEP NUMBER ── */
+        .step-num-circle {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #10b981, #06b6d4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Sora', sans-serif;
+            font-weight: 800;
+            font-size: 16px;
+            color: white;
+            flex-shrink: 0;
+            box-shadow: 0 4px 16px rgba(16,185,129,0.4);
+        }
+
+        /* ── HERO ANIMATE ── */
+        @keyframes heroIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .hero-animate { animation: heroIn 0.9s cubic-bezier(0.2,0.8,0.2,1) both; }
+
+        /* ── FLOATING ORB ── */
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            animation: orbFloat 8s ease-in-out infinite;
+        }
+        @keyframes orbFloat {
+            0%,100% { transform: translateY(0); opacity: 0.5; }
+            50% { transform: translateY(-25px); opacity: 1; }
+        }
+
+        /* scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #0a0a0a; }
+        ::-webkit-scrollbar-thumb { background: #10b981; border-radius: 3px; }
+
+        /* ── ALTERNATING SECTIONS ── */
+        .section-light { background: #e8e8e8; padding: 100px 0; }
+        .section-lighter { background: #f0f4f1; padding: 100px 0; }
+        .section-dark { background: #0a0a0a; padding: 100px 0; position: relative; overflow: hidden; }
+    </style>
+    <link rel="icon" type="image/png" href="images/logo.png">
+
+    <style id="navbar-dynamic-colors">
+        .nav-text-dark { color: #111827; }
+        .nav-text-dark-light { color: #374151; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- ═══ NAVBAR ═══ -->
+    <nav class="fixed w-full z-50 px-6 py-5 flex justify-between items-center" id="navbar">
+        <div class="z-20 flex items-center gap-3">
+            <img src="images/logo.png" alt="UrbanTree Logo" class="h-12 w-auto">
+            <div class="leading-snug">
+                <div style="font-family:'Montserrat',sans-serif;" class="text-2xl font-extrabold text-white" id="nav-brand">URBAN<span style="color:#4a9e3f;font-weight:600;">Tree</span></div>
+                <div style="font-family:'Montserrat',sans-serif;" class="text-[11px] font-medium text-white" id="nav-tagline">The City, Reimagined.</div>
+            </div>
+        </div>
+        <div class="hidden md:flex items-center space-x-8 text-sm font-black z-20 ml-auto">
+            <a href="index.html" class="nav-link text-white hover:text-brand-emerald transition-colors duration-300">Home</a>
+            <a href="technology.html" style="color:#10b981;text-shadow:none;" class="nav-link text-white transition-colors duration-300">Technology</a>
+            <a href="about.html" class="nav-link text-white hover:text-brand-emerald transition-colors duration-300">About Us</a>
+            <a href="index.html#blog" class="nav-link text-white hover:text-brand-emerald transition-colors duration-300">Blog</a>
+            <a href="index.html#enquiry" class="hover-glow-emerald px-6 py-2.5 bg-gray-900 text-white rounded-full text-sm font-semibold shadow-md transition-all duration-300">Enquiry</a>
+        </div>
+    </nav>
+
+    <!-- ═══ HERO ═══ -->
+    <section id="tech-hero">
+        <div class="hero-grid"></div>
+        <div style="position:absolute;top:-10%;left:-5%;width:600px;height:600px;background:radial-gradient(circle,rgba(16,185,129,0.14) 0%,transparent 65%);pointer-events:none;"></div>
+        <div style="position:absolute;bottom:-15%;right:-5%;width:500px;height:500px;background:radial-gradient(circle,rgba(6,182,212,0.1) 0%,transparent 65%);pointer-events:none;"></div>
+
+        <div class="orb" style="width:8px;height:8px;background:#10b981;top:30%;left:20%;animation-delay:0s;"></div>
+        <div class="orb" style="width:5px;height:5px;background:#06b6d4;top:60%;left:75%;animation-delay:2s;"></div>
+        <div class="orb" style="width:7px;height:7px;background:#4ade80;top:40%;left:60%;animation-delay:3.5s;opacity:0.4;"></div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 pt-36 pb-24">
+            <div class="max-w-4xl">
+                <div class="hero-animate" style="animation-delay:0.1s;">
+                    <span class="section-label">Technology</span>
+                </div>
+                <h1 class="hero-animate" style="font-family:'Sora',sans-serif;font-size:clamp(2.8rem,6vw,5.5rem);font-weight:800;color:#ffffff;line-height:1.05;margin-bottom:1.5rem;animation-delay:0.2s;">
+                    Powered By<br>
+                    <span style="background:linear-gradient(135deg,#10b981,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Bio-Mechanical</span><br>
+                    Air Intelligence
+                </h1>
+                <p class="hero-animate" style="font-size:1.1rem;color:#94a3b8;max-width:600px;line-height:1.85;margin-bottom:2.5rem;animation-delay:0.35s;">
+                    A next-generation purification ecosystem combining advanced engineering, intelligent airflow systems, and biological purification to create breathable Air Pocket environments.
+                </p>
+                <div class="hero-animate flex flex-wrap gap-4" style="animation-delay:0.5s;">
+                    <a href="#architecture" class="hover-glow-emerald px-8 py-3.5 bg-emerald-500 text-white rounded-full font-semibold shadow-lg shadow-emerald-500/30 transition-all duration-300">
+                        Explore System
+                    </a>
+                    <a href="#components" class="px-8 py-3.5 bg-white/10 backdrop-blur-sm border border-white/20 text-white rounded-full font-semibold hover:bg-white/20 transition-all duration-300">
+                        View Components
+                    </a>
+                </div>
+            </div>
+
+            <!-- Stats -->
+            <div class="hero-animate grid grid-cols-2 md:grid-cols-4 gap-6 mt-20 pt-16 border-t border-white/10" style="animation-delay:0.65s;">
+                <div>
+                    <div style="font-family:'Sora',sans-serif;font-size:clamp(2rem,4vw,3rem);font-weight:800;background:linear-gradient(135deg,#10b981,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">9</div>
+                    <div style="font-size:13px;color:#6b7280;margin-top:4px;font-weight:500;">Purification Stages</div>
+                </div>
+                <div>
+                    <div style="font-family:'Sora',sans-serif;font-size:clamp(2rem,4vw,3rem);font-weight:800;background:linear-gradient(135deg,#10b981,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">99.97%</div>
+                    <div style="font-size:13px;color:#6b7280;margin-top:4px;font-weight:500;">Particle Capture</div>
+                </div>
+                <div>
+                    <div style="font-family:'Sora',sans-serif;font-size:clamp(2rem,4vw,3rem);font-weight:800;background:linear-gradient(135deg,#10b981,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">0.3µ</div>
+                    <div style="font-size:13px;color:#6b7280;margin-top:4px;font-weight:500;">Min Particle Size</div>
+                </div>
+                <div>
+                    <div style="font-family:'Sora',sans-serif;font-size:clamp(2rem,4vw,3rem);font-weight:800;background:linear-gradient(135deg,#10b981,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Hybrid</div>
+                    <div style="font-size:13px;color:#6b7280;margin-top:4px;font-weight:500;">Solar + Grid Power</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ SECTION 1: SYSTEM ARCHITECTURE ═══ -->
+    <section class="section-lighter" id="architecture">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+
+            <div class="text-center mb-16">
+                <span class="section-label fade-up">System Architecture</span>
+                <h2 class="fade-up" style="font-family:'Sora',sans-serif;font-size:clamp(2rem,4vw,3rem);font-weight:800;color:#111827;line-height:1.15;margin-bottom:1rem;">
+                    Engineered In Multiple<br>Purification Layers
+                </h2>
+                <p class="fade-up" style="color:#4b5563;max-width:640px;margin:0 auto;line-height:1.85;font-size:0.97rem;">
+                    UrbanTree operates through a multi-stage architecture designed to maximize purification efficiency while maintaining sustainable energy consumption.
+                </p>
+            </div>
+
+            <!-- Architecture image placeholder -->
+            <video src="videos/architecture_designed.mp4" autoplay loop muted playsinline class="fade-up" style="width:100%;height:auto;border-radius:12px;margin-bottom:60px;box-shadow:0 10px 30px rgba(0,0,0,0.1);"></video>
+
+            <!-- 9-stage flow -->
+            <div class="fade-up" style="display:grid;grid-template-columns:repeat(9,1fr);gap:8px;align-items:center;">
+                <!-- steps -->
+                <script>
+                const stages = [
+                    {n:'01',label:'Atmospheric Intake',color:'#10b981'},
+                    {n:'02',label:'Mechanical Filtration',color:'#0ea5e9'},
+                    {n:'03',label:'Prefilter Layer',color:'#10b981'},
+                    {n:'04',label:'Carbon Filter',color:'#f59e0b'},
+                    {n:'05',label:'HEPA Filter',color:'#10b981'},
+                    {n:'06',label:'Bio-Purification',color:'#4ade80'},
+                    {n:'07',label:'UV Chamber',color:'#818cf8'},
+                    {n:'08',label:'Clean Air Out',color:'#06b6d4'},
+                    {n:'09',label:'Smart Sensors',color:'#10b981'},
+                ];
+                document.write(stages.map((s,i) => `
+                    <div style="text-align:center;">
+                        <a href="#comp-${i+1}" style="text-decoration:none;">
+                            <div style="width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,${s.color}22,${s.color}11);border:2px solid ${s.color}55;display:flex;align-items:center;justify-content:center;margin:0 auto 8px;font-family:'Sora',sans-serif;font-weight:800;font-size:13px;color:${s.color};transition:all 0.3s ease;" onmouseover="this.style.background='${s.color}33';this.style.borderColor='${s.color}'" onmouseout="this.style.background='linear-gradient(135deg,${s.color}22,${s.color}11)';this.style.borderColor='${s.color}55'">${s.n}</div>
+                            <div style="font-size:10px;color:#6b7280;font-weight:600;line-height:1.3;">${s.label}</div>
+                        </a>
+                    </div>
+                `).join('<div style="display:flex;align-items:center;justify-content:center;padding-bottom:24px;"><div style="height:2px;width:100%;background:linear-gradient(90deg,rgba(16,185,129,0.3),rgba(6,182,212,0.3));border-radius:1px;"></div></div>'));
+                </script>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ═══ SECTION 2: TECHNOLOGY COMPONENTS ═══ -->
+    <section class="section-light" id="components">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+
+            <div class="text-center mb-16">
+                <span class="section-label fade-up">Deep Dive</span>
+                <h2 class="fade-up" style="font-family:'Sora',sans-serif;font-size:clamp(2rem,4vw,3rem);font-weight:800;color:#111827;line-height:1.15;">
+                    Technology Components
+                </h2>
+            </div>
+
+            <!-- Component 1 -->
+            <div class="component-card p-8 mb-8 fade-up" id="comp-1">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+                    <div>
+                        <div style="display:flex;align-items:center;gap:14px;margin-bottom:20px;">
+                            <div class="step-num-circle">01</div>
+                            <div>
+                                <div style="font-size:11px;color:#10b981;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:4px;">Stage 1</div>
+                                <h3 style="font-family:'Sora',sans-serif;font-weight:800;font-size:1.3rem;color:#111827;">Atmospheric Intake System</h3>
+                            </div>
+                        </div>
+                        <p style="font-size:0.95rem;color:#374151;line-height:1.8;margin-bottom:16px;font-weight:600;">The Atmospheric Intake System is engineered to efficiently draw polluted air into the purification unit through smart directional airflow channels.</p>
+                        <p style="font-size:0.875rem;color:#6b7280;line-height:1.85;">This system serves as the entry point of the purification process by capturing contaminated air from the surrounding environment. Advanced airflow engineering improves intake efficiency while minimizing energy consumption and operational resistance. Designed for outdoor and high-density applications, the intake system enables consistent purification performance even in areas with fluctuating pollution levels and environmental conditions.</p>
+                    </div>
+                    <img src="images/stage_1_intake.png" alt="Atmospheric Intake" style="width:100%;height:100%;min-height:280px;object-fit:cover;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,0.08);">
+                </div>
+            </div>
+
+            <!-- Component 2 -->
+            <div class="component-card p-8 mb-8 fade-up" id="comp-2">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+                    <div class="lg:order-2">
+                        <div style="display:flex;align-items:center;gap:14px;margin-bottom:20px;">
+                            <div class="step-num-circle">02</div>
+                            <div>
+                                <div style="font-size:11px;color:#10b981;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:4px;">Stage 2</div>
+                                <h3 style="font-family:'Sora',sans-serif;font-weight:800;font-size:1.3rem;color:#111827;">Mechanical Filtration Chamber</h3>
+                            </div>
+                        </div>
+                        <p style="font-size:0.95rem;color:#374151;line-height:1.8;margin-bottom:16px;font-weight:600;">Uses patented centrifugal funnel dust collection technology to separate and capture heavy dust particles and larger contaminants before advanced purification stages.</p>
+                        <p style="font-size:0.875rem;color:#6b7280;line-height:1.85;">This stage enhances filtration efficiency by using centrifugal airflow dynamics to remove coarse particulate matter from incoming air. The funnel-based collection mechanism helps reduce filter load, improves system longevity, and supports high-performance operation in dusty and polluted environments.</p>
+                    </div>
+                    <img src="images/stage_2_mechanical.png" alt="Mechanical Filtration" class="lg:order-1" style="width:100%;height:100%;min-height:280px;object-fit:cover;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,0.08);">
+                </div>
+            </div>
+
+            <!-- Component 3 -->
+            <div class="component-card p-8 mb-8 fade-up" id="comp-3">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+                    <div>
+                        <div style="display:flex;align-items:center;gap:14px;margin-bottom:20px;">
+                            <div class="step-num-circle">03</div>
+                            <div>
+                                <div style="font-size:11px;color:#10b981;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:4px;">Stage 3</div>
+                                <h3 style="font-family:'Sora',sans-serif;font-weight:800;font-size:1.3rem;color:#111827;">Prefilter Layer</h3>
+                            </div>
+                        </div>
+                        <p style="font-size:0.95rem;color:#374151;line-height:1.8;margin-bottom:16px;font-weight:600;">Captures large airborne particles such as dust, lint, pet hair, and dander before they reach the primary filtration components.</p>
+                        <p style="font-size:0.875rem;color:#6b7280;line-height:1.85;">Acting as the first protective filtration barrier, the prefilter prevents larger contaminants from entering deeper purification stages. This improves overall system efficiency, extends the lifespan of HEPA and carbon filters, and ensures stable airflow performance.</p>
+                    </div>
+                    <img src="images/stage_3_prefilter.png" alt="Prefilter Layer" style="width:100%;height:100%;min-height:280px;object-fit:cover;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,0.08);">
+                </div>
+            </div>
+
+            <!-- Component 4 -->
+            <div class="component-card p-8 mb-8 fade-up" id="comp-4">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+                    <div class="lg:order-2">
+                        <div style="display:flex;align-items:center;gap:14px;margin-bottom:20px;">
+                            <div class="step-num-circle">04</div>
+                            <div>
+                                <div style="font-size:11px;color:#10b981;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:4px;">Stage 4</div>
+                                <h3 style="font-family:'Sora',sans-serif;font-weight:800;font-size:1.3rem;color:#111827;">Carbon Filter</h3>
+                            </div>
+                        </div>
+                        <p style="font-size:0.95rem;color:#374151;line-height:1.8;margin-bottom:16px;font-weight:600;">Removes harmful gaseous pollutants including VOCs, odors, fumes, and excess moisture to improve air freshness and safety.</p>
+                        <p style="font-size:0.875rem;color:#6b7280;line-height:1.85;">Using advanced activated carbon adsorption technology, this filtration layer targets pollutants that traditional particle filters cannot capture. It effectively absorbs volatile organic compounds (VOCs), smoke, industrial fumes, unpleasant odors, and airborne chemical contaminants.</p>
+                    </div>
+                    <img src="images/stage_4_carbon.png" alt="Carbon Filter" class="lg:order-1" style="width:100%;height:100%;min-height:280px;object-fit:cover;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,0.08);">
+                </div>
+            </div>
+
+            <!-- Component 5 -->
+            <div class="component-card p-8 mb-8 fade-up" id="comp-5">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+                    <div>
+                        <div style="display:flex;align-items:center;gap:14px;margin-bottom:20px;">
+                            <div class="step-num-circle">05</div>
+                            <div>
+                                <div style="font-size:11px;color:#10b981;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:4px;">Stage 5</div>
+                                <h3 style="font-family:'Sora',sans-serif;font-weight:800;font-size:1.3rem;color:#111827;">HEPA Filter</h3>
+                            </div>
+                        </div>
+                        <p style="font-size:0.95rem;color:#374151;line-height:1.8;margin-bottom:16px;font-weight:600;">Acts as the primary defense against airborne contaminants by capturing <strong style="color:#10b981;">99.97%</strong> of particles as small as 0.3 microns, including PM2.5 and PM10.</p>
+                        <p style="font-size:0.875rem;color:#6b7280;line-height:1.85;">Designed for high-efficiency particulate removal, the HEPA filtration system captures microscopic pollutants such as fine dust, allergens, smoke particles, pollen, and airborne contaminants. Its advanced filtration structure ensures cleaner and safer breathable air while supporting protection against harmful particulate pollution.</p>
+                    </div>
+                    <img src="images/stage_5_hepa.png" alt="HEPA Filter" style="width:100%;height:100%;min-height:280px;object-fit:cover;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,0.08);">
+                </div>
+            </div>
+
+            <!-- Component 6 — FEATURED -->
+            <div class="fade-up mb-8" id="comp-6" style="background:linear-gradient(135deg,rgba(16,185,129,0.08),rgba(6,182,212,0.05));border:1px solid rgba(16,185,129,0.3);border-radius:24px;padding:32px;position:relative;overflow:hidden;">
+                <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#10b981,#4ade80,#06b6d4);"></div>
+                <div style="position:absolute;top:16px;right:20px;display:flex;gap:4px;opacity:0.7;">
+                    <span style="width:6px;height:6px;border-radius:50%;background:#10b981;animation:pulse 2s infinite;"></span>
+                    <span style="width:4px;height:4px;border-radius:50%;background:#4ade80;animation:pulse 2s 0.4s infinite;"></span>
+                    <span style="width:6px;height:6px;border-radius:50%;background:#10b981;animation:pulse 2s 0.8s infinite;"></span>
+                </div>
+                <style>@keyframes pulse{0%,100%{transform:scale(1);opacity:0.5;}50%{transform:scale(1.4);opacity:1;}}</style>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+                    <div class="lg:order-2">
+                        <div style="display:flex;align-items:center;gap:14px;margin-bottom:20px;">
+                            <div style="width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#10b981,#4ade80);display:flex;align-items:center;justify-content:center;font-family:'Sora',sans-serif;font-weight:800;font-size:16px;color:white;box-shadow:0 4px 20px rgba(16,185,129,0.5);">06</div>
+                            <div>
+                                <div style="font-size:11px;color:#10b981;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:4px;">Stage 6 — Signature</div>
+                                <h3 style="font-family:'Sora',sans-serif;font-weight:800;font-size:1.3rem;color:#15803d;">Bio-Purification Core ✦</h3>
+                            </div>
+                        </div>
+                        <p style="font-size:0.95rem;color:#166534;line-height:1.8;margin-bottom:16px;font-weight:600;">Utilizes a moss-based chamber to naturally absorb airborne pollutants and improve environmental air quality.</p>
+                        <p style="font-size:0.875rem;color:#374151;line-height:1.85;">Inspired by natural purification ecosystems, the moss chamber enhances sustainable air treatment through biological pollutant absorption. The living purification layer contributes to reducing airborne contaminants while improving surrounding environmental balance. This eco-integrated solution combines sustainability with smart engineering to create greener, healthier, and visually adaptive urban purification systems.</p>
+                    </div>
+                    <img src="images/stage_6_bio.png" alt="Bio-Purification Core" class="lg:order-1" style="width:100%;height:100%;min-height:280px;object-fit:cover;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,0.08);">
+                </div>
+            </div>
+
+            <!-- Component 7 -->
+            <div class="component-card p-8 mb-8 fade-up" id="comp-7">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+                    <div>
+                        <div style="display:flex;align-items:center;gap:14px;margin-bottom:20px;">
+                            <div class="step-num-circle">07</div>
+                            <div>
+                                <div style="font-size:11px;color:#10b981;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:4px;">Stage 7</div>
+                                <h3 style="font-family:'Sora',sans-serif;font-weight:800;font-size:1.3rem;color:#111827;">UV Chamber</h3>
+                            </div>
+                        </div>
+                        <p style="font-size:0.95rem;color:#374151;line-height:1.8;margin-bottom:16px;font-weight:600;">Uses ultraviolet disinfection technology to inactivate or eliminate airborne microorganisms including bacteria, mold spores, and viruses such as COVID-19.</p>
+                        <p style="font-size:0.875rem;color:#6b7280;line-height:1.85;">This advanced sterilization stage improves air hygiene by exposing airborne contaminants to controlled UV light treatment. The UV system disrupts the biological structure of harmful microorganisms, reducing their ability to survive and spread through the air. Designed for continuous purification environments, the chamber strengthens protection in public spaces, transportation hubs, and healthcare facilities.</p>
+                    </div>
+                    <img src="images/stage_7_uv.png" alt="UV Chamber" style="width:100%;height:100%;min-height:280px;object-fit:cover;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,0.08);">
+                </div>
+            </div>
+
+            <!-- Component 8 -->
+            <div class="component-card p-8 mb-8 fade-up" id="comp-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+                    <div class="lg:order-2">
+                        <div style="display:flex;align-items:center;gap:14px;margin-bottom:20px;">
+                            <div class="step-num-circle">08</div>
+                            <div>
+                                <div style="font-size:11px;color:#10b981;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:4px;">Stage 8</div>
+                                <h3 style="font-family:'Sora',sans-serif;font-weight:800;font-size:1.3rem;color:#111827;">Clean Air Redistribution</h3>
+                            </div>
+                        </div>
+                        <p style="font-size:0.95rem;color:#374151;line-height:1.8;margin-bottom:16px;font-weight:600;">Releases purified, healthy, and breathable air back into the environment through optimized airflow circulation.</p>
+                        <p style="font-size:0.875rem;color:#6b7280;line-height:1.85;">After completing the multi-stage purification process, the system redistributes clean air evenly to establish breathable Air Pocket zones that improve surrounding environmental conditions and user comfort.</p>
+                    </div>
+                    <img src="images/stage_8_redistribution.png" alt="Clean Air Redistribution" class="lg:order-1" style="width:100%;height:100%;min-height:280px;object-fit:cover;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,0.08);">
+                </div>
+            </div>
+
+            <!-- Component 9 -->
+            <div class="component-card p-8 fade-up" id="comp-9">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+                    <div>
+                        <div style="display:flex;align-items:center;gap:14px;margin-bottom:20px;">
+                            <div class="step-num-circle">09</div>
+                            <div>
+                                <div style="font-size:11px;color:#10b981;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:4px;">Stage 9</div>
+                                <h3 style="font-family:'Sora',sans-serif;font-weight:800;font-size:1.3rem;color:#111827;">Smart Sensor Network</h3>
+                            </div>
+                        </div>
+                        <p style="font-size:0.95rem;color:#374151;line-height:1.8;margin-bottom:16px;font-weight:600;">Provides real-time environmental monitoring, air quality analysis, and system performance intelligence.</p>
+                        <p style="font-size:0.875rem;color:#6b7280;line-height:1.85;">Integrated smart sensors continuously track pollutant levels, purification efficiency, airflow conditions, and environmental parameters. AI-assisted monitoring and analytics enable intelligent operational control, predictive maintenance, and data-driven environmental management. The connected ecosystem supports smart city integration while delivering transparent and measurable air quality insights.</p>
+                    </div>
+                    <img src="images/stage_9_sensors.png" alt="Smart Sensor Network" style="width:100%;height:100%;min-height:280px;object-fit:cover;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,0.08);">
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ═══ CTA ═══ -->
+    <section class="section-dark">
+        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:700px;height:400px;background:radial-gradient(ellipse,rgba(16,185,129,0.1) 0%,transparent 70%);pointer-events:none;"></div>
+        <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+            <span class="section-label fade-up" style="background:rgba(16,185,129,0.1);border-color:rgba(16,185,129,0.4);">Deploy UrbanTree</span>
+            <h2 class="fade-up" style="font-family:'Sora',sans-serif;font-size:clamp(2rem,4vw,3rem);font-weight:800;color:#ffffff;line-height:1.15;margin-bottom:1.2rem;">
+                Ready to Deploy<br>
+                <span style="background:linear-gradient(135deg,#10b981,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Clean Air Technology?</span>
+            </h2>
+            <p class="fade-up" style="color:#94a3b8;font-size:1rem;line-height:1.8;margin-bottom:2.5rem;max-width:520px;margin-left:auto;margin-right:auto;">
+                Contact us to explore how UrbanTree's 9-stage purification system can transform air quality in your urban environment.
+            </p>
+            <div class="fade-up flex flex-wrap gap-4 justify-center">
+                <a href="index.html#enquiry" class="hover-glow-emerald px-10 py-4 bg-emerald-500 text-white rounded-full font-semibold shadow-lg shadow-emerald-500/30 transition-all duration-300 text-sm">
+                    Make an Enquiry
+                </a>
+                <a href="about.html" class="px-10 py-4 bg-white/10 border border-white/20 text-white rounded-full font-semibold hover:bg-white/20 transition-all duration-300 text-sm">
+                    About Us
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ FOOTER ═══ -->
+    <footer class="bg-[#0a0a0a] border-t border-white/10 pt-12 pb-6">
+        <div class="max-w-[1440px] mx-auto px-6 lg:px-12 w-full">
+            <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center border-b border-white/10 pb-10 mb-10 gap-10">
+                <div class="w-full lg:w-1/2">
+                    <h2 class="text-3xl font-serif font-bold text-white mb-4">Join the Green Tech Revolution.</h2>
+                    <p class="text-gray-400 mb-6 text-sm">Subscribe to our newsletter for the latest in sustainable environmental technology and urban air updates.</p>
+                    <div class="flex w-full max-w-md shadow-sm border border-white/10 rounded-md overflow-hidden">
+                        <input type="email" placeholder="Enter your email address" class="w-full px-4 py-4 bg-white/10 focus:outline-none focus:bg-white/20 text-white placeholder-gray-500 transition-colors" style="border:none;outline:none;">
+                        <button class="px-8 py-4 bg-gray-100 text-gray-900 font-bold uppercase tracking-widest text-xs hover:bg-emerald-500 hover:text-white transition-colors" style="white-space:nowrap;">Subscribe</button>
+                    </div>
+                </div>
+                <div class="w-full lg:w-auto">
+                    <h3 class="text-white font-bold uppercase tracking-widest text-xs mb-6 lg:text-right">Follow Our Journey</h3>
+                    <div class="flex gap-4 lg:justify-end text-gray-400">
+                        <a href="#" class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all duration-300">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                        </a>
+                        <a href="#" class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-white hover:text-gray-900 hover:border-white transition-all duration-300">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg>
+                        </a>
+                        <a href="#" class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:text-white hover:border-pink-500 transition-all duration-300">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                        </a>
+                        <a href="#" class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-red-600 hover:text-white hover:border-red-600 transition-all duration-300">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 border-b border-white/10 pb-10 mb-8">
+                <div>
+                    <h4 class="text-white font-bold uppercase tracking-widest text-xs mb-5">Company</h4>
+                    <ul class="space-y-3">
+                        <li><a href="about.html" class="text-gray-400 text-sm hover:text-emerald-400 transition-colors">About Us</a></li>
+                        <li><a href="about.html#founders" class="text-gray-400 text-sm hover:text-emerald-400 transition-colors">Founder Profiles</a></li>
+                        <li><a href="index.html#vision-mission" class="text-gray-400 text-sm hover:text-emerald-400 transition-colors">Mission & Vision</a></li>
+                        <li><a href="index.html#blog" class="text-gray-400 text-sm hover:text-emerald-400 transition-colors">Urban Tree Blog</a></li>
+                        <li><a href="#" class="text-gray-400 text-sm hover:text-emerald-400 transition-colors">Environmental Performance Statement</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold uppercase tracking-widest text-xs mb-5">Support & Monitoring</h4>
+                    <ul class="space-y-3">
+                        <li><a href="login.html" class="text-emerald-400 text-sm font-semibold hover:text-emerald-300 transition-colors">Login for Monitoring</a></li>
+                        <li><a href="faq.html" class="text-gray-400 text-sm hover:text-emerald-400 transition-colors">FAQ</a></li>
+                        <li><a href="index.html#enquiry" class="text-gray-400 text-sm hover:text-emerald-400 transition-colors">Support</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold uppercase tracking-widest text-xs mb-5">Legal</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" onclick="openPrivacy();return false;" class="text-gray-400 text-sm hover:text-emerald-400 transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" onclick="openTerms();return false;" class="text-gray-400 text-sm hover:text-emerald-400 transition-colors">Terms & Conditions</a></li>
+                        <li><a href="#" onclick="openDisclaimer();return false;" class="text-gray-400 text-sm hover:text-emerald-400 transition-colors">Disclaimer</a></li>
+                        <li><a href="#" onclick="openCookie();return false;" class="text-gray-400 text-sm hover:text-emerald-400 transition-colors">Cookie Policy</a></li>
+                        <li><a href="#" onclick="openIP();return false;" class="text-gray-400 text-sm hover:text-emerald-400 transition-colors">Intellectual Property Notice</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="flex items-center justify-center text-[12px] text-gray-500">
+                <p>&copy; 2026 UrbanTree powered by SunEx Technologies Pvt Ltd. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ═══ ALL LEGAL MODALS ═══ -->
+
+    <!-- Privacy -->
+    <div id="privacy-modal" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.7);backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:20px;" onclick="if(event.target===this)closePrivacy()">
+        <div style="background:#0f1a14;border:1px solid rgba(16,185,129,0.25);border-radius:24px;max-width:680px;width:100%;max-height:85vh;overflow-y:auto;padding:40px;position:relative;">
+            <button onclick="closePrivacy()" style="position:absolute;top:20px;right:20px;background:rgba(255,255,255,0.08);border:none;color:#9ca3af;width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;">✕</button>
+            <div style="display:inline-block;padding:4px 14px;border-radius:20px;border:1px solid rgba(16,185,129,0.4);background:rgba(16,185,129,0.08);font-size:10px;font-weight:700;letter-spacing:0.2em;color:#10b981;text-transform:uppercase;margin-bottom:16px;">Legal</div>
+            <h2 style="font-family:'Sora',sans-serif;font-size:1.8rem;font-weight:800;color:#ffffff;margin-bottom:28px;">Privacy Policy</h2>
+            <div style="font-family:'Inter',sans-serif;font-size:0.9rem;color:#94a3b8;line-height:1.8;display:flex;flex-direction:column;gap:22px;">
+                <div><h3 style="font-family:'Sora',sans-serif;font-size:1rem;font-weight:700;color:#f1f5f9;margin-bottom:8px;">Introduction</h3><p>UrbanTree powered by SunEx Technologies respects your privacy and is committed to protecting any information shared through our website, enquiry forms, consultations, and communication channels.</p></div>
+                <div><h3 style="font-family:'Sora',sans-serif;font-size:1rem;font-weight:700;color:#f1f5f9;margin-bottom:8px;">Information We Collect</h3><ul style="list-style:none;display:flex;flex-direction:column;gap:6px;"><li style="display:flex;align-items:center;gap:8px;"><span style="width:6px;height:6px;border-radius:50%;background:#10b981;flex-shrink:0;"></span>Name</li><li style="display:flex;align-items:center;gap:8px;"><span style="width:6px;height:6px;border-radius:50%;background:#10b981;flex-shrink:0;"></span>Email address</li><li style="display:flex;align-items:center;gap:8px;"><span style="width:6px;height:6px;border-radius:50%;background:#10b981;flex-shrink:0;"></span>Phone number</li><li style="display:flex;align-items:center;gap:8px;"><span style="width:6px;height:6px;border-radius:50%;background:#10b981;flex-shrink:0;"></span>Company / Organization name</li><li style="display:flex;align-items:center;gap:8px;"><span style="width:6px;height:6px;border-radius:50%;background:#10b981;flex-shrink:0;"></span>Project requirements</li><li style="display:flex;align-items:center;gap:8px;"><span style="width:6px;height:6px;border-radius:50%;background:#10b981;flex-shrink:0;"></span>Device / browser analytics</li><li style="display:flex;align-items:center;gap:8px;"><span style="width:6px;height:6px;border-radius:50%;background:#10b981;flex-shrink:0;"></span>IP address and cookies</li></ul></div>
+                <div><h3 style="font-family:'Sora',sans-serif;font-size:1rem;font-weight:700;color:#f1f5f9;margin-bottom:8px;">Data Protection</h3><p>We implement reasonable technical and organizational measures to protect user information from unauthorized access, misuse, disclosure, or loss.</p></div>
+                <div style="background:rgba(16,185,129,0.06);border:1px solid rgba(16,185,129,0.2);border-radius:14px;padding:16px 20px;"><h3 style="font-family:'Sora',sans-serif;font-size:1rem;font-weight:700;color:#f1f5f9;margin-bottom:6px;">Contact</h3><p>For privacy-related concerns: <a href="mailto:privacy@urbantree.com" style="color:#10b981;font-weight:600;">privacy@urbantree.com</a></p></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Terms -->
+    <div id="terms-modal" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.7);backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:20px;" onclick="if(event.target===this)closeTerms()">
+        <div style="background:#0f1a14;border:1px solid rgba(16,185,129,0.25);border-radius:24px;max-width:680px;width:100%;max-height:85vh;overflow-y:auto;padding:40px;position:relative;">
+            <button onclick="closeTerms()" style="position:absolute;top:20px;right:20px;background:rgba(255,255,255,0.08);border:none;color:#9ca3af;width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;">✕</button>
+            <div style="display:inline-block;padding:4px 14px;border-radius:20px;border:1px solid rgba(16,185,129,0.4);background:rgba(16,185,129,0.08);font-size:10px;font-weight:700;letter-spacing:0.2em;color:#10b981;text-transform:uppercase;margin-bottom:16px;">Legal</div>
+            <h2 style="font-family:'Sora',sans-serif;font-size:1.8rem;font-weight:800;color:#ffffff;margin-bottom:28px;">Terms & Conditions</h2>
+            <div style="font-family:'Inter',sans-serif;font-size:0.9rem;color:#94a3b8;line-height:1.8;display:flex;flex-direction:column;gap:22px;">
+                <div><h3 style="font-family:'Sora',sans-serif;font-size:1rem;font-weight:700;color:#f1f5f9;margin-bottom:8px;">Acceptance of Terms</h3><p>By accessing or using the UrbanTree website, users agree to comply with these Terms & Conditions.</p></div>
+                <div><h3 style="font-family:'Sora',sans-serif;font-size:1rem;font-weight:700;color:#f1f5f9;margin-bottom:8px;">Intellectual Property</h3><p style="margin-bottom:10px;">All website content is the intellectual property of SunEx Technologies unless otherwise stated.</p><ul style="list-style:none;display:flex;flex-direction:column;gap:6px;"><li style="display:flex;align-items:center;gap:8px;"><span style="width:6px;height:6px;border-radius:50%;background:#10b981;flex-shrink:0;"></span>Designs &amp; Logos</li><li style="display:flex;align-items:center;gap:8px;"><span style="width:6px;height:6px;border-radius:50%;background:#10b981;flex-shrink:0;"></span>Technology Concepts</li><li style="display:flex;align-items:center;gap:8px;"><span style="width:6px;height:6px;border-radius:50%;background:#10b981;flex-shrink:0;"></span>Graphics &amp; Text</li><li style="display:flex;align-items:center;gap:8px;"><span style="width:6px;height:6px;border-radius:50%;background:#10b981;flex-shrink:0;"></span>Product Descriptions</li><li style="display:flex;align-items:center;gap:8px;"><span style="width:6px;height:6px;border-radius:50%;background:#10b981;flex-shrink:0;"></span>Visual Assets</li></ul></div>
+                <div><h3 style="font-family:'Sora',sans-serif;font-size:1rem;font-weight:700;color:#f1f5f9;margin-bottom:8px;">Changes to Terms</h3><p>We reserve the right to modify these terms at any time without prior notice.</p></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Disclaimer -->
+    <div id="disclaimer-modal" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.7);backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:20px;" onclick="if(event.target===this)closeDisclaimer()">
+        <div style="background:#0f1a14;border:1px solid rgba(16,185,129,0.25);border-radius:24px;max-width:680px;width:100%;max-height:85vh;overflow-y:auto;padding:40px;position:relative;">
+            <button onclick="closeDisclaimer()" style="position:absolute;top:20px;right:20px;background:rgba(255,255,255,0.08);border:none;color:#9ca3af;width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;">✕</button>
+            <div style="display:inline-block;padding:4px 14px;border-radius:20px;border:1px solid rgba(16,185,129,0.4);background:rgba(16,185,129,0.08);font-size:10px;font-weight:700;letter-spacing:0.2em;color:#10b981;text-transform:uppercase;margin-bottom:16px;">Legal</div>
+            <h2 style="font-family:'Sora',sans-serif;font-size:1.8rem;font-weight:800;color:#ffffff;margin-bottom:28px;">Disclaimer</h2>
+            <div style="font-family:'Inter',sans-serif;font-size:0.9rem;color:#94a3b8;line-height:1.8;display:flex;flex-direction:column;gap:22px;">
+                <div><h3 style="font-family:'Sora',sans-serif;font-size:1rem;font-weight:700;color:#f1f5f9;margin-bottom:8px;">General Information</h3><p>The information provided on this website is intended for general informational and educational purposes only.</p></div>
+                <div><h3 style="font-family:'Sora',sans-serif;font-size:1rem;font-weight:700;color:#f1f5f9;margin-bottom:8px;">No Medical Claims</h3><p>UrbanTree is an environmental air purification and monitoring system and is not intended to diagnose, treat, cure, or prevent any medical condition or disease.</p></div>
+                <div><h3 style="font-family:'Sora',sans-serif;font-size:1rem;font-weight:700;color:#f1f5f9;margin-bottom:8px;">Technology Development</h3><p>Certain product visuals, simulations, concepts, and future roadmap representations may represent prototype-stage or evolving technologies subject to ongoing research and development.</p></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cookie -->
+    <div id="cookie-modal" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.7);backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:20px;" onclick="if(event.target===this)closeCookie()">
+        <div style="background:#0f1a14;border:1px solid rgba(16,185,129,0.25);border-radius:24px;max-width:680px;width:100%;max-height:85vh;overflow-y:auto;padding:40px;position:relative;">
+            <button onclick="closeCookie()" style="position:absolute;top:20px;right:20px;background:rgba(255,255,255,0.08);border:none;color:#9ca3af;width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;">✕</button>
+            <div style="display:inline-block;padding:4px 14px;border-radius:20px;border:1px solid rgba(16,185,129,0.4);background:rgba(16,185,129,0.08);font-size:10px;font-weight:700;letter-spacing:0.2em;color:#10b981;text-transform:uppercase;margin-bottom:16px;">Legal</div>
+            <h2 style="font-family:'Sora',sans-serif;font-size:1.8rem;font-weight:800;color:#ffffff;margin-bottom:28px;">Cookie Policy</h2>
+            <div style="font-family:'Inter',sans-serif;font-size:0.9rem;color:#94a3b8;line-height:1.8;display:flex;flex-direction:column;gap:22px;">
+                <div><h3 style="font-family:'Sora',sans-serif;font-size:1rem;font-weight:700;color:#f1f5f9;margin-bottom:8px;">Cookies Policy</h3><p>UrbanTree may use cookies and analytics technologies to improve website functionality and user experience.</p></div>
+                <div><h3 style="font-family:'Sora',sans-serif;font-size:1rem;font-weight:700;color:#f1f5f9;margin-bottom:8px;">User Rights</h3><ul style="list-style:none;display:flex;flex-direction:column;gap:6px;"><li style="display:flex;align-items:center;gap:8px;"><span style="width:6px;height:6px;border-radius:50%;background:#10b981;flex-shrink:0;"></span>Access to stored information</li><li style="display:flex;align-items:center;gap:8px;"><span style="width:6px;height:6px;border-radius:50%;background:#10b981;flex-shrink:0;"></span>Correction of data</li><li style="display:flex;align-items:center;gap:8px;"><span style="width:6px;height:6px;border-radius:50%;background:#10b981;flex-shrink:0;"></span>Deletion of information</li><li style="display:flex;align-items:center;gap:8px;"><span style="width:6px;height:6px;border-radius:50%;background:#10b981;flex-shrink:0;"></span>Withdrawal of consent</li></ul></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- IP Notice -->
+    <div id="ip-modal" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.7);backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:20px;" onclick="if(event.target===this)closeIP()">
+        <div style="background:#0f1a14;border:1px solid rgba(16,185,129,0.25);border-radius:24px;max-width:680px;width:100%;max-height:85vh;overflow-y:auto;padding:40px;position:relative;">
+            <button onclick="closeIP()" style="position:absolute;top:20px;right:20px;background:rgba(255,255,255,0.08);border:none;color:#9ca3af;width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;">✕</button>
+            <div style="display:inline-block;padding:4px 14px;border-radius:20px;border:1px solid rgba(16,185,129,0.4);background:rgba(16,185,129,0.08);font-size:10px;font-weight:700;letter-spacing:0.2em;color:#10b981;text-transform:uppercase;margin-bottom:16px;">Legal</div>
+            <h2 style="font-family:'Sora',sans-serif;font-size:1.8rem;font-weight:800;color:#ffffff;margin-bottom:28px;">Intellectual Property Notice</h2>
+            <div style="font-family:'Inter',sans-serif;font-size:0.9rem;color:#94a3b8;line-height:1.8;display:flex;flex-direction:column;gap:22px;">
+                <div><h3 style="font-family:'Sora',sans-serif;font-size:1rem;font-weight:700;color:#f1f5f9;margin-bottom:8px;">Intellectual Property</h3><p style="margin-bottom:10px;">All website content is the intellectual property of SunEx Technologies unless otherwise stated:</p><ul style="list-style:none;display:flex;flex-direction:column;gap:6px;"><li style="display:flex;align-items:center;gap:8px;"><span style="width:6px;height:6px;border-radius:50%;background:#10b981;flex-shrink:0;"></span>Designs &amp; Logos</li><li style="display:flex;align-items:center;gap:8px;"><span style="width:6px;height:6px;border-radius:50%;background:#10b981;flex-shrink:0;"></span>Technology Concepts</li><li style="display:flex;align-items:center;gap:8px;"><span style="width:6px;height:6px;border-radius:50%;background:#10b981;flex-shrink:0;"></span>Graphics &amp; Text</li><li style="display:flex;align-items:center;gap:8px;"><span style="width:6px;height:6px;border-radius:50%;background:#10b981;flex-shrink:0;"></span>Product Descriptions</li><li style="display:flex;align-items:center;gap:8px;"><span style="width:6px;height:6px;border-radius:50%;background:#10b981;flex-shrink:0;"></span>Visual Assets</li></ul></div>
+                <div style="background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.2);border-radius:14px;padding:16px 20px;"><p style="color:#fca5a5;">Unauthorized reproduction, duplication, reverse engineering, distribution, or commercial use is strictly prohibited.</p></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Scroll reveal
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+        // Navbar Intersection Observer
+        const navbar = document.getElementById('navbar');
+        const navBrand = document.getElementById('nav-brand');
+        const navTagline = document.getElementById('nav-tagline');
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        let currentTheme = 'dark'; // 'dark' means navbar text is white (on dark bg)
+
+        function setTheme(theme) {
+            if (theme === currentTheme) return;
+            currentTheme = theme;
+            
+            if (theme === 'light') {
+                if (window.scrollY > 50) {
+                    navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+                    navbar.style.borderBottom = '1px solid rgba(0,0,0,0.05)';
+                }
+                
+                if(navBrand) { navBrand.classList.remove('text-white'); navBrand.classList.add('nav-text-dark'); }
+                if(navTagline) { navTagline.classList.remove('text-white'); navTagline.classList.add('nav-text-dark-light'); }
+                navLinks.forEach(link => { link.classList.remove('text-white'); link.classList.add('nav-text-dark'); });
+            } else {
+                if (window.scrollY > 50) {
+                    navbar.style.background = 'rgba(10, 10, 10, 0.92)';
+                    navbar.style.borderBottom = '1px solid rgba(255,255,255,0.08)';
+                }
+                
+                if(navBrand) { navBrand.classList.remove('nav-text-dark'); navBrand.classList.add('text-white'); }
+                if(navTagline) { navTagline.classList.remove('nav-text-dark-light'); navTagline.classList.add('text-white'); }
+                navLinks.forEach(link => { link.classList.remove('nav-text-dark'); link.classList.add('text-white'); });
+            }
+        }
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY <= 50) {
+                navbar.style.background = 'transparent';
+                navbar.style.borderBottom = 'none';
+            } else {
+                if (currentTheme === 'light') {
+                    navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+                    navbar.style.borderBottom = '1px solid rgba(0,0,0,0.05)';
+                } else {
+                    navbar.style.background = 'rgba(10, 10, 10, 0.92)';
+                    navbar.style.borderBottom = '1px solid rgba(255,255,255,0.08)';
+                }
+            }
+        });
+
+        const lightSections = document.querySelectorAll('.section-light, .section-lighter');
+        const darkSections = document.querySelectorAll('#tech-hero, .section-dark');
+
+        const sectionObserver = new IntersectionObserver((entries) => {
+            let topIntersecting = null;
+            entries.forEach(entry => {
+                if (entry.isIntersecting && entry.intersectionRect.top < 100) {
+                    topIntersecting = entry.target;
+                }
+            });
+            
+            if (topIntersecting) {
+                if (topIntersecting.matches('.section-light, .section-lighter')) {
+                    setTheme('light');
+                } else {
+                    setTheme('dark');
+                }
+            }
+        }, { rootMargin: "-80px 0px -80% 0px" });
+
+        lightSections.forEach(s => sectionObserver.observe(s));
+        darkSections.forEach(s => sectionObserver.observe(s));
+
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', e => {
+                const target = document.querySelector(a.getAttribute('href'));
+                if(target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+            });
+        });
+
+        // Modal functions
+        function openPrivacy() { document.getElementById('privacy-modal').style.display='flex'; document.body.style.overflow='hidden'; }
+        function closePrivacy() { document.getElementById('privacy-modal').style.display='none'; document.body.style.overflow=''; }
+        function openTerms() { document.getElementById('terms-modal').style.display='flex'; document.body.style.overflow='hidden'; }
+        function closeTerms() { document.getElementById('terms-modal').style.display='none'; document.body.style.overflow=''; }
+        function openDisclaimer() { document.getElementById('disclaimer-modal').style.display='flex'; document.body.style.overflow='hidden'; }
+        function closeDisclaimer() { document.getElementById('disclaimer-modal').style.display='none'; document.body.style.overflow=''; }
+        function openCookie() { document.getElementById('cookie-modal').style.display='flex'; document.body.style.overflow='hidden'; }
+        function closeCookie() { document.getElementById('cookie-modal').style.display='none'; document.body.style.overflow=''; }
+        function openIP() { document.getElementById('ip-modal').style.display='flex'; document.body.style.overflow='hidden'; }
+        function closeIP() { document.getElementById('ip-modal').style.display='none'; document.body.style.overflow=''; }
+        document.addEventListener('keydown', e => {
+            if(e.key==='Escape') { closePrivacy(); closeTerms(); closeDisclaimer(); closeCookie(); closeIP(); }
+        });
+    </script>
+
+</body>
+</html>

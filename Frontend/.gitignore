@@ -1,0 +1,16 @@
+# System files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE files
+.vscode/
+.idea/
+
+# Node modules (just in case you add npm later)
+node_modules/
+package-lock.json
+
+# Build outputs
+dist/
+build/

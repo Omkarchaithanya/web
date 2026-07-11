@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ — UrbanTree by SunEx Technologies</title>
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Montserrat:wght@400;500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: { emerald: '#10b981', cyan: '#06b6d4' }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background-color: #e8e8e8;
+            color: #111827;
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+        }
+        #navbar {
+            background: transparent;
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 50;
+            padding: 1.2rem 1.5rem;
+        }
+        .faq-item {
+            background: rgba(255,255,255,0.65);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.5);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+        }
+        .faq-item:hover {
+            box-shadow: 0 8px 30px rgba(16,185,129,0.1);
+            border-color: rgba(16,185,129,0.2);
+        }
+        .faq-item.open {
+            border-color: rgba(16,185,129,0.3);
+            box-shadow: 0 8px 30px rgba(16,185,129,0.12);
+        }
+        .faq-question {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 1.4rem 1.6rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            text-align: left;
+            transition: background 0.2s;
+        }
+        .faq-question:hover { background: rgba(16,185,129,0.03); }
+        .faq-number {
+            font-family: 'Inter', sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            color: #10b981;
+            background: rgba(16,185,129,0.1);
+            border: 1px solid rgba(16,185,129,0.2);
+            border-radius: 6px;
+            padding: 3px 8px;
+            flex-shrink: 0;
+            letter-spacing: 0.05em;
+        }
+        .faq-q-text {
+            font-family: 'Sora', sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            color: #111827;
+            flex: 1;
+            line-height: 1.4;
+        }
+        .faq-icon {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: rgba(16,185,129,0.08);
+            border: 1px solid rgba(16,185,129,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+        }
+        .faq-item.open .faq-icon {
+            background: #10b981;
+            border-color: #10b981;
+            transform: rotate(45deg);
+        }
+        .faq-item.open .faq-icon svg { color: white; }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1);
+        }
+        .faq-answer.open { max-height: 300px; }
+        .faq-answer-inner {
+            padding: 0 1.6rem 1.4rem calc(1.6rem + 36px + 1rem);
+        }
+        .faq-answer-inner p {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            color: #4b5563;
+            line-height: 1.8;
+        }
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s cubic-bezier(0.2,0.8,0.2,1), transform 0.7s cubic-bezier(0.2,0.8,0.2,1);
+        }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
+        .orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            pointer-events: none;
+            z-index: 0;
+        }
+    </style>
+    <link rel="icon" type="image/png" href="images/logo.png">
+</head>
+<body>
+
+    <div class="orb" style="width:500px;height:500px;background:rgba(16,185,129,0.07);top:-100px;right:-100px;"></div>
+    <div class="orb" style="width:400px;height:400px;background:rgba(6,182,212,0.05);bottom:100px;left:-100px;"></div>
+
+    <!-- NAVBAR -->
+    <nav id="navbar">
+        <a href="index.html" style="display:inline-flex; align-items:center; gap:12px; text-decoration:none;">
+            <img src="images/logo.png" alt="UrbanTree Logo" style="height:44px; width:auto;">
+            <div class="leading-snug">
+                <div style="font-family:'Montserrat',sans-serif; font-size:1.4rem; font-weight:800; color:#111827;">
+                    URBAN<span style="color:#4a9e3f; font-weight:600;">Tree</span>
+                </div>
+                <div style="font-family:'Montserrat',sans-serif; font-size:10px; font-weight:500; color:#6b7280; letter-spacing:0.05em;">
+                    The City, Reimagined.
+                </div>
+            </div>
+        </a>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main style="max-width:820px; margin:0 auto; padding:8rem 1.5rem 5rem; position:relative; z-index:10;">
+
+        <!-- Header -->
+        <div class="fade-up" style="text-align:center; margin-bottom:3.5rem;">
+            <span style="font-family:'Inter',sans-serif; font-size:11px; font-weight:700; letter-spacing:0.3em; text-transform:uppercase; color:#10b981; display:block; margin-bottom:1rem;">Support</span>
+            <h1 style="font-family:'Sora',sans-serif; font-size:clamp(2.2rem,5vw,3.5rem); font-weight:800; color:#111827; line-height:1.1; margin-bottom:1rem;">
+                Frequently Asked<br><span style="color:#10b981;">Questions</span>
+            </h1>
+            <p style="font-family:'Inter',sans-serif; font-size:15px; color:#6b7280; max-width:480px; margin:0 auto; line-height:1.7;">
+                Everything you need to know about UrbanTree and Bio-Mechanical Air Purification technology.
+            </p>
+        </div>
+
+        <!-- FAQ Items -->
+        <div style="display:flex; flex-direction:column; gap:12px;">
+
+            <div class="faq-item fade-up" style="transition-delay:0.05s;">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span class="faq-number">01</span>
+                    <span class="faq-q-text">What is UrbanTree?</span>
+                    <span class="faq-icon"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" style="color:#10b981;"><path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M5 12h14"/></svg></span>
+                </button>
+                <div class="faq-answer"><div class="faq-answer-inner"><p>UrbanTree is an advanced bio-mechanical air purification ecosystem developed by SunEx Technologies to improve urban air quality through intelligent filtration, biological purification, and AI-driven environmental monitoring. The system is designed to create healthier breathable Air Pocket environments in outdoor and semi-outdoor urban spaces.</p></div></div>
+            </div>
+
+            <div class="faq-item fade-up" style="transition-delay:0.1s;">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span class="faq-number">02</span>
+                    <span class="faq-q-text">How does breathable Air Pocket technology work?</span>
+                    <span class="faq-icon"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" style="color:#10b981;"><path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M5 12h14"/></svg></span>
+                </button>
+                <div class="faq-answer"><div class="faq-answer-inner"><p>UrbanTree creates localized breathable Air Pocket zones by continuously drawing polluted air through multiple purification stages and redistributing cleaner air within the effective coverage area of the system. This helps improve surrounding air quality and environmental comfort in high-footfall urban environments.</p></div></div>
+            </div>
+
+            <div class="faq-item fade-up" style="transition-delay:0.15s;">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span class="faq-number">03</span>
+                    <span class="faq-q-text">Is UrbanTree solar powered?</span>
+                    <span class="faq-icon"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" style="color:#10b981;"><path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M5 12h14"/></svg></span>
+                </button>
+                <div class="faq-answer"><div class="faq-answer-inner"><p>Yes. UrbanTree is designed with a hybrid energy architecture that integrates both conventional grid supply and solar power systems to support energy-efficient and sustainable operation.</p></div></div>
+            </div>
+
+            <div class="faq-item fade-up" style="transition-delay:0.2s;">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span class="faq-number">04</span>
+                    <span class="faq-q-text">What pollutants can UrbanTree help reduce?</span>
+                    <span class="faq-icon"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" style="color:#10b981;"><path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M5 12h14"/></svg></span>
+                </button>
+                <div class="faq-answer"><div class="faq-answer-inner"><p>UrbanTree is designed to reduce airborne pollutants including PM2.5, PM10, dust particles, VOCs, smoke, odors, airborne microorganisms, and other environmental contaminants commonly found in urban and industrial environments.</p></div></div>
+            </div>
+
+            <div class="faq-item fade-up" style="transition-delay:0.25s;">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span class="faq-number">05</span>
+                    <span class="faq-q-text">How does the Bio-Purification Core function?</span>
+                    <span class="faq-icon"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" style="color:#10b981;"><path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M5 12h14"/></svg></span>
+                </button>
+                <div class="faq-answer"><div class="faq-answer-inner"><p>The Bio-Purification Core utilizes a moss-based biological purification chamber that naturally absorbs airborne pollutants while supporting sustainable environmental air treatment.</p></div></div>
+            </div>
+
+            <div class="faq-item fade-up" style="transition-delay:0.3s;">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span class="faq-number">06</span>
+                    <span class="faq-q-text">Does UrbanTree monitor air quality in real time?</span>
+                    <span class="faq-icon"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" style="color:#10b981;"><path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M5 12h14"/></svg></span>
+                </button>
+                <div class="faq-answer"><div class="faq-answer-inner"><p>Yes. UrbanTree includes an AI-driven Smart Sensor Network that continuously monitors air quality, environmental conditions, system performance, and purification efficiency in real time.</p></div></div>
+            </div>
+
+            <div class="faq-item fade-up" style="transition-delay:0.35s;">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span class="faq-number">07</span>
+                    <span class="faq-q-text">How does UrbanTree improve AQI levels?</span>
+                    <span class="faq-icon"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" style="color:#10b981;"><path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M5 12h14"/></svg></span>
+                </button>
+                <div class="faq-answer"><div class="faq-answer-inner"><p>UrbanTree improves AQI by continuously filtering and purifying polluted air using multi-stage filtration technologies, biological purification systems, and intelligent environmental management.</p></div></div>
+            </div>
+
+            <div class="faq-item fade-up" style="transition-delay:0.4s;">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span class="faq-number">08</span>
+                    <span class="faq-q-text">How is UrbanTree different from traditional air purifiers?</span>
+                    <span class="faq-icon"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" style="color:#10b981;"><path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M5 12h14"/></svg></span>
+                </button>
+                <div class="faq-answer"><div class="faq-answer-inner"><p>Unlike conventional indoor air purifiers, UrbanTree is designed as a scalable urban environmental infrastructure solution capable of creating breathable Air Pocket environments in large public, outdoor, and smart-city spaces using AI-driven and bio-mechanical purification technologies.</p></div></div>
+            </div>
+
+        </div>
+
+        <!-- Bottom CTA -->
+        <div class="fade-up" style="text-align:center; margin-top:3.5rem; padding:2.5rem; background:rgba(255,255,255,0.5); backdrop-filter:blur(20px); border:1px solid rgba(255,255,255,0.6); border-radius:20px;">
+            <p style="font-family:'Sora',sans-serif; font-size:1.1rem; font-weight:700; color:#111827; margin-bottom:0.5rem;">Still have questions?</p>
+            <p style="font-family:'Inter',sans-serif; font-size:13px; color:#6b7280; margin-bottom:1.4rem;">Our team is happy to help with anything not covered here.</p>
+            <a href="index.html#enquiry" style="display:inline-block; padding:12px 28px; background:#10b981; color:white; font-family:'Sora',sans-serif; font-size:13px; font-weight:700; border-radius:50px; text-decoration:none; transition:all 0.3s;" onmouseover="this.style.background='#059669'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 25px rgba(16,185,129,0.35)'" onmouseout="this.style.background='#10b981'; this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                Contact Us →
+            </a>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-[#0a0a0a] border-t border-white/10 pt-12 pb-6">
+        <div class="max-w-[1440px] mx-auto px-6 lg:px-12 w-full">
+
+            <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center border-b border-white/10 pb-10 mb-10 gap-10">
+                <div class="w-full lg:w-1/2">
+                    <h2 class="text-3xl font-serif font-bold text-white mb-4">Join the Green Tech Revolution.</h2>
+                    <p class="text-gray-400 mb-6 text-sm">Subscribe to our newsletter for the latest in sustainable environmental technology and urban air updates.</p>
+                    <form class="flex w-full max-w-md shadow-sm border border-white/10 rounded-md overflow-hidden">
+                        <input type="email" placeholder="Enter your email address" class="w-full px-4 py-4 bg-white/10 focus:outline-none focus:bg-white/20 text-white placeholder-gray-500 transition-colors" required>
+                        <button type="submit" class="px-8 py-4 bg-gray-100 text-gray-900 font-bold uppercase tracking-widest text-xs hover:bg-brand-emerald hover:text-white transition-colors">Subscribe</button>
+                    </form>
+                </div>
+                <div class="w-full lg:w-auto">
+                    <h3 class="text-white font-bold uppercase tracking-widest text-xs mb-6 lg:text-right">Follow Our Journey</h3>
+                    <div class="flex gap-4 lg:justify-end text-gray-400">
+                        <a href="#" class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all duration-300">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                        </a>
+                        <a href="#" class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-white hover:text-gray-900 hover:border-white transition-all duration-300">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg>
+                        </a>
+                        <a href="#" class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-gradient-to-br hover:from-purple-500 hover:to-pink-500 hover:text-white hover:border-pink-500 transition-all duration-300">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                        </a>
+                        <a href="#" class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-red-600 hover:text-white hover:border-red-600 transition-all duration-300">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 border-b border-white/10 pb-10 mb-8">
+                <div>
+                    <h4 class="text-white font-bold uppercase tracking-widest text-xs mb-5">Company</h4>
+                    <ul class="space-y-3">
+                        <li><a href="index.html#about" class="text-gray-400 text-sm hover:text-brand-emerald transition-colors">About Us</a></li>
+                        <li><a href="#" class="text-gray-400 text-sm hover:text-brand-emerald transition-colors">Founder Profiles</a></li>
+                        <li><a href="#" class="text-gray-400 text-sm hover:text-brand-emerald transition-colors">Mission & Vision</a></li>
+                        <li><a href="index.html#blog" class="text-gray-400 text-sm hover:text-brand-emerald transition-colors">Urban Tree Blog</a></li>
+                        <li><a href="#" class="text-gray-400 text-sm hover:text-brand-emerald transition-colors">Environmental Performance Statement</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold uppercase tracking-widest text-xs mb-5">Support & Monitoring</h4>
+                    <ul class="space-y-3">
+                        <li><a href="login.html" class="text-brand-emerald text-sm font-semibold hover:text-emerald-400 transition-colors">Login for Monitoring</a></li>
+                        <li><a href="faq.html" class="text-gray-400 text-sm hover:text-brand-emerald transition-colors">FAQ</a></li>
+                        <li><a href="index.html#enquiry" class="text-gray-400 text-sm hover:text-brand-emerald transition-colors">Support</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold uppercase tracking-widest text-xs mb-5">Legal</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 text-sm hover:text-brand-emerald transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-400 text-sm hover:text-brand-emerald transition-colors">Terms & Conditions</a></li>
+                        <li><a href="#" class="text-gray-400 text-sm hover:text-brand-emerald transition-colors">Disclaimer</a></li>
+                        <li><a href="#" class="text-gray-400 text-sm hover:text-brand-emerald transition-colors">Cookie Policy</a></li>
+                        <li><a href="#" class="text-gray-400 text-sm hover:text-brand-emerald transition-colors">Intellectual Property Notice</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="flex items-center justify-center text-[12px] text-gray-500">
+                <p>&copy; 2026 UrbanTree powered by SunEx Technologies Pvt Ltd. All Rights Reserved.</p>
+            </div>
+
+        </div>
+    </footer>
+
+    <script>
+        function toggleFaq(btn) {
+            const item = btn.closest('.faq-item');
+            const answer = item.querySelector('.faq-answer');
+            const isOpen = item.classList.contains('open');
+            document.querySelectorAll('.faq-item').forEach(i => {
+                i.classList.remove('open');
+                i.querySelector('.faq-answer').classList.remove('open');
+            });
+            if (!isOpen) {
+                item.classList.add('open');
+                answer.classList.add('open');
+            }
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+    </script>
+
+</body>
+</html>
