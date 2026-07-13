@@ -1,0 +1,15 @@
+{
+  "name": "demo-website",
+  "version": "1.0.0",
+  "description": "Demo Website Frontend",
+  "scripts": {
+    "dev": "serve . -p 3000",
+    "format": "prettier --write \"**/*.html\""
+  },
+  "dependencies": {
+    "serve": "^14.2.3"
+  },
+  "devDependencies": {
+    "prettier": "^3.0.0"
+  }
+}

@@ -1,0 +1,28 @@
+version: "2"
+
+# This configuration file implements the 3 patterns from the video:
+# 1. Private Connectivity, 2. The Front Door Pattern, 3. API/AI Gateway
+
+tunnels:
+  urbantree-secure:
+    proto: http
+    # 1. PRIVATE CONNECTIVITY
+    # Points to your local Python server running on port 8000
+    addr: 8000
+    
+    # If you want to force the same URL every time, uncomment the line below:
+    # domain: designing-colony-steering.ngrok-free.dev
+
+    # 2. THE FRONT DOOR PATTERN (Identity Propagation)
+    # This enforces a Google Login screen before anyone can access the tunnel.
+    # It prevents unauthorized users from viewing your local project.
+    oauth:
+      provider: google
+      # Uncomment and add your email to restrict access ONLY to yourself:
+      # allow_emails:
+      #   - "your.email@gmail.com"
+      
+    # 3. API GATEWAY PATTERN (Observability & Protection)
+    # Protects your local server from DDoS or being overwhelmed by too many requests.
+    # Enables observability and traffic inspection in the ngrok dashboard (127.0.0.1:4040)
+    inspect: true
