@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us | UrbanTree by SunEx Technologies</title>
     <link rel="icon" type="image/png" href="images/logo.png">
-    <meta name="description" content="UrbanTree is part of SunEx Technologies, focused on building intelligent clean-air infrastructure for healthier and future-ready cities.">
+    <meta name="description"
+        content="UrbanTree is part of SunEx Technologies, focused on building intelligent clean-air infrastructure for healthier and future-ready cities.">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&display=swap" rel="stylesheet">
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -30,7 +34,12 @@
     </script>
 
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
             background: #e8e8e8;
@@ -38,21 +47,19 @@
             overflow-x: hidden;
         }
 
-        /* ── NAVBAR ── */
-        #navbar {
-            background: transparent !important;
-            backdrop-filter: none !important;
-            border: none !important;
-            box-shadow: none !important;
-        }
+        /* ── NAVBAR REMOVED FROM CSS TO ALLOW JS TOGGLE ── */
 
         /* ── FADE UP ── */
         .fade-up {
             opacity: 0;
             transform: translateY(36px);
-            transition: opacity 0.9s cubic-bezier(0.2,0.8,0.2,1), transform 0.9s cubic-bezier(0.2,0.8,0.2,1);
+            transition: opacity 0.9s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
-        .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
         /* ── HERO ── */
         #about-hero {
@@ -64,29 +71,34 @@
             justify-content: center;
             overflow: hidden;
         }
+
         .hero-grid-lines {
             position: absolute;
             inset: 0;
             background-image:
-                linear-gradient(rgba(16,185,129,0.06) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(16,185,129,0.06) 1px, transparent 1px);
+                linear-gradient(rgba(16, 185, 129, 0.06) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(16, 185, 129, 0.06) 1px, transparent 1px);
             background-size: 60px 60px;
             pointer-events: none;
         }
+
         .hero-glow-1 {
             position: absolute;
             top: -15%;
             left: -10%;
-            width: 700px; height: 700px;
-            background: radial-gradient(circle, rgba(16,185,129,0.15) 0%, transparent 65%);
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, transparent 65%);
             pointer-events: none;
         }
+
         .hero-glow-2 {
             position: absolute;
             bottom: -20%;
             right: -5%;
-            width: 600px; height: 600px;
-            background: radial-gradient(circle, rgba(6,182,212,0.1) 0%, transparent 65%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(6, 182, 212, 0.1) 0%, transparent 65%);
             pointer-events: none;
         }
 
@@ -97,9 +109,19 @@
             filter: blur(1px);
             animation: orbFloat 8s ease-in-out infinite;
         }
+
         @keyframes orbFloat {
-            0%,100% { transform: translateY(0) scale(1); opacity: 0.6; }
-            50% { transform: translateY(-30px) scale(1.05); opacity: 1; }
+
+            0%,
+            100% {
+                transform: translateY(0) scale(1);
+                opacity: 0.6;
+            }
+
+            50% {
+                transform: translateY(-30px) scale(1.05);
+                opacity: 1;
+            }
         }
 
         /* ── SECTION STYLES ── */
@@ -107,10 +129,12 @@
             background: #e8e8e8;
             padding: 100px 0;
         }
+
         .content-section-alt {
             background: #f0f4f1;
             padding: 100px 0;
         }
+
         .dark-section {
             background: #0a0a0a;
             padding: 100px 0;
@@ -118,53 +142,62 @@
 
         /* ── GLASS CARD ── */
         .glass-card {
-            background: rgba(255,255,255,0.65);
+            background: rgba(255, 255, 255, 0.65);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255,255,255,0.5);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.04);
-            transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
+
         .glass-card:hover {
             transform: translateY(-4px);
-            box-shadow: 0 30px 60px rgba(16,185,129,0.1);
+            box-shadow: 0 30px 60px rgba(16, 185, 129, 0.1);
         }
 
         /* ── DARK CARD ── */
         .dark-card {
-            background: rgba(255,255,255,0.04);
-            border: 1px solid rgba(255,255,255,0.08);
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             transition: all 0.4s ease;
         }
+
         .dark-card:hover {
-            background: rgba(16,185,129,0.08);
-            border-color: rgba(16,185,129,0.3);
+            background: rgba(16, 185, 129, 0.08);
+            border-color: rgba(16, 185, 129, 0.3);
             transform: translateY(-3px);
         }
 
         /* ── FOUNDER CARD ── */
         .founder-card {
-            background: rgba(255,255,255,0.7);
-            border: 1px solid rgba(255,255,255,0.6);
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.6);
             backdrop-filter: blur(16px);
             transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
         }
+
         .founder-card::before {
             content: '';
             position: absolute;
-            top: 0; left: 0; right: 0;
+            top: 0;
+            left: 0;
+            right: 0;
             height: 3px;
             background: linear-gradient(90deg, #10b981, #06b6d4);
             transform: scaleX(0);
             transform-origin: left;
             transition: transform 0.4s ease;
         }
-        .founder-card:hover::before { transform: scaleX(1); }
+
+        .founder-card:hover::before {
+            transform: scaleX(1);
+        }
+
         .founder-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 24px 50px rgba(16,185,129,0.12);
+            box-shadow: 0 24px 50px rgba(16, 185, 129, 0.12);
         }
 
         /* ── SDG BADGE ── */
@@ -179,9 +212,10 @@
             letter-spacing: 0.05em;
             transition: all 0.3s ease;
         }
+
         .sdg-badge:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
         }
 
         /* ── STAT ── */
@@ -197,27 +231,30 @@
 
         /* ── TIMELINE ── */
         .timeline-dot {
-            width: 14px; height: 14px;
+            width: 14px;
+            height: 14px;
             border-radius: 50%;
             background: #10b981;
             border: 3px solid #e8e8e8;
-            box-shadow: 0 0 0 3px rgba(16,185,129,0.3);
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.3);
             flex-shrink: 0;
             margin-top: 4px;
         }
+
         .timeline-line {
             width: 2px;
-            background: linear-gradient(to bottom, #10b981, rgba(16,185,129,0.1));
+            background: linear-gradient(to bottom, #10b981, rgba(16, 185, 129, 0.1));
             flex-shrink: 0;
         }
 
         /* ── HOVER GLOW ── */
         .hover-glow-emerald {
-            transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
+
         .hover-glow-emerald:hover {
             transform: translateY(-2px);
-            box-shadow: 0 0 25px rgba(16,185,129,0.6), 0 0 50px rgba(16,185,129,0.3);
+            box-shadow: 0 0 25px rgba(16, 185, 129, 0.6), 0 0 50px rgba(16, 185, 129, 0.3);
             background-color: #10b981 !important;
         }
 
@@ -226,8 +263,8 @@
             display: inline-block;
             padding: 5px 18px;
             border-radius: 30px;
-            border: 1px solid rgba(16,185,129,0.4);
-            background: rgba(16,185,129,0.08);
+            border: 1px solid rgba(16, 185, 129, 0.4);
+            background: rgba(16, 185, 129, 0.08);
             font-size: 11px;
             font-weight: 700;
             letter-spacing: 0.25em;
@@ -237,42 +274,87 @@
         }
 
         @keyframes heroTextIn {
-            from { opacity: 0; transform: translateY(30px); }
-            to   { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-        .hero-animate { animation: heroTextIn 0.9s cubic-bezier(0.2,0.8,0.2,1) both; }
+
+        .hero-animate {
+            animation: heroTextIn 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+        }
 
         /* scrollbar */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #0a0a0a; }
-        ::-webkit-scrollbar-thumb { background: #10b981; border-radius: 3px; }
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0a0a0a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #10b981;
+            border-radius: 3px;
+        }
     </style>
     <link rel="icon" type="image/png" href="images/logo.png">
 
     <style id="navbar-dynamic-colors">
-        .nav-text-dark { color: #111827; }
-        .nav-text-dark-light { color: #374151; }
+        .nav-text-dark {
+            color: #111827;
+        }
+
+        .nav-text-dark-light {
+            color: #374151;
+        }
     </style>
 </head>
+
 <body class="antialiased">
 
     <!-- ═══ NAVBAR ═══ -->
-    <nav class="fixed w-full z-50 px-6 py-5 flex justify-between items-center" id="navbar">
-        <div class="z-20 flex items-center gap-3">
-            <img src="images/logo.png" alt="UrbanTree Logo" class="h-12 w-auto">
-            <div class="leading-snug">
-                <div style="font-family:'Montserrat',sans-serif;" class="text-2xl font-extrabold text-white" id="nav-brand">URBAN<span style="color:#4a9e3f;font-weight:600;">Tree</span></div>
-                <div style="font-family:'Montserrat',sans-serif;" class="text-[11px] font-medium text-white" id="nav-tagline">The City, Reimagined.</div>
+    <nav class="fixed w-full z-50 px-6 py-5 flex items-center transition-all duration-300" id="navbar">
+        <div class="z-20 flex items-center gap-4 w-1/4">
+            <img src="images/logo.png" alt="UrbanTree Logo" class="h-16 w-auto transition-all duration-300" id="nav-logo">
+            <div class="leading-snug hidden lg:block" style="font-family:'Montserrat',sans-serif;">
+                <div id="navbar-brand-name" class="text-2xl font-medium tracking-wide text-white transition-colors duration-300" style="transform:translateX(-3px);">URBAN<span style="color:#22c55e;font-weight:500;">Tree</span></div>
+                <div id="navbar-tagline" class="text-[11px] font-medium tracking-wide text-white transition-colors duration-300">The City. Reimagined.</div>
             </div>
         </div>
-        <div class="hidden md:flex items-center space-x-8 text-sm font-black text-white z-20 ml-auto">
+
+        <div class="hidden md:flex justify-center flex-1 space-x-10 text-[15px] font-medium z-20" id="nav-links">
             <a href="index.html" class="nav-link text-white hover:text-brand-emerald transition-colors duration-300">Home</a>
             <a href="index.html#technology" class="nav-link text-white hover:text-brand-emerald transition-colors duration-300">Technology</a>
-            <a href="about.html" style="color:#10b981;" class="nav-link text-white transition-colors duration-300">About Us</a>
+            <a href="about.html" class="nav-link text-white hover:text-brand-emerald transition-colors duration-300">About Us</a>
             <a href="index.html#blog" class="nav-link text-white hover:text-brand-emerald transition-colors duration-300">Blog</a>
-            <a href="index.html#enquiry" class="hover-glow-emerald px-6 py-2.5 bg-gray-900 text-white rounded-full text-sm font-semibold shadow-md transition-all duration-300">Enquiry</a>
+        </div>
+
+        <div class="z-20 flex justify-end w-1/4">
+            <a href="index.html#enquiry" class="orange-cta bg-[#f97316] text-white px-6 py-2.5 rounded-full font-bold shadow-md hover:bg-[#ea580c] transition-all duration-300" style="font-family:'Inter',sans-serif;">Enquiry</a>
         </div>
     </nav>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('backdrop-blur-md', 'bg-black/85', 'shadow-lg');
+                    navbar.classList.remove('bg-transparent', 'py-5');
+                    navbar.classList.add('py-3');
+                } else {
+                    navbar.classList.remove('backdrop-blur-md', 'bg-black/85', 'shadow-lg', 'py-3');
+                    navbar.classList.add('bg-transparent', 'py-5');
+                }
+            });
+            window.dispatchEvent(new Event('scroll'));
+        });
+    </script>
 
     <!-- ═══ HERO ═══ -->
     <section id="about-hero">
@@ -283,41 +365,52 @@
         <!-- Floating orbs -->
         <div class="orb" style="width:8px;height:8px;background:#10b981;top:25%;left:15%;animation-delay:0s;"></div>
         <div class="orb" style="width:5px;height:5px;background:#06b6d4;top:55%;left:80%;animation-delay:2s;"></div>
-        <div class="orb" style="width:10px;height:10px;background:#10b981;top:70%;left:30%;animation-delay:4s;opacity:0.4;"></div>
+        <div class="orb"
+            style="width:10px;height:10px;background:#10b981;top:70%;left:30%;animation-delay:4s;opacity:0.4;"></div>
         <div class="orb" style="width:6px;height:6px;background:#4ade80;top:35%;left:65%;animation-delay:1s;"></div>
 
         <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 pt-32 pb-24">
             <div class="max-w-4xl">
                 <!-- Label -->
                 <div class="hero-animate" style="animation-delay:0.1s;">
-                    <span class="section-label" style="background:rgba(16,185,129,0.1);border-color:rgba(16,185,129,0.4);">About UrbanTree</span>
+                    <span class="section-label"
+                        style="background:rgba(16,185,129,0.1);border-color:rgba(16,185,129,0.4);">About
+                        UrbanTree</span>
                 </div>
 
                 <!-- Headline -->
-                <h1 class="hero-animate" style="font-family:'Sora',sans-serif;font-size:clamp(2.8rem,6vw,5.5rem);font-weight:800;color:#ffffff;line-height:1.05;margin-bottom:1.5rem;animation-delay:0.2s;">
+                <h1 class="hero-animate"
+                    style="font-family:'Sora',sans-serif;font-size:clamp(2.8rem,6vw,5.5rem);font-weight:800;color:#ffffff;line-height:1.05;margin-bottom:1.5rem;animation-delay:0.2s;">
                     Engineering<br>
-                    <span style="background:linear-gradient(135deg,#10b981,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Cleaner Futures</span><br>
+                    <span
+                        style="background:linear-gradient(135deg,#10b981,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Cleaner
+                        Futures</span><br>
                     For Urban Living
                 </h1>
 
                 <!-- Subheadline -->
-                <p class="hero-animate" style="font-size:1.15rem;color:#94a3b8;max-width:580px;line-height:1.8;margin-bottom:2.5rem;animation-delay:0.35s;">
-                    UrbanTree is part of SunEx Technologies, focused on building intelligent clean-air infrastructure for healthier and future-ready cities.
+                <p class="hero-animate"
+                    style="font-size:1.15rem;color:#94a3b8;max-width:580px;line-height:1.8;margin-bottom:2.5rem;animation-delay:0.35s;">
+                    UrbanTree is part of SunEx Technologies, focused on building intelligent clean-air infrastructure
+                    for healthier and future-ready cities.
                 </p>
 
                 <!-- CTA row -->
                 <div class="hero-animate flex flex-wrap gap-4" style="animation-delay:0.5s;">
-                    <a href="#our-story" class="hover-glow-emerald px-8 py-3.5 bg-emerald-500 text-white rounded-full font-semibold shadow-lg shadow-emerald-500/30 transition-all duration-300">
+                    <a href="#our-story"
+                        class="hover-glow-emerald px-8 py-3.5 bg-emerald-500 text-white rounded-full font-semibold shadow-lg shadow-emerald-500/30 transition-all duration-300">
                         Our Story
                     </a>
-                    <a href="#founders" class="px-8 py-3.5 bg-white/10 backdrop-blur-sm border border-white/20 text-white rounded-full font-semibold hover:bg-white/20 transition-all duration-300">
+                    <a href="#founders"
+                        class="px-8 py-3.5 bg-white/10 backdrop-blur-sm border border-white/20 text-white rounded-full font-semibold hover:bg-white/20 transition-all duration-300">
                         Meet the Founders
                     </a>
                 </div>
             </div>
 
             <!-- Stats row -->
-            <div class="hero-animate grid grid-cols-2 md:grid-cols-4 gap-6 mt-20 pt-16 border-t border-white/10" style="animation-delay:0.65s;">
+            <div class="hero-animate grid grid-cols-2 md:grid-cols-4 gap-6 mt-20 pt-16 border-t border-white/10"
+                style="animation-delay:0.65s;">
                 <div>
                     <div class="stat-number">2.5+</div>
                     <div style="font-size:13px;color:#6b7280;margin-top:4px;font-weight:500;">Years of R&D</div>
@@ -346,43 +439,77 @@
                 <!-- LEFT text -->
                 <div>
                     <span class="section-label fade-up">What is UrbanTree</span>
-                    <h2 class="fade-up" style="font-family:'Sora',sans-serif;font-size:clamp(2rem,4vw,3rem);font-weight:800;color:#111827;line-height:1.15;margin-bottom:1.5rem;">
+                    <h2 class="fade-up"
+                        style="font-family:'Sora',sans-serif;font-size:clamp(2rem,4vw,3rem);font-weight:800;color:#111827;line-height:1.15;margin-bottom:1.5rem;">
                         A Bio-Mechanical<br>Air Purification<br><span style="color:#10b981;">Ecosystem</span>
                     </h2>
                     <div class="fade-up space-y-5" style="color:#4b5563;font-size:0.97rem;line-height:1.85;">
-                        <p>Urban air pollution and declining air quality have emerged as critical challenges affecting public health, environmental sustainability, and the future of urban living. Rising levels of particulate matter, airborne pollutants, and harmful emissions continue to impact cities worldwide, creating an urgent need for scalable and intelligent clean-air infrastructure.</p>
-                        <p>UrbanTree is an advanced bio-mechanical air purification ecosystem developed by SunEx Technologies to improve urban air quality and support healthier environments through localized breathable <strong style="color:#10b981;">Air Pocket zones</strong>. Combining multi-stage filtration, biological purification, intelligent airflow engineering, and AI-driven environmental monitoring, the system is designed to reduce airborne pollutants including PM2.5, PM10, VOCs, odors, and harmful microorganisms.</p>
-                        <p>Powered by smart environmental analytics, sustainable purification technologies, and energy-efficient infrastructure, UrbanTree continuously monitors and adapts to changing environmental conditions to optimize purification performance and improve AQI levels in real time.</p>
+                        <p>Urban air pollution and declining air quality have emerged as critical challenges affecting
+                            public health, environmental sustainability, and the future of urban living. Rising levels
+                            of particulate matter, airborne pollutants, and harmful emissions continue to impact cities
+                            worldwide, creating an urgent need for scalable and intelligent clean-air infrastructure.
+                        </p>
+                        <p>UrbanTree is an advanced bio-mechanical air purification ecosystem developed by SunEx
+                            Technologies to improve urban air quality and support healthier environments through
+                            localized breathable <strong style="color:#10b981;">Air Pocket zones</strong>. Combining
+                            multi-stage filtration, biological purification, intelligent airflow engineering, and
+                            AI-driven environmental monitoring, the system is designed to reduce airborne pollutants
+                            including PM2.5, PM10, VOCs, odors, and harmful microorganisms.</p>
+                        <p>Powered by smart environmental analytics, sustainable purification technologies, and
+                            energy-efficient infrastructure, UrbanTree continuously monitors and adapts to changing
+                            environmental conditions to optimize purification performance and improve AQI levels in real
+                            time.</p>
                     </div>
                 </div>
 
                 <!-- RIGHT: feature cards -->
                 <div class="grid grid-cols-1 gap-5 fade-up">
                     <div class="glass-card rounded-2xl p-6 flex items-start gap-5">
-                        <div style="min-width:48px;height:48px;border-radius:14px;background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                        <div
+                            style="min-width:48px;height:48px;border-radius:14px;background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#10b981"
+                                stroke-width="2">
+                                <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+                                <polyline points="9 22 9 12 15 12 15 22" />
+                            </svg>
                         </div>
                         <div>
-                            <h3 style="font-family:'Sora',sans-serif;font-weight:700;color:#111827;margin-bottom:6px;">Smart Cities & Public Infrastructure</h3>
-                            <p style="font-size:0.875rem;color:#6b7280;line-height:1.7;">Designed for transportation hubs, corporate campuses, industrial environments, and residential communities.</p>
+                            <h3 style="font-family:'Sora',sans-serif;font-weight:700;color:#111827;margin-bottom:6px;">
+                                Smart Cities & Public Infrastructure</h3>
+                            <p style="font-size:0.875rem;color:#6b7280;line-height:1.7;">Designed for transportation
+                                hubs, corporate campuses, industrial environments, and residential communities.</p>
                         </div>
                     </div>
                     <div class="glass-card rounded-2xl p-6 flex items-start gap-5">
-                        <div style="min-width:48px;height:48px;border-radius:14px;background:rgba(6,182,212,0.12);border:1px solid rgba(6,182,212,0.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#06b6d4" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M2 12h4M18 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+                        <div
+                            style="min-width:48px;height:48px;border-radius:14px;background:rgba(6,182,212,0.12);border:1px solid rgba(6,182,212,0.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#06b6d4"
+                                stroke-width="2">
+                                <circle cx="12" cy="12" r="3" />
+                                <path
+                                    d="M12 2v4M12 18v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M2 12h4M18 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83" />
+                            </svg>
                         </div>
                         <div>
-                            <h3 style="font-family:'Sora',sans-serif;font-weight:700;color:#111827;margin-bottom:6px;">AI-Driven Environmental Monitoring</h3>
-                            <p style="font-size:0.875rem;color:#6b7280;line-height:1.7;">Real-time analytics that continuously adapt purification performance to dynamic urban environments.</p>
+                            <h3 style="font-family:'Sora',sans-serif;font-weight:700;color:#111827;margin-bottom:6px;">
+                                AI-Driven Environmental Monitoring</h3>
+                            <p style="font-size:0.875rem;color:#6b7280;line-height:1.7;">Real-time analytics that
+                                continuously adapt purification performance to dynamic urban environments.</p>
                         </div>
                     </div>
                     <div class="glass-card rounded-2xl p-6 flex items-start gap-5">
-                        <div style="min-width:48px;height:48px;border-radius:14px;background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        <div
+                            style="min-width:48px;height:48px;border-radius:14px;background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#10b981"
+                                stroke-width="2">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                            </svg>
                         </div>
                         <div>
-                            <h3 style="font-family:'Sora',sans-serif;font-weight:700;color:#111827;margin-bottom:6px;">Hybrid Energy Infrastructure</h3>
-                            <p style="font-size:0.875rem;color:#6b7280;line-height:1.7;">Integrates conventional grid supply with solar energy for reliable, energy-efficient, and sustainable operation.</p>
+                            <h3 style="font-family:'Sora',sans-serif;font-weight:700;color:#111827;margin-bottom:6px;">
+                                Hybrid Energy Infrastructure</h3>
+                            <p style="font-size:0.875rem;color:#6b7280;line-height:1.7;">Integrates conventional grid
+                                supply with solar energy for reliable, energy-efficient, and sustainable operation.</p>
                         </div>
                     </div>
                 </div>
@@ -393,31 +520,54 @@
     <!-- ═══ SUNEX TECHNOLOGIES ═══ -->
     <section style="background:#0a0a0a;padding:100px 0;position:relative;overflow:hidden;" id="sunex">
         <!-- subtle bg pattern -->
-        <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(16,185,129,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(16,185,129,0.04) 1px,transparent 1px);background-size:80px 80px;pointer-events:none;"></div>
-        <div style="position:absolute;bottom:-10%;right:-5%;width:500px;height:500px;background:radial-gradient(circle,rgba(16,185,129,0.1) 0%,transparent 65%);pointer-events:none;"></div>
+        <div
+            style="position:absolute;inset:0;background-image:linear-gradient(rgba(16,185,129,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(16,185,129,0.04) 1px,transparent 1px);background-size:80px 80px;pointer-events:none;">
+        </div>
+        <div
+            style="position:absolute;bottom:-10%;right:-5%;width:500px;height:500px;background:radial-gradient(circle,rgba(16,185,129,0.1) 0%,transparent 65%);pointer-events:none;">
+        </div>
 
         <div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
                 <!-- LEFT: company info -->
                 <div>
-                    <span class="section-label fade-up" style="background:rgba(16,185,129,0.1);border-color:rgba(16,185,129,0.4);">Powered By</span>
-                    <h2 class="fade-up" style="font-family:'Sora',sans-serif;font-size:clamp(2rem,4vw,3rem);font-weight:800;color:#ffffff;line-height:1.15;margin-bottom:0.5rem;">
+                    <span class="section-label fade-up"
+                        style="background:rgba(16,185,129,0.1);border-color:rgba(16,185,129,0.4);">Powered By</span>
+                    <h2 class="fade-up"
+                        style="font-family:'Sora',sans-serif;font-size:clamp(2rem,4vw,3rem);font-weight:800;color:#ffffff;line-height:1.15;margin-bottom:0.5rem;">
                         SunEx Technologies
                     </h2>
-                    <p class="fade-up" style="font-size:14px;color:#10b981;font-weight:600;letter-spacing:0.05em;margin-bottom:1.5rem;">Bangalore, India</p>
+                    <p class="fade-up"
+                        style="font-size:14px;color:#10b981;font-weight:600;letter-spacing:0.05em;margin-bottom:1.5rem;">
+                        Bangalore, India</p>
 
                     <div class="fade-up space-y-5" style="color:#94a3b8;font-size:0.97rem;line-height:1.85;">
-                        <p>A future-focused technology startup founded by three innovators — <strong style="color:#e2e8f0;">Umesh H, Sanjeeth M S, and Dr. Raghvendraprasad Deshpande</strong> — driven by a shared vision to address one of the country's most pressing environmental challenges: urban air pollution.</p>
-                        <p>Over the past 2.5 years, the founding team has been actively engaged in research, development, and engineering of intelligent air purification technologies. This journey led to the creation of UrbanTree, an advanced bio-mechanical air purification ecosystem designed to support cleaner, smarter, and more sustainable cities.</p>
-                        <p>SunEx Technologies focuses on designing next-generation smart technology solutions, AI-enabled systems, automation platforms, IoT-integrated infrastructure, and sustainability-driven innovations across residential, commercial, industrial, institutional, and governmental sectors.</p>
+                        <p>A future-focused technology startup founded by three innovators — <strong
+                                style="color:#e2e8f0;">Umesh H, Sanjeeth M S, and Dr. Raghavendra Deshpande</strong> —
+                            driven by a shared vision to address one of the country's most pressing environmental
+                            challenges: urban air pollution.</p>
+                        <p>Over the past 2.5 years, the founding team has been actively engaged in research,
+                            development, and engineering of intelligent air purification technologies. This journey led
+                            to the creation of UrbanTree, an advanced bio-mechanical air purification ecosystem designed
+                            to support cleaner, smarter, and more sustainable cities.</p>
+                        <p>SunEx Technologies focuses on designing next-generation smart technology solutions,
+                            AI-enabled systems, automation platforms, IoT-integrated infrastructure, and
+                            sustainability-driven innovations across residential, commercial, industrial, institutional,
+                            and governmental sectors.</p>
                     </div>
 
                     <!-- Viksit Bharat badge -->
-                    <div class="fade-up mt-8 inline-flex items-center gap-3 px-5 py-3 rounded-2xl" style="background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.25);">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><path d="M3 21l9-18 9 18H3z"/><path d="M8 17h8"/></svg>
+                    <div class="fade-up mt-8 inline-flex items-center gap-3 px-5 py-3 rounded-2xl"
+                        style="background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.25);">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2">
+                            <path d="M3 21l9-18 9 18H3z" />
+                            <path d="M8 17h8" />
+                        </svg>
                         <div>
-                            <div style="font-size:10px;color:#6b7280;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;">Aligned with</div>
+                            <div
+                                style="font-size:10px;color:#6b7280;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;">
+                                Aligned with</div>
                             <div style="font-size:13px;color:#10b981;font-weight:700;">Viksit Bharat 2047</div>
                         </div>
                     </div>
@@ -426,39 +576,79 @@
                 <!-- RIGHT: focus areas grid -->
                 <div class="grid grid-cols-2 gap-4 fade-up">
                     <div class="dark-card rounded-2xl p-5">
-                        <div style="width:40px;height:40px;border-radius:12px;background:rgba(16,185,129,0.12);display:flex;align-items:center;justify-content:center;margin-bottom:14px;">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+                        <div
+                            style="width:40px;height:40px;border-radius:12px;background:rgba(16,185,129,0.12);display:flex;align-items:center;justify-content:center;margin-bottom:14px;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10b981"
+                                stroke-width="2">
+                                <rect x="2" y="3" width="20" height="14" rx="2" />
+                                <path d="M8 21h8M12 17v4" />
+                            </svg>
                         </div>
-                        <h4 style="font-family:'Sora',sans-serif;font-size:14px;font-weight:700;color:#f1f5f9;margin-bottom:6px;">Artificial Intelligence</h4>
-                        <p style="font-size:12px;color:#6b7280;line-height:1.6;">Smart environmental systems & AI-enabled platforms</p>
+                        <h4
+                            style="font-family:'Sora',sans-serif;font-size:14px;font-weight:700;color:#f1f5f9;margin-bottom:6px;">
+                            Artificial Intelligence</h4>
+                        <p style="font-size:12px;color:#6b7280;line-height:1.6;">Smart environmental systems &
+                            AI-enabled platforms</p>
                     </div>
                     <div class="dark-card rounded-2xl p-5">
-                        <div style="width:40px;height:40px;border-radius:12px;background:rgba(6,182,212,0.12);display:flex;align-items:center;justify-content:center;margin-bottom:14px;">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#06b6d4" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M2 12h4M18 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+                        <div
+                            style="width:40px;height:40px;border-radius:12px;background:rgba(6,182,212,0.12);display:flex;align-items:center;justify-content:center;margin-bottom:14px;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#06b6d4"
+                                stroke-width="2">
+                                <circle cx="12" cy="12" r="3" />
+                                <path
+                                    d="M12 2v4M12 18v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M2 12h4M18 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83" />
+                            </svg>
                         </div>
-                        <h4 style="font-family:'Sora',sans-serif;font-size:14px;font-weight:700;color:#f1f5f9;margin-bottom:6px;">Renewable Energy</h4>
-                        <p style="font-size:12px;color:#6b7280;line-height:1.6;">Solar integration & energy-efficient infrastructure</p>
+                        <h4
+                            style="font-family:'Sora',sans-serif;font-size:14px;font-weight:700;color:#f1f5f9;margin-bottom:6px;">
+                            Renewable Energy</h4>
+                        <p style="font-size:12px;color:#6b7280;line-height:1.6;">Solar integration & energy-efficient
+                            infrastructure</p>
                     </div>
                     <div class="dark-card rounded-2xl p-5">
-                        <div style="width:40px;height:40px;border-radius:12px;background:rgba(16,185,129,0.12);display:flex;align-items:center;justify-content:center;margin-bottom:14px;">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        <div
+                            style="width:40px;height:40px;border-radius:12px;background:rgba(16,185,129,0.12);display:flex;align-items:center;justify-content:center;margin-bottom:14px;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10b981"
+                                stroke-width="2">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                            </svg>
                         </div>
-                        <h4 style="font-family:'Sora',sans-serif;font-size:14px;font-weight:700;color:#f1f5f9;margin-bottom:6px;">IoT Infrastructure</h4>
-                        <p style="font-size:12px;color:#6b7280;line-height:1.6;">Connected sensors & real-time environmental monitoring</p>
+                        <h4
+                            style="font-family:'Sora',sans-serif;font-size:14px;font-weight:700;color:#f1f5f9;margin-bottom:6px;">
+                            IoT Infrastructure</h4>
+                        <p style="font-size:12px;color:#6b7280;line-height:1.6;">Connected sensors & real-time
+                            environmental monitoring</p>
                     </div>
                     <div class="dark-card rounded-2xl p-5">
-                        <div style="width:40px;height:40px;border-radius:12px;background:rgba(6,182,212,0.12);display:flex;align-items:center;justify-content:center;margin-bottom:14px;">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#06b6d4" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        <div
+                            style="width:40px;height:40px;border-radius:12px;background:rgba(6,182,212,0.12);display:flex;align-items:center;justify-content:center;margin-bottom:14px;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#06b6d4"
+                                stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+                                <circle cx="12" cy="10" r="3" />
+                            </svg>
                         </div>
-                        <h4 style="font-family:'Sora',sans-serif;font-size:14px;font-weight:700;color:#f1f5f9;margin-bottom:6px;">Smart Cities</h4>
-                        <p style="font-size:12px;color:#6b7280;line-height:1.6;">Future-ready urban infrastructure & digital transformation</p>
+                        <h4
+                            style="font-family:'Sora',sans-serif;font-size:14px;font-weight:700;color:#f1f5f9;margin-bottom:6px;">
+                            Smart Cities</h4>
+                        <p style="font-size:12px;color:#6b7280;line-height:1.6;">Future-ready urban infrastructure &
+                            digital transformation</p>
                     </div>
                     <div class="dark-card rounded-2xl p-5 col-span-2">
-                        <div style="width:40px;height:40px;border-radius:12px;background:rgba(16,185,129,0.12);display:flex;align-items:center;justify-content:center;margin-bottom:14px;">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><path d="M12 2a10 10 0 110 20A10 10 0 0112 2z"/><path d="M12 8v4l3 3"/></svg>
+                        <div
+                            style="width:40px;height:40px;border-radius:12px;background:rgba(16,185,129,0.12);display:flex;align-items:center;justify-content:center;margin-bottom:14px;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10b981"
+                                stroke-width="2">
+                                <path d="M12 2a10 10 0 110 20A10 10 0 0112 2z" />
+                                <path d="M12 8v4l3 3" />
+                            </svg>
                         </div>
-                        <h4 style="font-family:'Sora',sans-serif;font-size:14px;font-weight:700;color:#f1f5f9;margin-bottom:6px;">Sustainability Engineering</h4>
-                        <p style="font-size:12px;color:#6b7280;line-height:1.6;">Environmentally responsible infrastructure for cleaner, healthier urban ecosystems and long-term climate resilience</p>
+                        <h4
+                            style="font-family:'Sora',sans-serif;font-size:14px;font-weight:700;color:#f1f5f9;margin-bottom:6px;">
+                            Sustainability Engineering</h4>
+                        <p style="font-size:12px;color:#6b7280;line-height:1.6;">Environmentally responsible
+                            infrastructure for cleaner, healthier urban ecosystems and long-term climate resilience</p>
                     </div>
                 </div>
             </div>
@@ -470,40 +660,57 @@
         <div class="max-w-7xl mx-auto px-6 lg:px-12">
             <div class="text-center mb-16">
                 <span class="section-label fade-up">The People Behind It</span>
-                <h2 class="fade-up" style="font-family:'Sora',sans-serif;font-size:clamp(2rem,4vw,3rem);font-weight:800;color:#111827;line-height:1.15;">
+                <h2 class="fade-up"
+                    style="font-family:'Sora',sans-serif;font-size:clamp(2rem,4vw,3rem);font-weight:800;color:#111827;line-height:1.15;">
                     Meet the Founders
                 </h2>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12">
                 <!-- Founder 1 -->
-                <div class="founder-card rounded-2xl p-8 fade-up">
-                    <div style="width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,rgba(16,185,129,0.2),rgba(6,182,212,0.2));border:2px solid rgba(16,185,129,0.3);display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
-                        <span style="font-family:'Sora',sans-serif;font-size:24px;font-weight:800;color:#10b981;">U</span>
+                <div class="fade-up flex flex-col items-center text-center group cursor-pointer" style="transition-delay:0s;">
+                    <div class="w-full aspect-square mb-5 overflow-hidden rounded-2xl relative bg-gray-200">
+                        <div class="w-full h-full flex items-center justify-center grayscale group-hover:grayscale-0 transition-all duration-500 transform group-hover:scale-105" style="background:linear-gradient(135deg,rgba(6,182,212,0.1),rgba(16,185,129,0.1));">
+                             <span style="font-family:'Sora',sans-serif;font-size:4rem;font-weight:800;color:#94a3b8;">S</span>
+                        </div>
                     </div>
-                    <h3 style="font-family:'Sora',sans-serif;font-weight:800;font-size:1.2rem;color:#111827;margin-bottom:6px;">Umesh H</h3>
-                    <p style="font-size:12px;font-weight:700;color:#10b981;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:16px;">Co-Founder</p>
-                    <p style="font-size:0.875rem;color:#6b7280;line-height:1.7;">Visionary innovator driving the research and development of intelligent air purification technologies at SunEx Technologies.</p>
+                    <h3 style="font-family:'Sora',sans-serif;font-weight:800;font-size:1.15rem;color:#111827;margin-bottom:4px;">Sanjeeth M S</h3>
+                    <p style="font-size:13px;font-weight:600;color:#6b7280;font-style:italic;margin-bottom:14px;">Co-Founder</p>
+                    <p style="font-size:0.9rem;color:#4b5563;line-height:1.6;">Visionary leader responsible for defining the company's direction, identifying new opportunities, and transforming ideas into successful business initiatives. Leads strategic planning and organizational growth.</p>
                 </div>
 
                 <!-- Founder 2 -->
-                <div class="founder-card rounded-2xl p-8 fade-up" style="transition-delay:0.1s;">
-                    <div style="width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,rgba(6,182,212,0.2),rgba(16,185,129,0.2));border:2px solid rgba(6,182,212,0.3);display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
-                        <span style="font-family:'Sora',sans-serif;font-size:24px;font-weight:800;color:#06b6d4;">S</span>
+                <div class="fade-up flex flex-col items-center text-center group cursor-pointer" style="transition-delay:0.1s;">
+                    <div class="w-full aspect-square mb-5 overflow-hidden rounded-2xl relative bg-gray-200">
+                        <img src="images/umesh.jpeg" alt="Umesh H" class="w-full h-full object-cover object-[center_top] grayscale group-hover:grayscale-0 transition-all duration-500 transform group-hover:scale-105 brightness-110 contrast-125">
                     </div>
-                    <h3 style="font-family:'Sora',sans-serif;font-weight:800;font-size:1.2rem;color:#111827;margin-bottom:6px;">Sanjeeth M S</h3>
-                    <p style="font-size:12px;font-weight:700;color:#06b6d4;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:16px;">Co-Founder</p>
-                    <p style="font-size:0.875rem;color:#6b7280;line-height:1.7;">Technology strategist focused on building scalable smart city solutions and IoT-integrated urban infrastructure systems.</p>
+                    <h3 style="font-family:'Sora',sans-serif;font-weight:800;font-size:1.15rem;color:#111827;margin-bottom:4px;">Umesh H</h3>
+                    <p style="font-size:13px;font-weight:600;color:#6b7280;font-style:italic;margin-bottom:14px;">Co-Founder | Innovator | Product Visionary</p>
+                    <p style="font-size:0.9rem;color:#4b5563;line-height:1.6;">Focused on envisioning what comes next and bringing it to life through strategic thinking, design excellence, and technological innovation. Committed to creating solutions that leave a lasting impact on people, communities, and the future.</p>
                 </div>
 
                 <!-- Founder 3 -->
-                <div class="founder-card rounded-2xl p-8 fade-up" style="transition-delay:0.2s;">
-                    <div style="width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,rgba(16,185,129,0.2),rgba(74,158,63,0.2));border:2px solid rgba(16,185,129,0.3);display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
-                        <span style="font-family:'Sora',sans-serif;font-size:24px;font-weight:800;color:#10b981;">R</span>
+                <div class="fade-up flex flex-col items-center text-center group cursor-pointer" style="transition-delay:0.2s;">
+                    <div class="w-full aspect-square mb-5 overflow-hidden rounded-2xl relative bg-gray-200">
+                        <div class="w-full h-full flex items-center justify-center grayscale group-hover:grayscale-0 transition-all duration-500 transform group-hover:scale-105" style="background:linear-gradient(135deg,rgba(16,185,129,0.1),rgba(74,158,63,0.1));">
+                             <span style="font-family:'Sora',sans-serif;font-size:4rem;font-weight:800;color:#94a3b8;">R</span>
+                        </div>
                     </div>
-                    <h3 style="font-family:'Sora',sans-serif;font-weight:800;font-size:1.2rem;color:#111827;margin-bottom:6px;">Dr. Raghvendraprasad Deshpande</h3>
-                    <p style="font-size:12px;font-weight:700;color:#10b981;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:16px;">Co-Founder</p>
-                    <p style="font-size:0.875rem;color:#6b7280;line-height:1.7;">Scientific lead and domain expert guiding the engineering design, research frameworks, and bio-mechanical innovation at the core of UrbanTree.</p>
+                    <h3 style="font-family:'Sora',sans-serif;font-weight:800;font-size:1.15rem;color:#111827;margin-bottom:4px;">Dr. Raghavendra Deshpande</h3>
+                    <p style="font-size:13px;font-weight:600;color:#6b7280;font-style:italic;margin-bottom:14px;">Co-Founder</p>
+                    <p style="font-size:0.9rem;color:#4b5563;line-height:1.6;">Scientific lead and domain expert guiding the engineering design, research frameworks, and bio-mechanical innovation at the core of UrbanTree.</p>
+                </div>
+
+                <!-- Advisor 1 -->
+                <div class="fade-up flex flex-col items-center text-center group cursor-pointer" style="transition-delay:0.3s;">
+                    <div class="w-full aspect-square mb-5 overflow-hidden rounded-2xl relative bg-gray-200">
+                        <div class="w-full h-full flex items-center justify-center grayscale group-hover:grayscale-0 transition-all duration-500 transform group-hover:scale-105" style="background:linear-gradient(135deg,rgba(6,182,212,0.1),rgba(16,185,129,0.1));">
+                             <span style="font-family:'Sora',sans-serif;font-size:4rem;font-weight:800;color:#94a3b8;">K</span>
+                        </div>
+                    </div>
+                    <h3 style="font-family:'Sora',sans-serif;font-weight:800;font-size:1.15rem;color:#111827;margin-bottom:4px;">Keshava Prasad B S</h3>
+                    <p style="font-size:13px;font-weight:600;color:#6b7280;font-style:italic;margin-bottom:14px;">Strategic Advisor</p>
+                    <p style="font-size:0.9rem;color:#4b5563;line-height:1.6;">Advising the leadership team on strategic direction, business scaling, and exploring new avenues for corporate growth and partnerships.</p>
                 </div>
             </div>
         </div>
@@ -511,69 +718,101 @@
 
     <!-- ═══ SDG ALIGNMENT ═══ -->
     <section style="background:#0a0a0a;padding:100px 0;position:relative;overflow:hidden;">
-        <div style="position:absolute;top:-10%;left:50%;transform:translateX(-50%);width:800px;height:400px;background:radial-gradient(ellipse,rgba(16,185,129,0.1) 0%,transparent 70%);pointer-events:none;"></div>
+        <div
+            style="position:absolute;top:-10%;left:50%;transform:translateX(-50%);width:800px;height:400px;background:radial-gradient(ellipse,rgba(16,185,129,0.1) 0%,transparent 70%);pointer-events:none;">
+        </div>
 
         <div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
             <div class="text-center mb-16">
-                <span class="section-label fade-up" style="background:rgba(16,185,129,0.1);border-color:rgba(16,185,129,0.4);">Global Impact</span>
-                <h2 class="fade-up" style="font-family:'Sora',sans-serif;font-size:clamp(2rem,4vw,3rem);font-weight:800;color:#ffffff;line-height:1.15;margin-bottom:1rem;">
-                    Aligned with the UN<br><span style="background:linear-gradient(135deg,#10b981,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Sustainable Development Goals</span>
+                <span class="section-label fade-up"
+                    style="background:rgba(16,185,129,0.1);border-color:rgba(16,185,129,0.4);">Global Impact</span>
+                <h2 class="fade-up"
+                    style="font-family:'Sora',sans-serif;font-size:clamp(2rem,4vw,3rem);font-weight:800;color:#ffffff;line-height:1.15;margin-bottom:1rem;">
+                    Aligned with the UN<br><span
+                        style="background:linear-gradient(135deg,#10b981,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Sustainable
+                        Development Goals</span>
                 </h2>
-                <p class="fade-up" style="color:#94a3b8;max-width:640px;margin:0 auto;line-height:1.8;font-size:0.97rem;">
-                    UrbanTree aligns with the vision of the Government of India and global SDGs by addressing critical urban air pollution challenges through intelligent and sustainable clean-air infrastructure.
+                <p class="fade-up"
+                    style="color:#94a3b8;max-width:640px;margin:0 auto;line-height:1.8;font-size:0.97rem;">
+                    UrbanTree aligns with the vision of the Government of India and global SDGs by addressing critical
+                    urban air pollution challenges through intelligent and sustainable clean-air infrastructure.
                 </p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 fade-up">
                 <!-- SDG 3 -->
                 <div class="dark-card rounded-2xl p-7 flex items-start gap-5">
-                    <div style="min-width:56px;height:56px;border-radius:16px;background:rgba(68,196,120,0.15);border:1px solid rgba(68,196,120,0.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-                        <span style="font-family:'Sora',sans-serif;font-weight:800;font-size:18px;color:#4ec478;">3</span>
+                    <div
+                        style="min-width:56px;height:56px;border-radius:16px;background:rgba(68,196,120,0.15);border:1px solid rgba(68,196,120,0.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                        <span
+                            style="font-family:'Sora',sans-serif;font-weight:800;font-size:18px;color:#4ec478;">3</span>
                     </div>
                     <div>
-                        <h3 style="font-family:'Sora',sans-serif;font-weight:700;color:#f1f5f9;margin-bottom:8px;">SDG 3 — Good Health & Well-Being</h3>
-                        <p style="font-size:0.875rem;color:#6b7280;line-height:1.7;">Reducing airborne pollutants PM2.5, PM10, VOCs, and harmful microorganisms to create healthier breathing environments in urban spaces.</p>
+                        <h3 style="font-family:'Sora',sans-serif;font-weight:700;color:#f1f5f9;margin-bottom:8px;">SDG 3
+                            — Good Health & Well-Being</h3>
+                        <p style="font-size:0.875rem;color:#6b7280;line-height:1.7;">Reducing airborne pollutants PM2.5,
+                            PM10, VOCs, and harmful microorganisms to create healthier breathing environments in urban
+                            spaces.</p>
                     </div>
                 </div>
 
                 <!-- SDG 9 -->
                 <div class="dark-card rounded-2xl p-7 flex items-start gap-5">
-                    <div style="min-width:56px;height:56px;border-radius:16px;background:rgba(244,144,0,0.12);border:1px solid rgba(244,144,0,0.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-                        <span style="font-family:'Sora',sans-serif;font-weight:800;font-size:18px;color:#f49000;">9</span>
+                    <div
+                        style="min-width:56px;height:56px;border-radius:16px;background:rgba(244,144,0,0.12);border:1px solid rgba(244,144,0,0.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                        <span
+                            style="font-family:'Sora',sans-serif;font-weight:800;font-size:18px;color:#f49000;">9</span>
                     </div>
                     <div>
-                        <h3 style="font-family:'Sora',sans-serif;font-weight:700;color:#f1f5f9;margin-bottom:8px;">SDG 9 — Industry, Innovation & Infrastructure</h3>
-                        <p style="font-size:0.875rem;color:#6b7280;line-height:1.7;">Building next-generation intelligent infrastructure through AI, IoT, automation, and advanced engineering for future-ready urban ecosystems.</p>
+                        <h3 style="font-family:'Sora',sans-serif;font-weight:700;color:#f1f5f9;margin-bottom:8px;">SDG 9
+                            — Industry, Innovation & Infrastructure</h3>
+                        <p style="font-size:0.875rem;color:#6b7280;line-height:1.7;">Building next-generation
+                            intelligent infrastructure through AI, IoT, automation, and advanced engineering for
+                            future-ready urban ecosystems.</p>
                     </div>
                 </div>
 
                 <!-- SDG 11 -->
                 <div class="dark-card rounded-2xl p-7 flex items-start gap-5">
-                    <div style="min-width:56px;height:56px;border-radius:16px;background:rgba(253,185,19,0.12);border:1px solid rgba(253,185,19,0.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-                        <span style="font-family:'Sora',sans-serif;font-weight:800;font-size:18px;color:#fdb913;">11</span>
+                    <div
+                        style="min-width:56px;height:56px;border-radius:16px;background:rgba(253,185,19,0.12);border:1px solid rgba(253,185,19,0.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                        <span
+                            style="font-family:'Sora',sans-serif;font-weight:800;font-size:18px;color:#fdb913;">11</span>
                     </div>
                     <div>
-                        <h3 style="font-family:'Sora',sans-serif;font-weight:700;color:#f1f5f9;margin-bottom:8px;">SDG 11 — Sustainable Cities & Communities</h3>
-                        <p style="font-size:0.875rem;color:#6b7280;line-height:1.7;">Deploying scalable clean-air infrastructure for smart cities, public spaces, and urban communities to improve environmental livability.</p>
+                        <h3 style="font-family:'Sora',sans-serif;font-weight:700;color:#f1f5f9;margin-bottom:8px;">SDG
+                            11 — Sustainable Cities & Communities</h3>
+                        <p style="font-size:0.875rem;color:#6b7280;line-height:1.7;">Deploying scalable clean-air
+                            infrastructure for smart cities, public spaces, and urban communities to improve
+                            environmental livability.</p>
                     </div>
                 </div>
 
                 <!-- SDG 13 -->
                 <div class="dark-card rounded-2xl p-7 flex items-start gap-5">
-                    <div style="min-width:56px;height:56px;border-radius:16px;background:rgba(63,162,68,0.12);border:1px solid rgba(63,162,68,0.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-                        <span style="font-family:'Sora',sans-serif;font-weight:800;font-size:18px;color:#3fa244;">13</span>
+                    <div
+                        style="min-width:56px;height:56px;border-radius:16px;background:rgba(63,162,68,0.12);border:1px solid rgba(63,162,68,0.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                        <span
+                            style="font-family:'Sora',sans-serif;font-weight:800;font-size:18px;color:#3fa244;">13</span>
                     </div>
                     <div>
-                        <h3 style="font-family:'Sora',sans-serif;font-weight:700;color:#f1f5f9;margin-bottom:8px;">SDG 13 — Climate Action</h3>
-                        <p style="font-size:0.875rem;color:#6b7280;line-height:1.7;">Addressing urban emissions, improving AQI levels, and contributing toward India's long-term environmental resilience through sustainable technology.</p>
+                        <h3 style="font-family:'Sora',sans-serif;font-weight:700;color:#f1f5f9;margin-bottom:8px;">SDG
+                            13 — Climate Action</h3>
+                        <p style="font-size:0.875rem;color:#6b7280;line-height:1.7;">Addressing urban emissions,
+                            improving AQI levels, and contributing toward India's long-term environmental resilience
+                            through sustainable technology.</p>
                     </div>
                 </div>
             </div>
 
             <!-- Bottom note -->
-            <div class="fade-up mt-12 p-8 rounded-2xl text-center" style="background:rgba(16,185,129,0.06);border:1px solid rgba(16,185,129,0.2);">
+            <div class="fade-up mt-12 p-8 rounded-2xl text-center"
+                style="background:rgba(16,185,129,0.06);border:1px solid rgba(16,185,129,0.2);">
                 <p style="color:#94a3b8;font-size:0.97rem;line-height:1.85;max-width:780px;margin:0 auto;">
-                    Through AI-driven environmental monitoring, advanced purification technologies, and localized breathable Air Pocket ecosystems, UrbanTree contributes toward building <strong style="color:#10b981;">cleaner, healthier, smarter, and environmentally responsible urban ecosystems</strong> — aligned with India's Viksit Bharat 2047 mission.
+                    Through AI-driven environmental monitoring, advanced purification technologies, and localized
+                    breathable Air Pocket ecosystems, UrbanTree contributes toward building <strong
+                        style="color:#10b981;">cleaner, healthier, smarter, and environmentally responsible urban
+                        ecosystems</strong> — aligned with India's Viksit Bharat 2047 mission.
                 </p>
             </div>
         </div>
@@ -583,17 +822,21 @@
     <section class="content-section" style="padding:80px 0;">
         <div class="max-w-4xl mx-auto px-6 text-center">
             <span class="section-label fade-up">Get Involved</span>
-            <h2 class="fade-up" style="font-family:'Sora',sans-serif;font-size:clamp(2rem,4vw,3rem);font-weight:800;color:#111827;line-height:1.15;margin-bottom:1.2rem;">
+            <h2 class="fade-up"
+                style="font-family:'Sora',sans-serif;font-size:clamp(2rem,4vw,3rem);font-weight:800;color:#111827;line-height:1.15;margin-bottom:1.2rem;">
                 Ready to Breathe Cleaner Air<br>in Your City?
             </h2>
-            <p class="fade-up" style="color:#6b7280;font-size:1rem;line-height:1.8;margin-bottom:2.5rem;max-width:520px;margin-left:auto;margin-right:auto;">
+            <p class="fade-up"
+                style="color:#6b7280;font-size:1rem;line-height:1.8;margin-bottom:2.5rem;max-width:520px;margin-left:auto;margin-right:auto;">
                 Partner with UrbanTree to deploy intelligent clean-air infrastructure in your urban environment.
             </p>
             <div class="fade-up flex flex-wrap gap-4 justify-center">
-                <a href="index.html#enquiry" class="hover-glow-emerald px-10 py-4 bg-emerald-500 text-white rounded-full font-semibold shadow-lg shadow-emerald-500/30 transition-all duration-300 text-sm">
+                <a href="index.html#enquiry"
+                    class="hover-glow-emerald px-10 py-4 bg-emerald-500 text-white rounded-full font-semibold shadow-lg shadow-emerald-500/30 transition-all duration-300 text-sm">
                     Make an Enquiry
                 </a>
-                <a href="index.html#technology" class="px-10 py-4 bg-gray-900 text-white rounded-full font-semibold hover:bg-gray-800 transition-all duration-300 text-sm">
+                <a href="index.html#technology"
+                    class="px-10 py-4 bg-gray-900 text-white rounded-full font-semibold hover:bg-gray-800 transition-all duration-300 text-sm">
                     Explore Technology
                 </a>
             </div>
@@ -603,29 +846,52 @@
     <!-- ═══ FOOTER (identical to main site) ═══ -->
     <footer class="bg-[#0a0a0a] border-t border-white/10 pt-12 pb-6">
         <div class="max-w-[1440px] mx-auto px-6 lg:px-12 w-full">
-            <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center border-b border-white/10 pb-10 mb-10 gap-10">
+            <div
+                class="flex flex-col lg:flex-row justify-between items-start lg:items-center border-b border-white/10 pb-10 mb-10 gap-10">
                 <div class="w-full lg:w-1/2">
                     <h2 class="text-3xl font-serif font-bold text-white mb-4">Join the Green Tech Revolution.</h2>
-                    <p class="text-gray-400 mb-6 text-sm">Subscribe to our newsletter for the latest in sustainable environmental technology and urban air updates.</p>
+                    <p class="text-gray-400 mb-6 text-sm">Subscribe to our newsletter for the latest in sustainable
+                        environmental technology and urban air updates.</p>
                     <div class="flex w-full max-w-md shadow-sm border border-white/10 rounded-md overflow-hidden">
-                        <input type="email" placeholder="Enter your email address" class="w-full px-4 py-4 bg-white/10 focus:outline-none focus:bg-white/20 text-white placeholder-gray-500 transition-colors" style="border:none;outline:none;">
-                        <button class="px-8 py-4 bg-gray-100 text-gray-900 font-bold uppercase tracking-widest text-xs hover:bg-emerald-500 hover:text-white transition-colors" style="white-space:nowrap;">Subscribe</button>
+                        <input type="email" placeholder="Enter your email address"
+                            class="w-full px-4 py-4 bg-white/10 focus:outline-none focus:bg-white/20 text-white placeholder-gray-500 transition-colors"
+                            style="border:none;outline:none;">
+                        <button
+                            class="px-8 py-4 bg-gray-100 text-gray-900 font-bold uppercase tracking-widest text-xs hover:bg-emerald-500 hover:text-white transition-colors"
+                            style="white-space:nowrap;">Subscribe</button>
                     </div>
                 </div>
                 <div class="w-full lg:w-auto">
-                    <h3 class="text-white font-bold uppercase tracking-widest text-xs mb-6 lg:text-right">Follow Our Journey</h3>
+                    <h3 class="text-white font-bold uppercase tracking-widest text-xs mb-6 lg:text-right">Follow Our
+                        Journey</h3>
                     <div class="flex gap-4 lg:justify-end text-gray-400">
-                        <a href="#" class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all duration-300">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                        <a href="#"
+                            class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all duration-300">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                            </svg>
                         </a>
-                        <a href="#" class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-white hover:text-gray-900 hover:border-white transition-all duration-300">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg>
+                        <a href="#"
+                            class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-white hover:text-gray-900 hover:border-white transition-all duration-300">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" />
+                            </svg>
                         </a>
-                        <a href="#" class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:text-white hover:border-pink-500 transition-all duration-300">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                        <a href="#"
+                            class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:text-white hover:border-pink-500 transition-all duration-300">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                            </svg>
                         </a>
-                        <a href="#" class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-red-600 hover:text-white hover:border-red-600 transition-all duration-300">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                        <a href="#"
+                            class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-red-600 hover:text-white hover:border-red-600 transition-all duration-300">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                            </svg>
                         </a>
                     </div>
                 </div>
@@ -635,29 +901,50 @@
                 <div>
                     <h4 class="text-white font-bold uppercase tracking-widest text-xs mb-5">Company</h4>
                     <ul class="space-y-3">
-                        <li><a href="about.html" class="nav-link text-white text-brand-emerald text-sm font-semibold hover:text-emerald-400 transition-colors">About Us</a></li>
-                        <li><a href="#founders" class="text-gray-400 text-sm hover:text-brand-emerald transition-colors">Founder Profiles</a></li>
-                        <li><a href="#" class="text-gray-400 text-sm hover:text-brand-emerald transition-colors">Mission & Vision</a></li>
-                        <li><a href="index.html#blog" class="nav-link text-white text-gray-400 text-sm hover:text-brand-emerald transition-colors">Urban Tree Blog</a></li>
-                        <li><a href="#" class="text-gray-400 text-sm hover:text-brand-emerald transition-colors">Environmental Performance Statement</a></li>
+                        <li><a href="about.html"
+                                class="nav-link text-white text-brand-emerald text-sm font-semibold hover:text-emerald-400 transition-colors">About
+                                Us</a></li>
+                        <li><a href="#founders"
+                                class="text-gray-400 text-sm hover:text-brand-emerald transition-colors">Founder
+                                Profiles</a></li>
+                        <li><a href="#" class="text-gray-400 text-sm hover:text-brand-emerald transition-colors">Mission
+                                & Vision</a></li>
+                        <li><a href="index.html#blog"
+                                class="nav-link text-white text-gray-400 text-sm hover:text-brand-emerald transition-colors">Urban
+                                Tree Blog</a></li>
+                        <li><a href="environmental-statement.html"
+                                class="text-gray-400 text-sm hover:text-brand-emerald transition-colors">Environmental
+                                Performance Statement</a></li>
                     </ul>
                 </div>
                 <div>
                     <h4 class="text-white font-bold uppercase tracking-widest text-xs mb-5">Support & Monitoring</h4>
                     <ul class="space-y-3">
-                        <li><a href="login.html" class="text-brand-emerald text-sm font-semibold hover:text-emerald-400 transition-colors">Login for Monitoring</a></li>
-                        <li><a href="faq.html" class="text-gray-400 text-sm hover:text-brand-emerald transition-colors">FAQ</a></li>
-                        <li><a href="index.html#enquiry" class="text-gray-400 text-sm hover:text-brand-emerald transition-colors">Support</a></li>
+                        <li><a href="login.html"
+                                class="text-brand-emerald text-sm font-semibold hover:text-emerald-400 transition-colors">Login
+                                for Monitoring</a></li>
+                        <li><a href="faq.html"
+                                class="text-gray-400 text-sm hover:text-brand-emerald transition-colors">FAQ</a></li>
+                        <li><a href="index.html#enquiry"
+                                class="text-gray-400 text-sm hover:text-brand-emerald transition-colors">Support</a>
+                        </li>
                     </ul>
                 </div>
                 <div>
                     <h4 class="text-white font-bold uppercase tracking-widest text-xs mb-5">Legal</h4>
                     <ul class="space-y-3">
-                        <li><a href="#" class="text-gray-400 text-sm hover:text-brand-emerald transition-colors">Privacy Policy</a></li>
-                        <li><a href="#" class="text-gray-400 text-sm hover:text-brand-emerald transition-colors">Terms & Conditions</a></li>
-                        <li><a href="#" class="text-gray-400 text-sm hover:text-brand-emerald transition-colors">Disclaimer</a></li>
-                        <li><a href="#" class="text-gray-400 text-sm hover:text-brand-emerald transition-colors">Cookie Policy</a></li>
-                        <li><a href="#" class="text-gray-400 text-sm hover:text-brand-emerald transition-colors">Intellectual Property Notice</a></li>
+                        <li><a href="privacy-policy.html" class="text-gray-400 text-sm hover:text-brand-emerald transition-colors">Privacy
+                                Policy</a></li>
+                        <li><a href="terms.html" class="text-gray-400 text-sm hover:text-brand-emerald transition-colors">Terms &
+                                Conditions</a></li>
+                        <li><a href="disclaimer.html"
+                                class="text-gray-400 text-sm hover:text-brand-emerald transition-colors">Disclaimer</a>
+                        </li>
+                        <li><a href="cookie-policy.html" class="text-gray-400 text-sm hover:text-brand-emerald transition-colors">Cookie
+                                Policy</a></li>
+                        <li><a href="intellectual-property.html"
+                                class="text-gray-400 text-sm hover:text-brand-emerald transition-colors">Intellectual
+                                Property Notice</a></li>
                     </ul>
                 </div>
             </div>
@@ -682,30 +969,30 @@
         const navBrand = document.getElementById('nav-brand');
         const navTagline = document.getElementById('nav-tagline');
         const navLinks = document.querySelectorAll('.nav-link');
-        
-        let currentTheme = 'dark'; 
+
+        let currentTheme = 'dark';
 
         function setTheme(theme) {
             if (theme === currentTheme) return;
             currentTheme = theme;
-            
+
             if (theme === 'light') {
                 if (window.scrollY > 50) {
                     navbar.style.background = 'rgba(255, 255, 255, 0.95)';
                     navbar.style.borderBottom = '1px solid rgba(0,0,0,0.05)';
                 }
-                
-                if(navBrand) { navBrand.classList.remove('text-white'); navBrand.classList.add('nav-text-dark'); }
-                if(navTagline) { navTagline.classList.remove('text-white'); navTagline.classList.add('nav-text-dark-light'); }
+
+                if (navBrand) { navBrand.classList.remove('text-white'); navBrand.classList.add('nav-text-dark'); }
+                if (navTagline) { navTagline.classList.remove('text-white'); navTagline.classList.add('nav-text-dark-light'); }
                 navLinks.forEach(link => { link.classList.remove('text-white'); link.classList.add('nav-text-dark'); });
             } else {
                 if (window.scrollY > 50) {
                     navbar.style.background = 'rgba(10, 10, 10, 0.92)';
                     navbar.style.borderBottom = '1px solid rgba(255,255,255,0.08)';
                 }
-                
-                if(navBrand) { navBrand.classList.remove('nav-text-dark'); navBrand.classList.add('text-white'); }
-                if(navTagline) { navTagline.classList.remove('nav-text-dark-light'); navTagline.classList.add('text-white'); }
+
+                if (navBrand) { navBrand.classList.remove('nav-text-dark'); navBrand.classList.add('text-white'); }
+                if (navTagline) { navTagline.classList.remove('nav-text-dark-light'); navTagline.classList.add('text-white'); }
                 navLinks.forEach(link => { link.classList.remove('nav-text-dark'); link.classList.add('text-white'); });
             }
         }
@@ -735,7 +1022,7 @@
                     topIntersecting = entry.target;
                 }
             });
-            
+
             if (topIntersecting) {
                 if (topIntersecting.matches('.content-section, .content-section-alt')) {
                     setTheme('light');
@@ -748,5 +1035,7 @@
         lightSections.forEach(s => sectionObserver.observe(s));
         darkSections.forEach(s => sectionObserver.observe(s));
     </script>
+
+
 </body>
 </html>

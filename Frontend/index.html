@@ -52,30 +52,24 @@
 <body class="antialiased selection:bg-brand-emerald selection:text-white">
     <div id="snap-container">
         <!-- ═══ FLOATING NAVBAR ═══ -->
-        <nav class="fixed w-full z-50 px-6 py-5 flex justify-between items-center" id="navbar">
-            <div class="z-20 flex items-center gap-4">
-                <img src="images/logo.png" alt="UrbanTree Logo" class="h-20 w-auto">
-                <div class="leading-snug" style="font-family:'Montserrat',sans-serif;">
-                    <div id="navbar-brand-name" class="text-3xl font-medium tracking-wide"
-                        style="color:#fff; transform:translateX(-3px);">URBAN<span
-                            style="color:#22c55e;font-weight:500;">Tree</span></div>
-                    <div id="navbar-tagline" class="text-sm font-medium tracking-wide" style="color:#fff;">The City.
-                        Reimagined.</div>
+        <nav class="fixed w-full z-50 px-6 py-5 flex items-center transition-all duration-300" id="navbar">
+            <div class="z-20 flex items-center gap-4 w-1/4">
+                <img src="images/logo.png" alt="UrbanTree Logo" class="h-16 w-auto transition-all duration-300" id="nav-logo">
+                <div class="leading-snug hidden lg:block" style="font-family:'Montserrat',sans-serif;">
+                    <div id="navbar-brand-name" class="text-2xl font-medium tracking-wide text-white transition-colors duration-300" style="transform:translateX(-3px);">URBAN<span style="color:#22c55e;font-weight:500;">Tree</span></div>
+                    <div id="navbar-tagline" class="text-[11px] font-medium tracking-wide text-white transition-colors duration-300">The City. Reimagined.</div>
                 </div>
             </div>
 
-            <div class="hidden md:flex items-center space-x-12 text-lg font-normal text-white z-20 ml-auto">
-                <a href="#hero-section"
-                    class="text-white hover:text-brand-emerald transition-colors duration-300">Home</a>
-                <a href="technology.html"
-                    class="text-white hover:text-brand-emerald transition-colors duration-300">Technology</a>
-                <a href="about.html" class="text-white hover:text-brand-emerald transition-colors duration-300">About
-                    Us</a>
-                <a href="#blog" class="text-white hover:text-brand-emerald transition-colors duration-300">Blog</a>
-                <a href="#enquiry" class="orange-cta"
-                    style="font-family:'Inter',sans-serif; font-size:1.125rem; font-weight:700; color:#fff; background:#f97316; border:0; border-radius:999px; padding:0.65rem 1.55rem; box-shadow:0 10px 28px rgba(249,115,22,0.34); text-align:center;">
-                    Enquiry
-                </a>
+            <div class="hidden md:flex justify-center flex-1 space-x-10 text-[15px] font-medium z-20" id="nav-links">
+                <a href="#hero-section" class="nav-link text-white hover:text-brand-emerald transition-colors duration-300">Home</a>
+                <a href="technology.html" class="nav-link text-white hover:text-brand-emerald transition-colors duration-300">Technology</a>
+                <a href="about.html" class="nav-link text-white hover:text-brand-emerald transition-colors duration-300">About Us</a>
+                <a href="#blog" class="nav-link text-white hover:text-brand-emerald transition-colors duration-300">Blog</a>
+            </div>
+
+            <div class="z-20 flex justify-end w-1/4">
+                <a href="#enquiry" class="orange-cta bg-[#f97316] text-white px-6 py-2.5 rounded-full font-bold shadow-md hover:bg-[#ea580c] transition-all duration-300" style="font-family:'Inter',sans-serif;">Enquiry</a>
             </div>
 
             <div class="mobile-nav md:hidden z-20">
@@ -86,6 +80,22 @@
                 <a href="#enquiry" class="mobile-enquiry">Enquiry</a>
             </div>
         </nav>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const navbar = document.getElementById('navbar');
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 50) {
+                        navbar.classList.add('backdrop-blur-md', 'bg-black/85', 'shadow-lg');
+                        navbar.classList.remove('bg-transparent', 'py-5');
+                        navbar.classList.add('py-3');
+                    } else {
+                        navbar.classList.remove('backdrop-blur-md', 'bg-black/85', 'shadow-lg', 'py-3');
+                        navbar.classList.add('bg-transparent', 'py-5');
+                    }
+                });
+                window.dispatchEvent(new Event('scroll'));
+            });
+        </script>
 
         <!-- ═══ SECTION 1: HERO ═══ -->
         <section class="snap-section bg-black" style="height:100vh; min-height:100vh;" id="hero-section">
@@ -1202,90 +1212,110 @@
             </div>
         </section>
 
-        <!-- ═══ SECTION 6: ENVIRONMENTAL IMPACT ═══ -->
         <!-- ═══ SECTION 6: SUSTAINABILITY ═══ -->
-        <section class="snap-section relative overflow-hidden flex items-center" style="background: #f0f0f0;">
-
-            <!-- Background image with overlay -->
-            <div class="absolute inset-0 z-0">
-                <img src="images/Designed_for_longterm_environmental_impact.png" alt="Sustainability"
-                    class="w-full h-full object-cover object-center" style="opacity: 0.18;">
-                <div class="absolute inset-0"
-                    style="background: linear-gradient(135deg, rgba(240,240,240,0.97) 0%, rgba(240,240,240,0.85) 40%, rgba(74,158,63,0.08) 100%);">
-                </div>
+        <section class="snap-section relative overflow-hidden flex items-center bg-[#05140e] py-24">
+            
+            <!-- Background Ambient Glows -->
+            <div class="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] rounded-full bg-brand-emerald/20 blur-[120px] pointer-events-none"></div>
+            <div class="absolute bottom-[-10%] right-[-10%] w-[600px] h-[600px] rounded-full bg-emerald-600/10 blur-[150px] pointer-events-none"></div>
+            
+            <!-- Background subtle texture image -->
+            <div class="absolute inset-0 opacity-10 mix-blend-overlay pointer-events-none">
+                 <img src="images/Designed_for_longterm_environmental_impact.png" alt="Background Texture" class="w-full h-full object-cover object-center">
             </div>
 
+            <!-- Content Container -->
             <div class="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-12">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-
-                    <!-- LEFT: Text content -->
-                    <div class="fade-up">
-                        <!-- Eyebrow -->
-                        <span
-                            class="text-xs font-bold uppercase tracking-[0.3em] text-brand-emerald mb-3 block">Environmental
-                            Commitment</span>
-
-                        <!-- Main heading -->
-                        <h2 class="font-serif font-extrabold text-gray-900 mb-2"
-                            style="font-size: clamp(3rem, 6vw, 5rem); line-height: 1.05;">Sustainability</h2>
-
-                        <!-- Sub heading -->
-                        <h3 class="text-lg md:text-xl font-serif font-semibold text-gray-500 mb-6 leading-snug">Designed
-                            For Long-Term<br>Environmental Impact</h3>
-
-                        <!-- Divider -->
-                        <div class="w-16 h-1 rounded-full bg-gradient-to-r from-brand-emerald to-brand-emerald mb-7">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+                    
+                    <!-- LEFT: Text content (Col-Span-6) -->
+                    <div class="lg:col-span-6 fade-up">
+                        <!-- Glowing Eyebrow Badge -->
+                        <div class="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-brand-emerald/10 border border-brand-emerald/20 text-brand-emerald text-xs font-bold uppercase tracking-widest mb-6 backdrop-blur-sm shadow-[0_0_15px_rgba(16,185,129,0.15)]">
+                            <span class="w-2 h-2 rounded-full bg-brand-emerald animate-pulse"></span>
+                            Environmental Commitment
                         </div>
-
-                        <!-- Body -->
-                        <p class="relative z-10 w-full max-w-2xl drop-shadow-2xl">
-                            Urban Tree reduces dependence on traditional urban air management systems by creating
-                            sustainable ecosystems within dense urban environments.
+                        
+                        <!-- Headings -->
+                        <h2 class="font-serif font-extrabold text-white mb-4 drop-shadow-lg" style="font-size: clamp(3rem, 5vw, 4.5rem); line-height: 1.1;">
+                            Sustainability
+                        </h2>
+                        
+                        <h3 class="text-xl md:text-2xl font-serif text-brand-emerald/90 font-medium mb-6 leading-snug">
+                            Designed For Long-Term<br>Environmental Impact
+                        </h3>
+                        
+                        <!-- Description -->
+                        <p class="text-gray-300 text-lg leading-relaxed mb-10 max-w-xl">
+                            Urban Tree reduces dependence on traditional urban air management systems by creating sustainable ecosystems within dense urban environments.
                         </p>
-
-                        <!-- Sustainability Metrics label -->
-                        <p class="text-xs font-bold uppercase tracking-[0.25em] text-gray-400 mb-5">Sustainability
-                            Metrics</p>
-                        <div class="space-y-3">
-                            <div class="flex items-center gap-4 group">
-                                <span
-                                    class="w-8 h-8 rounded-full bg-brand-emerald/10 border border-brand-emerald/30 text-brand-emerald text-xs font-bold flex items-center justify-center flex-shrink-0 group-hover:bg-brand-emerald group-hover:text-white transition-all duration-300">1</span>
-                                <span class="text-gray-700 font-medium">Energy-efficient operation</span>
+                        
+                        <!-- Metrics Glassmorphic Grid -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 relative">
+                            <div class="absolute inset-0 bg-brand-emerald/5 blur-[50px] rounded-full z-0"></div>
+                            
+                            <!-- Metric 1 -->
+                            <div class="relative z-10 bg-white/5 border border-white/10 p-5 rounded-2xl backdrop-blur-xl hover:bg-white/10 hover:border-brand-emerald/40 hover:-translate-y-1 transition-all duration-300 group shadow-lg">
+                                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-brand-emerald/30 to-transparent border border-brand-emerald/20 text-brand-emerald flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                                    <span class="font-black text-lg">01</span>
+                                </div>
+                                <h4 class="text-white/90 font-medium text-base">Energy-efficient operation</h4>
                             </div>
-                            <div class="flex items-center gap-4 group">
-                                <span
-                                    class="w-8 h-8 rounded-full bg-brand-emerald/10 border border-brand-emerald/30 text-brand-emerald text-xs font-bold flex items-center justify-center flex-shrink-0 group-hover:bg-brand-emerald group-hover:text-white transition-all duration-300">2</span>
-                                <span class="text-gray-700 font-medium">Scalable bio systems</span>
+                            
+                            <!-- Metric 2 -->
+                            <div class="relative z-10 bg-white/5 border border-white/10 p-5 rounded-2xl backdrop-blur-xl hover:bg-white/10 hover:border-brand-emerald/40 hover:-translate-y-1 transition-all duration-300 group shadow-lg">
+                                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-brand-emerald/30 to-transparent border border-brand-emerald/20 text-brand-emerald flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                                    <span class="font-black text-lg">02</span>
+                                </div>
+                                <h4 class="text-white/90 font-medium text-base">Scalable bio systems</h4>
                             </div>
-                            <div class="flex items-center gap-4 group">
-                                <span
-                                    class="w-8 h-8 rounded-full bg-brand-emerald/10 border border-brand-emerald/30 text-brand-emerald text-xs font-bold flex items-center justify-center flex-shrink-0 group-hover:bg-brand-emerald group-hover:text-white transition-all duration-300">3</span>
-                                <span class="text-gray-700 font-medium">Low maintenance infrastructure</span>
+                            
+                            <!-- Metric 3 -->
+                            <div class="relative z-10 bg-white/5 border border-white/10 p-5 rounded-2xl backdrop-blur-xl hover:bg-white/10 hover:border-brand-emerald/40 hover:-translate-y-1 transition-all duration-300 group shadow-lg">
+                                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-brand-emerald/30 to-transparent border border-brand-emerald/20 text-brand-emerald flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                                    <span class="font-black text-lg">03</span>
+                                </div>
+                                <h4 class="text-white/90 font-medium text-base">Low maintenance infrastructure</h4>
                             </div>
-                            <div class="flex items-center gap-4 group">
-                                <span
-                                    class="w-8 h-8 rounded-full bg-brand-emerald/10 border border-brand-emerald/30 text-brand-emerald text-xs font-bold flex items-center justify-center flex-shrink-0 group-hover:bg-brand-emerald group-hover:text-white transition-all duration-300">4</span>
-                                <span class="text-gray-700 font-medium">Hybrid power infrastructure</span>
+                            
+                            <!-- Metric 4 -->
+                            <div class="relative z-10 bg-white/5 border border-white/10 p-5 rounded-2xl backdrop-blur-xl hover:bg-white/10 hover:border-brand-emerald/40 hover:-translate-y-1 transition-all duration-300 group shadow-lg">
+                                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-brand-emerald/30 to-transparent border border-brand-emerald/20 text-brand-emerald flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                                    <span class="font-black text-lg">04</span>
+                                </div>
+                                <h4 class="text-white/90 font-medium text-base">Hybrid power infrastructure</h4>
                             </div>
                         </div>
                     </div>
 
-                    <!-- RIGHT: Image -->
-                    <div class="fade-up flex items-center justify-center" style="transition-delay: 150ms;">
-                        <div class="relative w-full flex items-center justify-center">
-                            <!-- Glow ring behind image -->
-                            <div class="absolute w-[90%] h-[90%] rounded-full"
-                                style="background: radial-gradient(circle, rgba(74,158,63,0.15) 0%, transparent 70%); filter: blur(30px);">
-                            </div>
-                            <img src="images/Designed for longterm environmental impact.png"
-                                alt="Sustainable City in a Globe" class="relative z-10 w-full max-w-lg drop-shadow-2xl"
-                                style="filter: drop-shadow(0 20px 60px rgba(74,158,63,0.25)) drop-shadow(0 0 120px rgba(74,158,63,0.1));">
+                    <!-- RIGHT: Floating Image (Col-Span-6) -->
+                    <div class="lg:col-span-6 relative flex items-center justify-center fade-up" style="transition-delay: 200ms;">
+                        <div class="relative w-full max-w-md lg:max-w-lg aspect-square flex items-center justify-center perspective-1000">
+                            <!-- High-tech rotating rings -->
+                            <div class="absolute inset-0 rounded-full border-[2px] border-brand-emerald/20 border-l-transparent animate-[spin_12s_linear_infinite]"></div>
+                            <div class="absolute inset-8 rounded-full border-[1px] border-brand-emerald/40 border-r-transparent border-dashed animate-[spin_18s_linear_infinite_reverse]"></div>
+                            <div class="absolute inset-16 rounded-full bg-brand-emerald/5 backdrop-blur-2xl shadow-[inset_0_0_50px_rgba(16,185,129,0.1)]"></div>
+                            
+                            <!-- Floating Globe Image -->
+                            <img src="images/Designed for longterm environmental impact.png" alt="Sustainable City in a Globe" class="relative z-10 w-[85%] h-[85%] object-contain animate-float" style="filter: drop-shadow(0 20px 40px rgba(16,185,129,0.4)) drop-shadow(0 0 80px rgba(16,185,129,0.2));">
                         </div>
                     </div>
 
                 </div>
             </div>
 
+            <style>
+                @keyframes float {
+                    0%, 100% { transform: translateY(0px) rotate(0deg); }
+                    50% { transform: translateY(-20px) rotate(1deg); }
+                }
+                .animate-float {
+                    animation: float 7s ease-in-out infinite;
+                }
+                .perspective-1000 {
+                    perspective: 1000px;
+                }
+            </style>
         </section>
 
         <!-- ═══ SECTION 7: LIVE ENVIRONMENTAL INTELLIGENCE ═══ -->
@@ -1413,28 +1443,15 @@
                 </div>
 
 
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-6">
-                    <div class="lg:col-span-5 flex flex-col gap-4" id="app-tabs-container">
-                        <!-- Tabs will be rendered here by JS -->
-                    </div>
-                    <div class="lg:col-span-7">
-                        <div class="sticky top-32 rounded-3xl overflow-hidden shadow-2xl border border-black/10 bg-white group"
-                            style="height: 600px;">
-                            <img id="app-showcase-image" src="" alt="Application"
-                                class="w-full h-full object-cover transition-all duration-700">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent">
-                            </div>
-                            <div
-                                class="absolute bottom-0 left-0 right-0 p-8 transform transition-transform duration-500">
-                                <h3 id="app-showcase-title"
-                                    class="text-3xl font-serif font-bold text-white mb-3 transition-all duration-500">
-                                </h3>
-                                <p id="app-showcase-desc"
-                                    class="text-gray-200 text-lg leading-relaxed transition-all duration-500"></p>
-                            </div>
-                        </div>
-                    </div>
+                <div class="flex flex-col lg:flex-row w-full h-[800px] lg:h-[600px] gap-2 lg:gap-4 mb-6" id="app-accordion-container">
+                    <!-- Accordion items rendered here by JS -->
                 </div>
+                
+                <style>
+                    .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+                    .custom-scrollbar::-webkit-scrollbar-track { background: rgba(0,0,0,0.05); border-radius: 4px; }
+                    .custom-scrollbar::-webkit-scrollbar-thumb { background: #10b981; border-radius: 4px; }
+                </style>
 
             </div>
 
@@ -1515,7 +1532,7 @@
                                 <li><a href="#blog"
                                         class="text-gray-400 text-sm hover:text-brand-emerald transition-colors">Urban
                                         Tree Blog</a></li>
-                                <li><a href="#"
+                                <li><a href="environmental-statement.html"
                                         class="text-gray-400 text-sm hover:text-brand-emerald transition-colors">Environmental
                                         Performance Statement</a></li>
                             </ul>
@@ -1542,19 +1559,19 @@
                         <div>
                             <h4 class="text-white font-bold uppercase tracking-widest text-xs mb-5">Legal</h4>
                             <ul class="space-y-3">
-                                <li><a href="#" onclick="openPrivacy();return false;"
+                                <li><a href="privacy-policy.html"
                                         class="text-gray-400 text-sm hover:text-brand-emerald transition-colors">Privacy
                                         Policy</a></li>
-                                <li><a href="#" onclick="openTerms();return false;"
+                                <li><a href="terms.html"
                                         class="text-gray-400 text-sm hover:text-brand-emerald transition-colors">Terms &
                                         Conditions</a></li>
-                                <li><a href="#" onclick="openDisclaimer();return false;"
+                                <li><a href="disclaimer.html"
                                         class="text-gray-400 text-sm hover:text-brand-emerald transition-colors">Disclaimer</a>
                                 </li>
-                                <li><a href="#" onclick="openCookie();return false;"
+                                <li><a href="cookie-policy.html"
                                         class="text-gray-400 text-sm hover:text-brand-emerald transition-colors">Cookie
                                         Policy</a></li>
-                                <li><a href="#" onclick="openIP();return false;"
+                                <li><a href="intellectual-property.html"
                                         class="text-gray-400 text-sm hover:text-brand-emerald transition-colors">Intellectual
                                         Property Notice</a></li>
                             </ul>
@@ -1827,75 +1844,132 @@
                 }
             ];
 
-            const tabsContainer = document.getElementById('app-tabs-container');
-            const showcaseImage = document.getElementById('app-showcase-image');
-            const showcaseTitle = document.getElementById('app-showcase-title');
-            const showcaseDesc = document.getElementById('app-showcase-desc');
-
+            const accordionContainer = document.getElementById('app-accordion-container');
             let activeIndex = 0;
+            const accordionItems = [];
 
-            function renderTabs() {
-                if (!tabsContainer) return;
-                tabsContainer.innerHTML = '';
+            function initAccordion() {
+                if (!accordionContainer) return;
+                accordionContainer.innerHTML = '';
+                
                 appsData.forEach((app, index) => {
-                    const isActive = index === activeIndex;
-                    const tab = document.createElement('button');
-                    tab.className = `w-full text-left p-5 rounded-2xl transition-all duration-300 border flex items-center gap-4 group ${isActive ? 'bg-white border-brand-emerald/30 shadow-lg shadow-brand-emerald/5' : 'bg-transparent border-transparent hover:bg-white/60 hover:border-gray-200'}`;
-
-                    const iconClass = isActive ? 'text-brand-emerald bg-brand-emerald/10' : 'text-gray-400 bg-gray-100 group-hover:text-brand-emerald group-hover:bg-brand-emerald/5';
-                    const textClass = isActive ? 'text-brand-emerald font-bold' : 'text-gray-500 font-medium group-hover:text-gray-900';
-
-                    tab.innerHTML = `
-                        <div class="w-12 h-12 rounded-xl flex items-center justify-center transition-colors duration-300 ${iconClass}">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">${app.svg_inner}</svg>
-                        </div>
-                        <span class="font-serif text-lg md:text-xl transition-colors duration-300 ${textClass}">${app.title}</span>
-                        ${isActive ? '<div class="ml-auto w-2 h-2 rounded-full bg-brand-emerald"></div>' : ''}
-                    `;
-
-                    tab.onclick = () => {
+                    const item = document.createElement('div');
+                    // Base classes set here, dynamic classes handled in updateAccordion
+                    item.className = 'relative overflow-hidden rounded-3xl transition-all duration-[800ms] ease-[cubic-bezier(0.87,0,0.13,1)] cursor-pointer group flex-shrink-0 border';
+                    
+                    item.onclick = () => {
                         if (activeIndex !== index) {
                             activeIndex = index;
-                            renderTabs();
-                            updateShowcase();
+                            updateAccordion();
+                            
+                            // Scroll if needed on mobile
+                            setTimeout(() => {
+                                const rect = item.getBoundingClientRect();
+                                if (rect.top < 100 || rect.bottom > window.innerHeight) {
+                                    item.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                                }
+                            }, 300);
                         }
                     };
+                    
+                    item.innerHTML = `
+                        <!-- Background Image -->
+                        <img src="${app.image}" class="bg-img absolute inset-0 w-full h-full object-cover transition-all duration-[1200ms] ease-[cubic-bezier(0.87,0,0.13,1)] origin-center" alt="${app.title}" />
+                        
+                        <!-- Overlay for Active State -->
+                        <div class="active-overlay absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent transition-opacity duration-700"></div>
+                        
+                        <!-- Overlay for Inactive State -->
+                        <div class="inactive-overlay absolute inset-0 bg-black/30 transition-opacity duration-700 group-hover:bg-black/10"></div>
+                        
+                        <!-- Inactive State Content -->
+                        <div class="inactive-content absolute inset-0 flex flex-row lg:flex-col items-center justify-center transition-opacity duration-500">
+                            <!-- Title Mobile (Horizontal) -->
+                            <div class="flex lg:hidden items-center justify-center w-full px-4">
+                                <h3 class="font-serif font-bold text-white/90 text-sm tracking-widest uppercase group-hover:text-white transition-colors duration-300 drop-shadow-md text-center">
+                                    ${app.title}
+                                </h3>
+                            </div>
+                            
+                            <!-- Title Desktop (Vertical Strip) -->
+                            <div class="hidden lg:flex flex-1 items-center justify-center overflow-hidden w-full py-6">
+                                <h3 class="font-serif font-bold text-white/90 tracking-[0.2em] text-sm uppercase group-hover:text-white transition-colors duration-300 drop-shadow-md whitespace-nowrap" style="writing-mode: vertical-rl; transform: rotate(180deg);">
+                                    ${app.title}
+                                </h3>
+                            </div>
+                        </div>
 
-                    tabsContainer.appendChild(tab);
+                        <!-- Active State Content -->
+                        <div class="active-content absolute inset-0 p-6 md:p-10 flex flex-col justify-end transition-opacity duration-[800ms] delay-100">
+                            <!-- Header -->
+                            <div class="active-header flex items-center gap-4 lg:gap-6 z-10 transform transition-transform duration-700 w-full">
+                                <div class="w-12 h-12 lg:w-16 lg:h-16 rounded-2xl bg-brand-emerald text-white shadow-lg shadow-brand-emerald/20 flex items-center justify-center shrink-0">
+                                    <svg class="w-6 h-6 lg:w-8 lg:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">${app.svg_inner}</svg>
+                                </div>
+                                <h3 class="font-serif font-bold text-2xl lg:text-4xl text-white drop-shadow-md truncate pr-4">
+                                    ${app.title}
+                                </h3>
+                            </div>
+                            
+                            <!-- Description -->
+                            <div class="active-desc mt-4 lg:mt-6 z-10 w-full max-w-3xl transform transition-transform duration-700 delay-100">
+                                <p class="text-gray-200 text-base lg:text-lg leading-relaxed line-clamp-3 lg:line-clamp-4">
+                                    ${app.desc}
+                                </p>
+                            </div>
+                        </div>
+                    `;
+                    
+                    accordionItems.push(item);
+                    accordionContainer.appendChild(item);
                 });
+                
+                updateAccordion();
             }
 
-            function updateShowcase() {
-                if (!showcaseImage || !showcaseTitle || !showcaseDesc) return;
-                const app = appsData[activeIndex];
-
-                // Fade out
-                showcaseImage.classList.remove('opacity-100');
-                showcaseImage.classList.add('opacity-0');
-
-                showcaseTitle.classList.remove('translate-y-0', 'opacity-100');
-                showcaseTitle.classList.add('translate-y-8', 'opacity-0');
-
-                showcaseDesc.classList.remove('translate-y-0', 'opacity-100');
-                showcaseDesc.classList.add('translate-y-8', 'opacity-0');
-
-                setTimeout(() => {
-                    showcaseImage.src = app.image;
-                    showcaseTitle.textContent = app.title;
-                    showcaseDesc.textContent = app.desc;
-
-                    // Fade in after image is set
-                    setTimeout(() => {
-                        showcaseImage.classList.remove('opacity-0');
-                        showcaseImage.classList.add('opacity-100');
-
-                        showcaseTitle.classList.remove('translate-y-8', 'opacity-0');
-                        showcaseTitle.classList.add('translate-y-0', 'opacity-100');
-
-                        showcaseDesc.classList.remove('translate-y-8', 'opacity-0');
-                        showcaseDesc.classList.add('translate-y-0', 'opacity-100');
-                    }, 50);
-                }, 400); // Wait for fade out animation
+            function updateAccordion() {
+                accordionItems.forEach((item, index) => {
+                    const isActive = index === activeIndex;
+                    
+                    // 1. Root Item
+                    const baseItemClass = 'relative overflow-hidden rounded-3xl transition-all duration-[800ms] ease-[cubic-bezier(0.87,0,0.13,1)] cursor-pointer group flex-shrink-0 border';
+                    item.className = `${baseItemClass} ${isActive ? 'flex-grow shadow-2xl border-transparent h-[400px] lg:h-full min-w-[50%]' : 'h-16 lg:h-full lg:w-20 border-black/10 hover:border-brand-emerald/50'}`;
+                    
+                    // 2. Background Image
+                    const bgImg = item.querySelector('.bg-img');
+                    const baseImgClass = 'bg-img absolute inset-0 w-full h-full object-cover transition-all duration-[1200ms] ease-[cubic-bezier(0.87,0,0.13,1)] origin-center';
+                    bgImg.className = `${baseImgClass} ${isActive ? 'scale-100' : 'scale-110 opacity-80 group-hover:scale-105 group-hover:opacity-100'}`;
+                    
+                    // 3. Active Overlay
+                    const activeOverlay = item.querySelector('.active-overlay');
+                    const baseActiveOverlay = 'active-overlay absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent transition-opacity duration-700';
+                    activeOverlay.className = `${baseActiveOverlay} ${isActive ? 'opacity-100' : 'opacity-0 pointer-events-none'}`;
+                    
+                    // 4. Inactive Overlay
+                    const inactiveOverlay = item.querySelector('.inactive-overlay');
+                    const baseInactiveOverlay = 'inactive-overlay absolute inset-0 bg-black/30 transition-opacity duration-700 group-hover:bg-black/10';
+                    inactiveOverlay.className = `${baseInactiveOverlay} ${isActive ? 'opacity-0 pointer-events-none' : 'opacity-100'}`;
+                    
+                    // 5. Inactive Content
+                    const inactiveContent = item.querySelector('.inactive-content');
+                    const baseInactiveContent = 'inactive-content absolute inset-0 flex flex-row lg:flex-col items-center justify-center transition-opacity duration-500';
+                    inactiveContent.className = `${baseInactiveContent} ${isActive ? 'opacity-0 pointer-events-none' : 'opacity-100'}`;
+                    
+                    // 6. Active Content
+                    const activeContent = item.querySelector('.active-content');
+                    const baseActiveContent = 'active-content absolute inset-0 p-6 md:p-10 flex flex-col justify-end transition-opacity duration-[800ms] delay-100';
+                    activeContent.className = `${baseActiveContent} ${isActive ? 'opacity-100' : 'opacity-0 pointer-events-none'}`;
+                    
+                    // 7. Active Header
+                    const activeHeader = item.querySelector('.active-header');
+                    const baseActiveHeader = 'active-header flex items-center gap-4 lg:gap-6 z-10 transform transition-transform duration-700 w-full';
+                    activeHeader.className = `${baseActiveHeader} ${isActive ? 'translate-y-0' : 'translate-y-4'}`;
+                    
+                    // 8. Active Desc
+                    const activeDesc = item.querySelector('.active-desc');
+                    const baseActiveDesc = 'active-desc mt-4 lg:mt-6 z-10 w-full max-w-3xl transform transition-transform duration-700 delay-100';
+                    activeDesc.className = `${baseActiveDesc} ${isActive ? 'translate-y-0' : 'translate-y-4'}`;
+                });
             }
 
             // Preload images
@@ -1904,10 +1978,10 @@
                 img.src = app.image;
             });
 
-            renderTabs();
-            updateShowcase();
+            initAccordion();
         });
     </script>
+
 
 </body>
 
