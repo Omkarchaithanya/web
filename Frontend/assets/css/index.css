@@ -64,13 +64,13 @@
             box-shadow: 0 30px 60px rgba(74, 158, 63, 0.12);
         }
 
-        /* ═══ NAVBAR — fully transparent, always floating, no bg ever ═══ */
+        /* ═══ NAVBAR — fully transparent by default ═══ */
         #navbar {
-            transition: none;
-            background: transparent !important;
-            backdrop-filter: none !important;
-            border: none !important;
-            box-shadow: none !important;
+            transition: all 0.3s ease;
+            background: transparent;
+            backdrop-filter: none;
+            border: none;
+            box-shadow: none;
         }
 
         /* High-End Hover Glow Effect */
@@ -443,6 +443,7 @@
             margin: 12px 0 0;
         }
 
+        /* Hide mobile nav by default on desktop */
         .mobile-nav {
             display: none;
         }
@@ -469,9 +470,59 @@
 
             #navbar {
                 padding: 0.75rem 1rem;
-                align-items: flex-start;
-                gap: 0.8rem;
-                flex-wrap: wrap;
+                align-items: center !important;
+                justify-content: space-between;
+                gap: 1rem;
+                flex-wrap: nowrap !important;
+                background: rgba(10, 10, 10, 0.95) !important;
+                backdrop-filter: blur(10px) !important;
+            }
+
+            /* Hide desktop specific elements on tablet and mobile */
+            #nav-links,
+            #navbar > div.flex.justify-end.w-1\/4 {
+                display: none !important;
+            }
+
+            /* Make logo container take natural width */
+            #navbar > div.w-1\/4 {
+                width: auto !important;
+                flex-shrink: 0;
+            }
+
+            .mobile-nav {
+                display: flex !important;
+                width: auto;
+                flex: 1;
+                justify-content: flex-end;
+                align-items: center;
+                gap: 0.5rem;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                padding-bottom: 0;
+                scrollbar-width: none;
+            }
+
+            .mobile-nav::-webkit-scrollbar {
+                display: none;
+            }
+
+            .mobile-nav a {
+                white-space: nowrap;
+                text-decoration: none;
+                color: #ffffff;
+                font-size: 0.85rem;
+                font-weight: 600;
+                border: 1px solid rgba(255, 255, 255, 0.28);
+                border-radius: 999px;
+                padding: 0.35rem 0.85rem;
+                background: rgba(10, 10, 10, 0.28);
+                transition: all 0.3s ease;
+            }
+
+            .mobile-nav a.mobile-enquiry {
+                border-color: #f97316;
+                background: #f97316;
             }
 
             #navbar-brand-name {
@@ -510,33 +561,6 @@
 
             #snap-container {
                 overflow-x: hidden;
-            }
-
-            .mobile-nav {
-                width: 100%;
-                display: flex;
-                align-items: center;
-                gap: 0.35rem;
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
-                padding-bottom: 2px;
-            }
-
-            .mobile-nav a {
-                white-space: nowrap;
-                text-decoration: none;
-                color: #ffffff;
-                font-size: 0.82rem;
-                font-weight: 600;
-                border: 1px solid rgba(255, 255, 255, 0.28);
-                border-radius: 999px;
-                padding: 0.35rem 0.72rem;
-                background: rgba(10, 10, 10, 0.28);
-            }
-
-            .mobile-nav a.mobile-enquiry {
-                border-color: #f97316;
-                background: #f97316;
             }
 
             #hero-overlay {

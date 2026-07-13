@@ -202,25 +202,33 @@
 </head>
 <body class="antialiased">
 
-    <!-- ═══ NAVBAR ═══ -->
+        <!-- ═══ NAVBAR ═══ -->
     <nav class="fixed w-full z-50 px-6 py-5 flex items-center transition-all duration-300" id="navbar">
-        <div class="z-20 flex items-center gap-4 w-1/4">
+        <a href="../index.html" class="z-20 flex items-center gap-4 w-1/4" style="text-decoration: none;">
             <img src="../assets/images/logo.png" alt="UrbanTree Logo" class="h-16 w-auto transition-all duration-300" id="nav-logo">
             <div class="leading-snug hidden lg:block" style="font-family:'Montserrat',sans-serif;">
                 <div id="navbar-brand-name" class="text-2xl font-medium tracking-wide text-white transition-colors duration-300" style="transform:translateX(-3px);">URBAN<span style="color:#22c55e;font-weight:500;">Tree</span></div>
                 <div id="navbar-tagline" class="text-[11px] font-medium tracking-wide text-white transition-colors duration-300">The City. Reimagined.</div>
             </div>
-        </div>
+        </a>
 
         <div class="hidden md:flex justify-center flex-1 space-x-10 text-[15px] font-medium z-20" id="nav-links">
             <a href="../index.html" class="nav-link text-white hover:text-brand-emerald transition-colors duration-300">Home</a>
             <a href="../pages/technology.html" class="nav-link text-white hover:text-brand-emerald transition-colors duration-300">Technology</a>
             <a href="../pages/about.html" class="nav-link text-white hover:text-brand-emerald transition-colors duration-300">About Us</a>
-            <a href="../index.html#blog" class="nav-link text-white hover:text-brand-emerald transition-colors duration-300">Blog</a>
+            <a href="../pages/blog.html" class="nav-link text-white hover:text-brand-emerald transition-colors duration-300">Blog</a>
         </div>
 
         <div class="z-20 flex justify-end w-1/4">
             <a href="../index.html#enquiry" class="orange-cta bg-[#f97316] text-white px-6 py-2.5 rounded-full font-bold shadow-md hover:bg-[#ea580c] transition-all duration-300" style="font-family:'Inter',sans-serif;">Enquiry</a>
+        </div>
+
+        <div class="mobile-nav z-20">
+            <a href="../index.html">Home</a>
+            <a href="../pages/technology.html">Technology</a>
+            <a href="../pages/about.html">About</a>
+            <a href="../pages/blog.html">Blog</a>
+            <a href="../index.html#enquiry" class="mobile-enquiry">Enquiry</a>
         </div>
     </nav>
     <script>
@@ -341,189 +349,347 @@
         </div>
     </section>
 
-    <!-- ═══ SECTION 2: TECHNOLOGY COMPONENTS ═══ -->
-    <section class="section-light" id="components">
-        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+    <!-- ═══ SECTION 2: TECHNOLOGY COMPONENTS (BENTO GRID) ═══ -->
+    <section class="section-dark relative" id="components" style="background-color:#050505; overflow:hidden; padding: 120px 0;">
+        <!-- Ambient Glowing Accents -->
+        <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-[#10b981] opacity-[0.03] rounded-full blur-[120px] pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 w-[800px] h-[800px] bg-[#06b6d4] opacity-[0.02] rounded-full blur-[150px] pointer-events-none"></div>
 
-            <div class="text-center mb-16">
-                <span class="section-label fade-up">Deep Dive</span>
-                <h2 class="fade-up" style="font-family:'Sora',sans-serif;font-size:clamp(2rem,4vw,3rem);font-weight:800;color:#111827;line-height:1.15;">
-                    Technology Components
-                </h2>
+        <style>
+            .bento-grid {
+                display: grid;
+                grid-template-columns: repeat(1, 1fr);
+                gap: 24px;
+            }
+            @media (min-width: 768px) {
+                .bento-grid {
+                    grid-template-columns: repeat(2, 1fr);
+                }
+                .bento-large, .bento-wide {
+                    grid-column: span 2;
+                }
+            }
+            @media (min-width: 1024px) {
+                .bento-grid {
+                    grid-template-columns: repeat(3, 1fr);
+                    grid-auto-rows: minmax(320px, auto);
+                }
+                .bento-large { grid-column: span 2; grid-row: span 2; }
+                .bento-wide { grid-column: span 2; grid-row: span 1; }
+            }
+            .bento-card {
+                position: relative;
+                background: linear-gradient(180deg, rgba(20,20,20,0.8) 0%, rgba(10,10,10,0.9) 100%);
+                border: 1px solid rgba(255, 255, 255, 0.03);
+                border-radius: 32px;
+                overflow: hidden;
+                transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+            }
+            .bento-card::before {
+                content: '';
+                position: absolute;
+                inset: 0;
+                border-radius: 32px;
+                padding: 1px;
+                background: linear-gradient(135deg, rgba(16,185,129,0.2), transparent 50%, rgba(6,182,212,0.1));
+                -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+                -webkit-mask-composite: xor;
+                mask-composite: exclude;
+                pointer-events: none;
+            }
+            .bento-card:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 30px 60px rgba(0,0,0,0.6), 0 0 40px rgba(16,185,129,0.05);
+                border-color: rgba(16,185,129,0.15);
+            }
+            
+            /* CSS Animations */
+            @keyframes pulseMesh {
+                0%, 100% { opacity: 0.3; transform: scale(1); }
+                50% { opacity: 0.6; transform: scale(1.05); }
+            }
+            .bio-mesh {
+                background-image: radial-gradient(rgba(16,185,129,0.4) 1px, transparent 1px);
+                background-size: 20px 20px;
+                animation: pulseMesh 8s ease-in-out infinite;
+            }
+            @keyframes waveBar {
+                0%, 100% { height: 10%; }
+                50% { height: 100%; }
+            }
+            .wave-bar {
+                width: 6px; border-radius: 3px; background: #10b981;
+                animation: waveBar 1.2s ease-in-out infinite;
+            }
+        </style>
+
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+
+            <div class="mb-16 fade-up flex flex-col md:flex-row md:items-end justify-between gap-6">
+                <div>
+                    <span class="section-label" style="background:rgba(16,185,129,0.1);border-color:rgba(16,185,129,0.3);color:#10b981;">Core Philosophy</span>
+                    <h2 class="mt-4" style="font-family:'Sora',sans-serif;font-size:clamp(2rem,4.5vw,3.5rem);font-weight:800;color:#ffffff;line-height:1.1;">
+                        Pillars of<br>
+                        <span style="background:linear-gradient(135deg,#10b981,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Innovation</span>
+                    </h2>
+                </div>
+                <p class="max-w-md" style="color:#9ca3af;line-height:1.8;font-size:1.05rem;">
+                    We integrate biomimicry, artificial intelligence, and sustainable design to create a revolutionary environmental ecosystem.
+                </p>
             </div>
 
-            <!-- Component 1 -->
-            <div class="component-card p-8 mb-8 fade-up" id="comp-1">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+            <div class="bento-grid">
+                <!-- Large Panel: Bio-Mimetic Engineering -->
+                <div class="bento-card bento-large p-10 flex flex-col justify-end fade-up group relative">
+                    <!-- Bio Mesh Animation -->
+                    <div class="absolute inset-0 bio-mesh opacity-30 group-hover:opacity-60 transition-opacity duration-700" style="mask-image: radial-gradient(circle at top right, black, transparent 70%); -webkit-mask-image: radial-gradient(circle at top right, black, transparent 70%);"></div>
+                    <div class="absolute top-10 right-10 w-32 h-32 border border-[#10b981]/20 rounded-full flex items-center justify-center">
+                        <div class="w-24 h-24 border border-[#10b981]/40 rounded-full flex items-center justify-center animate-pulse">
+                            <div class="w-16 h-16 bg-[#10b981]/10 rounded-full backdrop-blur-md flex items-center justify-center">
+                                <svg class="w-8 h-8 text-[#10b981]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="relative z-10 w-full lg:w-2/3 mt-32">
+                        <div class="text-[#10b981] font-bold text-sm tracking-widest uppercase mb-3">01 // Primary Filtration</div>
+                        <h3 style="font-family:'Sora',sans-serif;font-weight:800;font-size:2.5rem;color:#ffffff;line-height:1.2;margin-bottom:16px;">Bio-Mimetic Engineering</h3>
+                        <p style="font-size:1.05rem;color:#9ca3af;line-height:1.8;margin-bottom:24px;">Inspired by nature, we utilize biologically-inspired nano-structures—replicating the efficiency of butterfly wings—to naturally absorb and break down airborne pollutants at the molecular level.</p>
+                        
+                        <div class="flex flex-wrap gap-4">
+                            <div class="bg-black/50 border border-white/5 rounded-xl p-4 backdrop-blur-md">
+                                <div class="text-white font-bold text-xl mb-1">500x</div>
+                                <div class="text-[#9ca3af] text-xs font-medium uppercase tracking-wider">More Effective</div>
+                            </div>
+                            <div class="bg-black/50 border border-white/5 rounded-xl p-4 backdrop-blur-md">
+                                <div class="text-[#10b981] font-bold text-xl mb-1">0.3µ</div>
+                                <div class="text-[#9ca3af] text-xs font-medium uppercase tracking-wider">Particle Capture</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vertical Panel: Adaptive AI -->
+                <div class="bento-card p-10 flex flex-col justify-between fade-up group" style="transition-delay:0.1s;">
+                    <div class="w-14 h-14 bg-gradient-to-br from-[#0a0a0a] to-[#1a1a1a] border border-white/5 rounded-2xl flex items-center justify-center mb-10 group-hover:border-[#06b6d4]/30 transition-colors">
+                        <svg class="w-6 h-6 text-[#06b6d4]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path></svg>
+                    </div>
                     <div>
-                        <div style="display:flex;align-items:center;gap:14px;margin-bottom:20px;">
-                            <div class="step-num-circle">01</div>
-                            <div>
-                                <div style="font-size:11px;color:#10b981;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:4px;">Stage 1</div>
-                                <h3 style="font-family:'Sora',sans-serif;font-weight:800;font-size:1.3rem;color:#111827;">Atmospheric Intake System</h3>
-                            </div>
+                        <div class="text-[#06b6d4] font-bold text-xs tracking-widest uppercase mb-3">02 // Neural Net</div>
+                        <h3 style="font-family:'Sora',sans-serif;font-weight:800;font-size:1.5rem;color:#ffffff;line-height:1.3;margin-bottom:12px;">Adaptive AI Intelligence</h3>
+                        <p style="font-size:0.95rem;color:#9ca3af;line-height:1.7;margin-bottom:20px;">Smart sensors dynamically adjust purification intensity in real-time, integrating global datasets to predict and intercept smog.</p>
+                        <div class="inline-flex items-center gap-2 text-xs font-bold text-white bg-white/5 px-3 py-2 rounded-lg border border-white/5">
+                            <span class="w-2 h-2 rounded-full bg-[#06b6d4] animate-pulse"></span>
+                            WHO 2026 API SYNC
                         </div>
-                        <p style="font-size:0.95rem;color:#374151;line-height:1.8;margin-bottom:16px;font-weight:600;">The Atmospheric Intake System is engineered to efficiently draw polluted air into the purification unit through smart directional airflow channels.</p>
-                        <p style="font-size:0.875rem;color:#6b7280;line-height:1.85;">This system serves as the entry point of the purification process by capturing contaminated air from the surrounding environment. Advanced airflow engineering improves intake efficiency while minimizing energy consumption and operational resistance. Designed for outdoor and high-density applications, the intake system enables consistent purification performance even in areas with fluctuating pollution levels and environmental conditions.</p>
                     </div>
-                    <img src="../assets/images/stage_1_intake.png" alt="Atmospheric Intake" style="width:100%;height:100%;min-height:280px;object-fit:cover;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,0.08);">
                 </div>
-            </div>
 
-            <!-- Component 2 -->
-            <div class="component-card p-8 mb-8 fade-up" id="comp-2">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-                    <div class="lg:order-2">
-                        <div style="display:flex;align-items:center;gap:14px;margin-bottom:20px;">
-                            <div class="step-num-circle">02</div>
-                            <div>
-                                <div style="font-size:11px;color:#10b981;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:4px;">Stage 2</div>
-                                <h3 style="font-family:'Sora',sans-serif;font-weight:800;font-size:1.3rem;color:#111827;">Mechanical Filtration Chamber</h3>
-                            </div>
-                        </div>
-                        <p style="font-size:0.95rem;color:#374151;line-height:1.8;margin-bottom:16px;font-weight:600;">Uses patented centrifugal funnel dust collection technology to separate and capture heavy dust particles and larger contaminants before advanced purification stages.</p>
-                        <p style="font-size:0.875rem;color:#6b7280;line-height:1.85;">This stage enhances filtration efficiency by using centrifugal airflow dynamics to remove coarse particulate matter from incoming air. The funnel-based collection mechanism helps reduce filter load, improves system longevity, and supports high-performance operation in dusty and polluted environments.</p>
+                <!-- Vertical Panel: Sustainable Arch -->
+                <div class="bento-card p-10 flex flex-col justify-between fade-up group" style="transition-delay:0.2s;">
+                    <div class="w-14 h-14 bg-gradient-to-br from-[#0a0a0a] to-[#1a1a1a] border border-white/5 rounded-2xl flex items-center justify-center mb-10 group-hover:border-[#10b981]/30 transition-colors">
+                        <svg class="w-6 h-6 text-[#10b981]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
                     </div>
-                    <img src="../assets/images/stage_2_mechanical.png" alt="Mechanical Filtration" class="lg:order-1" style="width:100%;height:100%;min-height:280px;object-fit:cover;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,0.08);">
-                </div>
-            </div>
-
-            <!-- Component 3 -->
-            <div class="component-card p-8 mb-8 fade-up" id="comp-3">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
                     <div>
-                        <div style="display:flex;align-items:center;gap:14px;margin-bottom:20px;">
-                            <div class="step-num-circle">03</div>
-                            <div>
-                                <div style="font-size:11px;color:#10b981;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:4px;">Stage 3</div>
-                                <h3 style="font-family:'Sora',sans-serif;font-weight:800;font-size:1.3rem;color:#111827;">Prefilter Layer</h3>
-                            </div>
-                        </div>
-                        <p style="font-size:0.95rem;color:#374151;line-height:1.8;margin-bottom:16px;font-weight:600;">Captures large airborne particles such as dust, lint, pet hair, and dander before they reach the primary filtration components.</p>
-                        <p style="font-size:0.875rem;color:#6b7280;line-height:1.85;">Acting as the first protective filtration barrier, the prefilter prevents larger contaminants from entering deeper purification stages. This improves overall system efficiency, extends the lifespan of HEPA and carbon filters, and ensures stable airflow performance.</p>
+                        <div class="text-[#10b981] font-bold text-xs tracking-widest uppercase mb-3">03 // Lifecycle</div>
+                        <h3 style="font-family:'Sora',sans-serif;font-weight:800;font-size:1.5rem;color:#ffffff;line-height:1.3;margin-bottom:12px;">Sustainable Architecture</h3>
+                        <p style="font-size:0.95rem;color:#9ca3af;line-height:1.7;">Built with advanced, recyclable materials that actively reduce the need for toxic, disposable filters commonly found in traditional purifiers.</p>
                     </div>
-                    <img src="../assets/images/stage_3_prefilter.png" alt="Prefilter Layer" style="width:100%;height:100%;min-height:280px;object-fit:cover;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,0.08);">
                 </div>
-            </div>
 
-            <!-- Component 4 -->
-            <div class="component-card p-8 mb-8 fade-up" id="comp-4">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-                    <div class="lg:order-2">
-                        <div style="display:flex;align-items:center;gap:14px;margin-bottom:20px;">
-                            <div class="step-num-circle">04</div>
-                            <div>
-                                <div style="font-size:11px;color:#10b981;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:4px;">Stage 4</div>
-                                <h3 style="font-family:'Sora',sans-serif;font-weight:800;font-size:1.3rem;color:#111827;">Carbon Filter</h3>
-                            </div>
-                        </div>
-                        <p style="font-size:0.95rem;color:#374151;line-height:1.8;margin-bottom:16px;font-weight:600;">Removes harmful gaseous pollutants including VOCs, odors, fumes, and excess moisture to improve air freshness and safety.</p>
-                        <p style="font-size:0.875rem;color:#6b7280;line-height:1.85;">Using advanced activated carbon adsorption technology, this filtration layer targets pollutants that traditional particle filters cannot capture. It effectively absorbs volatile organic compounds (VOCs), smoke, industrial fumes, unpleasant odors, and airborne chemical contaminants.</p>
+                <!-- Wide Footer Panel: Whisper-Quiet -->
+                <div class="bento-card bento-wide p-10 flex flex-col md:flex-row items-center justify-between gap-10 fade-up group" style="transition-delay:0.3s;">
+                    <div class="flex-1">
+                        <div class="text-[#10b981] font-bold text-xs tracking-widest uppercase mb-3">04 // Acoustics</div>
+                        <h3 style="font-family:'Sora',sans-serif;font-weight:800;font-size:1.8rem;color:#ffffff;line-height:1.3;margin-bottom:12px;">Whisper-Quiet Operation</h3>
+                        <p style="font-size:1rem;color:#9ca3af;line-height:1.7;max-width:500px;">Utilizing termite-inspired passive ventilation mechanics, we've bypassed energy-heavy, loud mechanical fans. The system purifies the air silently.</p>
                     </div>
-                    <img src="../assets/images/stage_4_carbon.png" alt="Carbon Filter" class="lg:order-1" style="width:100%;height:100%;min-height:280px;object-fit:cover;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,0.08);">
-                </div>
-            </div>
-
-            <!-- Component 5 -->
-            <div class="component-card p-8 mb-8 fade-up" id="comp-5">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-                    <div>
-                        <div style="display:flex;align-items:center;gap:14px;margin-bottom:20px;">
-                            <div class="step-num-circle">05</div>
-                            <div>
-                                <div style="font-size:11px;color:#10b981;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:4px;">Stage 5</div>
-                                <h3 style="font-family:'Sora',sans-serif;font-weight:800;font-size:1.3rem;color:#111827;">HEPA Filter</h3>
-                            </div>
+                    <div class="flex items-center gap-6">
+                        <div class="flex items-end gap-1 h-16 w-32 border-b border-white/10 pb-1">
+                            <!-- Animated Sound Waves -->
+                            <div class="wave-bar" style="animation-delay: 0.1s;"></div>
+                            <div class="wave-bar" style="animation-delay: 0.3s;"></div>
+                            <div class="wave-bar" style="animation-delay: 0.6s;"></div>
+                            <div class="wave-bar" style="animation-delay: 0.2s;"></div>
+                            <div class="wave-bar" style="animation-delay: 0.5s;"></div>
+                            <div class="wave-bar" style="animation-delay: 0.1s;"></div>
+                            <div class="wave-bar" style="animation-delay: 0.4s;"></div>
+                            <div class="wave-bar" style="animation-delay: 0.2s;"></div>
                         </div>
-                        <p style="font-size:0.95rem;color:#374151;line-height:1.8;margin-bottom:16px;font-weight:600;">Acts as the primary defense against airborne contaminants by capturing <strong style="color:#10b981;">99.97%</strong> of particles as small as 0.3 microns, including PM2.5 and PM10.</p>
-                        <p style="font-size:0.875rem;color:#6b7280;line-height:1.85;">Designed for high-efficiency particulate removal, the HEPA filtration system captures microscopic pollutants such as fine dust, allergens, smoke particles, pollen, and airborne contaminants. Its advanced filtration structure ensures cleaner and safer breathable air while supporting protection against harmful particulate pollution.</p>
-                    </div>
-                    <img src="../assets/images/stage_5_hepa.png" alt="HEPA Filter" style="width:100%;height:100%;min-height:280px;object-fit:cover;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,0.08);">
-                </div>
-            </div>
-
-            <!-- Component 6 — FEATURED -->
-            <div class="fade-up mb-8" id="comp-6" style="background:linear-gradient(135deg,rgba(16,185,129,0.08),rgba(6,182,212,0.05));border:1px solid rgba(16,185,129,0.3);border-radius:24px;padding:32px;position:relative;overflow:hidden;">
-                <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#10b981,#4ade80,#06b6d4);"></div>
-                <div style="position:absolute;top:16px;right:20px;display:flex;gap:4px;opacity:0.7;">
-                    <span style="width:6px;height:6px;border-radius:50%;background:#10b981;animation:pulse 2s infinite;"></span>
-                    <span style="width:4px;height:4px;border-radius:50%;background:#4ade80;animation:pulse 2s 0.4s infinite;"></span>
-                    <span style="width:6px;height:6px;border-radius:50%;background:#10b981;animation:pulse 2s 0.8s infinite;"></span>
-                </div>
-                <style>@keyframes pulse{0%,100%{transform:scale(1);opacity:0.5;}50%{transform:scale(1.4);opacity:1;}}</style>
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-                    <div class="lg:order-2">
-                        <div style="display:flex;align-items:center;gap:14px;margin-bottom:20px;">
-                            <div style="width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#10b981,#4ade80);display:flex;align-items:center;justify-content:center;font-family:'Sora',sans-serif;font-weight:800;font-size:16px;color:white;box-shadow:0 4px 20px rgba(16,185,129,0.5);">06</div>
-                            <div>
-                                <div style="font-size:11px;color:#10b981;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:4px;">Stage 6 — Signature</div>
-                                <h3 style="font-family:'Sora',sans-serif;font-weight:800;font-size:1.3rem;color:#15803d;">Bio-Purification Core ✦</h3>
-                            </div>
+                        <div>
+                            <div class="text-white font-bold text-3xl mb-1">&lt;30</div>
+                            <div class="text-[#10b981] text-xs font-bold uppercase tracking-wider">Decibels</div>
                         </div>
-                        <p style="font-size:0.95rem;color:#166534;line-height:1.8;margin-bottom:16px;font-weight:600;">Utilizes a moss-based chamber to naturally absorb airborne pollutants and improve environmental air quality.</p>
-                        <p style="font-size:0.875rem;color:#374151;line-height:1.85;">Inspired by natural purification ecosystems, the moss chamber enhances sustainable air treatment through biological pollutant absorption. The living purification layer contributes to reducing airborne contaminants while improving surrounding environmental balance. This eco-integrated solution combines sustainability with smart engineering to create greener, healthier, and visually adaptive urban purification systems.</p>
                     </div>
-                    <img src="../assets/images/stage_6_bio.png" alt="Bio-Purification Core" class="lg:order-1" style="width:100%;height:100%;min-height:280px;object-fit:cover;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,0.08);">
-                </div>
-            </div>
-
-            <!-- Component 7 -->
-            <div class="component-card p-8 mb-8 fade-up" id="comp-7">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-                    <div>
-                        <div style="display:flex;align-items:center;gap:14px;margin-bottom:20px;">
-                            <div class="step-num-circle">07</div>
-                            <div>
-                                <div style="font-size:11px;color:#10b981;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:4px;">Stage 7</div>
-                                <h3 style="font-family:'Sora',sans-serif;font-weight:800;font-size:1.3rem;color:#111827;">UV Chamber</h3>
-                            </div>
-                        </div>
-                        <p style="font-size:0.95rem;color:#374151;line-height:1.8;margin-bottom:16px;font-weight:600;">Uses ultraviolet disinfection technology to inactivate or eliminate airborne microorganisms including bacteria, mold spores, and viruses such as COVID-19.</p>
-                        <p style="font-size:0.875rem;color:#6b7280;line-height:1.85;">This advanced sterilization stage improves air hygiene by exposing airborne contaminants to controlled UV light treatment. The UV system disrupts the biological structure of harmful microorganisms, reducing their ability to survive and spread through the air. Designed for continuous purification environments, the chamber strengthens protection in public spaces, transportation hubs, and healthcare facilities.</p>
-                    </div>
-                    <img src="../assets/images/stage_7_uv.png" alt="UV Chamber" style="width:100%;height:100%;min-height:280px;object-fit:cover;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,0.08);">
-                </div>
-            </div>
-
-            <!-- Component 8 -->
-            <div class="component-card p-8 mb-8 fade-up" id="comp-8">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-                    <div class="lg:order-2">
-                        <div style="display:flex;align-items:center;gap:14px;margin-bottom:20px;">
-                            <div class="step-num-circle">08</div>
-                            <div>
-                                <div style="font-size:11px;color:#10b981;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:4px;">Stage 8</div>
-                                <h3 style="font-family:'Sora',sans-serif;font-weight:800;font-size:1.3rem;color:#111827;">Clean Air Redistribution</h3>
-                            </div>
-                        </div>
-                        <p style="font-size:0.95rem;color:#374151;line-height:1.8;margin-bottom:16px;font-weight:600;">Releases purified, healthy, and breathable air back into the environment through optimized airflow circulation.</p>
-                        <p style="font-size:0.875rem;color:#6b7280;line-height:1.85;">After completing the multi-stage purification process, the system redistributes clean air evenly to establish breathable Air Pocket zones that improve surrounding environmental conditions and user comfort.</p>
-                    </div>
-                    <img src="../assets/images/stage_8_redistribution.png" alt="Clean Air Redistribution" class="lg:order-1" style="width:100%;height:100%;min-height:280px;object-fit:cover;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,0.08);">
-                </div>
-            </div>
-
-            <!-- Component 9 -->
-            <div class="component-card p-8 fade-up" id="comp-9">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-                    <div>
-                        <div style="display:flex;align-items:center;gap:14px;margin-bottom:20px;">
-                            <div class="step-num-circle">09</div>
-                            <div>
-                                <div style="font-size:11px;color:#10b981;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:4px;">Stage 9</div>
-                                <h3 style="font-family:'Sora',sans-serif;font-weight:800;font-size:1.3rem;color:#111827;">Smart Sensor Network</h3>
-                            </div>
-                        </div>
-                        <p style="font-size:0.95rem;color:#374151;line-height:1.8;margin-bottom:16px;font-weight:600;">Provides real-time environmental monitoring, air quality analysis, and system performance intelligence.</p>
-                        <p style="font-size:0.875rem;color:#6b7280;line-height:1.85;">Integrated smart sensors continuously track pollutant levels, purification efficiency, airflow conditions, and environmental parameters. AI-assisted monitoring and analytics enable intelligent operational control, predictive maintenance, and data-driven environmental management. The connected ecosystem supports smart city integration while delivering transparent and measurable air quality insights.</p>
-                    </div>
-                    <img src="../assets/images/stage_9_sensors.png" alt="Smart Sensor Network" style="width:100%;height:100%;min-height:280px;object-fit:cover;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,0.08);">
                 </div>
             </div>
 
         </div>
     </section>
 
+    <!-- ═══ IMPACT & APPLICATIONS ═══ -->
+    <section class="section-light relative bg-slate-50" id="applications" style="padding-bottom:100px;">
+        <style>
+            .impact-card {
+                position: relative;
+                border-radius: 32px;
+                overflow: hidden;
+                cursor: pointer;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            }
+            .impact-card img {
+                transition: transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1);
+            }
+            .impact-card:hover img {
+                transform: scale(1.08);
+            }
+            .impact-overlay {
+                position: absolute;
+                inset: 0;
+                background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 50%, transparent 100%);
+                opacity: 0.8;
+                transition: opacity 0.5s ease;
+            }
+            .impact-card:hover .impact-overlay {
+                opacity: 0.95;
+            }
+            .impact-content {
+                position: absolute;
+                bottom: 0; left: 0; right: 0;
+                padding: 40px;
+                transform: translateY(30px);
+                transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+            }
+            .impact-card:hover .impact-content {
+                transform: translateY(0);
+            }
+            .impact-desc {
+                opacity: 0;
+                height: 0;
+                overflow: hidden;
+                transition: opacity 0.5s ease, height 0.5s ease;
+            }
+            .impact-card:hover .impact-desc {
+                opacity: 1;
+                height: auto;
+                margin-top: 12px;
+            }
+        </style>
+
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 pt-20">
+            <div class="text-center mb-20">
+                <span class="section-label fade-up">Real-World Deployments</span>
+                <h2 class="fade-up" style="font-family:'Sora',sans-serif;font-size:clamp(2rem,4vw,3rem);font-weight:800;color:#111827;line-height:1.15;">
+                    Impact & <span style="color:#10b981;">Applications</span>
+                </h2>
+                <p class="fade-up mt-5 max-w-2xl mx-auto" style="color:#6b7280;line-height:1.8;font-size:1.05rem;">
+                    From bustling metropolitan streets to serene educational campuses, our highly adaptable bio-systems are designed to integrate anywhere breathing happens.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- App 1 -->
+                <div class="impact-card h-[400px] fade-up">
+                    <img src="../assets/images/tech_impact_smartcity.png" alt="Smart Cities" class="w-full h-full object-cover">
+                    <div class="impact-overlay"></div>
+                    <div class="impact-content">
+                        <div class="flex items-center gap-3 mb-2">
+                            <span class="bg-emerald-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">Urban Edge</span>
+                        </div>
+                        <h3 class="text-white font-bold text-3xl font-['Sora']">Smart Cities</h3>
+                        <div class="impact-desc text-gray-300 font-medium">
+                            Creating breathable safe zones in heavily congested urban centers. Our units protect citizens from toxic vehicular emissions, industrial smog, and soaring urban heat islands.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- App 2 -->
+                <div class="impact-card h-[400px] fade-up" style="transition-delay:0.1s;">
+                    <img src="../assets/images/tech_impact_corporate.png" alt="Corporate Campuses" class="w-full h-full object-cover">
+                    <div class="impact-overlay"></div>
+                    <div class="impact-content">
+                        <div class="flex items-center gap-3 mb-2">
+                            <span class="bg-blue-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">Wellness</span>
+                        </div>
+                        <h3 class="text-white font-bold text-3xl font-['Sora']">Corporate Campuses</h3>
+                        <div class="impact-desc text-gray-300 font-medium">
+                            Enhancing employee well-being and cognitive productivity by establishing clean air bubbles across tech parks, courtyards, and outdoor collaborative spaces.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- App 3 -->
+                <div class="impact-card h-[400px] fade-up" style="transition-delay:0.2s;">
+                    <img src="../assets/images/tech_impact_hospital.png" alt="Healthcare Facilities" class="w-full h-full object-cover">
+                    <div class="impact-overlay"></div>
+                    <div class="impact-content">
+                        <div class="flex items-center gap-3 mb-2">
+                            <span class="bg-cyan-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">Protection</span>
+                        </div>
+                        <h3 class="text-white font-bold text-3xl font-['Sora']">Healthcare Facilities</h3>
+                        <div class="impact-desc text-gray-300 font-medium">
+                            Providing an extra layer of critical atmospheric protection outside hospitals, ensuring vulnerable patients, visitors, and healthcare workers breathe safely from the moment they arrive.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- App 4 -->
+                <div class="impact-card h-[400px] fade-up" style="transition-delay:0.3s;">
+                    <img src="../assets/images/tech_impact_school.png" alt="Educational Institutions" class="w-full h-full object-cover">
+                    <div class="impact-overlay"></div>
+                    <div class="impact-content">
+                        <div class="flex items-center gap-3 mb-2">
+                            <span class="bg-amber-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">Future Generation</span>
+                        </div>
+                        <h3 class="text-white font-bold text-3xl font-['Sora']">Educational Institutions</h3>
+                        <div class="impact-desc text-gray-300 font-medium">
+                            Ensuring safe, clean environments for schools and universities. We protect growing lungs during outdoor recess, physical education, and open-air studies.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ PERFORMANCE & METRICS ═══ -->
+    <section class="section-dark" id="performance">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+            <div class="text-center mb-16">
+                <span class="section-label fade-up" style="background:rgba(16,185,129,0.1);border-color:rgba(16,185,129,0.4);">Data-Driven Outcomes</span>
+                <h2 class="fade-up" style="font-family:'Sora',sans-serif;font-size:clamp(2rem,4vw,3rem);font-weight:800;color:#ffffff;line-height:1.15;">
+                    Performance & Metrics
+                </h2>
+                <p class="fade-up mt-5 max-w-2xl mx-auto" style="color:#94a3b8;line-height:1.8;font-size:1.05rem;">
+                    We focus purely on the data and the outcome. Our verifiable performance metrics provide B2B buyers and government entities with the hard numbers they need.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Metric 1 -->
+                <div class="dark-card p-10 rounded-3xl text-center fade-up group" style="border:1px solid rgba(16,185,129,0.2);">
+                    <div class="text-5xl mb-6 group-hover:scale-110 transition-transform duration-300">🫧</div>
+                    <div class="stat-number mb-2" style="font-size:3.5rem;">50m</div>
+                    <h3 class="text-white font-bold text-xl mb-4 font-['Sora']">Clean Air Bubble</h3>
+                    <p style="color:#94a3b8;line-height:1.7;">Visualizing the extensive radius of pure, breathable air generated continuously by a single UrbanTree unit.</p>
+                </div>
+
+                <!-- Metric 2 -->
+                <div class="dark-card p-10 rounded-3xl text-center fade-up group" style="transition-delay:0.1s; border:1px solid rgba(6,182,212,0.2);">
+                    <div class="text-5xl mb-6 group-hover:scale-110 transition-transform duration-300">🌬️</div>
+                    <div class="stat-number mb-2" style="font-size:3.5rem;">10K</div>
+                    <h3 class="text-white font-bold text-xl mb-4 font-['Sora']">Cubic Meters / Hour</h3>
+                    <p style="color:#94a3b8;line-height:1.7;">Highlighting the sheer volume of polluted air processed and purified at maximum operational capacity.</p>
+                </div>
+
+                <!-- Metric 3 -->
+                <div class="dark-card p-10 rounded-3xl text-center fade-up group" style="transition-delay:0.2s; border:1px solid rgba(16,185,129,0.2);">
+                    <div class="text-5xl mb-6 group-hover:scale-110 transition-transform duration-300">🛡️</div>
+                    <div class="stat-number mb-2" style="font-size:3.5rem;">99.9%</div>
+                    <h3 class="text-white font-bold text-xl mb-4 font-['Sora']">Particulate Removal</h3>
+                    <p style="color:#94a3b8;line-height:1.7;">Emphasizing the total eradication of PM2.5, PM10, and VOCs without exposing the underlying filtration mechanics.</p>
+                </div>
+            </div>
+        </div>
     <!-- ═══ CTA ═══ -->
     <section class="section-dark">
         <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:700px;height:400px;background:radial-gradient(ellipse,rgba(16,185,129,0.1) 0%,transparent 70%);pointer-events:none;"></div>
@@ -534,7 +700,7 @@
                 <span style="background:linear-gradient(135deg,#10b981,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Clean Air Technology?</span>
             </h2>
             <p class="fade-up" style="color:#94a3b8;font-size:1rem;line-height:1.8;margin-bottom:2.5rem;max-width:520px;margin-left:auto;margin-right:auto;">
-                Contact us to explore how UrbanTree's 9-stage purification system can transform air quality in your urban environment.
+                Contact us to explore how UrbanTree's innovative purification ecosystem can transform air quality in your urban environment.
             </p>
             <div class="fade-up flex flex-wrap gap-4 justify-center">
                 <a href="../index.html#enquiry" class="hover-glow-emerald px-10 py-4 bg-emerald-500 text-white rounded-full font-semibold shadow-lg shadow-emerald-500/30 transition-all duration-300 text-sm">
@@ -585,7 +751,7 @@
                         <li><a href="../pages/about.html" class="text-gray-400 text-sm hover:text-emerald-400 transition-colors">About Us</a></li>
                         <li><a href="../pages/about.html#founders" class="text-gray-400 text-sm hover:text-emerald-400 transition-colors">Founder Profiles</a></li>
                         <li><a href="../index.html#vision-mission" class="text-gray-400 text-sm hover:text-emerald-400 transition-colors">Mission & Vision</a></li>
-                        <li><a href="../index.html#blog" class="text-gray-400 text-sm hover:text-emerald-400 transition-colors">Urban Tree Blog</a></li>
+                        <li><a href="../pages/blog.html" class="text-gray-400 text-sm hover:text-emerald-400 transition-colors">Urban Tree Blog</a></li>
                         <li><a href="../legal/environmental-statement.html" class="text-gray-400 text-sm hover:text-emerald-400 transition-colors">Environmental Performance Statement</a></li>
                     </ul>
                 </div>

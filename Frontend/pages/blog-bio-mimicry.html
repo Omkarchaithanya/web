@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bio-Mimicry in Action | UrbanTree Blog</title>
+    <link rel="icon" type="image/png" href="../assets/images/logo.png">
+    <meta name="description" content="Discover the biology behind our proprietary moss-based purification layer and how it naturally captures VOCs.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Sora', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: { emerald: '#10b981', cyan: '#06b6d4' }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; background: #e8e8e8; color: #111827; overflow-x: hidden; }
+
+        .article-hero {
+            background: #0a0a0a;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            overflow: hidden;
+            padding-top: 150px;
+            padding-bottom: 80px;
+        }
+
+        .hero-grid-lines {
+            position: absolute; inset: 0;
+            background-image: linear-gradient(rgba(16, 185, 129, 0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(16, 185, 129, 0.06) 1px, transparent 1px);
+            background-size: 60px 60px; pointer-events: none;
+        }
+        
+        .article-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #4b5563;
+            margin-bottom: 1.5rem;
+        }
+        .article-content h2 {
+            font-family: 'Sora', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #111827;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .article-content h3 {
+            font-family: 'Sora', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #111827;
+            margin-top: 2rem;
+            margin-bottom: 0.75rem;
+        }
+        .article-content blockquote {
+            border-left: 4px solid #10b981;
+            padding-left: 1.5rem;
+            font-size: 1.25rem;
+            font-style: italic;
+            color: #374151;
+            margin: 2rem 0;
+            background: rgba(16, 185, 129, 0.05);
+            padding: 1.5rem;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .fade-up {
+            opacity: 0;
+            transform: translateY(36px);
+            transition: opacity 0.9s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #0a0a0a; }
+        ::-webkit-scrollbar-thumb { background: #10b981; border-radius: 3px; }
+        
+        .nav-text-dark { color: #111827; }
+        .nav-text-dark-light { color: #374151; }
+    </style>
+</head>
+
+<body class="antialiased">
+
+        <!-- ═══ NAVBAR ═══ -->
+    <nav class="fixed w-full z-50 px-6 py-5 flex items-center transition-all duration-300" id="navbar">
+        <a href="../index.html" class="z-20 flex items-center gap-4 w-1/4" style="text-decoration: none;">
+            <img src="../assets/images/logo.png" alt="UrbanTree Logo" class="h-16 w-auto transition-all duration-300" id="nav-logo">
+            <div class="leading-snug hidden lg:block" style="font-family:'Montserrat',sans-serif;">
+                <div id="navbar-brand-name" class="text-2xl font-medium tracking-wide text-white transition-colors duration-300" style="transform:translateX(-3px);">URBAN<span style="color:#22c55e;font-weight:500;">Tree</span></div>
+                <div id="navbar-tagline" class="text-[11px] font-medium tracking-wide text-white transition-colors duration-300">The City. Reimagined.</div>
+            </div>
+        </a>
+
+        <div class="hidden md:flex justify-center flex-1 space-x-10 text-[15px] font-medium z-20" id="nav-links">
+            <a href="../index.html" class="nav-link text-white hover:text-brand-emerald transition-colors duration-300">Home</a>
+            <a href="../pages/technology.html" class="nav-link text-white hover:text-brand-emerald transition-colors duration-300">Technology</a>
+            <a href="../pages/about.html" class="nav-link text-white hover:text-brand-emerald transition-colors duration-300">About Us</a>
+            <a href="../pages/blog.html" class="nav-link text-white hover:text-brand-emerald transition-colors duration-300">Blog</a>
+        </div>
+
+        <div class="z-20 flex justify-end w-1/4">
+            <a href="../index.html#enquiry" class="orange-cta bg-[#f97316] text-white px-6 py-2.5 rounded-full font-bold shadow-md hover:bg-[#ea580c] transition-all duration-300" style="font-family:'Inter',sans-serif;">Enquiry</a>
+        </div>
+
+        <div class="mobile-nav z-20">
+            <a href="../index.html">Home</a>
+            <a href="../pages/technology.html">Technology</a>
+            <a href="../pages/about.html">About</a>
+            <a href="../pages/blog.html">Blog</a>
+            <a href="../index.html#enquiry" class="mobile-enquiry">Enquiry</a>
+        </div>
+    </nav>
+
+    <!-- ═══ ARTICLE HERO ═══ -->
+    <section class="article-hero">
+        <div class="hero-grid-lines"></div>
+        <div class="relative z-10 max-w-4xl mx-auto px-6 lg:px-12 text-center">
+            <div class="mb-6 fade-up">
+                <span class="bg-emerald-500/20 text-emerald-400 text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wide border border-emerald-500/30">Environment</span>
+            </div>
+            <h1 class="fade-up" style="font-family:'Sora',sans-serif;font-size:clamp(2.5rem,4vw,3.5rem);font-weight:800;color:#ffffff;line-height:1.2;margin-bottom:1.5rem;">
+                Bio-Mimicry in Action: How Nature Inspired Our Filtration
+            </h1>
+            <div class="flex items-center justify-center gap-4 fade-up mt-8">
+                <div class="w-12 h-12 rounded-full bg-emerald-600 flex items-center justify-center text-white font-bold text-lg">ST</div>
+                <div class="text-left">
+                    <div class="font-bold text-white">Sanjeeth M S</div>
+                    <div class="text-gray-400 text-sm">Sep 28, 2026 · 4 min read</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ ARTICLE CONTENT ═══ -->
+    <section class="py-16 bg-[#e8e8e8] fade-up">
+        <div class="max-w-3xl mx-auto px-6">
+            
+            <img src="../assets/images/stage_6_bio.png" onerror="this.src='../assets/images/hero-bg.png'" alt="Bio-Mimicry" class="w-full rounded-2xl shadow-xl mb-12 h-[400px] object-cover">
+
+            <div class="article-content">
+                <p>
+                    In the quest for clean air, technology often looks outward—towards increasingly complex mechanical filtration grids and high-energy ionizers. However, at UrbanTree, we realized the ultimate air purification system had already been perfected over millions of years: <strong>Nature itself.</strong>
+                </p>
+
+                <p>
+                    By 2026, the concept of "Liquid Trees" and algal-based carbon sinks have made headlines globally. But how do we integrate biological efficiency into a mechanical, high-throughput urban air purifier? The answer lies in <strong>Bio-Mimicry</strong>.
+                </p>
+
+                <h2>Beyond the Nanofiber</h2>
+
+                <p>
+                    Recent advancements in materials science have brought nanofiber filter media into industrial-scale production. These materials offer incredible mechanical filtration efficiency—up to 99.648% for particles as small as PM0.3—while maintaining high airflow porosity.
+                </p>
+
+                <p>
+                    But mechanical filters have a weakness: they only trap particles. Volatile Organic Compounds (VOCs), dangerous airborne chemicals, and CO2 simply pass through standard mesh. To combat this, UrbanTree integrates a <strong>proprietary biological layer</strong> inspired by the immense absorption capabilities of specific moss and microalgae strains.
+                </p>
+
+                <blockquote>
+                    "We aren't just trapping pollution; we are actively digesting it. Our bio-mechanical ecosystem utilizes specialized cultures to organically break down VOCs and absorb carbon dioxide, releasing clean, oxygen-rich air back into the city."
+                </blockquote>
+
+                <h2>How the Biological Layer Works</h2>
+
+                <p>
+                    Within the UrbanTree unit, the air undergoes a multi-stage process. After passing through the advanced nanofiber mechanical stages which strip away heavy particulate matter (PM10 and PM2.5), the air is channeled through the biological filtration zone.
+                </p>
+                
+                <p>
+                    Here, a controlled, hydroponic-like environment sustains a hardy culture of bio-organisms. These organisms naturally process the remaining invisible pollutants:
+                </p>
+                
+                <ul style="list-style-type: disc; padding-left: 2rem; margin-bottom: 1.5rem; color: #4b5563; font-size: 1.1rem; line-height: 1.8;">
+                    <li><strong>VOC Absorption:</strong> Natural enzymes break down complex chemical pollutants into harmless byproducts.</li>
+                    <li><strong>Carbon Sequestration:</strong> The system performs localized photosynthesis, absorbing CO2.</li>
+                    <li><strong>Natural Humidification:</strong> The process naturally regulates the humidity of the expelled air, creating a fresher, more comfortable microclimate within the 50-meter safety zone.</li>
+                </ul>
+
+                <h2>The Future is Hybrid</h2>
+
+                <p>
+                    The smartest cities of tomorrow won't just rely on cold steel and silicon. They will rely on hybrid technologies that marry the brute force of mechanical engineering with the elegant, sustainable efficiency of biological processes.
+                </p>
+
+                <p>
+                    The UrbanTree is not just an air purifier; it is an active, breathing ecosystem designed to heal the urban atmosphere from within.
+                </p>
+            </div>
+
+            <!-- Share / Tags -->
+            <div class="mt-16 pt-8 border-t border-gray-300 flex flex-wrap items-center justify-between gap-4">
+                <div class="flex gap-2">
+                    <span class="px-3 py-1 bg-gray-200 text-gray-700 text-sm rounded-full font-medium">Environment</span>
+                    <span class="px-3 py-1 bg-gray-200 text-gray-700 text-sm rounded-full font-medium">Bio-Mimicry</span>
+                    <span class="px-3 py-1 bg-gray-200 text-gray-700 text-sm rounded-full font-medium">Sustainability</span>
+                </div>
+                <a href="../pages/blog.html" class="text-emerald-600 font-semibold hover:underline">← Back to all articles</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ FOOTER ═══ -->
+    <footer class="bg-[#0a0a0a] border-t border-white/10 pt-12 pb-6">
+        <div class="max-w-[1440px] mx-auto px-6 lg:px-12 w-full">
+            <div class="flex flex-col md:flex-row justify-between items-center text-gray-500 text-xs gap-4">
+                <p>&copy; 2026 SunEx Technologies Private Limited. All rights reserved.</p>
+                <div class="flex gap-6">
+                    <a href="../pages/blog.html" class="hover:text-white transition-colors">Back to Blog</a>
+                    <a href="../index.html" class="hover:text-white transition-colors">Home</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+        // Basic Navbar Scroll Logic
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+                navbar.style.borderBottom = '1px solid rgba(0,0,0,0.05)';
+                document.getElementById('navbar-brand-name').classList.replace('text-white', 'nav-text-dark');
+                document.getElementById('navbar-tagline').classList.replace('text-white', 'nav-text-dark-light');
+                document.querySelectorAll('.nav-link').forEach(l => {
+                    if(!l.classList.contains('text-brand-emerald')) {
+                        l.classList.replace('text-white', 'nav-text-dark')
+                    }
+                });
+            } else {
+                navbar.style.background = 'transparent';
+                navbar.style.borderBottom = 'none';
+                document.getElementById('navbar-brand-name').classList.replace('nav-text-dark', 'text-white');
+                document.getElementById('navbar-tagline').classList.replace('nav-text-dark-light', 'text-white');
+                document.querySelectorAll('.nav-link').forEach(l => {
+                    if(!l.classList.contains('text-brand-emerald')) {
+                        l.classList.replace('nav-text-dark', 'text-white')
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

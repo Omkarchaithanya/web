@@ -332,66 +332,7 @@ document.addEventListener('DOMContentLoaded', () => {
         renderDashboard('roi-grid-2', 'zone-grid-2', 2);
     })();
 
-    // --- 5. NAVBAR LOGO COLOR ---
-    const urbanText = document.getElementById('navbar-brand-name');
-    const taglineText = document.getElementById('navbar-tagline');
-    const poweredText = document.getElementById('navbar-powered');
-    const navLinks = document.querySelectorAll('#navbar a:not(.hover-glow-emerald)');
-    const heroSection = document.getElementById('hero-section');
-    const productIntro = document.getElementById('product-intro');
-    const airCrisis = document.getElementById('air-crisis');
-    const lightSections = [heroSection, productIntro];
-
-    const logoObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                urbanText.classList.remove('text-gray-800');
-                urbanText.classList.add('text-white');
-                taglineText.classList.remove('text-gray-600', 'text-black');
-                taglineText.classList.add('text-white');
-                poweredText?.classList.remove('text-gray-600', 'text-black');
-                poweredText?.classList.add('text-white');
-                navLinks.forEach(link => {
-                    link.classList.remove('text-black');
-                    link.classList.add('text-white');
-                });
-            }
-        });
-    }, { threshold: 0.5 });
-
-    const darkLogoObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                urbanText.classList.remove('text-white');
-                urbanText.classList.add('text-gray-800');
-                taglineText.classList.remove('text-white');
-                taglineText.classList.add('text-black');
-                poweredText?.classList.remove('text-white');
-                poweredText?.classList.add('text-black');
-                navLinks.forEach(link => {
-                    link.classList.remove('text-white');
-                    link.classList.add('text-black');
-                });
-            }
-        });
-    }, { threshold: 0.5 });
-
-    const crisisLogoObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                urbanText.classList.remove('text-gray-800');
-                urbanText.classList.add('text-white');
-                taglineText.classList.remove('text-gray-600', 'text-black');
-                taglineText.classList.add('text-white');
-                poweredText?.classList.remove('text-gray-600', 'text-black');
-                poweredText?.classList.add('text-white');
-            }
-        });
-    }, { threshold: 0.5 });
-
-    lightSections.forEach(s => logoObserver.observe(s));
-    if (airCrisis) crisisLogoObserver.observe(airCrisis);
-    document.querySelectorAll('.snap-section:not(#hero-section):not(#product-intro):not(#air-crisis)').forEach(s => darkLogoObserver.observe(s));
+    // --- 5. NAVBAR LOGO COLOR (Removed to prevent conflict with index.html setTheme logic) ---
 
     // --- 6. PRODUCT INTRO CINEMATIC REVEAL ---
     const productImgWrap = document.getElementById('product-img-wrap');

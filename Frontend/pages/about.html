@@ -320,23 +320,31 @@
 
     <!-- ═══ NAVBAR ═══ -->
     <nav class="fixed w-full z-50 px-6 py-5 flex items-center transition-all duration-300" id="navbar">
-        <div class="z-20 flex items-center gap-4 w-1/4">
+        <a href="../index.html" class="z-20 flex items-center gap-4 w-1/4" style="text-decoration: none;">
             <img src="../assets/images/logo.png" alt="UrbanTree Logo" class="h-16 w-auto transition-all duration-300" id="nav-logo">
             <div class="leading-snug hidden lg:block" style="font-family:'Montserrat',sans-serif;">
                 <div id="navbar-brand-name" class="text-2xl font-medium tracking-wide text-white transition-colors duration-300" style="transform:translateX(-3px);">URBAN<span style="color:#22c55e;font-weight:500;">Tree</span></div>
                 <div id="navbar-tagline" class="text-[11px] font-medium tracking-wide text-white transition-colors duration-300">The City. Reimagined.</div>
             </div>
-        </div>
+        </a>
 
         <div class="hidden md:flex justify-center flex-1 space-x-10 text-[15px] font-medium z-20" id="nav-links">
             <a href="../index.html" class="nav-link text-white hover:text-brand-emerald transition-colors duration-300">Home</a>
-            <a href="../index.html#technology" class="nav-link text-white hover:text-brand-emerald transition-colors duration-300">Technology</a>
+            <a href="../pages/technology.html" class="nav-link text-white hover:text-brand-emerald transition-colors duration-300">Technology</a>
             <a href="../pages/about.html" class="nav-link text-white hover:text-brand-emerald transition-colors duration-300">About Us</a>
-            <a href="../index.html#blog" class="nav-link text-white hover:text-brand-emerald transition-colors duration-300">Blog</a>
+            <a href="../pages/blog.html" class="nav-link text-white hover:text-brand-emerald transition-colors duration-300">Blog</a>
         </div>
 
         <div class="z-20 flex justify-end w-1/4">
             <a href="../index.html#enquiry" class="orange-cta bg-[#f97316] text-white px-6 py-2.5 rounded-full font-bold shadow-md hover:bg-[#ea580c] transition-all duration-300" style="font-family:'Inter',sans-serif;">Enquiry</a>
+        </div>
+
+        <div class="mobile-nav z-20">
+            <a href="../index.html">Home</a>
+            <a href="../pages/technology.html">Technology</a>
+            <a href="../pages/about.html">About</a>
+            <a href="../pages/blog.html">Blog</a>
+            <a href="../index.html#enquiry" class="mobile-enquiry">Enquiry</a>
         </div>
     </nav>
     <script>
@@ -668,49 +676,73 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12">
                 <!-- Founder 1 -->
-                <div class="fade-up flex flex-col items-center text-center group cursor-pointer" style="transition-delay:0s;">
+                <div class="fade-up flex flex-col items-start text-left group cursor-pointer"
+                    style="transition-delay:0s;">
                     <div class="w-full aspect-square mb-5 overflow-hidden rounded-2xl relative bg-gray-200">
-                        <div class="w-full h-full flex items-center justify-center grayscale group-hover:grayscale-0 transition-all duration-500 transform group-hover:scale-105" style="background:linear-gradient(135deg,rgba(6,182,212,0.1),rgba(16,185,129,0.1));">
-                             <span style="font-family:'Sora',sans-serif;font-size:4rem;font-weight:800;color:#94a3b8;">S</span>
-                        </div>
+                        <img src="../assets/images/sanjeeth.jpg" alt="Sanjeeth M S"
+                            class="w-full h-full object-cover object-[center_top] grayscale group-hover:grayscale-0 transition-all duration-500 transform group-hover:scale-105 brightness-110 contrast-125">
                     </div>
-                    <h3 style="font-family:'Sora',sans-serif;font-weight:800;font-size:1.15rem;color:#111827;margin-bottom:4px;">Sanjeeth M S</h3>
-                    <p style="font-size:13px;font-weight:600;color:#6b7280;font-style:italic;margin-bottom:14px;">Co-Founder</p>
-                    <p style="font-size:0.9rem;color:#4b5563;line-height:1.6;">Visionary leader responsible for defining the company's direction, identifying new opportunities, and transforming ideas into successful business initiatives. Leads strategic planning and organizational growth.</p>
+                    <h3
+                        style="font-family:'Sora',sans-serif;font-weight:800;font-size:1.15rem;color:#111827;margin-bottom:4px;">
+                        Sanjeeth Suresh</h3>
+                    <p style="font-size:13px;font-weight:600;color:#6b7280;font-style:italic;margin-bottom:14px;">
+                        Co-Founder</p>
+                    <p class="text-left" style="font-size:0.9rem;color:#4b5563;line-height:1.6;">Visionary leader
+                        responsible for defining the company's direction, identifying new opportunities, and
+                        transforming ideas into successful business initiatives. Leads strategic planning and
+                        organizational growth.</p>
                 </div>
 
                 <!-- Founder 2 -->
-                <div class="fade-up flex flex-col items-center text-center group cursor-pointer" style="transition-delay:0.1s;">
+                <div class="fade-up flex flex-col items-start text-left group cursor-pointer"
+                    style="transition-delay:0.1s;">
                     <div class="w-full aspect-square mb-5 overflow-hidden rounded-2xl relative bg-gray-200">
-                        <img src="../assets/images/umesh.jpeg" alt="Umesh H" class="w-full h-full object-cover object-[center_top] grayscale group-hover:grayscale-0 transition-all duration-500 transform group-hover:scale-105 brightness-110 contrast-125">
+                        <img src="../assets/images/umesh.jpeg" alt="Umesh H"
+                            class="w-full h-full object-cover object-[center_top] grayscale group-hover:grayscale-0 transition-all duration-500 transform group-hover:scale-105 brightness-110 contrast-125">
                     </div>
-                    <h3 style="font-family:'Sora',sans-serif;font-weight:800;font-size:1.15rem;color:#111827;margin-bottom:4px;">Umesh H</h3>
-                    <p style="font-size:13px;font-weight:600;color:#6b7280;font-style:italic;margin-bottom:14px;">Co-Founder | Innovator | Product Visionary</p>
-                    <p style="font-size:0.9rem;color:#4b5563;line-height:1.6;">Focused on envisioning what comes next and bringing it to life through strategic thinking, design excellence, and technological innovation. Committed to creating solutions that leave a lasting impact on people, communities, and the future.</p>
+                    <h3
+                        style="font-family:'Sora',sans-serif;font-weight:800;font-size:1.15rem;color:#111827;margin-bottom:4px;">
+                        Umesh H</h3>
+                    <p style="font-size:13px;font-weight:600;color:#6b7280;font-style:italic;margin-bottom:14px;">
+                        Co-Founder | Innovator | Product Visionary</p>
+                    <p class="text-left" style="font-size:0.9rem;color:#4b5563;line-height:1.6;">Focused on envisioning
+                        what comes next and bringing it to life through strategic thinking, design excellence, and
+                        technological innovation. Committed to creating solutions that leave a lasting impact on people,
+                        communities, and the future.</p>
                 </div>
 
                 <!-- Founder 3 -->
-                <div class="fade-up flex flex-col items-center text-center group cursor-pointer" style="transition-delay:0.2s;">
+                <div class="fade-up flex flex-col items-start text-left group cursor-pointer"
+                    style="transition-delay:0.2s;">
                     <div class="w-full aspect-square mb-5 overflow-hidden rounded-2xl relative bg-gray-200">
-                        <div class="w-full h-full flex items-center justify-center grayscale group-hover:grayscale-0 transition-all duration-500 transform group-hover:scale-105" style="background:linear-gradient(135deg,rgba(16,185,129,0.1),rgba(74,158,63,0.1));">
-                             <span style="font-family:'Sora',sans-serif;font-size:4rem;font-weight:800;color:#94a3b8;">R</span>
-                        </div>
+                        <img src="../assets/images/raghavendra.jpg" alt="Dr. Raghavendra Deshpande"
+                            class="w-full h-full object-cover object-[center_top] grayscale group-hover:grayscale-0 transition-all duration-500 transform group-hover:scale-105 brightness-110 contrast-125">
                     </div>
-                    <h3 style="font-family:'Sora',sans-serif;font-weight:800;font-size:1.15rem;color:#111827;margin-bottom:4px;">Dr. Raghavendra Deshpande</h3>
-                    <p style="font-size:13px;font-weight:600;color:#6b7280;font-style:italic;margin-bottom:14px;">Co-Founder</p>
-                    <p style="font-size:0.9rem;color:#4b5563;line-height:1.6;">Scientific lead and domain expert guiding the engineering design, research frameworks, and bio-mechanical innovation at the core of UrbanTree.</p>
+                    <h3
+                        style="font-family:'Sora',sans-serif;font-weight:800;font-size:1.15rem;color:#111827;margin-bottom:4px;">
+                        Dr. Raghavendra Deshpande</h3>
+                    <p style="font-size:13px;font-weight:600;color:#6b7280;font-style:italic;margin-bottom:14px;">
+                        Co-Founder</p>
+                    <p class="text-left" style="font-size:0.9rem;color:#4b5563;line-height:1.6;">Scientific lead and
+                        domain expert guiding the engineering design, research frameworks, and bio-mechanical innovation
+                        at the core of UrbanTree.</p>
                 </div>
 
                 <!-- Advisor 1 -->
-                <div class="fade-up flex flex-col items-center text-center group cursor-pointer" style="transition-delay:0.3s;">
+                <div class="fade-up flex flex-col items-start text-left group cursor-pointer"
+                    style="transition-delay:0.3s;">
                     <div class="w-full aspect-square mb-5 overflow-hidden rounded-2xl relative bg-gray-200">
-                        <div class="w-full h-full flex items-center justify-center grayscale group-hover:grayscale-0 transition-all duration-500 transform group-hover:scale-105" style="background:linear-gradient(135deg,rgba(6,182,212,0.1),rgba(16,185,129,0.1));">
-                             <span style="font-family:'Sora',sans-serif;font-size:4rem;font-weight:800;color:#94a3b8;">K</span>
-                        </div>
+                        <img src="../assets/images/keshava.jpg" alt="Keshava Prasad B S"
+                            class="w-full h-full object-cover object-[center_top] grayscale group-hover:grayscale-0 transition-all duration-500 transform group-hover:scale-105 brightness-110 contrast-125">
                     </div>
-                    <h3 style="font-family:'Sora',sans-serif;font-weight:800;font-size:1.15rem;color:#111827;margin-bottom:4px;">Keshava Prasad B S</h3>
-                    <p style="font-size:13px;font-weight:600;color:#6b7280;font-style:italic;margin-bottom:14px;">Strategic Advisor</p>
-                    <p style="font-size:0.9rem;color:#4b5563;line-height:1.6;">Advising the leadership team on strategic direction, business scaling, and exploring new avenues for corporate growth and partnerships.</p>
+                    <h3
+                        style="font-family:'Sora',sans-serif;font-weight:800;font-size:1.15rem;color:#111827;margin-bottom:4px;">
+                        Keshava Prasad B S</h3>
+                    <p style="font-size:13px;font-weight:600;color:#6b7280;font-style:italic;margin-bottom:14px;">
+                        Strategic Advisor</p>
+                    <p class="text-left" style="font-size:0.9rem;color:#4b5563;line-height:1.6;">Advising the leadership
+                        team on strategic direction, business scaling, and exploring new avenues for corporate growth
+                        and partnerships.</p>
                 </div>
             </div>
         </div>
@@ -835,7 +867,7 @@
                     class="hover-glow-emerald px-10 py-4 bg-emerald-500 text-white rounded-full font-semibold shadow-lg shadow-emerald-500/30 transition-all duration-300 text-sm">
                     Make an Enquiry
                 </a>
-                <a href="../index.html#technology"
+                <a href="../pages/technology.html"
                     class="px-10 py-4 bg-gray-900 text-white rounded-full font-semibold hover:bg-gray-800 transition-all duration-300 text-sm">
                     Explore Technology
                 </a>
@@ -909,7 +941,7 @@
                                 Profiles</a></li>
                         <li><a href="#" class="text-gray-400 text-sm hover:text-brand-emerald transition-colors">Mission
                                 & Vision</a></li>
-                        <li><a href="../index.html#blog"
+                        <li><a href="../pages/blog.html"
                                 class="nav-link text-white text-gray-400 text-sm hover:text-brand-emerald transition-colors">Urban
                                 Tree Blog</a></li>
                         <li><a href="../legal/environmental-statement.html"
@@ -933,14 +965,17 @@
                 <div>
                     <h4 class="text-white font-bold uppercase tracking-widest text-xs mb-5">Legal</h4>
                     <ul class="space-y-3">
-                        <li><a href="../legal/privacy-policy.html" class="text-gray-400 text-sm hover:text-brand-emerald transition-colors">Privacy
+                        <li><a href="../legal/privacy-policy.html"
+                                class="text-gray-400 text-sm hover:text-brand-emerald transition-colors">Privacy
                                 Policy</a></li>
-                        <li><a href="../legal/terms.html" class="text-gray-400 text-sm hover:text-brand-emerald transition-colors">Terms &
+                        <li><a href="../legal/terms.html"
+                                class="text-gray-400 text-sm hover:text-brand-emerald transition-colors">Terms &
                                 Conditions</a></li>
                         <li><a href="../legal/disclaimer.html"
                                 class="text-gray-400 text-sm hover:text-brand-emerald transition-colors">Disclaimer</a>
                         </li>
-                        <li><a href="../legal/cookie-policy.html" class="text-gray-400 text-sm hover:text-brand-emerald transition-colors">Cookie
+                        <li><a href="../legal/cookie-policy.html"
+                                class="text-gray-400 text-sm hover:text-brand-emerald transition-colors">Cookie
                                 Policy</a></li>
                         <li><a href="../legal/intellectual-property.html"
                                 class="text-gray-400 text-sm hover:text-brand-emerald transition-colors">Intellectual
@@ -1038,4 +1073,5 @@
 
 
 </body>
+
 </html>

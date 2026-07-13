@@ -53,53 +53,133 @@
     <div id="snap-container">
         <!-- ═══ FLOATING NAVBAR ═══ -->
         <nav class="fixed w-full z-50 px-6 py-5 flex items-center transition-all duration-300" id="navbar">
-            <div class="z-20 flex items-center gap-4 w-1/4">
+            <a href="index.html" class="z-20 flex items-center gap-4 w-1/4" style="text-decoration: none;">
                 <img src="assets/images/logo.png" alt="UrbanTree Logo" class="h-16 w-auto transition-all duration-300" id="nav-logo">
                 <div class="leading-snug hidden lg:block" style="font-family:'Montserrat',sans-serif;">
                     <div id="navbar-brand-name" class="text-2xl font-medium tracking-wide text-white transition-colors duration-300" style="transform:translateX(-3px);">URBAN<span style="color:#22c55e;font-weight:500;">Tree</span></div>
                     <div id="navbar-tagline" class="text-[11px] font-medium tracking-wide text-white transition-colors duration-300">The City. Reimagined.</div>
                 </div>
-            </div>
+            </a>
 
             <div class="hidden md:flex justify-center flex-1 space-x-10 text-[15px] font-medium z-20" id="nav-links">
                 <a href="#hero-section" class="nav-link text-white hover:text-brand-emerald transition-colors duration-300">Home</a>
                 <a href="pages/technology.html" class="nav-link text-white hover:text-brand-emerald transition-colors duration-300">Technology</a>
                 <a href="pages/about.html" class="nav-link text-white hover:text-brand-emerald transition-colors duration-300">About Us</a>
-                <a href="#blog" class="nav-link text-white hover:text-brand-emerald transition-colors duration-300">Blog</a>
+                <a href="pages/blog.html" class="nav-link text-white hover:text-brand-emerald transition-colors duration-300">Blog</a>
             </div>
 
             <div class="z-20 flex justify-end w-1/4">
                 <a href="#enquiry" class="orange-cta bg-[#f97316] text-white px-6 py-2.5 rounded-full font-bold shadow-md hover:bg-[#ea580c] transition-all duration-300" style="font-family:'Inter',sans-serif;">Enquiry</a>
             </div>
 
-            <div class="mobile-nav md:hidden z-20">
+            <div class="mobile-nav z-20">
                 <a href="#hero-section">Home</a>
                 <a href="pages/technology.html">Technology</a>
                 <a href="pages/about.html">About</a>
-                <a href="#blog">Blog</a>
+                <a href="pages/blog.html">Blog</a>
                 <a href="#enquiry" class="mobile-enquiry">Enquiry</a>
             </div>
         </nav>
         <script>
             document.addEventListener('DOMContentLoaded', () => {
                 const navbar = document.getElementById('navbar');
-                window.addEventListener('scroll', () => {
-                    if (window.scrollY > 50) {
-                        navbar.classList.add('backdrop-blur-md', 'bg-black/85', 'shadow-lg');
-                        navbar.classList.remove('bg-transparent', 'py-5');
-                        navbar.classList.add('py-3');
+                const snapContainer = document.getElementById('snap-container');
+                const navBrand = document.getElementById('navbar-brand-name');
+                const navTagline = document.getElementById('navbar-tagline');
+                const navLinks = document.querySelectorAll('.nav-link');
+                
+                let currentTheme = 'dark';
+                
+                function setTheme(theme) {
+                    if (theme === currentTheme) return;
+                    currentTheme = theme;
+                    
+                    if (theme === 'light') {
+                        if (navBrand) { navBrand.classList.remove('text-white'); navBrand.classList.add('text-gray-900'); }
+                        if (navTagline) { navTagline.classList.remove('text-white'); navTagline.classList.add('text-gray-800'); }
+                        navLinks.forEach(link => { link.classList.remove('text-white'); link.classList.add('text-gray-900'); });
+                        
+                        const scrollPos = window.scrollY || (snapContainer ? snapContainer.scrollTop : 0);
+                        if (scrollPos > 50) {
+                            navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+                            navbar.style.borderBottom = '1px solid rgba(0,0,0,0.05)';
+                        }
                     } else {
-                        navbar.classList.remove('backdrop-blur-md', 'bg-black/85', 'shadow-lg', 'py-3');
-                        navbar.classList.add('bg-transparent', 'py-5');
+                        if (navBrand) { navBrand.classList.remove('text-gray-900'); navBrand.classList.add('text-white'); }
+                        if (navTagline) { navTagline.classList.remove('text-gray-800'); navTagline.classList.add('text-white'); }
+                        navLinks.forEach(link => { link.classList.remove('text-gray-900'); link.classList.add('text-white'); });
+                        
+                        const scrollPos = window.scrollY || (snapContainer ? snapContainer.scrollTop : 0);
+                        if (scrollPos > 50) {
+                            navbar.style.background = 'rgba(10, 10, 10, 0.92)';
+                            navbar.style.borderBottom = '1px solid rgba(255,255,255,0.08)';
+                        }
                     }
+                }
+
+                const handleScroll = () => {
+                    const scrollPos = window.scrollY || (snapContainer ? snapContainer.scrollTop : 0);
+                    if (scrollPos > 50) {
+                        navbar.classList.add('backdrop-blur-md', 'shadow-lg');
+                        navbar.classList.remove('py-5');
+                        navbar.classList.add('py-3');
+                        if (currentTheme === 'light') {
+                            navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+                            navbar.style.borderBottom = '1px solid rgba(0,0,0,0.05)';
+                        } else {
+                            navbar.style.background = 'rgba(10, 10, 10, 0.92)';
+                            navbar.style.borderBottom = '1px solid rgba(255,255,255,0.08)';
+                        }
+                    } else {
+                        navbar.classList.remove('backdrop-blur-md', 'shadow-lg', 'py-3');
+                        navbar.classList.add('py-5');
+                        navbar.style.background = 'transparent';
+                        navbar.style.borderBottom = 'none';
+                    }
+                };
+
+                window.addEventListener('scroll', handleScroll);
+                if (snapContainer) {
+                    snapContainer.addEventListener('scroll', handleScroll);
+                }
+                handleScroll();
+
+                const lightSections = document.querySelectorAll('.snap-section[style*="background: #f0f4f1"], .snap-section[class*="bg-[#e8e8e8]"], .snap-section-scroll[class*="bg-[#e0e0e0]"]');
+                const darkSections = document.querySelectorAll('.snap-section[class*="bg-black"], .snap-section[style*="background: #0a0a0a"], .snap-section[class*="bg-[#05140e]"]');
+
+                const sectionObserver = new IntersectionObserver((entries) => {
+                    let topIntersecting = null;
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting && entry.intersectionRect.top < window.innerHeight / 2) {
+                            topIntersecting = entry.target;
+                        }
+                    });
+
+                    if (topIntersecting) {
+                        const isLight = 
+                            topIntersecting.classList.contains('bg-[#e8e8e8]') || 
+                            topIntersecting.classList.contains('bg-[#e0e0e0]') ||
+                            (topIntersecting.getAttribute('style') && topIntersecting.getAttribute('style').includes('#f0f4f1'));
+                        
+                        if (isLight) {
+                            setTheme('light');
+                        } else {
+                            setTheme('dark');
+                        }
+                    }
+                }, { 
+                    root: snapContainer || null, 
+                    rootMargin: "-10% 0px -70% 0px"
                 });
-                window.dispatchEvent(new Event('scroll'));
+
+                lightSections.forEach(s => sectionObserver.observe(s));
+                darkSections.forEach(s => sectionObserver.observe(s));
             });
         </script>
 
         <!-- ═══ SECTION 1: HERO ═══ -->
         <section class="snap-section bg-black" style="height:100vh; min-height:100vh;" id="hero-section">
-            <video id="hero-video" playsinline>
+            <video id="hero-video" playsinline preload="none" poster="assets/images/hero-bg.png">
                 <source src="assets/videos/moss.mp4" type="video/mp4">
             </video>
             <!-- Intro Prompt -->
@@ -1443,7 +1523,7 @@
                 </div>
 
 
-                <div class="flex flex-col lg:flex-row w-full h-[800px] lg:h-[600px] gap-2 lg:gap-4 mb-6" id="app-accordion-container">
+                <div class="flex flex-col lg:flex-row w-full h-[950px] lg:h-[600px] gap-2 lg:gap-4 mb-6" id="app-accordion-container">
                     <!-- Accordion items rendered here by JS -->
                 </div>
                 
@@ -1529,7 +1609,7 @@
                                         onclick="document.getElementById('snap-container').scrollTo({top:document.getElementById('vision-mission').offsetTop,behavior:'smooth'});return false;"
                                         class="text-gray-400 text-sm hover:text-brand-emerald transition-colors">Mission
                                         & Vision</a></li>
-                                <li><a href="#blog"
+                                <li><a href="pages/blog.html"
                                         class="text-gray-400 text-sm hover:text-brand-emerald transition-colors">Urban
                                         Tree Blog</a></li>
                                 <li><a href="legal/environmental-statement.html"
@@ -1699,6 +1779,29 @@
             if (!m) return;
             m.style.display = 'none';
             document.body.style.overflow = '';
+        }
+
+        // Hero Video Interaction
+        function startHeroVideo() {
+            const video = document.getElementById('hero-video');
+            const prompt = document.getElementById('hero-click-prompt');
+            const text = document.getElementById('hero-text');
+            
+            if (video) {
+                video.play().catch(e => console.log('Video autoplay blocked or failed', e));
+                video.loop = true;
+                video.muted = true;
+            }
+            
+            if (prompt) {
+                prompt.style.opacity = '0';
+                prompt.style.pointerEvents = 'none';
+                setTimeout(() => prompt.style.display = 'none', 600);
+            }
+            
+            if (text) {
+                text.classList.remove('opacity-0', 'translate-y-8');
+            }
         }
         function submitEnquiry(event) {
             event.preventDefault();
