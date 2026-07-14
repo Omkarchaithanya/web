@@ -319,50 +319,167 @@
 <body class="antialiased">
 
     <!-- ═══ NAVBAR ═══ -->
-    <nav class="fixed w-full z-50 px-6 py-5 flex items-center transition-all duration-300" id="navbar">
-        <a href="../index.html" class="z-20 flex items-center gap-4 w-1/4" style="text-decoration: none;">
-            <img src="../assets/images/logo.png" alt="UrbanTree Logo" class="h-16 w-auto transition-all duration-300" id="nav-logo">
-            <div class="leading-snug hidden lg:block" style="font-family:'Montserrat',sans-serif;">
-                <div id="navbar-brand-name" class="text-2xl font-medium tracking-wide text-white transition-colors duration-300" style="transform:translateX(-3px);">URBAN<span style="color:#22c55e;font-weight:500;">Tree</span></div>
-                <div id="navbar-tagline" class="text-[11px] font-medium tracking-wide text-white transition-colors duration-300">The City. Reimagined.</div>
+    <!-- ADAPTIVE NAVBAR -->
+    
+    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-500 bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100">
+        <div class="mx-auto max-w-7xl">
+            <div class="flex items-center justify-between px-6 lg:px-8 py-3">
+                <!-- Logo -->
+                <a href="../index.html" class="flex items-center gap-3 group transition-opacity duration-500 hover:opacity-80" style="text-decoration: none;">
+                    <img src="../assets/images/logo.png" alt="URBAN Tree Logo" class="h-10 w-auto" style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));">
+                    <div>
+                        <div class="flex items-baseline gap-1">
+                            <span class="font-bold text-lg lg:text-xl text-gray-900 tracking-tight">URBAN</span><span class="font-bold text-lg lg:text-xl text-[#3bb049] tracking-tight">Tree</span>
+                        </div>
+                        <span class="text-[10px] uppercase tracking-wider block -mt-1 text-gray-500 font-semibold">The City. Reimagined.</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden lg:flex items-center gap-8">
+                    <a href="/index.html" class="nav-link text-[15px] font-semibold text-gray-700 hover:text-[#3bb049] transition-colors duration-300">Home</a>
+                    <a href="technology.html" class="nav-link text-[15px] font-semibold text-gray-700 hover:text-[#3bb049] transition-colors duration-300">Technology</a>
+                    <a href="about.html" class="nav-link text-[15px] font-semibold text-gray-700 hover:text-[#3bb049] transition-colors duration-300">About Us</a>
+                    <a href="blog.html" class="nav-link text-[15px] font-semibold text-gray-700 hover:text-[#3bb049] transition-colors duration-300">Blog</a>
+                </div>
+
+                <!-- Desktop Enquiry & Mobile Toggle -->
+                <div class="flex items-center gap-4">
+                    <a href="../index.html#enquiry-form" class="hidden lg:inline-flex items-center justify-center px-6 py-2.5 rounded-full bg-[#f97316] hover:bg-[#ea580c] text-white text-sm font-bold tracking-wide transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+                        Enquiry
+                    </a>
+                    <!-- Hamburger Button -->
+                    <button id="mobile-menu-btn" class="lg:hidden p-2 text-gray-900 focus:outline-none" aria-label="Toggle menu">
+                        <svg id="mobile-menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                        </svg>
+                    </button>
+                </div>
             </div>
-        </a>
-
-        <div class="hidden md:flex justify-center flex-1 space-x-10 text-[15px] font-medium z-20" id="nav-links">
-            <a href="../index.html" class="nav-link text-white hover:text-brand-emerald transition-colors duration-300">Home</a>
-            <a href="../pages/technology.html" class="nav-link text-white hover:text-brand-emerald transition-colors duration-300">Technology</a>
-            <a href="../pages/about.html" class="nav-link text-white hover:text-brand-emerald transition-colors duration-300">About Us</a>
-            <a href="../pages/blog.html" class="nav-link text-white hover:text-brand-emerald transition-colors duration-300">Blog</a>
-        </div>
-
-        <div class="z-20 flex justify-end w-1/4">
-            <a href="../index.html#enquiry" class="orange-cta bg-[#f97316] text-white px-6 py-2.5 rounded-full font-bold shadow-md hover:bg-[#ea580c] transition-all duration-300" style="font-family:'Inter',sans-serif;">Enquiry</a>
-        </div>
-
-        <div class="mobile-nav z-20">
-            <a href="../index.html">Home</a>
-            <a href="../pages/technology.html">Technology</a>
-            <a href="../pages/about.html">About</a>
-            <a href="../pages/blog.html">Blog</a>
-            <a href="../index.html#enquiry" class="mobile-enquiry">Enquiry</a>
         </div>
     </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu-overlay" class="fixed inset-0 bg-black/95 backdrop-blur-xl z-[45] transform translate-x-full transition-transform duration-300 flex flex-col pt-24 px-6 pb-8 h-[100dvh] overflow-y-auto lg:hidden">
+        <nav class="flex flex-col gap-6 text-center">
+            <a href="/index.html" class="mobile-link text-xl font-medium text-white hover:text-green-400 transition-colors">Home</a>
+            <a href="/pages/technology.html" class="mobile-link text-xl font-medium text-white/70 hover:text-white transition-colors">Technology</a>
+            <a href="/pages/about.html" class="mobile-link text-xl font-medium text-white/70 hover:text-white transition-colors">About Us</a>
+            <a href="/pages/blog.html" class="mobile-link text-xl font-medium text-white/70 hover:text-white transition-colors">Blog</a>
+        </nav>
+        <div class="mt-auto flex flex-col gap-4 pt-10">
+            <a href="/index.html#enquiry-form" class="mobile-link w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-green-500 hover:bg-green-400 text-black font-semibold transition-all duration-300">
+                Enquire Now
+            </a>
+        </div>
+    </div>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const navbar = document.getElementById('navbar');
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 50) {
-                    navbar.classList.add('backdrop-blur-md', 'bg-black/85', 'shadow-lg');
-                    navbar.classList.remove('bg-transparent', 'py-5');
-                    navbar.classList.add('py-3');
+            const trunk = document.getElementById('logo-trunk');
+            const canopyTop = document.getElementById('logo-canopy-top');
+            const canopyLeft = document.getElementById('logo-canopy-left');
+            const canopyRight = document.getElementById('logo-canopy-right');
+            const textUrban = document.getElementById('logo-text-urban');
+            const textTree = document.getElementById('logo-text-tree');
+            const subtext = document.getElementById('logo-subtext');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const navUnderlines = document.querySelectorAll('.nav-underline');
+
+            let currentIsDark = true;
+
+            function updateNavbarTheme(isDarkBackground) {
+                if (currentIsDark === isDarkBackground) return;
+                currentIsDark = isDarkBackground;
+
+                if (isDarkBackground) {
+                    navbar.className = "sticky top-0 w-full z-50 transition-all duration-500 bg-black/30 backdrop-blur-md border-b border-white/5";
+
+                    if (trunk) trunk.setAttribute('fill', '#9CA3AF');
+                    if (canopyTop) canopyTop.setAttribute('fill', '#4ADE80');
+                    if (canopyLeft) canopyLeft.setAttribute('fill', '#22C55E');
+                    if (canopyRight) canopyRight.setAttribute('fill', '#22C55E');
+
+                    if (textUrban) { textUrban.className = "font-bold text-base lg:text-lg transition-colors duration-500 text-white"; }
+                    if (textTree) { textTree.className = "font-bold text-base lg:text-lg transition-colors duration-500 text-green-400"; }
+                    if (subtext) { subtext.className = "text-xs block -mt-1 transition-colors duration-500 text-gray-400 font-medium"; }
+
+                    navLinks.forEach(link => {
+                        link.className = "nav-link text-sm font-medium transition-colors duration-300 relative group text-white/70 hover:text-white";
+                    });
+                    navUnderlines.forEach(line => {
+                        line.className = "nav-underline absolute bottom-0 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full bg-green-400";
+                    });
                 } else {
-                    navbar.classList.remove('backdrop-blur-md', 'bg-black/85', 'shadow-lg', 'py-3');
-                    navbar.classList.add('bg-transparent', 'py-5');
+                    navbar.className = "sticky top-0 w-full z-50 transition-all duration-500 bg-white/95 backdrop-blur-md shadow-md border-b border-gray-100";
+
+                    if (trunk) trunk.setAttribute('fill', '#4B5563');
+                    if (canopyTop) canopyTop.setAttribute('fill', '#22C55E');
+                    if (canopyLeft) canopyLeft.setAttribute('fill', '#16A34A');
+                    if (canopyRight) canopyRight.setAttribute('fill', '#16A34A');
+
+                    if (textUrban) { textUrban.className = "font-bold text-base lg:text-lg transition-colors duration-500 text-gray-900"; }
+                    if (textTree) { textTree.className = "font-bold text-base lg:text-lg transition-colors duration-500 text-green-600"; }
+                    if (subtext) { subtext.className = "text-xs block -mt-1 transition-colors duration-500 text-gray-500 font-medium"; }
+
+                    navLinks.forEach(link => {
+                        link.className = "nav-link text-sm font-medium transition-colors duration-300 relative group text-gray-700 hover:text-gray-900";
+                    });
+                    navUnderlines.forEach(line => {
+                        line.className = "nav-underline absolute bottom-0 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full bg-green-600";
+                    });
                 }
-            });
-            window.dispatchEvent(new Event('scroll'));
+            }
+
+            const handleScroll = () => {
+                const headerHeight = 80;
+                const checkPoint = headerHeight + 50;
+
+                const originalPointerEvents = navbar.style.pointerEvents;
+                navbar.style.pointerEvents = 'none';
+
+                const elements = document.elementsFromPoint(window.innerWidth / 2, checkPoint);
+
+                navbar.style.pointerEvents = originalPointerEvents;
+
+                let darkBackground = false;
+                if (elements && elements.length > 0) {
+                    for (const element of elements) {
+                        if (element === navbar || navbar.contains(element)) continue;
+
+                        const bgColor = window.getComputedStyle(element).backgroundColor;
+                        if (!bgColor || bgColor === 'rgba(0, 0, 0, 0)' || bgColor === 'transparent') continue;
+
+                        const rgbMatch = bgColor.match(/\d+/g);
+                        if (rgbMatch && rgbMatch.length >= 3) {
+                            const r = parseInt(rgbMatch[0]);
+                            const g = parseInt(rgbMatch[1]);
+                            const b = parseInt(rgbMatch[2]);
+                            const a = rgbMatch.length > 3 ? parseFloat(rgbMatch[3]) : 1;
+
+                            if (a > 0.1) {
+                                const luminance = (r * 299 + g * 587 + b * 114) / 1000;
+                                darkBackground = luminance < 128;
+                                break;
+                            }
+                        }
+                    }
+                }
+
+                updateNavbarTheme(darkBackground);
+            };
+
+            window.addEventListener("scroll", handleScroll, { passive: true });
+
+            const snapContainer = document.getElementById('snap-container');
+            if (snapContainer) {
+                snapContainer.addEventListener("scroll", handleScroll, { passive: true });
+            }
+
+            setTimeout(handleScroll, 100);
         });
     </script>
+
 
     <!-- ═══ HERO ═══ -->
     <section id="about-hero">
@@ -674,13 +791,13 @@
                 </h2>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12 max-w-6xl mx-auto">
                 <!-- Founder 1 -->
                 <div class="fade-up flex flex-col items-start text-left group cursor-pointer"
                     style="transition-delay:0s;">
-                    <div class="w-full aspect-square mb-5 overflow-hidden rounded-2xl relative bg-gray-200">
-                        <img src="../assets/images/sanjeeth.jpg" alt="Sanjeeth M S"
-                            class="w-full h-full object-cover object-[center_top] grayscale group-hover:grayscale-0 transition-all duration-500 transform group-hover:scale-105 brightness-110 contrast-125">
+                    <div class="w-full aspect-square mb-5 overflow-hidden rounded-2xl relative bg-white">
+                        <img src="../assets/images/sanjeeth.jpg" alt="Sanjeeth Suresh"
+                            class="w-full h-full object-cover object-center transition-all duration-500 transform group-hover:scale-105 brightness-110 contrast-125">
                     </div>
                     <h3
                         style="font-family:'Sora',sans-serif;font-weight:800;font-size:1.15rem;color:#111827;margin-bottom:4px;">
@@ -698,7 +815,7 @@
                     style="transition-delay:0.1s;">
                     <div class="w-full aspect-square mb-5 overflow-hidden rounded-2xl relative bg-gray-200">
                         <img src="../assets/images/umesh.jpeg" alt="Umesh H"
-                            class="w-full h-full object-cover object-[center_top] grayscale group-hover:grayscale-0 transition-all duration-500 transform group-hover:scale-105 brightness-110 contrast-125">
+                            class="w-full h-full object-cover object-[center_top] transition-all duration-500 transform group-hover:scale-105 brightness-110 contrast-125">
                     </div>
                     <h3
                         style="font-family:'Sora',sans-serif;font-weight:800;font-size:1.15rem;color:#111827;margin-bottom:4px;">
@@ -716,7 +833,7 @@
                     style="transition-delay:0.2s;">
                     <div class="w-full aspect-square mb-5 overflow-hidden rounded-2xl relative bg-gray-200">
                         <img src="../assets/images/raghavendra.jpg" alt="Dr. Raghavendra Deshpande"
-                            class="w-full h-full object-cover object-[center_top] grayscale group-hover:grayscale-0 transition-all duration-500 transform group-hover:scale-105 brightness-110 contrast-125">
+                            class="w-full h-full object-cover object-[center_top] transition-all duration-500 transform group-hover:scale-105 brightness-110 contrast-125">
                     </div>
                     <h3
                         style="font-family:'Sora',sans-serif;font-weight:800;font-size:1.15rem;color:#111827;margin-bottom:4px;">
@@ -728,27 +845,55 @@
                         at the core of UrbanTree.</p>
                 </div>
 
-                <!-- Advisor 1 -->
+                <!-- Founder 4 -->
                 <div class="fade-up flex flex-col items-start text-left group cursor-pointer"
                     style="transition-delay:0.3s;">
                     <div class="w-full aspect-square mb-5 overflow-hidden rounded-2xl relative bg-gray-200">
-                        <img src="../assets/images/keshava.jpg" alt="Keshava Prasad B S"
-                            class="w-full h-full object-cover object-[center_top] grayscale group-hover:grayscale-0 transition-all duration-500 transform group-hover:scale-105 brightness-110 contrast-125">
+                        <img src="../assets/images/vishwas.jpg" alt="Vishwas SP"
+                            class="w-full h-full object-cover object-center transition-all duration-500 transform group-hover:scale-105 brightness-110 contrast-125">
+                    </div>
+                    <h3
+                        style="font-family:'Sora',sans-serif;font-weight:800;font-size:1.15rem;color:#111827;margin-bottom:4px;">
+                        Vishwas S P</h3>
+                    <p style="font-size:13px;font-weight:600;color:#6b7280;font-style:italic;margin-bottom:14px;">
+                        Product Design Engineer</p>
+                </div>
+
+                <!-- Founder 5 -->
+                <div class="fade-up flex flex-col items-start text-left group cursor-pointer"
+                    style="transition-delay:0.4s;">
+                    <div class="w-full aspect-square mb-5 overflow-hidden rounded-2xl relative bg-gray-200">
+                        <div class="w-full h-full"
+                            style="transform: scale(1.12); transform-origin: center top;">
+                            <img src="../assets/images/keshava.jpg" alt="Keshava Prasad B S"
+                                class="w-full h-full object-cover transition-all duration-500 transform group-hover:scale-105 brightness-110 contrast-125"
+                                style="object-position: center top;">
+                        </div>
                     </div>
                     <h3
                         style="font-family:'Sora',sans-serif;font-weight:800;font-size:1.15rem;color:#111827;margin-bottom:4px;">
                         Keshava Prasad B S</h3>
                     <p style="font-size:13px;font-weight:600;color:#6b7280;font-style:italic;margin-bottom:14px;">
                         Strategic Advisor</p>
-                    <p class="text-left" style="font-size:0.9rem;color:#4b5563;line-height:1.6;">Advising the leadership
-                        team on strategic direction, business scaling, and exploring new avenues for corporate growth
-                        and partnerships.</p>
+                </div>
+
+                <!-- Founder 6 -->
+                <div class="fade-up flex flex-col items-start text-left group cursor-pointer"
+                    style="transition-delay:0.5s;">
+                    <div class="w-full aspect-square mb-5 overflow-hidden rounded-2xl relative bg-gray-200">
+                        <img src="../assets/images/omkar.jpg" alt="Omkar Chaithanya R"
+                            class="w-full h-full object-cover object-center transition-all duration-500 transform group-hover:scale-105 brightness-110 contrast-125">
+                    </div>
+                    <h3
+                        style="font-family:'Sora',sans-serif;font-weight:800;font-size:1.15rem;color:#111827;margin-bottom:4px;">
+                        Omkar Chaithanya R</h3>
+                    <p style="font-size:13px;font-weight:600;color:#6b7280;font-style:italic;margin-bottom:14px;">
+                        Developer</p>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- ═══ SDG ALIGNMENT ═══ -->
+    <!-- 🌿🌿🌿 SDG ALIGNMENT 🌿🌿🌿 -->
     <section style="background:#0a0a0a;padding:100px 0;position:relative;overflow:hidden;">
         <div
             style="position:absolute;top:-10%;left:50%;transform:translateX(-50%);width:800px;height:400px;background:radial-gradient(ellipse,rgba(16,185,129,0.1) 0%,transparent 70%);pointer-events:none;">
@@ -1013,8 +1158,6 @@
 
             if (theme === 'light') {
                 if (window.scrollY > 50) {
-                    navbar.style.background = 'rgba(255, 255, 255, 0.95)';
-                    navbar.style.borderBottom = '1px solid rgba(0,0,0,0.05)';
                 }
 
                 if (navBrand) { navBrand.classList.remove('text-white'); navBrand.classList.add('nav-text-dark'); }
@@ -1022,8 +1165,6 @@
                 navLinks.forEach(link => { link.classList.remove('text-white'); link.classList.add('nav-text-dark'); });
             } else {
                 if (window.scrollY > 50) {
-                    navbar.style.background = 'rgba(10, 10, 10, 0.92)';
-                    navbar.style.borderBottom = '1px solid rgba(255,255,255,0.08)';
                 }
 
                 if (navBrand) { navBrand.classList.remove('nav-text-dark'); navBrand.classList.add('text-white'); }
@@ -1034,15 +1175,9 @@
 
         window.addEventListener('scroll', () => {
             if (window.scrollY <= 50) {
-                navbar.style.background = 'transparent';
-                navbar.style.borderBottom = 'none';
             } else {
                 if (currentTheme === 'light') {
-                    navbar.style.background = 'rgba(255, 255, 255, 0.95)';
-                    navbar.style.borderBottom = '1px solid rgba(0,0,0,0.05)';
                 } else {
-                    navbar.style.background = 'rgba(10, 10, 10, 0.92)';
-                    navbar.style.borderBottom = '1px solid rgba(255,255,255,0.08)';
                 }
             }
         });
@@ -1070,8 +1205,43 @@
         lightSections.forEach(s => sectionObserver.observe(s));
         darkSections.forEach(s => sectionObserver.observe(s));
     </script>
+    <script>
+        // Mobile Menu Logic
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+        const mobileMenuIcon = document.getElementById('mobile-menu-icon');
+        let isMenuOpen = false;
 
+        if (mobileMenuBtn && mobileMenuOverlay) {
+            mobileMenuBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                isMenuOpen = !isMenuOpen;
+                if (isMenuOpen) {
+                    mobileMenuOverlay.classList.remove('translate-x-full');
+                    mobileMenuIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>';
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    mobileMenuOverlay.classList.add('translate-x-full');
+                    mobileMenuIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>';
+                    document.body.style.overflow = '';
+                }
+            });
 
+            // Close menu when clicking outside links (optional, for better UX)
+            mobileMenuOverlay.addEventListener('click', (e) => {
+                if(e.target === mobileMenuOverlay && isMenuOpen) {
+                    mobileMenuBtn.click();
+                }
+            });
+        }
+        
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (isMenuOpen) mobileMenuBtn.click();
+            });
+        });
+    </script>
 </body>
 
 </html>

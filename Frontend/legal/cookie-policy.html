@@ -64,6 +64,20 @@
             <a href="../index.html#enquiry" class="orange-cta bg-[#f97316] text-white px-6 py-2.5 rounded-full font-bold shadow-md hover:bg-[#ea580c] transition-all duration-300" style="font-family:'Inter',sans-serif;">Enquiry</a>
         </div>
     </nav>
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu-overlay" class="fixed inset-0 bg-black/95 backdrop-blur-xl z-[45] transform translate-x-full transition-transform duration-300 flex flex-col pt-24 px-6 pb-8 h-[100dvh] overflow-y-auto lg:hidden">
+        <nav class="flex flex-col gap-6 text-center">
+            <a href="/index.html" class="mobile-link text-xl font-medium text-white hover:text-green-400 transition-colors">Home</a>
+            <a href="/pages/technology.html" class="mobile-link text-xl font-medium text-white/70 hover:text-white transition-colors">Technology</a>
+            <a href="/pages/about.html" class="mobile-link text-xl font-medium text-white/70 hover:text-white transition-colors">About Us</a>
+            <a href="/pages/blog.html" class="mobile-link text-xl font-medium text-white/70 hover:text-white transition-colors">Blog</a>
+        </nav>
+        <div class="mt-auto flex flex-col gap-4 pt-10">
+            <a href="/index.html#enquiry-form" class="mobile-link w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-green-500 hover:bg-green-400 text-black font-semibold transition-all duration-300">
+                Enquire Now
+            </a>
+        </div>
+    </div>
 
     <!-- ═══ HEADER ═══ -->
     <header class="pt-40 pb-16 bg-[#0a0a0a] relative overflow-hidden">
@@ -138,5 +152,42 @@
             </div>
         </div>
     </footer>
+    <script>
+        // Mobile Menu Logic
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+        const mobileMenuIcon = document.getElementById('mobile-menu-icon');
+        let isMenuOpen = false;
+
+        if (mobileMenuBtn && mobileMenuOverlay) {
+            mobileMenuBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                isMenuOpen = !isMenuOpen;
+                if (isMenuOpen) {
+                    mobileMenuOverlay.classList.remove('translate-x-full');
+                    mobileMenuIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>';
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    mobileMenuOverlay.classList.add('translate-x-full');
+                    mobileMenuIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>';
+                    document.body.style.overflow = '';
+                }
+            });
+
+            // Close menu when clicking outside links (optional, for better UX)
+            mobileMenuOverlay.addEventListener('click', (e) => {
+                if(e.target === mobileMenuOverlay && isMenuOpen) {
+                    mobileMenuBtn.click();
+                }
+            });
+        }
+        
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (isMenuOpen) mobileMenuBtn.click();
+            });
+        });
+    </script>
 </body>
 </html>

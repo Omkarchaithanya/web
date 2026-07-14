@@ -567,5 +567,42 @@
     for (let i = 0; i < 8; i++) setTimeout(spawnChip, i * 300);
 </script>
 
+    <script>
+        // Mobile Menu Logic
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+        const mobileMenuIcon = document.getElementById('mobile-menu-icon');
+        let isMenuOpen = false;
+
+        if (mobileMenuBtn && mobileMenuOverlay) {
+            mobileMenuBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                isMenuOpen = !isMenuOpen;
+                if (isMenuOpen) {
+                    mobileMenuOverlay.classList.remove('translate-x-full');
+                    mobileMenuIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>';
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    mobileMenuOverlay.classList.add('translate-x-full');
+                    mobileMenuIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>';
+                    document.body.style.overflow = '';
+                }
+            });
+
+            // Close menu when clicking outside links (optional, for better UX)
+            mobileMenuOverlay.addEventListener('click', (e) => {
+                if(e.target === mobileMenuOverlay && isMenuOpen) {
+                    mobileMenuBtn.click();
+                }
+            });
+        }
+        
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (isMenuOpen) mobileMenuBtn.click();
+            });
+        });
+    </script>
 </body>
 </html>
