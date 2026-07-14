@@ -64,14 +64,7 @@
             box-shadow: 0 30px 60px rgba(74, 158, 63, 0.12);
         }
 
-        /* ═══ NAVBAR — fully transparent by default ═══ */
-        #navbar {
-            transition: all 0.3s ease;
-            background: transparent;
-            backdrop-filter: none;
-            border: none;
-            box-shadow: none;
-        }
+        /* ═══ NAVBAR removed ═══ */
 
         /* High-End Hover Glow Effect */
         .hover-glow-emerald {
@@ -466,75 +459,6 @@
             #hero-section {
                 height: auto !important;
                 min-height: 100svh !important;
-            }
-
-            #navbar {
-                padding: 0.75rem 1rem;
-                align-items: center !important;
-                justify-content: space-between;
-                gap: 1rem;
-                flex-wrap: nowrap !important;
-                background: rgba(10, 10, 10, 0.95) !important;
-                backdrop-filter: blur(10px) !important;
-            }
-
-            /* Hide desktop specific elements on tablet and mobile */
-            #nav-links,
-            #navbar > div.flex.justify-end.w-1\/4 {
-                display: none !important;
-            }
-
-            /* Make logo container take natural width */
-            #navbar > div.w-1\/4 {
-                width: auto !important;
-                flex-shrink: 0;
-            }
-
-            .mobile-nav {
-                display: flex !important;
-                width: auto;
-                flex: 1;
-                justify-content: flex-end;
-                align-items: center;
-                gap: 0.5rem;
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
-                padding-bottom: 0;
-                scrollbar-width: none;
-            }
-
-            .mobile-nav::-webkit-scrollbar {
-                display: none;
-            }
-
-            .mobile-nav a {
-                white-space: nowrap;
-                text-decoration: none;
-                color: #ffffff;
-                font-size: 0.85rem;
-                font-weight: 600;
-                border: 1px solid rgba(255, 255, 255, 0.28);
-                border-radius: 999px;
-                padding: 0.35rem 0.85rem;
-                background: rgba(10, 10, 10, 0.28);
-                transition: all 0.3s ease;
-            }
-
-            .mobile-nav a.mobile-enquiry {
-                border-color: #f97316;
-                background: #f97316;
-            }
-
-            #navbar-brand-name {
-                font-size: 1.6rem !important;
-            }
-
-            #navbar-tagline {
-                font-size: 0.74rem !important;
-            }
-
-            #navbar img {
-                height: 54px !important;
             }
 
             #hero-text h1 span,
