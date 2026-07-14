@@ -7,7 +7,6 @@
     "format": "prettier --write \"**/*.html\""
   },
   "dependencies": {
-    "playwright": "^1.61.1",
     "serve": "^14.2.3"
   },
   "devDependencies": {
