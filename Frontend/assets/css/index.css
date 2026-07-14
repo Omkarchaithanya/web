@@ -28,7 +28,7 @@
     scroll-behavior: auto;
 }
 
-        /* Sections with lots of content — allow internal scroll */
+        /* Sections with lots of content ΓÇö allow internal scroll */
         .snap-section-scroll {
             scroll-snap-align: start;
             scroll-snap-stop: always;
@@ -64,19 +64,79 @@
             box-shadow: 0 30px 60px rgba(74, 158, 63, 0.12);
         }
 
-        /* ═══ NAVBAR — fully transparent by default ═══ */
+        /* ΓòÉΓòÉΓòÉ NAVBAR ΓÇö fully transparent by default ΓòÉΓòÉΓòÉ */
         #navbar {
             transition: all 0.3s ease;
-            background: transparent;
-            backdrop-filter: none;
-            border: none;
-            box-shadow: none;
         }
 
         /* High-End Hover Glow Effect */
         .hover-glow-emerald {
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
+
+        /* ═══ NAVBAR THEME LOGIC ═══ */
+        #navbar {
+            transition: background-color 300ms ease, border-color 300ms ease, box-shadow 300ms ease, backdrop-filter 300ms ease;
+            backdrop-filter: blur(12px);
+            border-bottom-width: 1px;
+            border-bottom-style: solid;
+        }
+
+        /* ── DARK THEME ── */
+        #navbar.theme-dark {
+            --nav-text: #ffffff;
+            --nav-secondary: rgba(255, 255, 255, 0.75);
+            background-color: rgba(15, 23, 42, 0.75);
+            border-bottom-color: rgba(255, 255, 255, 0.05);
+            box-shadow: none;
+        }
+
+        /* ── LIGHT THEME ── */
+        #navbar.theme-light {
+            --nav-text: #111827;
+            --nav-secondary: #4B5563;
+            background-color: rgba(255, 255, 255, 0.85);
+            border-bottom-color: #f3f4f6;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Elements inside navbar that need transition */
+        /* Logo colors */
+        #navbar.theme-dark .logo-urban {
+            color: #FFFFFF;
+        }
+        #navbar.theme-light .logo-urban {
+            color: #111827;
+        }
+        .logo-tree {
+            color: #22C55E;
+        }
+        #navbar.theme-dark .logo-tagline {
+            color: rgba(255, 255, 255, 0.8);
+        }
+        #navbar.theme-light .logo-tagline {
+            color: #6B7280;
+        }
+        .logo-urban, .logo-tree, .logo-tagline {
+            transition: color 300ms ease;
+        }
+
+        #mobile-menu-btn,
+        #mobile-menu-icon {
+            color: var(--nav-text);
+            transition: color 300ms ease;
+        }
+
+        .nav-link {
+            color: var(--nav-secondary);
+            transition: color 300ms ease;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--nav-text);
+        }
+
         .hover-glow-emerald:hover {
             transform: translateY(-2px);
             box-shadow: 0 0 25px rgba(74, 158, 63, 0.6), 0 0 50px rgba(74, 158, 63, 0.3);
@@ -641,7 +701,7 @@
             display: none !important;
         }
 
-        /* Sections with overflow content — internal scroll but still snaps */
+        /* Sections with overflow content ΓÇö internal scroll but still snaps */
         .snap-section-scroll::-webkit-scrollbar {
             display: none;
         }

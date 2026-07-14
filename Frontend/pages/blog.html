@@ -206,44 +206,58 @@
             color: #374151;
         }
     </style>
-    </head>
+        <link rel="stylesheet" href="../assets/css/index.css">
+</head>
 
 <body class="antialiased">
 
     <!-- ═══ NAVBAR ═══ -->
     <!-- ADAPTIVE NAVBAR -->
     
-    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-500 bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100">
+    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-500">
         <div class="mx-auto max-w-7xl">
             <div class="flex items-center justify-between px-6 lg:px-8 py-3">
                 <!-- Logo -->
-                <a href="../index.html" class="flex items-center gap-3 group transition-opacity duration-500 hover:opacity-80" style="text-decoration: none;">
-                    <img src="../assets/images/logo.png" alt="URBAN Tree Logo" class="h-10 w-auto" style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));">
+                <a href="../index.html"
+                    class="flex items-center gap-3 group transition-opacity duration-500 hover:opacity-80"
+                    style="text-decoration: none;">
+                    <img src="../assets/images/logo.png" alt="URBAN Tree Logo" class="h-10 w-auto"
+                        style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));">
                     <div>
-                        <div class="flex items-baseline gap-1">
-                            <span class="font-bold text-lg lg:text-xl text-gray-900 tracking-tight">URBAN</span><span class="font-bold text-lg lg:text-xl text-[#3bb049] tracking-tight">Tree</span>
+                        <div class="logo flex items-baseline gap-1">
+                            <span class="logo-urban font-bold text-lg lg:text-xl tracking-tight">URBAN</span><span class="logo-tree font-bold text-lg lg:text-xl tracking-tight">Tree</span>
                         </div>
-                        <span class="text-[10px] uppercase tracking-wider block -mt-1 text-gray-500 font-semibold">The City. Reimagined.</span>
+                        <p class="logo-tagline text-[10px] uppercase tracking-wider block -mt-1 font-semibold">
+                            THE CITY. REIMAGINED.
+                        </p>
                     </div>
                 </a>
 
                 <!-- Desktop Navigation -->
                 <div class="hidden lg:flex items-center gap-8">
-                    <a href="/index.html" class="nav-link text-[15px] font-semibold text-gray-700 hover:text-[#3bb049] transition-colors duration-300">Home</a>
-                    <a href="technology.html" class="nav-link text-[15px] font-semibold text-gray-700 hover:text-[#3bb049] transition-colors duration-300">Technology</a>
-                    <a href="about.html" class="nav-link text-[15px] font-semibold text-gray-700 hover:text-[#3bb049] transition-colors duration-300">About Us</a>
-                    <a href="blog.html" class="nav-link text-[15px] font-semibold text-gray-700 hover:text-[#3bb049] transition-colors duration-300">Blog</a>
+                    <a href="../index.html"
+                        class="nav-link text-[15px] font-semibold transition-colors duration-300">Home</a>
+                    <a href="technology.html"
+                        class="nav-link text-[15px] font-semibold transition-colors duration-300">Technology</a>
+                    <a href="about.html"
+                        class="nav-link text-[15px] font-semibold transition-colors duration-300">About Us</a>
+                    <a href="blog.html"
+                        class="nav-link active text-[15px] font-semibold transition-colors duration-300">Blog</a>
                 </div>
 
                 <!-- Desktop Enquiry & Mobile Toggle -->
                 <div class="flex items-center gap-4">
-                    <a href="../index.html#enquiry-form" class="hidden lg:inline-flex items-center justify-center px-6 py-2.5 rounded-full bg-[#f97316] hover:bg-[#ea580c] text-white text-sm font-bold tracking-wide transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+                    <a href="../index.html#enquiry-form"
+                        class="hidden lg:inline-flex items-center justify-center px-6 py-2.5 rounded-full bg-[#f97316] hover:bg-[#ea580c]  text-sm font-bold tracking-wide transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
                         Enquiry
                     </a>
                     <!-- Hamburger Button -->
-                    <button id="mobile-menu-btn" class="lg:hidden p-2 text-gray-900 focus:outline-none" aria-label="Toggle menu">
-                        <svg id="mobile-menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    <button id="mobile-menu-btn" type="button" class="lg:hidden p-2 focus:outline-none"
+                        aria-label="Toggle menu" aria-controls="mobile-menu-overlay" aria-expanded="false">
+                        <svg id="mobile-menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16m-7 6h7"></path>
                         </svg>
                     </button>
                 </div>
@@ -252,129 +266,31 @@
     </nav>
 
     <!-- Mobile Menu Overlay -->
-    <div id="mobile-menu-overlay" class="fixed inset-0 bg-black/95 backdrop-blur-xl z-[45] transform translate-x-full transition-transform duration-300 flex flex-col pt-24 px-6 pb-8 h-[100dvh] overflow-y-auto lg:hidden">
+    <div id="mobile-menu-overlay"
+        class="fixed inset-0 bg-black/95 backdrop-blur-xl z-[45] transform translate-x-full transition-transform duration-300 flex flex-col pt-24 px-6 pb-8 h-[100dvh] overflow-y-auto lg:hidden">
         <nav class="flex flex-col gap-6 text-center">
-            <a href="/index.html" class="mobile-link text-xl font-medium text-white hover:text-green-400 transition-colors">Home</a>
-            <a href="/pages/technology.html" class="mobile-link text-xl font-medium text-white/70 hover:text-white transition-colors">Technology</a>
-            <a href="/pages/about.html" class="mobile-link text-xl font-medium text-white/70 hover:text-white transition-colors">About Us</a>
-            <a href="/pages/blog.html" class="mobile-link text-xl font-medium text-white/70 hover:text-white transition-colors">Blog</a>
+            <a href="../index.html"
+                class="mobile-link text-xl font-medium  hover:text-green-400 transition-colors">Home</a>
+            <a href="technology.html"
+                class="mobile-link text-xl font-medium /70 hover: transition-colors">Technology</a>
+            <a href="about.html"
+                class="mobile-link text-xl font-medium /70 hover: transition-colors">About Us</a>
+            <a href="blog.html"
+                class="mobile-link text-xl font-medium /70 hover: transition-colors">Blog</a>
         </nav>
         <div class="mt-auto flex flex-col gap-4 pt-10">
-            <a href="/index.html#enquiry-form" class="mobile-link w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-green-500 hover:bg-green-400 text-black font-semibold transition-all duration-300">
+            <a href="../index.html#enquiry-form"
+                class="mobile-link w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-green-500 hover:bg-green-400 text-black font-semibold transition-all duration-300">
                 Enquire Now
             </a>
         </div>
     </div>
-    <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const navbar = document.getElementById('navbar');
-        const trunk = document.getElementById('logo-trunk');
-        const canopyTop = document.getElementById('logo-canopy-top');
-        const canopyLeft = document.getElementById('logo-canopy-left');
-        const canopyRight = document.getElementById('logo-canopy-right');
-        const textUrban = document.getElementById('logo-text-urban');
-        const textTree = document.getElementById('logo-text-tree');
-        const subtext = document.getElementById('logo-subtext');
-        const navLinks = document.querySelectorAll('.nav-link');
-        const navUnderlines = document.querySelectorAll('.nav-underline');
+    <script src="../assets/js/navbar.js"></script>
 
-        let currentIsDark = true;
-
-        function updateNavbarTheme(isDarkBackground) {
-            if (currentIsDark === isDarkBackground) return;
-            currentIsDark = isDarkBackground;
-
-            if (isDarkBackground) {
-                navbar.className = "sticky top-0 w-full z-50 transition-all duration-500 bg-black/30 backdrop-blur-md border-b border-white/5";
-                
-                if (trunk) trunk.setAttribute('fill', '#9CA3AF');
-                if (canopyTop) canopyTop.setAttribute('fill', '#4ADE80');
-                if (canopyLeft) canopyLeft.setAttribute('fill', '#22C55E');
-                if (canopyRight) canopyRight.setAttribute('fill', '#22C55E');
-                
-                if (textUrban) { textUrban.className = "font-bold text-base lg:text-lg transition-colors duration-500 text-white"; }
-                if (textTree) { textTree.className = "font-bold text-base lg:text-lg transition-colors duration-500 text-green-400"; }
-                if (subtext) { subtext.className = "text-xs block -mt-1 transition-colors duration-500 text-gray-400 font-medium"; }
-                
-                navLinks.forEach(link => {
-                    link.className = "nav-link text-sm font-medium transition-colors duration-300 relative group text-white/70 hover:text-white";
-                });
-                navUnderlines.forEach(line => {
-                    line.className = "nav-underline absolute bottom-0 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full bg-green-400";
-                });
-            } else {
-                navbar.className = "sticky top-0 w-full z-50 transition-all duration-500 bg-white/95 backdrop-blur-md shadow-md border-b border-gray-100";
-                
-                if (trunk) trunk.setAttribute('fill', '#4B5563');
-                if (canopyTop) canopyTop.setAttribute('fill', '#22C55E');
-                if (canopyLeft) canopyLeft.setAttribute('fill', '#16A34A');
-                if (canopyRight) canopyRight.setAttribute('fill', '#16A34A');
-                
-                if (textUrban) { textUrban.className = "font-bold text-base lg:text-lg transition-colors duration-500 text-gray-900"; }
-                if (textTree) { textTree.className = "font-bold text-base lg:text-lg transition-colors duration-500 text-green-600"; }
-                if (subtext) { subtext.className = "text-xs block -mt-1 transition-colors duration-500 text-gray-500 font-medium"; }
-                
-                navLinks.forEach(link => {
-                    link.className = "nav-link text-sm font-medium transition-colors duration-300 relative group text-gray-700 hover:text-gray-900";
-                });
-                navUnderlines.forEach(line => {
-                    line.className = "nav-underline absolute bottom-0 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full bg-green-600";
-                });
-            }
-        }
-
-        const handleScroll = () => {
-            const headerHeight = 80;
-            const checkPoint = headerHeight + 50;
-            
-            const originalPointerEvents = navbar.style.pointerEvents;
-            navbar.style.pointerEvents = 'none';
-
-            const elements = document.elementsFromPoint(window.innerWidth / 2, checkPoint);
-            
-            navbar.style.pointerEvents = originalPointerEvents;
-
-            let darkBackground = false; 
-            if (elements && elements.length > 0) {
-                for (const element of elements) {
-                    if (element === navbar || navbar.contains(element)) continue;
-                    
-                    const bgColor = window.getComputedStyle(element).backgroundColor;
-                    if (!bgColor || bgColor === 'rgba(0, 0, 0, 0)' || bgColor === 'transparent') continue;
-
-                    const rgbMatch = bgColor.match(/\d+/g);
-                    if (rgbMatch && rgbMatch.length >= 3) {
-                        const r = parseInt(rgbMatch[0]);
-                        const g = parseInt(rgbMatch[1]);
-                        const b = parseInt(rgbMatch[2]);
-                        const a = rgbMatch.length > 3 ? parseFloat(rgbMatch[3]) : 1;
-                        
-                        if (a > 0.1) {
-                            const luminance = (r * 299 + g * 587 + b * 114) / 1000;
-                            darkBackground = luminance < 128;
-                            break;
-                        }
-                    }
-                }
-            }
-            
-            updateNavbarTheme(darkBackground);
-        };
-
-        window.addEventListener("scroll", handleScroll, { passive: true });
-        
-        const snapContainer = document.getElementById('snap-container');
-        if (snapContainer) {
-            snapContainer.addEventListener("scroll", handleScroll, { passive: true });
-        }
-
-        setTimeout(handleScroll, 100);
-    });
-    </script>
 
 
     <!-- ═══ HERO ═══ -->
-    <section id="blog-hero">
+    <section id="blog-hero" data-navbar-theme="dark">
         <div class="hero-grid-lines"></div>
         <div class="hero-glow"></div>
 
@@ -400,7 +316,7 @@
     </section>
 
     <!-- ═══ FEATURED ARTICLE ═══ -->
-    <section class="section-light" style="padding-top:60px; padding-bottom:60px;">
+    <section class="section-light" style="padding-top:60px; padding-bottom:60px;" data-navbar-theme="light">
         <div class="max-w-7xl mx-auto px-6 lg:px-12">
 
             <!-- Filters -->
@@ -419,7 +335,7 @@
                     <img src="../assets/images/blog_featured_city.png" alt="Smart Cities"
                         class="w-full h-full object-cover min-h-[350px] transform hover:scale-105 transition duration-700">
                     <div
-                        class="absolute top-4 left-4 bg-emerald-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
+                        class="absolute top-4 left-4 bg-emerald-500  text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
                         Featured</div>
                 </div>
                 <div class="lg:w-1/2 p-10 lg:p-14 flex flex-col justify-center">
@@ -547,7 +463,7 @@
     </section>
 
     <!-- ═══ CTA ═══ -->
-    <section class="section-dark">
+    <section class="section-dark" data-navbar-theme="dark">
         <div
             style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:700px;height:400px;background:radial-gradient(ellipse,rgba(16,185,129,0.1) 0%,transparent 70%);pointer-events:none;">
         </div>
@@ -568,10 +484,10 @@
             </p>
             <div class="fade-up flex justify-center max-w-md mx-auto relative">
                 <input type="email" placeholder="Enter your email address"
-                    class="w-full px-6 py-4 rounded-full bg-white/10 border border-white/20 text-white focus:outline-none focus:border-emerald-500"
+                    class="w-full px-6 py-4 rounded-full bg-white/10 border border-white/20  focus:outline-none focus:border-emerald-500"
                     style="padding-right: 140px;">
                 <button
-                    class="absolute right-1 top-1 bottom-1 hover-glow-emerald px-6 bg-emerald-500 text-white rounded-full font-semibold shadow-lg shadow-emerald-500/30 transition-all duration-300 text-sm">
+                    class="absolute right-1 top-1 bottom-1 hover-glow-emerald px-6 bg-emerald-500  rounded-full font-semibold shadow-lg shadow-emerald-500/30 transition-all duration-300 text-sm">
                     Subscribe
                 </button>
             </div>
@@ -579,18 +495,18 @@
     </section>
 
     <!-- ═══ FOOTER ═══ -->
-    <footer class="bg-[#0a0a0a] border-t border-white/10 pt-12 pb-6">
+    <footer class="bg-[#0a0a0a] border-t border-white/10 pt-12 pb-6" data-navbar-theme="dark">
         <div class="max-w-[1440px] mx-auto px-6 lg:px-12 w-full">
             <div
                 class="flex flex-col lg:flex-row justify-between items-start lg:items-center border-b border-white/10 pb-10 mb-10 gap-10">
                 <div class="w-full lg:w-1/2">
-                    <h2 class="text-3xl font-serif font-bold text-white mb-4">Join the Green Tech Revolution.</h2>
+                    <h2 class="text-3xl font-serif font-bold  mb-4">Join the Green Tech Revolution.</h2>
                     <p class="text-gray-400 mb-6 text-sm">Subscribe to our newsletter for the latest in sustainable
                         environmental technology and urban air updates.</p>
                 </div>
                 <div class="w-full lg:w-1/2 flex justify-start lg:justify-end gap-16">
                     <div>
-                        <h4 class="text-white font-bold mb-4 font-serif">Solutions</h4>
+                        <h4 class=" font-bold mb-4 font-serif">Solutions</h4>
                         <ul class="space-y-3 text-gray-400 text-sm">
                             <li><a href="../index.html#technology"
                                     class="hover:text-brand-emerald transition-colors">Technology</a></li>
@@ -599,7 +515,7 @@
                         </ul>
                     </div>
                     <div>
-                        <h4 class="text-white font-bold mb-4 font-serif">Company</h4>
+                        <h4 class=" font-bold mb-4 font-serif">Company</h4>
                         <ul class="space-y-3 text-gray-400 text-sm">
                             <li><a href="../pages/about.html" class="hover:text-brand-emerald transition-colors">About
                                     Us</a></li>
@@ -614,8 +530,8 @@
             <div class="flex flex-col md:flex-row justify-between items-center text-gray-500 text-xs gap-4">
                 <p>&copy; 2026 SunEx Technologies Private Limited. All rights reserved.</p>
                 <div class="flex gap-6">
-                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
-                    <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                    <a href="#" class="hover: transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover: transition-colors">Terms of Service</a>
                 </div>
             </div>
         </div>
@@ -629,70 +545,6 @@
             });
         }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
         document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-        // Navbar Theme Toggle
-        const navbar = document.getElementById('navbar');
-        const navBrand = document.getElementById('navbar-brand-name');
-        const navTagline = document.getElementById('navbar-tagline');
-        const navLinks = document.querySelectorAll('.nav-link:not([style*="color:#10b981"])');
-
-        let currentTheme = 'dark';
-
-        function setTheme(theme) {
-            if (theme === currentTheme) return;
-            currentTheme = theme;
-
-            if (theme === 'light') {
-                if (window.scrollY > 50) {
-                }
-                navBrand?.classList.replace('text-white', 'nav-text-dark');
-                navTagline?.classList.replace('text-white', 'nav-text-dark-light');
-                navLinks.forEach(link => {
-                    link.classList.replace('text-white', 'nav-text-dark');
-                });
-            } else {
-                if (window.scrollY > 50) {
-                }
-                navBrand?.classList.replace('nav-text-dark', 'text-white');
-                navTagline?.classList.replace('nav-text-dark-light', 'text-white');
-                navLinks.forEach(link => {
-                    link.classList.replace('nav-text-dark', 'text-white');
-                });
-            }
-        }
-
-        window.addEventListener('scroll', () => {
-            if (window.scrollY <= 50) {
-            } else {
-                if (currentTheme === 'light') {
-                } else {
-                }
-            }
-        });
-
-        // Intersection Observer for Sections to change Navbar theme
-        const lightSections = document.querySelectorAll('.section-light');
-        const darkSections = document.querySelectorAll('#blog-hero, .section-dark, footer');
-
-        const sectionObserver = new IntersectionObserver((entries) => {
-            let topIntersecting = null;
-            entries.forEach(entry => {
-                if (entry.isIntersecting && entry.intersectionRect.top < 100) {
-                    topIntersecting = entry.target;
-                }
-            });
-
-            if (topIntersecting) {
-                if (topIntersecting.matches('.section-light')) {
-                    setTheme('light');
-                } else {
-                    setTheme('dark');
-                }
-            }
-        }, { rootMargin: "-80px 0px -80% 0px" });
-
-        lightSections.forEach(s => sectionObserver.observe(s));
-        darkSections.forEach(s => sectionObserver.observe(s));
 
         // Blog Filtering Logic
         const filterBtns = document.querySelectorAll('.filter-btn');

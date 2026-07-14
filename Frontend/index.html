@@ -47,41 +47,55 @@
     </script>
     <link rel="stylesheet" href="assets/css/index.css">
 
-    </head>
+</head>
 
-<body class="antialiased selection:bg-brand-emerald selection:text-white">
-    
-    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-500 bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100">
+<body class="antialiased selection:bg-brand-emerald selection:">
+
+    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-500">
         <div class="mx-auto max-w-7xl">
             <div class="flex items-center justify-between px-6 lg:px-8 py-3">
                 <!-- Logo -->
-                <a href="index.html" class="flex items-center gap-3 group transition-opacity duration-500 hover:opacity-80" style="text-decoration: none;">
-                    <img src="./assets/images/logo.png" alt="URBAN Tree Logo" class="h-10 w-auto" style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));">
+                <a href="index.html"
+                    class="flex items-center gap-3 group transition-opacity duration-500 hover:opacity-80"
+                    style="text-decoration: none;">
+                    <img src="./assets/images/logo.png" alt="URBAN Tree Logo" class="h-10 w-auto"
+                        style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));">
                     <div>
-                        <div class="flex items-baseline gap-1">
-                            <span class="font-bold text-lg lg:text-xl text-gray-900 tracking-tight">URBAN</span><span class="font-bold text-lg lg:text-xl text-[#3bb049] tracking-tight">Tree</span>
+                        <div class="logo flex items-baseline gap-1">
+                            <span class="logo-urban font-bold text-lg lg:text-xl tracking-tight">URBAN</span><span class="logo-tree font-bold text-lg lg:text-xl tracking-tight">Tree</span>
                         </div>
-                        <span class="text-[10px] uppercase tracking-wider block -mt-1 text-gray-500 font-semibold">The City. Reimagined.</span>
+                        <p class="logo-tagline text-[10px] uppercase tracking-wider block -mt-1 font-semibold">
+                            THE CITY. REIMAGINED.
+                        </p>
                     </div>
                 </a>
 
                 <!-- Desktop Navigation -->
                 <div class="hidden lg:flex items-center gap-8">
-                    <a href="/index.html" class="nav-link text-[15px] font-semibold text-gray-700 hover:text-[#3bb049] transition-colors duration-300">Home</a>
-                    <a href="pages/technology.html" class="nav-link text-[15px] font-semibold text-gray-700 hover:text-[#3bb049] transition-colors duration-300">Technology</a>
-                    <a href="pages/about.html" class="nav-link text-[15px] font-semibold text-gray-700 hover:text-[#3bb049] transition-colors duration-300">About Us</a>
-                    <a href="pages/blog.html" class="nav-link text-[15px] font-semibold text-gray-700 hover:text-[#3bb049] transition-colors duration-300">Blog</a>
+                    <a href="/index.html"
+                        class="nav-link active text-[15px] font-semibold transition-colors duration-300">Home</a>
+                    <a href="pages/technology.html"
+                        class="nav-link text-[15px] font-semibold transition-colors duration-300">Technology</a>
+                    <a href="pages/about.html"
+                        class="nav-link text-[15px] font-semibold transition-colors duration-300">About
+                        Us</a>
+                    <a href="pages/blog.html"
+                        class="nav-link text-[15px] font-semibold transition-colors duration-300">Blog</a>
                 </div>
 
                 <!-- Desktop Enquiry & Mobile Toggle -->
                 <div class="flex items-center gap-4">
-                    <a href="index.html#enquiry-form" class="hidden lg:inline-flex items-center justify-center px-6 py-2.5 rounded-full bg-[#f97316] hover:bg-[#ea580c] text-white text-sm font-bold tracking-wide transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+                    <a href="index.html#enquiry-form"
+                        class="hidden lg:inline-flex items-center justify-center px-6 py-2.5 rounded-full bg-[#f97316] hover:bg-[#ea580c]  text-sm font-bold tracking-wide transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
                         Enquiry
                     </a>
                     <!-- Hamburger Button -->
-                    <button id="mobile-menu-btn" class="lg:hidden p-2 text-gray-900 focus:outline-none" aria-label="Toggle menu">
-                        <svg id="mobile-menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    <button id="mobile-menu-btn" type="button" class="lg:hidden p-2 focus:outline-none"
+                        aria-label="Toggle menu" aria-controls="mobile-menu-overlay" aria-expanded="false">
+                        <svg id="mobile-menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16m-7 6h7"></path>
                         </svg>
                     </button>
                 </div>
@@ -90,15 +104,21 @@
     </nav>
 
     <!-- Mobile Menu Overlay -->
-    <div id="mobile-menu-overlay" class="fixed inset-0 bg-black/95 backdrop-blur-xl z-[45] transform translate-x-full transition-transform duration-300 flex flex-col pt-24 px-6 pb-8 h-[100dvh] overflow-y-auto lg:hidden">
+    <div id="mobile-menu-overlay"
+        class="fixed inset-0 bg-black/95 backdrop-blur-xl z-[45] transform translate-x-full transition-transform duration-300 flex flex-col pt-24 px-6 pb-8 h-[100dvh] overflow-y-auto lg:hidden">
         <nav class="flex flex-col gap-6 text-center">
-            <a href="/index.html" class="mobile-link text-xl font-medium text-white hover:text-green-400 transition-colors">Home</a>
-            <a href="/pages/technology.html" class="mobile-link text-xl font-medium text-white/70 hover:text-white transition-colors">Technology</a>
-            <a href="/pages/about.html" class="mobile-link text-xl font-medium text-white/70 hover:text-white transition-colors">About Us</a>
-            <a href="/pages/blog.html" class="mobile-link text-xl font-medium text-white/70 hover:text-white transition-colors">Blog</a>
+            <a href="/index.html"
+                class="mobile-link text-xl font-medium  hover:text-green-400 transition-colors">Home</a>
+            <a href="/pages/technology.html"
+                class="mobile-link text-xl font-medium /70 hover: transition-colors">Technology</a>
+            <a href="/pages/about.html"
+                class="mobile-link text-xl font-medium /70 hover: transition-colors">About Us</a>
+            <a href="/pages/blog.html"
+                class="mobile-link text-xl font-medium /70 hover: transition-colors">Blog</a>
         </nav>
         <div class="mt-auto flex flex-col gap-4 pt-10">
-            <a href="/index.html#enquiry-form" class="mobile-link w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-green-500 hover:bg-green-400 text-black font-semibold transition-all duration-300">
+            <a href="/index.html#enquiry-form"
+                class="mobile-link w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-green-500 hover:bg-green-400 text-black font-semibold transition-all duration-300">
                 Enquire Now
             </a>
         </div>
@@ -106,84 +126,70 @@
     <div id="snap-container">
         <!-- ═══ FLOATING NAVBAR ═══ -->
         <!-- ADAPTIVE NAVBAR -->
-    
-    
-    <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const navbar = document.getElementById('navbar');
-        const textUrban = document.getElementById('logo-text-urban');
-        const textTree = document.getElementById('logo-text-tree');
-        const subtext = document.getElementById('logo-subtext');
-        const navLinks = document.querySelectorAll('.nav-link');
-        const navUnderlines = document.querySelectorAll('.nav-underline');
 
-        let currentIsDark = null;
 
-        function updateNavbarTheme(isDarkBackground) {
-            if (currentIsDark === isDarkBackground) return;
-            currentIsDark = isDarkBackground;
+        <script src="assets/js/navbar.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
 
-            if (isDarkBackground) {
-                navbar.className = "fixed top-0 w-full z-50 transition-all duration-500 bg-black/30 backdrop-blur-md border-b border-white/5";
-                
-                if (textUrban) textUrban.className = "font-bold text-base lg:text-lg transition-colors duration-500 text-white";
-                if (textTree) textTree.className = "font-bold text-base lg:text-lg transition-colors duration-500 text-green-400";
-                if (subtext) subtext.className = "text-xs block -mt-1 transition-colors duration-500 text-gray-400 font-medium";
-                
-                navLinks.forEach(link => {
-                    link.className = "nav-link text-sm font-medium transition-colors duration-300 relative group text-white/70 hover:text-white";
-                });
-                navUnderlines.forEach(line => {
-                    line.className = "nav-underline absolute bottom-0 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full bg-green-400";
-                });
-            } else {
-                navbar.className = "fixed top-0 w-full z-50 transition-all duration-500 bg-white/95 backdrop-blur-md shadow-md border-b border-gray-100";
-                
-                if (textUrban) textUrban.className = "font-bold text-base lg:text-lg transition-colors duration-500 text-gray-900";
-                if (textTree) textTree.className = "font-bold text-base lg:text-lg transition-colors duration-500 text-green-600";
-                if (subtext) subtext.className = "text-xs block -mt-1 transition-colors duration-500 text-gray-500 font-medium";
-                
-                navLinks.forEach(link => {
-                    link.className = "nav-link text-sm font-medium transition-colors duration-300 relative group text-gray-600 hover:text-gray-900";
-                });
-                navUnderlines.forEach(line => {
-                    line.className = "nav-underline absolute bottom-0 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full bg-green-500";
-                });
-            }
-        }
+                const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+                const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+                const mobileMenuIcon = document.getElementById('mobile-menu-icon');
+                const mobileLinks = document.querySelectorAll('.mobile-link');
+                let isMenuOpen = false;
 
-        const handleScroll = () => {
-            let darkBackground = true;
-            
-            // Check light sections
-            const lightSections = document.querySelectorAll('.bg-white, .bg-gray-50, .section-light');
-            
-            for (const section of lightSections) {
-                const rect = section.getBoundingClientRect();
-                if (rect.top <= 80 && rect.bottom >= 80) {
-                    darkBackground = false;
-                    break;
+                function setMenuState(open) {
+                    if (!mobileMenuBtn || !mobileMenuOverlay || !mobileMenuIcon) return;
+
+                    isMenuOpen = open;
+                    mobileMenuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+
+                    if (open) {
+                        mobileMenuOverlay.classList.remove('translate-x-full');
+                        mobileMenuIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>';
+                        document.body.style.overflow = 'hidden';
+                    } else {
+                        mobileMenuOverlay.classList.add('translate-x-full');
+                        mobileMenuIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>';
+                        document.body.style.overflow = '';
+                    }
                 }
-            }
-            
-            updateNavbarTheme(darkBackground);
-        };
 
-        window.addEventListener("scroll", handleScroll, { passive: true });
-        
-        const snapContainer = document.getElementById('snap-container');
-        if (snapContainer) {
-            snapContainer.addEventListener("scroll", handleScroll, { passive: true });
-        }
+                if (mobileMenuBtn && mobileMenuOverlay) {
+                    mobileMenuBtn.addEventListener('click', event => {
+                        event.stopPropagation();
+                        setMenuState(!isMenuOpen);
+                    });
 
-        setTimeout(handleScroll, 100);
-    });
-    </script>
+                    mobileMenuOverlay.addEventListener('click', event => {
+                        if (event.target === mobileMenuOverlay) {
+                            setMenuState(false);
+                        }
+                    });
+                }
+
+                mobileLinks.forEach(link => {
+                    link.addEventListener('click', () => setMenuState(false));
+                });
+
+                window.addEventListener('keydown', event => {
+                    if (event.key === 'Escape') {
+                        setMenuState(false);
+                    }
+                });
+
+                window.addEventListener('resize', () => {
+                    if (window.innerWidth >= 1024) {
+                        setMenuState(false);
+                    }
+                });
+            });
+        </script>
 
 
 
         <!-- ═══ SECTION 1: HERO ═══ -->
-        <section class="snap-section bg-black" style="height:100vh; min-height:100vh;" id="hero-section">
+        <section class="snap-section bg-black" style="height:100vh; min-height:100vh;" id="hero-section" data-navbar-theme="dark">
             <video id="hero-video" playsinline preload="auto">
                 <source src="assets/videos/moss.mp4" type="video/mp4">
             </video>
@@ -217,7 +223,7 @@
                                 class="absolute inline-flex h-20 w-20 rounded-full bg-[#4a9e3f] opacity-30 animate-ping"></span>
                             <span
                                 class="relative inline-flex h-14 w-14 rounded-full bg-[#4a9e3f] items-center justify-center shadow-lg shadow-[#4a9e3f]/40">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white ml-1"
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6  ml-1"
                                     fill="currentColor" viewBox="0 0 24 24">
                                     <path d="M8 5v14l11-7z" />
                                 </svg>
@@ -241,7 +247,7 @@
 
                 <div id="hero-text"
                     class="opacity-0 transform translate-y-8 transition-all duration-1000 ease-out text-center flex flex-col items-center">
-                    <h1 class="text-3xl md:text-5xl lg:text-6xl font-serif font-extrabold mb-8 leading-tight text-white max-w-5xl drop-shadow-2xl text-center"
+                    <h1 class="text-3xl md:text-5xl lg:text-6xl font-serif font-extrabold mb-8 leading-tight  max-w-5xl drop-shadow-2xl text-center"
                         style="letter-spacing:0;">
                         <span class="block md:inline-block md:whitespace-nowrap">Reinventing Urban Air With</span>
                         <span class="block md:inline-block md:whitespace-nowrap text-[#f97316]">Bio-Mechanical
@@ -252,7 +258,7 @@
                         <span>▶</span>
                     </button>
                     <p
-                        class="text-lg md:text-xl text-white max-w-4xl leading-relaxed mb-8 drop-shadow-lg text-center px-4">
+                        class="text-lg md:text-xl  max-w-4xl leading-relaxed mb-8 drop-shadow-lg text-center px-4">
                         <span class="block md:inline-block md:whitespace-nowrap">UrbanTree combines nature-powered
                             purification with advanced engineering</span>
                         <span class="block md:inline-block md:whitespace-nowrap">to create healthier environments
@@ -285,7 +291,7 @@
         </section>
 
         <!-- ═══ SECTION 2: PRODUCT INTRODUCTION ═══ -->
-        <section class="snap-section relative overflow-hidden" id="product-intro" style="background: #0a0a0a;">
+        <section class="snap-section relative overflow-hidden" id="product-intro" style="background: #0a0a0a;" data-navbar-theme="dark">
 
             <!-- Subtle emerald radial glow behind product -->
             <div
@@ -300,7 +306,8 @@
             </div>
 
             <div id="intro-brand-reveal" class="intro-brand-reveal" aria-hidden="true">
-                <span class="intro-brand-urban text-4xl md:text-6xl lg:text-7xl mr-2">URBAN</span><span class="intro-brand-tree text-4xl md:text-6xl lg:text-7xl">Tree</span>
+                <span class="intro-brand-urban text-4xl md:text-6xl lg:text-7xl mr-2">URBAN</span><span
+                    class="intro-brand-tree text-4xl md:text-6xl lg:text-7xl">Tree</span>
             </div>
 
             <!-- Device assembly animation -->
@@ -399,7 +406,7 @@
             }
         </style>
         <!-- ═══ SECTION 2.5: URBAN AIR CRISIS ═══ -->
-        <section class="snap-section relative overflow-hidden bg-black" id="air-crisis">
+        <section class="snap-section relative overflow-hidden bg-black" id="air-crisis" data-navbar-theme="dark">
             <div id="crisis-slider" class="absolute inset-0 cursor-ew-resize select-none touch-pan-y">
                 <img src="assets/images/city-clean.png" alt="Clean city"
                     class="absolute inset-0 w-full h-full object-cover object-[25%_center] md:object-center">
@@ -415,7 +422,7 @@
                         <span class="text-xs font-bold uppercase tracking-[0.3em] text-[#4a9e3f] mb-5 block">The Urban
                             Air Crisis</span>
                         <h2
-                            class="font-serif font-extrabold leading-tight text-4xl md:text-6xl text-white drop-shadow-2xl">
+                            class="font-serif font-extrabold leading-tight text-4xl md:text-6xl  drop-shadow-2xl">
                             <span id="crisis-line1" class="block">Cities Are Growing.</span>
                             <span id="crisis-line2" class="block mt-2">So Is Air Pollution.</span>
                         </h2>
@@ -426,14 +433,14 @@
                     class="absolute top-0 bottom-0 w-1 bg-white shadow-[0_0_18px_rgba(255,255,255,0.85)]"
                     style="left:100%;">
                     <div
-                        class="absolute top-1/2 left-1/2 h-14 w-14 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/70 bg-black/45 backdrop-blur-md flex items-center justify-center text-white text-xl font-bold shadow-2xl">
+                        class="absolute top-1/2 left-1/2 h-14 w-14 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/70 bg-black/45 backdrop-blur-md flex items-center justify-center  text-xl font-bold shadow-2xl">
                         ↔</div>
                 </div>
             </div>
         </section>
 
         <!-- ═══ SECTION 3: VISION & MISSION ═══ -->
-        <section class="snap-section bg-[#e8e8e8] border-y border-black/5 flex items-center" id="vision-mission">
+        <section class="snap-section bg-[#e8e8e8] border-y border-black/5 flex items-center" id="vision-mission" data-navbar-theme="light">
             <div class="w-full max-w-7xl mx-auto px-6 lg:px-12">
                 <div class="mb-10 text-center fade-up">
                     <span style="font-family:'Inter',sans-serif;"
@@ -463,7 +470,7 @@
                         <div class="absolute right-0 top-0 h-32 w-32 rounded-full bg-[#4a9e3f]/20 blur-2xl"></div>
                         <span style="font-family:'Sora',sans-serif;"
                             class="text-sm font-black uppercase tracking-[0.25em] text-[#4a9e3f]">Our Mission</span>
-                        <h3 style="font-family:'Sora',sans-serif;" class="mt-4 text-2xl font-extrabold text-white">
+                        <h3 style="font-family:'Sora',sans-serif;" class="mt-4 text-2xl font-extrabold ">
                             Scalable clean-air pockets across dense city ecosystems.</h3>
                         <p style="font-family:'Inter',sans-serif;"
                             class="mt-4 text-sm md:text-base text-gray-300 leading-relaxed font-medium">
@@ -536,7 +543,7 @@
         </section>
 
         <!-- ═══ SECTION 4: TECHNOLOGY — How It Works (REDESIGNED) ═══ -->
-        <section class="snap-section-scroll relative" id="technology" style="background: #f0f4f1; overflow: hidden;">
+        <section class="snap-section-scroll relative" id="technology" style="background: #f0f4f1; overflow: hidden;" data-navbar-theme="light">
 
             <!-- Deep radial glow -->
             <div
@@ -1209,7 +1216,7 @@
 
 
         <!-- ═══ SECTION 5: INTELLIGENT CAPABILITIES ═══ -->
-        <section class="snap-section bg-[#e8e8e8] flex items-center">
+        <section class="snap-section bg-[#e8e8e8] flex items-center" data-navbar-theme="light">
             <div class="w-full max-w-7xl mx-auto px-6">
                 <div class="text-center mb-16 fade-up">
                     <h2 class="text-4xl md:text-5xl font-serif font-extrabold text-gray-900 mb-4">Intelligent
@@ -1263,7 +1270,7 @@
                     </div>
                 </div>
 
-                <div class="bg-gray-900 rounded-3xl p-10 text-white relative overflow-hidden fade-up">
+                <div class="bg-gray-900 rounded-3xl p-10  relative overflow-hidden fade-up">
                     <div class="absolute top-0 right-0 w-64 h-64 bg-brand-emerald rounded-full blur-[100px] opacity-30">
                     </div>
                     <h3 class="text-2xl font-serif font-bold mb-8 text-center relative z-10">Real-World Impact Metrics
@@ -1298,7 +1305,7 @@
         </section>
 
         <!-- ═══ SECTION 6: SUSTAINABILITY ═══ -->
-        <section class="snap-section relative overflow-hidden flex items-center bg-[#05140e] py-24">
+        <section class="snap-section relative overflow-hidden flex items-center bg-[#05140e] py-24" data-navbar-theme="dark">
 
             <!-- Background Ambient Glows -->
             <div
@@ -1328,7 +1335,7 @@
                         </div>
 
                         <!-- Headings -->
-                        <h2 class="font-serif font-extrabold text-white mb-4 drop-shadow-lg"
+                        <h2 class="font-serif font-extrabold  mb-4 drop-shadow-lg"
                             style="font-size: clamp(3rem, 5vw, 4.5rem); line-height: 1.1;">
                             Sustainability
                         </h2>
@@ -1354,7 +1361,7 @@
                                     class="w-12 h-12 rounded-xl bg-gradient-to-br from-brand-emerald/30 to-transparent border border-brand-emerald/20 text-brand-emerald flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
                                     <span class="font-black text-lg">01</span>
                                 </div>
-                                <h4 class="text-white/90 font-medium text-base">Energy-efficient operation</h4>
+                                <h4 class="/90 font-medium text-base">Energy-efficient operation</h4>
                             </div>
 
                             <!-- Metric 2 -->
@@ -1364,7 +1371,7 @@
                                     class="w-12 h-12 rounded-xl bg-gradient-to-br from-brand-emerald/30 to-transparent border border-brand-emerald/20 text-brand-emerald flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
                                     <span class="font-black text-lg">02</span>
                                 </div>
-                                <h4 class="text-white/90 font-medium text-base">Scalable bio systems</h4>
+                                <h4 class="/90 font-medium text-base">Scalable bio systems</h4>
                             </div>
 
                             <!-- Metric 3 -->
@@ -1374,7 +1381,7 @@
                                     class="w-12 h-12 rounded-xl bg-gradient-to-br from-brand-emerald/30 to-transparent border border-brand-emerald/20 text-brand-emerald flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
                                     <span class="font-black text-lg">03</span>
                                 </div>
-                                <h4 class="text-white/90 font-medium text-base">Low maintenance infrastructure</h4>
+                                <h4 class="/90 font-medium text-base">Low maintenance infrastructure</h4>
                             </div>
 
                             <!-- Metric 4 -->
@@ -1384,7 +1391,7 @@
                                     class="w-12 h-12 rounded-xl bg-gradient-to-br from-brand-emerald/30 to-transparent border border-brand-emerald/20 text-brand-emerald flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
                                     <span class="font-black text-lg">04</span>
                                 </div>
-                                <h4 class="text-white/90 font-medium text-base">Hybrid power infrastructure</h4>
+                                <h4 class="/90 font-medium text-base">Hybrid power infrastructure</h4>
                             </div>
                         </div>
                     </div>
@@ -1440,7 +1447,7 @@
         </section>
 
         <!-- ═══ SECTION 7: LIVE ENVIRONMENTAL INTELLIGENCE ═══ -->
-        <section class="snap-section bg-[#e8e8e8] flex items-center">
+        <section class="snap-section bg-[#e8e8e8] flex items-center" data-navbar-theme="light">
             <div class="w-full max-w-7xl mx-auto px-6">
                 <div class="text-center mb-10 fade-up">
                     <span class="text-xs font-bold uppercase tracking-[0.3em] text-brand-emerald mb-4 block">Smart Cloud
@@ -1555,7 +1562,7 @@
 
 
         <!-- ═══ SECTION 8: SCALABLE APPLICATIONS + FOOTER ═══ -->
-        <section class="snap-section-scroll bg-[#e0e0e0] border-t border-black/5">
+        <section class="snap-section-scroll bg-[#e0e0e0] border-t border-black/5" data-navbar-theme="light">
             <div class="w-full max-w-7xl mx-auto px-6 pt-16">
                 <div class="text-center mb-12 fade-up">
                     <h2 class="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-4">Applications</h2>
@@ -1595,25 +1602,25 @@
                     <div
                         class="flex flex-col lg:flex-row justify-between items-start lg:items-center border-b border-white/10 pb-10 mb-10 gap-10">
                         <div class="w-full lg:w-1/2">
-                            <h2 class="text-3xl font-serif font-bold text-white mb-4">Join the Green Tech Revolution.
+                            <h2 class="text-3xl font-serif font-bold  mb-4">Join the Green Tech Revolution.
                             </h2>
                             <p class="text-gray-400 mb-6 text-sm">Subscribe to our newsletter for the latest in
                                 sustainable environmental technology and urban air updates.</p>
                             <form
                                 class="flex w-full max-w-md shadow-sm border border-white/10 rounded-md overflow-hidden">
                                 <input type="email" placeholder="Enter your email address"
-                                    class="w-full px-4 py-4 bg-white/10 focus:outline-none focus:bg-white/20 text-white placeholder-gray-500 transition-colors"
+                                    class="w-full px-4 py-4 bg-white/10 focus:outline-none focus:bg-white/20  placeholder-gray-500 transition-colors"
                                     required>
                                 <button type="submit"
-                                    class="px-8 py-4 bg-gray-100 text-gray-900 font-bold uppercase tracking-widest text-xs hover:bg-brand-emerald hover:text-white transition-colors">Subscribe</button>
+                                    class="px-8 py-4 bg-gray-100 text-gray-900 font-bold uppercase tracking-widest text-xs hover:bg-brand-emerald hover: transition-colors">Subscribe</button>
                             </form>
                         </div>
                         <div class="w-full lg:w-auto">
-                            <h3 class="text-white font-bold uppercase tracking-widest text-xs mb-6 lg:text-right">Follow
+                            <h3 class=" font-bold uppercase tracking-widest text-xs mb-6 lg:text-right">Follow
                                 Our Journey</h3>
                             <div class="flex gap-4 lg:justify-end text-gray-400">
                                 <a href="#"
-                                    class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all duration-300">
+                                    class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-blue-600 hover: hover:border-blue-600 transition-all duration-300">
                                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                                         <path
                                             d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
@@ -1627,14 +1634,14 @@
                                     </svg>
                                 </a>
                                 <a href="#"
-                                    class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-gradient-to-br hover:from-purple-500 hover:to-pink-500 hover:text-white hover:border-pink-500 transition-all duration-300">
+                                    class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-gradient-to-br hover:from-purple-500 hover:to-pink-500 hover: hover:border-pink-500 transition-all duration-300">
                                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                                         <path
                                             d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
                                     </svg>
                                 </a>
                                 <a href="#"
-                                    class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-red-600 hover:text-white hover:border-red-600 transition-all duration-300">
+                                    class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-red-600 hover: hover:border-red-600 transition-all duration-300">
                                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                                         <path
                                             d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
@@ -1649,7 +1656,7 @@
 
                         <!-- Company -->
                         <div>
-                            <h4 class="text-white font-bold uppercase tracking-widest text-xs mb-5">Company</h4>
+                            <h4 class=" font-bold uppercase tracking-widest text-xs mb-5">Company</h4>
                             <ul class="space-y-3">
                                 <li><a href="pages/about.html"
                                         class="text-gray-400 text-sm hover:text-brand-emerald transition-colors">About
@@ -1672,7 +1679,7 @@
 
                         <!-- Support & Monitoring -->
                         <div>
-                            <h4 class="text-white font-bold uppercase tracking-widest text-xs mb-5">Support & Monitoring
+                            <h4 class=" font-bold uppercase tracking-widest text-xs mb-5">Support & Monitoring
                             </h4>
                             <ul class="space-y-3">
                                 <li><a href="pages/login.html"
@@ -1689,7 +1696,7 @@
 
                         <!-- Legal -->
                         <div>
-                            <h4 class="text-white font-bold uppercase tracking-widest text-xs mb-5">Legal</h4>
+                            <h4 class=" font-bold uppercase tracking-widest text-xs mb-5">Legal</h4>
                             <ul class="space-y-3">
                                 <li><a href="legal/privacy-policy.html"
                                         class="text-gray-400 text-sm hover:text-brand-emerald transition-colors">Privacy
@@ -1794,7 +1801,7 @@
                     <!-- Submit Button -->
                     <div class="md:col-span-2 pt-2">
                         <button type="submit"
-                            class="w-full bg-brand-emerald hover:bg-[#3d8334] text-white font-bold py-4 rounded-xl shadow-lg shadow-brand-emerald/20 transition-all transform hover:-translate-y-0.5">
+                            class="w-full bg-brand-emerald hover:bg-[#3d8334]  font-bold py-4 rounded-xl shadow-lg shadow-brand-emerald/20 transition-all transform hover:-translate-y-0.5">
                             Create Enquiry Email
                         </button>
                     </div>
@@ -2041,14 +2048,14 @@
                         <div class="inactive-content absolute inset-0 flex flex-row lg:flex-col items-center justify-center transition-opacity duration-500">
                             <!-- Title Mobile (Horizontal) -->
                             <div class="flex lg:hidden items-center justify-center w-full px-4">
-                                <h3 class="font-serif font-bold text-white/90 text-sm tracking-widest uppercase group-hover:text-white transition-colors duration-300 drop-shadow-md text-center">
+                                <h3 class="font-serif font-bold /90 text-sm tracking-widest uppercase group-hover: transition-colors duration-300 drop-shadow-md text-center">
                                     ${app.title}
                                 </h3>
                             </div>
                             
                             <!-- Title Desktop (Vertical Strip) -->
                             <div class="hidden lg:flex flex-1 items-center justify-center overflow-hidden w-full py-6">
-                                <h3 class="font-serif font-bold text-white/90 tracking-[0.2em] text-sm uppercase group-hover:text-white transition-colors duration-300 drop-shadow-md whitespace-nowrap" style="writing-mode: vertical-rl; transform: rotate(180deg);">
+                                <h3 class="font-serif font-bold /90 tracking-[0.2em] text-sm uppercase group-hover: transition-colors duration-300 drop-shadow-md whitespace-nowrap" style="writing-mode: vertical-rl; transform: rotate(180deg);">
                                     ${app.title}
                                 </h3>
                             </div>
@@ -2058,10 +2065,10 @@
                         <div class="active-content absolute inset-0 p-6 md:p-10 flex flex-col justify-end transition-opacity duration-[800ms] delay-100">
                             <!-- Header -->
                             <div class="active-header flex items-center gap-4 lg:gap-6 z-10 transform transition-transform duration-700 w-full">
-                                <div class="w-12 h-12 lg:w-16 lg:h-16 rounded-2xl bg-brand-emerald text-white shadow-lg shadow-brand-emerald/20 flex items-center justify-center shrink-0">
+                                <div class="w-12 h-12 lg:w-16 lg:h-16 rounded-2xl bg-brand-emerald  shadow-lg shadow-brand-emerald/20 flex items-center justify-center shrink-0">
                                     <svg class="w-6 h-6 lg:w-8 lg:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">${app.svg_inner}</svg>
                                 </div>
-                                <h3 class="font-serif font-bold text-2xl lg:text-4xl text-white drop-shadow-md truncate pr-4">
+                                <h3 class="font-serif font-bold text-2xl lg:text-4xl  drop-shadow-md truncate pr-4">
                                     ${app.title}
                                 </h3>
                             </div>
@@ -2138,44 +2145,6 @@
     </script>
 
 
-        <script>
-        // Mobile Menu Logic
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
-        const mobileMenuIcon = document.getElementById('mobile-menu-icon');
-        let isMenuOpen = false;
-
-        if (mobileMenuBtn && mobileMenuOverlay) {
-            mobileMenuBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                isMenuOpen = !isMenuOpen;
-                if (isMenuOpen) {
-                    mobileMenuOverlay.classList.remove('translate-x-full');
-                    mobileMenuIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>';
-                    document.body.style.overflow = 'hidden';
-                } else {
-                    mobileMenuOverlay.classList.add('translate-x-full');
-                    mobileMenuIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>';
-                    document.body.style.overflow = '';
-                }
-            });
-
-            // Close menu when clicking outside links (optional, for better UX)
-            mobileMenuOverlay.addEventListener('click', (e) => {
-                if(e.target === mobileMenuOverlay && isMenuOpen) {
-                    mobileMenuBtn.click();
-                }
-            });
-        }
-        
-        const mobileLinks = document.querySelectorAll('.mobile-link');
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                if (isMenuOpen) mobileMenuBtn.click();
-            });
-        });
-    </script>
 </body>
 
 </html>
-

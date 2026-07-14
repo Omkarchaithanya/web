@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
         heroVideoModal.classList.add('open');
         heroVideoModal.setAttribute('aria-hidden', 'false');
         heroModalVideo.currentTime = 0;
-        heroModalVideo.play().catch(() => {});
+        heroModalVideo.play().catch(() => { });
     }
 
     function closeHeroVideoModal() {
@@ -89,8 +89,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     try {
                         seeActionSound.currentTime = 0;
                         const playPromise = seeActionSound.play();
-                        if (playPromise) playPromise.catch(() => {});
-                    } catch (error) {}
+                        if (playPromise) playPromise.catch(() => { });
+                    } catch (error) { }
                 }, 800);
             }
         };
@@ -128,7 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 650);
     }
 
-    window.startHeroVideo = function() {
+    window.startHeroVideo = function () {
         if (!heroVideo) return;
         if (promptInner) {
             promptInner.style.opacity = '0';
@@ -142,25 +142,25 @@ document.addEventListener('DOMContentLoaded', () => {
         heroVideo.play();
         heroVideo.addEventListener('ended', revealHeroText);
     };
-	
-	window.startHeroVideo = function() {
-                if (!heroVideo) return;
 
-                // Fade out & remove the prompt
-                if (promptInner) {
-                    promptInner.style.opacity = '0';
-                    promptInner.style.transform = 'scale(0.9)';
-                }
-                setTimeout(() => {
-                    if (heroClickPrompt) heroClickPrompt.style.display = 'none';
-                }, 500);
+    window.startHeroVideo = function () {
+        if (!heroVideo) return;
 
-                // Play video
-                heroVideo.muted = false;
+        // Fade out & remove the prompt
+        if (promptInner) {
+            promptInner.style.opacity = '0';
+            promptInner.style.transform = 'scale(0.9)';
+        }
+        setTimeout(() => {
+            if (heroClickPrompt) heroClickPrompt.style.display = 'none';
+        }, 500);
+
+        // Play video
+        heroVideo.muted = false;
         heroVideo.volume = 1;
         heroVideo.play();
-                heroVideo.addEventListener('ended', revealHeroText);
-            };
+        heroVideo.addEventListener('ended', revealHeroText);
+    };
 
     // --- 3. AIR CRISIS SLIDER ---
     const crisisSlider = document.getElementById('crisis-slider');
@@ -171,49 +171,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (crisisSlider && pollutedLayer && sliderDivider && crisisSection) {
         let crisisDragging = false;
         let crisisAutoPlayed = false;
-        const crisisNavLinks = document.querySelectorAll('#navbar a:not(.hover-glow-emerald)');
-
-        function splitCrisisNavLetters(link) {
-            if (link.dataset.crisisSplit === 'true') return;
-            const text = link.textContent;
-            link.textContent = '';
-            Array.from(text).forEach(char => {
-                const span = document.createElement('span');
-                span.textContent = char;
-                span.style.transition = 'color 0.15s ease';
-                link.appendChild(span);
-            });
-            link.dataset.crisisSplit = 'true';
-        }
-
-        function updateCrisisNavColors(percent) {
-            const rect = crisisSlider.getBoundingClientRect();
-            const boundary = rect.left + (rect.width * percent / 100);
-            crisisNavLinks.forEach(link => {
-                splitCrisisNavLetters(link);
-                link.querySelectorAll('span').forEach(letter => {
-                    const letterRect = letter.getBoundingClientRect();
-                    const letterCenter = letterRect.left + letterRect.width / 2;
-                    letter.style.color = letterCenter <= boundary ? '#ffffff' : '#000000';
-                });
-            });
-        }
-
-        function clearCrisisNavColors() {
-            crisisNavLinks.forEach(link => {
-                link.querySelectorAll('span').forEach(letter => {
-                    letter.style.color = '';
-                });
-            });
-        }
 
         function setCrisisSplit(percent) {
-            const clamped = Math.max(0, Math.min(100, percent));
-            pollutedLayer.style.width = clamped + '%';
-            sliderDivider.style.left = clamped + '%';
-            updateCrisisNavColors(clamped);
+            pollutedLayer.style.clipPath = `inset(0 0 0 ${percent}%)`;
+            sliderDivider.style.left = `${percent}%`;
         }
-
         function setCrisisSplitFromClientX(clientX) {
             const rect = crisisSlider.getBoundingClientRect();
             const percent = ((clientX - rect.left) / rect.width) * 100;
@@ -260,15 +222,17 @@ document.addEventListener('DOMContentLoaded', () => {
                     setTimeout(() => requestAnimationFrame(animateSlider), 350);
                 } else {
                     crisisDragging = false;
-                    clearCrisisNavColors();
                 }
+                document.addEventListener('mouseup', () => {
+                    crisisDragging = false;
+                });
             });
         }, { threshold: 0.6 });
         crisisSnapObserver.observe(crisisSection);
     }
 
     // --- 4. DASHBOARD ---
-    (function() {
+    (function () {
         const roiData = [
             { zone: 'INDIRANAGAR', before: 198, after: 42, pct: -79 },
             { zone: 'PEENYA INDUSTRIAL', before: 362, after: 247, pct: -32 },
@@ -460,18 +424,18 @@ document.addEventListener('DOMContentLoaded', () => {
 // ═══ ZONE MODAL — global scope ═══
 
 const zoneDetails = {
-    'Indiranagar': { id:'AWD-001', lat:'12.97°N', lng:'77.64°E', solar:92, pm1:18, pm25:32, pm10:51, co2:540, voc:0.7, temp:26, humidity:61, aqi:44, airIntake:380, purEff:74, coverage:250, fanSpeed:'65%', hepa:82, carbon:91, prefilter:78, uvLight:true, ionizer:true, moss:true, cyclone:true, power:'Solar', lastSync:'1 min ago', firmware:'v3.1.4' },
-    'MG Road':     { id:'AWD-002', lat:'12.97°N', lng:'77.61°E', solar:78, pm1:29, pm25:51, pm10:88, co2:720, voc:1.2, temp:28, humidity:54, aqi:94, airIntake:440, purEff:58, coverage:200, fanSpeed:'75%', hepa:55, carbon:68, prefilter:49, uvLight:true, ionizer:false, moss:false, cyclone:true, power:'Grid', lastSync:'3 min ago', firmware:'v3.1.3' },
-    'Silk Board':  { id:'AWD-003', lat:'12.91°N', lng:'77.62°E', solar:65, pm1:41, pm25:79, pm10:118, co2:890, voc:1.8, temp:29, humidity:58, aqi:142, airIntake:500, purEff:44, coverage:180, fanSpeed:'90%', hepa:31, carbon:47, prefilter:28, uvLight:true, ionizer:true, moss:false, cyclone:true, power:'Solar', lastSync:'5 min ago', firmware:'v3.1.4' },
-    'BTM Layout':  { id:'AWD-004', lat:'12.91°N', lng:'77.61°E', solar:70, pm1:38, pm25:72, pm10:109, co2:810, voc:1.5, temp:28, humidity:60, aqi:179, airIntake:480, purEff:49, coverage:190, fanSpeed:'85%', hepa:22, carbon:55, prefilter:33, uvLight:false, ionizer:true, moss:true, cyclone:true, power:'Solar', lastSync:'2 min ago', firmware:'v3.1.2' },
-    'Whitefield':  { id:'AWD-005', lat:'12.97°N', lng:'77.75°E', solar:88, pm1:21, pm25:36, pm10:58, co2:580, voc:0.8, temp:27, humidity:59, aqi:59, airIntake:390, purEff:71, coverage:240, fanSpeed:'60%', hepa:76, carbon:83, prefilter:70, uvLight:true, ionizer:true, moss:true, cyclone:true, power:'Solar', lastSync:'1 min ago', firmware:'v3.1.4' },
-    'Koramangala': { id:'AWD-006', lat:'13.02°N', lng:'77.51°E', solar:87, pm1:22, pm25:38, pm10:60, co2:610, voc:0.9, temp:27, humidity:56, aqi:95, airIntake:420, purEff:61, coverage:250, fanSpeed:'80%', hepa:18, carbon:72, prefilter:34, uvLight:true, ionizer:true, moss:false, cyclone:true, power:'Solar', lastSync:'2 min ago', firmware:'v3.1.4' },
-    'Marathahalli':{ id:'AWD-007', lat:'12.96°N', lng:'77.70°E', solar:74, pm1:35, pm25:65, pm10:98, co2:760, voc:1.4, temp:29, humidity:55, aqi:132, airIntake:460, purEff:52, coverage:200, fanSpeed:'82%', hepa:40, carbon:60, prefilter:45, uvLight:true, ionizer:false, moss:false, cyclone:true, power:'Grid', lastSync:'4 min ago', firmware:'v3.1.3' },
-    'Jayanagar':   { id:'AWD-008', lat:'12.93°N', lng:'77.58°E', solar:91, pm1:19, pm25:33, pm10:52, co2:550, voc:0.7, temp:26, humidity:62, aqi:58, airIntake:370, purEff:76, coverage:260, fanSpeed:'62%', hepa:85, carbon:90, prefilter:80, uvLight:true, ionizer:true, moss:true, cyclone:true, power:'Solar', lastSync:'1 min ago', firmware:'v3.1.4' },
-    'Peenya Indl.':{ id:'AWD-009', lat:'13.03°N', lng:'77.52°E', solar:55, pm1:68, pm25:142, pm10:198, co2:1240, voc:3.1, temp:31, humidity:49, aqi:252, airIntake:560, purEff:28, coverage:150, fanSpeed:'100%', hepa:9, carbon:22, prefilter:11, uvLight:true, ionizer:true, moss:false, cyclone:true, power:'Grid', lastSync:'6 min ago', firmware:'v3.0.9' },
-    'Yeshwanthpur':{ id:'AWD-010', lat:'13.02°N', lng:'77.55°E', solar:68, pm1:44, pm25:88, pm10:130, co2:950, voc:2.0, temp:30, humidity:52, aqi:156, airIntake:510, purEff:41, coverage:170, fanSpeed:'92%', hepa:28, carbon:43, prefilter:25, uvLight:false, ionizer:true, moss:false, cyclone:true, power:'Solar', lastSync:'3 min ago', firmware:'v3.1.1' },
-    'HSR Layout':  { id:'AWD-011', lat:'12.91°N', lng:'77.64°E', solar:80, pm1:27, pm25:48, pm10:79, co2:680, voc:1.1, temp:27, humidity:58, aqi:97, airIntake:430, purEff:60, coverage:220, fanSpeed:'72%', hepa:52, carbon:65, prefilter:48, uvLight:true, ionizer:false, moss:true, cyclone:true, power:'Solar', lastSync:'2 min ago', firmware:'v3.1.4' },
-    'Sarjapur':    { id:'AWD-012', lat:'12.86°N', lng:'77.68°E', solar:93, pm1:17, pm25:30, pm10:48, co2:510, voc:0.6, temp:26, humidity:64, aqi:45, airIntake:360, purEff:78, coverage:270, fanSpeed:'58%', hepa:88, carbon:94, prefilter:82, uvLight:true, ionizer:true, moss:true, cyclone:true, power:'Solar', lastSync:'1 min ago', firmware:'v3.1.4' },
+    'Indiranagar': { id: 'AWD-001', lat: '12.97°N', lng: '77.64°E', solar: 92, pm1: 18, pm25: 32, pm10: 51, co2: 540, voc: 0.7, temp: 26, humidity: 61, aqi: 44, airIntake: 380, purEff: 74, coverage: 250, fanSpeed: '65%', hepa: 82, carbon: 91, prefilter: 78, uvLight: true, ionizer: true, moss: true, cyclone: true, power: 'Solar', lastSync: '1 min ago', firmware: 'v3.1.4' },
+    'MG Road': { id: 'AWD-002', lat: '12.97°N', lng: '77.61°E', solar: 78, pm1: 29, pm25: 51, pm10: 88, co2: 720, voc: 1.2, temp: 28, humidity: 54, aqi: 94, airIntake: 440, purEff: 58, coverage: 200, fanSpeed: '75%', hepa: 55, carbon: 68, prefilter: 49, uvLight: true, ionizer: false, moss: false, cyclone: true, power: 'Grid', lastSync: '3 min ago', firmware: 'v3.1.3' },
+    'Silk Board': { id: 'AWD-003', lat: '12.91°N', lng: '77.62°E', solar: 65, pm1: 41, pm25: 79, pm10: 118, co2: 890, voc: 1.8, temp: 29, humidity: 58, aqi: 142, airIntake: 500, purEff: 44, coverage: 180, fanSpeed: '90%', hepa: 31, carbon: 47, prefilter: 28, uvLight: true, ionizer: true, moss: false, cyclone: true, power: 'Solar', lastSync: '5 min ago', firmware: 'v3.1.4' },
+    'BTM Layout': { id: 'AWD-004', lat: '12.91°N', lng: '77.61°E', solar: 70, pm1: 38, pm25: 72, pm10: 109, co2: 810, voc: 1.5, temp: 28, humidity: 60, aqi: 179, airIntake: 480, purEff: 49, coverage: 190, fanSpeed: '85%', hepa: 22, carbon: 55, prefilter: 33, uvLight: false, ionizer: true, moss: true, cyclone: true, power: 'Solar', lastSync: '2 min ago', firmware: 'v3.1.2' },
+    'Whitefield': { id: 'AWD-005', lat: '12.97°N', lng: '77.75°E', solar: 88, pm1: 21, pm25: 36, pm10: 58, co2: 580, voc: 0.8, temp: 27, humidity: 59, aqi: 59, airIntake: 390, purEff: 71, coverage: 240, fanSpeed: '60%', hepa: 76, carbon: 83, prefilter: 70, uvLight: true, ionizer: true, moss: true, cyclone: true, power: 'Solar', lastSync: '1 min ago', firmware: 'v3.1.4' },
+    'Koramangala': { id: 'AWD-006', lat: '13.02°N', lng: '77.51°E', solar: 87, pm1: 22, pm25: 38, pm10: 60, co2: 610, voc: 0.9, temp: 27, humidity: 56, aqi: 95, airIntake: 420, purEff: 61, coverage: 250, fanSpeed: '80%', hepa: 18, carbon: 72, prefilter: 34, uvLight: true, ionizer: true, moss: false, cyclone: true, power: 'Solar', lastSync: '2 min ago', firmware: 'v3.1.4' },
+    'Marathahalli': { id: 'AWD-007', lat: '12.96°N', lng: '77.70°E', solar: 74, pm1: 35, pm25: 65, pm10: 98, co2: 760, voc: 1.4, temp: 29, humidity: 55, aqi: 132, airIntake: 460, purEff: 52, coverage: 200, fanSpeed: '82%', hepa: 40, carbon: 60, prefilter: 45, uvLight: true, ionizer: false, moss: false, cyclone: true, power: 'Grid', lastSync: '4 min ago', firmware: 'v3.1.3' },
+    'Jayanagar': { id: 'AWD-008', lat: '12.93°N', lng: '77.58°E', solar: 91, pm1: 19, pm25: 33, pm10: 52, co2: 550, voc: 0.7, temp: 26, humidity: 62, aqi: 58, airIntake: 370, purEff: 76, coverage: 260, fanSpeed: '62%', hepa: 85, carbon: 90, prefilter: 80, uvLight: true, ionizer: true, moss: true, cyclone: true, power: 'Solar', lastSync: '1 min ago', firmware: 'v3.1.4' },
+    'Peenya Indl.': { id: 'AWD-009', lat: '13.03°N', lng: '77.52°E', solar: 55, pm1: 68, pm25: 142, pm10: 198, co2: 1240, voc: 3.1, temp: 31, humidity: 49, aqi: 252, airIntake: 560, purEff: 28, coverage: 150, fanSpeed: '100%', hepa: 9, carbon: 22, prefilter: 11, uvLight: true, ionizer: true, moss: false, cyclone: true, power: 'Grid', lastSync: '6 min ago', firmware: 'v3.0.9' },
+    'Yeshwanthpur': { id: 'AWD-010', lat: '13.02°N', lng: '77.55°E', solar: 68, pm1: 44, pm25: 88, pm10: 130, co2: 950, voc: 2.0, temp: 30, humidity: 52, aqi: 156, airIntake: 510, purEff: 41, coverage: 170, fanSpeed: '92%', hepa: 28, carbon: 43, prefilter: 25, uvLight: false, ionizer: true, moss: false, cyclone: true, power: 'Solar', lastSync: '3 min ago', firmware: 'v3.1.1' },
+    'HSR Layout': { id: 'AWD-011', lat: '12.91°N', lng: '77.64°E', solar: 80, pm1: 27, pm25: 48, pm10: 79, co2: 680, voc: 1.1, temp: 27, humidity: 58, aqi: 97, airIntake: 430, purEff: 60, coverage: 220, fanSpeed: '72%', hepa: 52, carbon: 65, prefilter: 48, uvLight: true, ionizer: false, moss: true, cyclone: true, power: 'Solar', lastSync: '2 min ago', firmware: 'v3.1.4' },
+    'Sarjapur': { id: 'AWD-012', lat: '12.86°N', lng: '77.68°E', solar: 93, pm1: 17, pm25: 30, pm10: 48, co2: 510, voc: 0.6, temp: 26, humidity: 64, aqi: 45, airIntake: 360, purEff: 78, coverage: 270, fanSpeed: '58%', hepa: 88, carbon: 94, prefilter: 82, uvLight: true, ionizer: true, moss: true, cyclone: true, power: 'Solar', lastSync: '1 min ago', firmware: 'v3.1.4' },
 };
 
 function getBarColor(val) {
@@ -485,7 +449,7 @@ function openZoneModal(name, boxNum) {
     if (!d) return;
     const aqiColor = d.aqi <= 50 ? '#4a9e3f' : d.aqi <= 100 ? '#eab308' : d.aqi <= 150 ? '#f97316' : d.aqi <= 200 ? '#ef4444' : '#a855f7';
     const aqiLabel = d.aqi <= 50 ? 'Good' : d.aqi <= 100 ? 'Moderate' : d.aqi <= 150 ? 'Unhealthy for Some' : d.aqi <= 200 ? 'Unhealthy' : 'Hazardous';
-    const tog = (on) => `<span style="display:inline-block;width:36px;height:20px;border-radius:10px;background:${on?'#4a9e3f':'#374151'};position:relative;vertical-align:middle;"><span style="position:absolute;top:3px;${on?'right:3px':'left:3px'};width:14px;height:14px;border-radius:50%;background:white;"></span></span>`;
+    const tog = (on) => `<span style="display:inline-block;width:36px;height:20px;border-radius:10px;background:${on ? '#4a9e3f' : '#374151'};position:relative;vertical-align:middle;"><span style="position:absolute;top:3px;${on ? 'right:3px' : 'left:3px'};width:14px;height:14px;border-radius:50%;background:white;"></span></span>`;
     const bar = (val) => `<div style="flex:1;height:4px;background:#1f2937;border-radius:2px;"><div style="width:${val}%;height:4px;background:${getBarColor(val)};border-radius:2px;"></div></div>`;
 
     document.getElementById('zone-modal-body-' + boxNum).innerHTML = `
@@ -498,10 +462,10 @@ function openZoneModal(name, boxNum) {
         </div>
         <div style="font-size:10px;font-weight:700;color:#6b7280;letter-spacing:0.1em;margin-bottom:10px;">SENSOR READINGS — REAL TIME</div>
         <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px;margin-bottom:16px;">
-            ${[['PM1',d.pm1,'ug/m3'],['PM2.5',d.pm25,'ug/m3'],['PM10',d.pm10,'ug/m3'],['CO2',d.co2,'ppm'],
-               ['VOC',d.voc,'mg/m3'],['TEMP',d.temp,'°C'],['HUMIDITY',d.humidity,'% RH'],['AQI SCORE',d.aqi,'overall index'],
-               ['AIR INTAKE',d.airIntake,'m3/hr'],['PURIF. EFF.',d.purEff+'%','efficiency'],['COVERAGE',d.coverage,'meters'],['FAN SPEED',d.fanSpeed,'current']
-            ].map(([label,val,unit])=>`
+            ${[['PM1', d.pm1, 'ug/m3'], ['PM2.5', d.pm25, 'ug/m3'], ['PM10', d.pm10, 'ug/m3'], ['CO2', d.co2, 'ppm'],
+        ['VOC', d.voc, 'mg/m3'], ['TEMP', d.temp, '°C'], ['HUMIDITY', d.humidity, '% RH'], ['AQI SCORE', d.aqi, 'overall index'],
+        ['AIR INTAKE', d.airIntake, 'm3/hr'], ['PURIF. EFF.', d.purEff + '%', 'efficiency'], ['COVERAGE', d.coverage, 'meters'], ['FAN SPEED', d.fanSpeed, 'current']
+        ].map(([label, val, unit]) => `
                 <div style="background:#161f2e;border:1px solid #ffffff15;border-radius:8px;padding:10px;">
                     <div style="font-size:9px;color:#6b7280;margin-bottom:4px;">${label}</div>
                     <div style="font-size:18px;font-weight:700;color:#f97316;">${val}</div>
@@ -511,21 +475,21 @@ function openZoneModal(name, boxNum) {
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
             <div>
                 <div style="font-size:10px;font-weight:700;color:#6b7280;letter-spacing:0.1em;margin-bottom:10px;">SYSTEM STATUS</div>
-                ${[['HEPA Filter',d.hepa],['Carbon Filter',d.carbon],['Pre-filter',d.prefilter]].map(([label,val])=>`
+                ${[['HEPA Filter', d.hepa], ['Carbon Filter', d.carbon], ['Pre-filter', d.prefilter]].map(([label, val]) => `
                     <div style="margin-bottom:8px;">
                         <div style="display:flex;justify-content:space-between;font-size:11px;color:#9ca3af;margin-bottom:3px;">
                             <span>${label}</span><span style="color:${getBarColor(val)};font-weight:700;">${val}%</span>
                         </div>
                         <div style="display:flex;align-items:center;">${bar(val)}</div>
                     </div>`).join('')}
-                ${[['UV Light',d.uvLight],['Ionizer',d.ionizer],['Moss Chamber',d.moss],['Cyclone Sep.',d.cyclone]].map(([label,on])=>`
+                ${[['UV Light', d.uvLight], ['Ionizer', d.ionizer], ['Moss Chamber', d.moss], ['Cyclone Sep.', d.cyclone]].map(([label, on]) => `
                     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;font-size:11px;color:#9ca3af;">
                         <span>${label}</span>${tog(on)}
                     </div>`).join('')}
             </div>
             <div>
                 <div style="font-size:10px;font-weight:700;color:#6b7280;letter-spacing:0.1em;margin-bottom:10px;">POWER & INFO</div>
-                ${[['Power Source',d.power,'#eab308'],['Solar Level',d.solar+'%','#eab308'],['Last Sync',d.lastSync,'white'],['Firmware',d.firmware,'white'],['GPS',`${d.lat}, ${d.lng}`,'white']].map(([label,val,color])=>`
+                ${[['Power Source', d.power, '#eab308'], ['Solar Level', d.solar + '%', '#eab308'], ['Last Sync', d.lastSync, 'white'], ['Firmware', d.firmware, 'white'], ['GPS', `${d.lat}, ${d.lng}`, 'white']].map(([label, val, color]) => `
                     <div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:8px;">
                         <span style="color:#6b7280;">${label}</span><span style="color:${color};font-weight:700;">${val}</span>
                     </div>`).join('')}
@@ -539,7 +503,7 @@ function closeZoneModal(boxNum) {
     document.getElementById('zone-modal-' + boxNum).style.display = 'none';
 }
 
-document.addEventListener('click', function(e) {
+document.addEventListener('click', function (e) {
     [1, 2].forEach(n => {
         const modal = document.getElementById('zone-modal-' + n);
         if (modal && e.target === modal) closeZoneModal(n);

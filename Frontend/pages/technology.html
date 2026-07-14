@@ -269,6 +269,7 @@
             color: #374151;
         }
     </style>
+    <link rel="stylesheet" href="../assets/css/index.css">
 </head>
 
 <body class="antialiased">
@@ -276,37 +277,50 @@
     <!-- ═══ NAVBAR ═══ -->
     <!-- ADAPTIVE NAVBAR -->
     
-    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-500 bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100">
+    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-500">
         <div class="mx-auto max-w-7xl">
             <div class="flex items-center justify-between px-6 lg:px-8 py-3">
                 <!-- Logo -->
-                <a href="../index.html" class="flex items-center gap-3 group transition-opacity duration-500 hover:opacity-80" style="text-decoration: none;">
-                    <img src="../assets/images/logo.png" alt="URBAN Tree Logo" class="h-10 w-auto" style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));">
+                <a href="../index.html"
+                    class="flex items-center gap-3 group transition-opacity duration-500 hover:opacity-80"
+                    style="text-decoration: none;">
+                    <img src="../assets/images/logo.png" alt="URBAN Tree Logo" class="h-10 w-auto"
+                        style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));">
                     <div>
-                        <div class="flex items-baseline gap-1">
-                            <span class="font-bold text-lg lg:text-xl text-gray-900 tracking-tight">URBAN</span><span class="font-bold text-lg lg:text-xl text-[#3bb049] tracking-tight">Tree</span>
+                        <div class="logo flex items-baseline gap-1">
+                            <span class="logo-urban font-bold text-lg lg:text-xl tracking-tight">URBAN</span><span class="logo-tree font-bold text-lg lg:text-xl tracking-tight">Tree</span>
                         </div>
-                        <span class="text-[10px] uppercase tracking-wider block -mt-1 text-gray-500 font-semibold">The City. Reimagined.</span>
+                        <p class="logo-tagline text-[10px] uppercase tracking-wider block -mt-1 font-semibold">
+                            THE CITY. REIMAGINED.
+                        </p>
                     </div>
                 </a>
 
                 <!-- Desktop Navigation -->
                 <div class="hidden lg:flex items-center gap-8">
-                    <a href="/index.html" class="nav-link text-[15px] font-semibold text-gray-700 hover:text-[#3bb049] transition-colors duration-300">Home</a>
-                    <a href="technology.html" class="nav-link text-[15px] font-semibold text-gray-700 hover:text-[#3bb049] transition-colors duration-300">Technology</a>
-                    <a href="about.html" class="nav-link text-[15px] font-semibold text-gray-700 hover:text-[#3bb049] transition-colors duration-300">About Us</a>
-                    <a href="blog.html" class="nav-link text-[15px] font-semibold text-gray-700 hover:text-[#3bb049] transition-colors duration-300">Blog</a>
+                    <a href="../index.html"
+                        class="nav-link text-[15px] font-semibold transition-colors duration-300">Home</a>
+                    <a href="technology.html"
+                        class="nav-link active text-[15px] font-semibold transition-colors duration-300">Technology</a>
+                    <a href="about.html"
+                        class="nav-link text-[15px] font-semibold transition-colors duration-300">About Us</a>
+                    <a href="blog.html"
+                        class="nav-link text-[15px] font-semibold transition-colors duration-300">Blog</a>
                 </div>
 
                 <!-- Desktop Enquiry & Mobile Toggle -->
                 <div class="flex items-center gap-4">
-                    <a href="../index.html#enquiry-form" class="hidden lg:inline-flex items-center justify-center px-6 py-2.5 rounded-full bg-[#f97316] hover:bg-[#ea580c] text-white text-sm font-bold tracking-wide transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+                    <a href="../index.html#enquiry-form"
+                        class="hidden lg:inline-flex items-center justify-center px-6 py-2.5 rounded-full bg-[#f97316] hover:bg-[#ea580c]  text-sm font-bold tracking-wide transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
                         Enquiry
                     </a>
                     <!-- Hamburger Button -->
-                    <button id="mobile-menu-btn" class="lg:hidden p-2 text-gray-900 focus:outline-none" aria-label="Toggle menu">
-                        <svg id="mobile-menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    <button id="mobile-menu-btn" type="button" class="lg:hidden p-2 focus:outline-none"
+                        aria-label="Toggle menu" aria-controls="mobile-menu-overlay" aria-expanded="false">
+                        <svg id="mobile-menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16m-7 6h7"></path>
                         </svg>
                     </button>
                 </div>
@@ -315,129 +329,31 @@
     </nav>
 
     <!-- Mobile Menu Overlay -->
-    <div id="mobile-menu-overlay" class="fixed inset-0 bg-black/95 backdrop-blur-xl z-[45] transform translate-x-full transition-transform duration-300 flex flex-col pt-24 px-6 pb-8 h-[100dvh] overflow-y-auto lg:hidden">
+    <div id="mobile-menu-overlay"
+        class="fixed inset-0 bg-black/95 backdrop-blur-xl z-[45] transform translate-x-full transition-transform duration-300 flex flex-col pt-24 px-6 pb-8 h-[100dvh] overflow-y-auto lg:hidden">
         <nav class="flex flex-col gap-6 text-center">
-            <a href="/index.html" class="mobile-link text-xl font-medium text-white hover:text-green-400 transition-colors">Home</a>
-            <a href="/pages/technology.html" class="mobile-link text-xl font-medium text-white/70 hover:text-white transition-colors">Technology</a>
-            <a href="/pages/about.html" class="mobile-link text-xl font-medium text-white/70 hover:text-white transition-colors">About Us</a>
-            <a href="/pages/blog.html" class="mobile-link text-xl font-medium text-white/70 hover:text-white transition-colors">Blog</a>
+            <a href="../index.html"
+                class="mobile-link text-xl font-medium  hover:text-green-400 transition-colors">Home</a>
+            <a href="technology.html"
+                class="mobile-link text-xl font-medium /70 hover: transition-colors">Technology</a>
+            <a href="about.html"
+                class="mobile-link text-xl font-medium /70 hover: transition-colors">About Us</a>
+            <a href="blog.html"
+                class="mobile-link text-xl font-medium /70 hover: transition-colors">Blog</a>
         </nav>
         <div class="mt-auto flex flex-col gap-4 pt-10">
-            <a href="/index.html#enquiry-form" class="mobile-link w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-green-500 hover:bg-green-400 text-black font-semibold transition-all duration-300">
+            <a href="../index.html#enquiry-form"
+                class="mobile-link w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-green-500 hover:bg-green-400 text-black font-semibold transition-all duration-300">
                 Enquire Now
             </a>
         </div>
     </div>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const navbar = document.getElementById('navbar');
-            const trunk = document.getElementById('logo-trunk');
-            const canopyTop = document.getElementById('logo-canopy-top');
-            const canopyLeft = document.getElementById('logo-canopy-left');
-            const canopyRight = document.getElementById('logo-canopy-right');
-            const textUrban = document.getElementById('logo-text-urban');
-            const textTree = document.getElementById('logo-text-tree');
-            const subtext = document.getElementById('logo-subtext');
-            const navLinks = document.querySelectorAll('.nav-link');
-            const navUnderlines = document.querySelectorAll('.nav-underline');
+    <script src="../assets/js/navbar.js"></script>
 
-            let currentIsDark = true;
-
-            function updateNavbarTheme(isDarkBackground) {
-                if (currentIsDark === isDarkBackground) return;
-                currentIsDark = isDarkBackground;
-
-                if (isDarkBackground) {
-                    navbar.className = "sticky top-0 w-full z-50 transition-all duration-500 bg-black/30 backdrop-blur-md border-b border-white/5";
-
-                    if (trunk) trunk.setAttribute('fill', '#9CA3AF');
-                    if (canopyTop) canopyTop.setAttribute('fill', '#4ADE80');
-                    if (canopyLeft) canopyLeft.setAttribute('fill', '#22C55E');
-                    if (canopyRight) canopyRight.setAttribute('fill', '#22C55E');
-
-                    if (textUrban) { textUrban.className = "font-bold text-base lg:text-lg transition-colors duration-500 text-white"; }
-                    if (textTree) { textTree.className = "font-bold text-base lg:text-lg transition-colors duration-500 text-green-400"; }
-                    if (subtext) { subtext.className = "text-xs block -mt-1 transition-colors duration-500 text-gray-400 font-medium"; }
-
-                    navLinks.forEach(link => {
-                        link.className = "nav-link text-sm font-medium transition-colors duration-300 relative group text-white/70 hover:text-white";
-                    });
-                    navUnderlines.forEach(line => {
-                        line.className = "nav-underline absolute bottom-0 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full bg-green-400";
-                    });
-                } else {
-                    navbar.className = "sticky top-0 w-full z-50 transition-all duration-500 bg-white/95 backdrop-blur-md shadow-md border-b border-gray-100";
-
-                    if (trunk) trunk.setAttribute('fill', '#4B5563');
-                    if (canopyTop) canopyTop.setAttribute('fill', '#22C55E');
-                    if (canopyLeft) canopyLeft.setAttribute('fill', '#16A34A');
-                    if (canopyRight) canopyRight.setAttribute('fill', '#16A34A');
-
-                    if (textUrban) { textUrban.className = "font-bold text-base lg:text-lg transition-colors duration-500 text-gray-900"; }
-                    if (textTree) { textTree.className = "font-bold text-base lg:text-lg transition-colors duration-500 text-green-600"; }
-                    if (subtext) { subtext.className = "text-xs block -mt-1 transition-colors duration-500 text-gray-500 font-medium"; }
-
-                    navLinks.forEach(link => {
-                        link.className = "nav-link text-sm font-medium transition-colors duration-300 relative group text-gray-700 hover:text-gray-900";
-                    });
-                    navUnderlines.forEach(line => {
-                        line.className = "nav-underline absolute bottom-0 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full bg-green-600";
-                    });
-                }
-            }
-
-            const handleScroll = () => {
-                const headerHeight = 80;
-                const checkPoint = headerHeight + 50;
-
-                const originalPointerEvents = navbar.style.pointerEvents;
-                navbar.style.pointerEvents = 'none';
-
-                const elements = document.elementsFromPoint(window.innerWidth / 2, checkPoint);
-
-                navbar.style.pointerEvents = originalPointerEvents;
-
-                let darkBackground = false;
-                if (elements && elements.length > 0) {
-                    for (const element of elements) {
-                        if (element === navbar || navbar.contains(element)) continue;
-
-                        const bgColor = window.getComputedStyle(element).backgroundColor;
-                        if (!bgColor || bgColor === 'rgba(0, 0, 0, 0)' || bgColor === 'transparent') continue;
-
-                        const rgbMatch = bgColor.match(/\d+/g);
-                        if (rgbMatch && rgbMatch.length >= 3) {
-                            const r = parseInt(rgbMatch[0]);
-                            const g = parseInt(rgbMatch[1]);
-                            const b = parseInt(rgbMatch[2]);
-                            const a = rgbMatch.length > 3 ? parseFloat(rgbMatch[3]) : 1;
-
-                            if (a > 0.1) {
-                                const luminance = (r * 299 + g * 587 + b * 114) / 1000;
-                                darkBackground = luminance < 128;
-                                break;
-                            }
-                        }
-                    }
-                }
-
-                updateNavbarTheme(darkBackground);
-            };
-
-            window.addEventListener("scroll", handleScroll, { passive: true });
-
-            const snapContainer = document.getElementById('snap-container');
-            if (snapContainer) {
-                snapContainer.addEventListener("scroll", handleScroll, { passive: true });
-            }
-
-            setTimeout(handleScroll, 100);
-        });
-    </script>
 
 
     <!-- ═══ HERO ═══ -->
-    <section id="tech-hero">
+    <section id="tech-hero" data-navbar-theme="dark">
         <div class="hero-grid"></div>
         <div
             style="position:absolute;top:-10%;left:-5%;width:600px;height:600px;background:radial-gradient(circle,rgba(16,185,129,0.14) 0%,transparent 65%);pointer-events:none;">
@@ -470,11 +386,11 @@
                 </p>
                 <div class="hero-animate flex flex-wrap gap-4" style="animation-delay:0.5s;">
                     <a href="#architecture"
-                        class="hover-glow-emerald px-8 py-3.5 bg-emerald-500 text-white rounded-full font-semibold shadow-lg shadow-emerald-500/30 transition-all duration-300">
+                        class="hover-glow-emerald px-8 py-3.5 bg-emerald-500  rounded-full font-semibold shadow-lg shadow-emerald-500/30 transition-all duration-300">
                         Explore System
                     </a>
                     <a href="#components"
-                        class="px-8 py-3.5 bg-white/10 backdrop-blur-sm border border-white/20 text-white rounded-full font-semibold hover:bg-white/20 transition-all duration-300">
+                        class="px-8 py-3.5 bg-white/10 backdrop-blur-sm border border-white/20  rounded-full font-semibold hover:bg-white/20 transition-all duration-300">
                         View Components
                     </a>
                 </div>
@@ -512,7 +428,7 @@
     </section>
 
     <!-- ═══ SECTION 1: SYSTEM ARCHITECTURE ═══ -->
-    <section class="section-lighter" id="architecture">
+    <section class="section-lighter" id="architecture" data-navbar-theme="light">
         <div class="max-w-7xl mx-auto px-6 lg:px-12">
 
             <div class="text-center mb-16">
@@ -562,8 +478,7 @@
     </section>
 
     <!-- ═══ SECTION 2: TECHNOLOGY COMPONENTS (BENTO GRID) ═══ -->
-    <section class="section-dark relative" id="components"
-        style="background-color:#050505; overflow:hidden; padding: 120px 0;">
+    <section class="section-dark relative" id="components" data-navbar-theme="dark" style="background-color:#050505; overflow:hidden; padding: 120px 0;">
         <!-- Ambient Glowing Accents -->
         <div
             class="absolute top-0 right-0 w-[600px] h-[600px] bg-[#10b981] opacity-[0.03] rounded-full blur-[120px] pointer-events-none">
@@ -732,7 +647,7 @@
 
                         <div class="flex flex-wrap gap-4">
                             <div class="bg-black/50 border border-white/5 rounded-xl p-4 backdrop-blur-md">
-                                <div class="text-white font-bold text-xl mb-1">500x</div>
+                                <div class=" font-bold text-xl mb-1">500x</div>
                                 <div class="text-[#9ca3af] text-xs font-medium uppercase tracking-wider">More Effective
                                 </div>
                             </div>
@@ -765,7 +680,7 @@
                             dynamically adjust purification intensity in real-time, integrating global datasets to
                             predict and intercept smog.</p>
                         <div
-                            class="inline-flex items-center gap-2 text-xs font-bold text-white bg-white/5 px-3 py-2 rounded-lg border border-white/5">
+                            class="inline-flex items-center gap-2 text-xs font-bold  bg-white/5 px-3 py-2 rounded-lg border border-white/5">
                             <span class="w-2 h-2 rounded-full bg-[#06b6d4] animate-pulse"></span>
                             WHO 2026 API SYNC
                         </div>
@@ -820,7 +735,7 @@
                             <div class="wave-bar" style="animation-delay: 0.2s;"></div>
                         </div>
                         <div>
-                            <div class="text-white font-bold text-3xl mb-1">&lt;30</div>
+                            <div class=" font-bold text-3xl mb-1">&lt;30</div>
                             <div class="text-[#10b981] text-xs font-bold uppercase tracking-wider">Decibels</div>
                         </div>
                     </div>
@@ -831,7 +746,7 @@
     </section>
 
     <!-- ═══ IMPACT & APPLICATIONS ═══ -->
-    <section class="section-light relative bg-slate-50" id="applications" style="padding-bottom:100px;">
+    <section class="section-light relative bg-slate-50" id="applications" data-navbar-theme="light" style="padding-bottom:100px;">
         <style>
             .impact-card {
                 position: relative;
@@ -911,10 +826,10 @@
                     <div class="impact-content">
                         <div class="flex items-center gap-3 mb-2">
                             <span
-                                class="bg-emerald-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">Urban
+                                class="bg-emerald-500  text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">Urban
                                 Edge</span>
                         </div>
-                        <h3 class="text-white font-bold text-3xl font-['Sora']">Smart Cities</h3>
+                        <h3 class=" font-bold text-3xl font-['Sora']">Smart Cities</h3>
                         <div class="impact-desc text-gray-300 font-medium">
                             Creating breathable safe zones in heavily congested urban centers. Our units protect
                             citizens from toxic vehicular emissions, industrial smog, and soaring urban heat islands.
@@ -930,9 +845,9 @@
                     <div class="impact-content">
                         <div class="flex items-center gap-3 mb-2">
                             <span
-                                class="bg-blue-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">Wellness</span>
+                                class="bg-blue-500  text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">Wellness</span>
                         </div>
-                        <h3 class="text-white font-bold text-3xl font-['Sora']">Corporate Campuses</h3>
+                        <h3 class=" font-bold text-3xl font-['Sora']">Corporate Campuses</h3>
                         <div class="impact-desc text-gray-300 font-medium">
                             Enhancing employee well-being and cognitive productivity by establishing clean air bubbles
                             across tech parks, courtyards, and outdoor collaborative spaces.
@@ -948,9 +863,9 @@
                     <div class="impact-content">
                         <div class="flex items-center gap-3 mb-2">
                             <span
-                                class="bg-cyan-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">Protection</span>
+                                class="bg-cyan-500  text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">Protection</span>
                         </div>
-                        <h3 class="text-white font-bold text-3xl font-['Sora']">Healthcare Facilities</h3>
+                        <h3 class=" font-bold text-3xl font-['Sora']">Healthcare Facilities</h3>
                         <div class="impact-desc text-gray-300 font-medium">
                             Providing an extra layer of critical atmospheric protection outside hospitals, ensuring
                             vulnerable patients, visitors, and healthcare workers breathe safely from the moment they
@@ -967,10 +882,10 @@
                     <div class="impact-content">
                         <div class="flex items-center gap-3 mb-2">
                             <span
-                                class="bg-amber-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">Future
+                                class="bg-amber-500  text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">Future
                                 Generation</span>
                         </div>
-                        <h3 class="text-white font-bold text-3xl font-['Sora']">Educational Institutions</h3>
+                        <h3 class=" font-bold text-3xl font-['Sora']">Educational Institutions</h3>
                         <div class="impact-desc text-gray-300 font-medium">
                             Ensuring safe, clean environments for schools and universities. We protect growing lungs
                             during outdoor recess, physical education, and open-air studies.
@@ -982,7 +897,7 @@
     </section>
 
     <!-- ═══ PERFORMANCE & METRICS ═══ -->
-    <section class="section-dark" id="performance">
+    <section class="section-dark" id="performance" data-navbar-theme="dark">
         <div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
             <div class="text-center mb-16">
                 <span class="section-label fade-up"
@@ -1004,7 +919,7 @@
                     style="border:1px solid rgba(16,185,129,0.2);">
                     <div class="text-5xl mb-6 group-hover:scale-110 transition-transform duration-300">🫧</div>
                     <div class="stat-number mb-2" style="font-size:3.5rem;">50m</div>
-                    <h3 class="text-white font-bold text-xl mb-4 font-['Sora']">Clean Air Bubble</h3>
+                    <h3 class=" font-bold text-xl mb-4 font-['Sora']">Clean Air Bubble</h3>
                     <p style="color:#94a3b8;line-height:1.7;">Visualizing the extensive radius of pure, breathable air
                         generated continuously by a single UrbanTree unit.</p>
                 </div>
@@ -1014,7 +929,7 @@
                     style="transition-delay:0.1s; border:1px solid rgba(6,182,212,0.2);">
                     <div class="text-5xl mb-6 group-hover:scale-110 transition-transform duration-300">🌬️</div>
                     <div class="stat-number mb-2" style="font-size:3.5rem;">10K</div>
-                    <h3 class="text-white font-bold text-xl mb-4 font-['Sora']">Cubic Meters / Hour</h3>
+                    <h3 class=" font-bold text-xl mb-4 font-['Sora']">Cubic Meters / Hour</h3>
                     <p style="color:#94a3b8;line-height:1.7;">Highlighting the sheer volume of polluted air processed
                         and purified at maximum operational capacity.</p>
                 </div>
@@ -1024,14 +939,14 @@
                     style="transition-delay:0.2s; border:1px solid rgba(16,185,129,0.2);">
                     <div class="text-5xl mb-6 group-hover:scale-110 transition-transform duration-300">🛡️</div>
                     <div class="stat-number mb-2" style="font-size:3.5rem;">99.9%</div>
-                    <h3 class="text-white font-bold text-xl mb-4 font-['Sora']">Particulate Removal</h3>
+                    <h3 class=" font-bold text-xl mb-4 font-['Sora']">Particulate Removal</h3>
                     <p style="color:#94a3b8;line-height:1.7;">Emphasizing the total eradication of PM2.5, PM10, and VOCs
                         without exposing the underlying filtration mechanics.</p>
                 </div>
             </div>
         </div>
         <!-- ═══ CTA ═══ -->
-        <section class="section-dark">
+        <section class="section-dark" data-navbar-theme="dark">
             <div
                 style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:700px;height:400px;background:radial-gradient(ellipse,rgba(16,185,129,0.1) 0%,transparent 70%);pointer-events:none;">
             </div>
@@ -1052,11 +967,11 @@
                 </p>
                 <div class="fade-up flex flex-wrap gap-4 justify-center">
                     <a href="../index.html#enquiry"
-                        class="hover-glow-emerald px-10 py-4 bg-emerald-500 text-white rounded-full font-semibold shadow-lg shadow-emerald-500/30 transition-all duration-300 text-sm">
+                        class="hover-glow-emerald px-10 py-4 bg-emerald-500  rounded-full font-semibold shadow-lg shadow-emerald-500/30 transition-all duration-300 text-sm">
                         Make an Enquiry
                     </a>
                     <a href="../pages/about.html"
-                        class="px-10 py-4 bg-white/10 border border-white/20 text-white rounded-full font-semibold hover:bg-white/20 transition-all duration-300 text-sm">
+                        class="px-10 py-4 bg-white/10 border border-white/20  rounded-full font-semibold hover:bg-white/20 transition-all duration-300 text-sm">
                         About Us
                     </a>
                 </div>
@@ -1064,29 +979,29 @@
         </section>
 
         <!-- ═══ FOOTER ═══ -->
-        <footer class="bg-[#0a0a0a] border-t border-white/10 pt-12 pb-6">
+        <footer class="bg-[#0a0a0a] border-t border-white/10 pt-12 pb-6" data-navbar-theme="dark">
             <div class="max-w-[1440px] mx-auto px-6 lg:px-12 w-full">
                 <div
                     class="flex flex-col lg:flex-row justify-between items-start lg:items-center border-b border-white/10 pb-10 mb-10 gap-10">
                     <div class="w-full lg:w-1/2">
-                        <h2 class="text-3xl font-serif font-bold text-white mb-4">Join the Green Tech Revolution.</h2>
+                        <h2 class="text-3xl font-serif font-bold  mb-4">Join the Green Tech Revolution.</h2>
                         <p class="text-gray-400 mb-6 text-sm">Subscribe to our newsletter for the latest in sustainable
                             environmental technology and urban air updates.</p>
                         <div class="flex w-full max-w-md shadow-sm border border-white/10 rounded-md overflow-hidden">
                             <input type="email" placeholder="Enter your email address"
-                                class="w-full px-4 py-4 bg-white/10 focus:outline-none focus:bg-white/20 text-white placeholder-gray-500 transition-colors"
+                                class="w-full px-4 py-4 bg-white/10 focus:outline-none focus:bg-white/20  placeholder-gray-500 transition-colors"
                                 style="border:none;outline:none;">
                             <button
-                                class="px-8 py-4 bg-gray-100 text-gray-900 font-bold uppercase tracking-widest text-xs hover:bg-emerald-500 hover:text-white transition-colors"
+                                class="px-8 py-4 bg-gray-100 text-gray-900 font-bold uppercase tracking-widest text-xs hover:bg-emerald-500 hover: transition-colors"
                                 style="white-space:nowrap;">Subscribe</button>
                         </div>
                     </div>
                     <div class="w-full lg:w-auto">
-                        <h3 class="text-white font-bold uppercase tracking-widest text-xs mb-6 lg:text-right">Follow Our
+                        <h3 class=" font-bold uppercase tracking-widest text-xs mb-6 lg:text-right">Follow Our
                             Journey</h3>
                         <div class="flex gap-4 lg:justify-end text-gray-400">
                             <a href="#"
-                                class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all duration-300">
+                                class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-blue-600 hover: hover:border-blue-600 transition-all duration-300">
                                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                                     <path
                                         d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
@@ -1100,14 +1015,14 @@
                                 </svg>
                             </a>
                             <a href="#"
-                                class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:text-white hover:border-pink-500 transition-all duration-300">
+                                class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover: hover:border-pink-500 transition-all duration-300">
                                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                                     <path
                                         d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
                                 </svg>
                             </a>
                             <a href="#"
-                                class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-red-600 hover:text-white hover:border-red-600 transition-all duration-300">
+                                class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-red-600 hover: hover:border-red-600 transition-all duration-300">
                                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                                     <path
                                         d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
@@ -1119,7 +1034,7 @@
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-10 border-b border-white/10 pb-10 mb-8">
                     <div>
-                        <h4 class="text-white font-bold uppercase tracking-widest text-xs mb-5">Company</h4>
+                        <h4 class=" font-bold uppercase tracking-widest text-xs mb-5">Company</h4>
                         <ul class="space-y-3">
                             <li><a href="../pages/about.html"
                                     class="text-gray-400 text-sm hover:text-emerald-400 transition-colors">About Us</a>
@@ -1139,7 +1054,7 @@
                         </ul>
                     </div>
                     <div>
-                        <h4 class="text-white font-bold uppercase tracking-widest text-xs mb-5">Support & Monitoring
+                        <h4 class=" font-bold uppercase tracking-widest text-xs mb-5">Support & Monitoring
                         </h4>
                         <ul class="space-y-3">
                             <li><a href="../pages/login.html"
@@ -1153,7 +1068,7 @@
                         </ul>
                     </div>
                     <div>
-                        <h4 class="text-white font-bold uppercase tracking-widest text-xs mb-5">Legal</h4>
+                        <h4 class=" font-bold uppercase tracking-widest text-xs mb-5">Legal</h4>
                         <ul class="space-y-3">
                             <li><a href="../legal/privacy-policy.html"
                                     class="text-gray-400 text-sm hover:text-emerald-400 transition-colors">Privacy
@@ -1448,72 +1363,10 @@
         </div>
 
         <script>
-            // Scroll reveal
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
             }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
             document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-            // Navbar Intersection Observer
-            const navbar = document.getElementById('navbar');
-            const navBrand = document.getElementById('nav-brand');
-            const navTagline = document.getElementById('nav-tagline');
-            const navLinks = document.querySelectorAll('.nav-link');
-
-            let currentTheme = 'dark'; // 'dark' means navbar text is white (on dark bg)
-
-            function setTheme(theme) {
-                if (theme === currentTheme) return;
-                currentTheme = theme;
-
-                if (theme === 'light') {
-                    if (window.scrollY > 50) {
-                    }
-
-                    if (navBrand) { navBrand.classList.remove('text-white'); navBrand.classList.add('nav-text-dark'); }
-                    if (navTagline) { navTagline.classList.remove('text-white'); navTagline.classList.add('nav-text-dark-light'); }
-                    navLinks.forEach(link => { link.classList.remove('text-white'); link.classList.add('nav-text-dark'); });
-                } else {
-                    if (window.scrollY > 50) {
-                    }
-
-                    if (navBrand) { navBrand.classList.remove('nav-text-dark'); navBrand.classList.add('text-white'); }
-                    if (navTagline) { navTagline.classList.remove('nav-text-dark-light'); navTagline.classList.add('text-white'); }
-                    navLinks.forEach(link => { link.classList.remove('nav-text-dark'); link.classList.add('text-white'); });
-                }
-            }
-
-            window.addEventListener('scroll', () => {
-                if (window.scrollY <= 50) {
-                } else {
-                    if (currentTheme === 'light') {
-                    } else {
-                    }
-                }
-            });
-
-            const lightSections = document.querySelectorAll('.section-light, .section-lighter');
-            const darkSections = document.querySelectorAll('#tech-hero, .section-dark');
-
-            const sectionObserver = new IntersectionObserver((entries) => {
-                let topIntersecting = null;
-                entries.forEach(entry => {
-                    if (entry.isIntersecting && entry.intersectionRect.top < 100) {
-                        topIntersecting = entry.target;
-                    }
-                });
-
-                if (topIntersecting) {
-                    if (topIntersecting.matches('.section-light, .section-lighter')) {
-                        setTheme('light');
-                    } else {
-                        setTheme('dark');
-                    }
-                }
-            }, { rootMargin: "-80px 0px -80% 0px" });
-
-            lightSections.forEach(s => sectionObserver.observe(s));
-            darkSections.forEach(s => sectionObserver.observe(s));
 
 
             // Smooth scroll for anchor links
