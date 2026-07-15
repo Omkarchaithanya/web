@@ -84,8 +84,8 @@
 
         /* ── DARK THEME ── */
         #navbar.theme-dark {
-            --nav-text: #ffffff;
-            --nav-secondary: rgba(255, 255, 255, 0.75);
+            --nav-primary: #FFFFFF;
+            --nav-secondary: rgba(255, 255, 255, 0.8);
             background-color: rgba(15, 23, 42, 0.75);
             border-bottom-color: rgba(255, 255, 255, 0.05);
             box-shadow: none;
@@ -93,48 +93,51 @@
 
         /* ── LIGHT THEME ── */
         #navbar.theme-light {
-            --nav-text: #111827;
-            --nav-secondary: #4B5563;
+            --nav-primary: #111827;
+            --nav-secondary: #6B7280;
             background-color: rgba(255, 255, 255, 0.85);
             border-bottom-color: #f3f4f6;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         }
 
-        /* Elements inside navbar that need transition */
-        /* Logo colors */
-        #navbar.theme-dark .logo-urban {
-            color: #FFFFFF;
+        /* ── EXPLICIT LOGO & ICON THEME COLORS ── */
+        .logo-urban {
+            color: var(--nav-primary);
         }
-        #navbar.theme-light .logo-urban {
-            color: #111827;
+        .logo-tagline {
+            color: var(--nav-secondary);
         }
         .logo-tree {
-            color: #22C55E;
+            color: #22C55E !important;
         }
-        #navbar.theme-dark .logo-tagline {
-            color: rgba(255, 255, 255, 0.8);
-        }
-        #navbar.theme-light .logo-tagline {
-            color: #6B7280;
-        }
-        .logo-urban, .logo-tree, .logo-tagline {
-            transition: color 300ms ease;
+        #mobile-menu-icon {
+            stroke: var(--nav-primary);
         }
 
-        #mobile-menu-btn,
-        #mobile-menu-icon {
-            color: var(--nav-text);
+        /* FREEZE LOGO/ICON TO DARK WHEN MOBILE MENU IS OPEN */
+        #navbar.mobile-menu-open {
+            --nav-primary: #FFFFFF !important;
+            --nav-secondary: rgba(255,255,255,0.8) !important;
+        }
+
+        .logo-urban, .logo-tree, .logo-tagline, #mobile-menu-icon {
+            transition: color 300ms ease, stroke 300ms ease;
+        }
+
+        #mobile-menu-btn {
+            color: var(--nav-primary);
             transition: color 300ms ease;
         }
 
         .nav-link {
-            color: var(--nav-secondary);
+            color: var(--nav-primary);
             transition: color 300ms ease;
         }
 
         .nav-link:hover,
         .nav-link.active {
-            color: var(--nav-text);
+            color: var(--nav-primary);
+            opacity: 0.8;
         }
 
         .hover-glow-emerald:hover {
@@ -534,8 +537,6 @@
                 justify-content: space-between;
                 gap: 1rem;
                 flex-wrap: nowrap !important;
-                background: rgba(10, 10, 10, 0.95) !important;
-                backdrop-filter: blur(10px) !important;
             }
 
             /* Hide desktop specific elements on tablet and mobile */
@@ -873,3 +874,58 @@
             line-height: 1;
             cursor: pointer;
         }
+
+
+/* ═══ RESPONSIVE FLUID CLASSES ═══ */
+html, body {
+    overflow-x: hidden !important;
+    width: 100%;
+    max-width: 100vw;
+}
+
+/* Fluid Navbar Container */
+.fluid-navbar {
+    width: 100%;
+    max-width: 100vw;
+    box-sizing: border-box;
+}
+
+/* Fluid Container Padding */
+.fluid-container-px {
+    padding-inline: clamp(16px, 4vw, 40px);
+}
+
+/* Fluid Logo Typography */
+.fluid-logo-text {
+    font-size: clamp(16px, 2.5vw, 20px);
+    line-height: 1.2;
+}
+
+.fluid-logo-tagline {
+    font-size: clamp(8px, 1.2vw, 10px);
+    line-height: 1.2;
+}
+
+/* Fluid Logo Image */
+.fluid-logo-img {
+    width: clamp(32px, 5vw, 40px);
+    height: clamp(32px, 5vw, 40px);
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+/* Fluid Navigation Links */
+.fluid-nav-link {
+    font-size: clamp(14px, 1.2vw, 15px);
+}
+
+/* Ensure Logo and text never overflow */
+.logo-wrapper {
+    min-width: 0;
+    flex-shrink: 1;
+}
+
+/* Ensure right action buttons don't shrink */
+.nav-actions-wrapper {
+    flex-shrink: 0;
+}

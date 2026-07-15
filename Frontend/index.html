@@ -51,46 +51,47 @@
 
 <body class="antialiased selection:bg-brand-emerald selection:">
 
-    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-500">
-        <div class="mx-auto max-w-7xl">
-            <div class="flex items-center justify-between px-6 lg:px-8 py-3">
+            <nav id="navbar" class="fixed top-0 w-full z-50 fluid-navbar box-border">
+        <div class="mx-auto w-full max-w-7xl fluid-container-px box-border">
+            <div class="flex items-center py-3 w-full max-w-full box-border">
                 <!-- Logo -->
-                <a href="index.html"
-                    class="flex items-center gap-3 group transition-opacity duration-500 hover:opacity-80"
-                    style="text-decoration: none;">
-                    <img src="./assets/images/logo.png" alt="URBAN Tree Logo" class="h-10 w-auto"
-                        style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));">
-                    <div>
-                        <div class="logo flex items-baseline gap-1">
-                            <span class="logo-urban font-bold text-lg lg:text-xl tracking-tight">URBAN</span><span class="logo-tree font-bold text-lg lg:text-xl tracking-tight">Tree</span>
+                <div class="flex-1 flex justify-start">
+                    <a href="index.html"
+                        class="flex items-center gap-2 lg:gap-3 group transition-opacity duration-500 hover:opacity-80 logo-wrapper"
+                        style="text-decoration: none;">
+                        <img src="./assets/images/logo.png" alt="URBAN Tree Logo" class="fluid-logo-img"
+                            style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));">
+                        <div class="logo-wrapper">
+                            <div class="logo flex items-baseline gap-1 logo-wrapper">
+                                <span class="logo-urban font-bold fluid-logo-text tracking-tight truncate">URBAN</span><span class="logo-tree font-bold fluid-logo-text tracking-tight truncate">Tree</span>
+                            </div>
+                            <p class="logo-tagline fluid-logo-tagline uppercase tracking-wider block font-semibold truncate mt-0.5">
+                                THE CITY. REIMAGINED.
+                            </p>
                         </div>
-                        <p class="logo-tagline text-[10px] uppercase tracking-wider block -mt-1 font-semibold">
-                            THE CITY. REIMAGINED.
-                        </p>
-                    </div>
-                </a>
+                    </a>
+                </div>
 
                 <!-- Desktop Navigation -->
-                <div class="hidden lg:flex items-center gap-8">
+                <div class="hidden lg:flex flex-1 justify-center items-center gap-6 xl:gap-8 shrink-0">
                     <a href="/index.html"
-                        class="nav-link active text-[15px] font-semibold transition-colors duration-300">Home</a>
+                        class="nav-link active fluid-nav-link font-semibold transition-colors duration-300">Home</a>
                     <a href="pages/technology.html"
-                        class="nav-link text-[15px] font-semibold transition-colors duration-300">Technology</a>
+                        class="nav-link fluid-nav-link font-semibold transition-colors duration-300">Technology</a>
                     <a href="pages/about.html"
-                        class="nav-link text-[15px] font-semibold transition-colors duration-300">About
-                        Us</a>
+                        class="nav-link fluid-nav-link font-semibold transition-colors duration-300">About Us</a>
                     <a href="pages/blog.html"
-                        class="nav-link text-[15px] font-semibold transition-colors duration-300">Blog</a>
+                        class="nav-link fluid-nav-link font-semibold transition-colors duration-300">Blog</a>
                 </div>
 
                 <!-- Desktop Enquiry & Mobile Toggle -->
-                <div class="flex items-center gap-4">
+                <div class="flex-1 flex justify-end items-center gap-4 nav-actions-wrapper">
                     <a href="index.html#enquiry-form"
-                        class="hidden lg:inline-flex items-center justify-center px-6 py-2.5 rounded-full bg-[#f97316] hover:bg-[#ea580c]  text-sm font-bold tracking-wide transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+                        class="hidden lg:inline-flex items-center justify-center px-6 py-2.5 rounded-full bg-[#f97316] hover:bg-[#ea580c] text-sm font-bold tracking-wide transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 shrink-0">
                         Enquiry
                     </a>
                     <!-- Hamburger Button -->
-                    <button id="mobile-menu-btn" type="button" class="lg:hidden p-2 focus:outline-none"
+                    <button id="mobile-menu-btn" type="button" class="lg:hidden p-2 focus:outline-none shrink-0"
                         aria-label="Toggle menu" aria-controls="mobile-menu-overlay" aria-expanded="false">
                         <svg id="mobile-menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                             xmlns="http://www.w3.org/2000/svg">
@@ -108,13 +109,13 @@
         class="fixed inset-0 bg-black/95 backdrop-blur-xl z-[45] transform translate-x-full transition-transform duration-300 flex flex-col pt-24 px-6 pb-8 h-[100dvh] overflow-y-auto lg:hidden">
         <nav class="flex flex-col gap-6 text-center">
             <a href="/index.html"
-                class="mobile-link text-xl font-medium  hover:text-green-400 transition-colors">Home</a>
+                class="mobile-link text-xl font-medium text-white hover:text-green-400 transition-colors">Home</a>
             <a href="/pages/technology.html"
-                class="mobile-link text-xl font-medium /70 hover: transition-colors">Technology</a>
+                class="mobile-link text-xl font-medium text-white/70 hover:text-white transition-colors">Technology</a>
             <a href="/pages/about.html"
-                class="mobile-link text-xl font-medium /70 hover: transition-colors">About Us</a>
+                class="mobile-link text-xl font-medium text-white/70 hover:text-white transition-colors">About Us</a>
             <a href="/pages/blog.html"
-                class="mobile-link text-xl font-medium /70 hover: transition-colors">Blog</a>
+                class="mobile-link text-xl font-medium text-white/70 hover:text-white transition-colors">Blog</a>
         </nav>
         <div class="mt-auto flex flex-col gap-4 pt-10">
             <a href="/index.html#enquiry-form"
@@ -143,15 +144,18 @@
 
                     isMenuOpen = open;
                     mobileMenuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+                    const navbar = document.getElementById('navbar');
 
                     if (open) {
                         mobileMenuOverlay.classList.remove('translate-x-full');
                         mobileMenuIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>';
                         document.body.style.overflow = 'hidden';
+                        if (navbar) navbar.classList.add('mobile-menu-open');
                     } else {
                         mobileMenuOverlay.classList.add('translate-x-full');
                         mobileMenuIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>';
                         document.body.style.overflow = '';
+                        if (navbar) navbar.classList.remove('mobile-menu-open');
                     }
                 }
 
