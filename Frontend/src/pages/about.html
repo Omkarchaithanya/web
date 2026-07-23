@@ -1,0 +1,1130 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | UrbanTree by SunEx Technologies</title>
+    <link rel="icon" type="image/png" href="/assets/images/logo.png">
+    <meta name="description"
+        content="UrbanTree is part of SunEx Technologies, focused on building intelligent clean-air infrastructure for healthier and future-ready cities.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/assets/css/tailwind.css">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #e8e8e8;
+
+            overflow-x: hidden;
+        }
+
+        /* ── NAVBAR REMOVED FROM CSS TO ALLOW JS TOGGLE ── */
+
+        /* ── FADE UP ── */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(36px);
+            transition: opacity 0.9s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ── HERO ── */
+        #about-hero {
+            background: #0a0a0a;
+            min-height: 100vh;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-grid-lines {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(16, 185, 129, 0.06) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(16, 185, 129, 0.06) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+        }
+
+        .hero-glow-1 {
+            position: absolute;
+            top: -15%;
+            left: -10%;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, transparent 65%);
+            pointer-events: none;
+        }
+
+        .hero-glow-2 {
+            position: absolute;
+            bottom: -20%;
+            right: -5%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(6, 182, 212, 0.1) 0%, transparent 65%);
+            pointer-events: none;
+        }
+
+        /* Animated floating orbs */
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(1px);
+            animation: orbFloat 8s ease-in-out infinite;
+        }
+
+        @keyframes orbFloat {
+
+            0%,
+            100% {
+                transform: translateY(0) scale(1);
+                opacity: 0.6;
+            }
+
+            50% {
+                transform: translateY(-30px) scale(1.05);
+                opacity: 1;
+            }
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* ── SECTION STYLES ── */
+        .content-section {
+            background: #e8e8e8;
+            padding: 100px 0;
+        }
+
+        .content-section-alt {
+            background: #f0f4f1;
+            padding: 100px 0;
+        }
+
+        .dark-section {
+            background: #0a0a0a;
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* ── GLASS CARD ── */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 30px 60px rgba(16, 185, 129, 0.1);
+        }
+
+        /* ── DARK CARD ── */
+        .dark-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.4s ease;
+        }
+
+        .dark-card:hover {
+            background: rgba(16, 185, 129, 0.08);
+            border-color: rgba(16, 185, 129, 0.3);
+            transform: translateY(-3px);
+        }
+
+        /* ── FOUNDER CARD ── */
+        .founder-card {
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(16px);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .founder-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #10b981, #06b6d4);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .founder-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .founder-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 24px 50px rgba(16, 185, 129, 0.12);
+        }
+
+        /* ── SDG BADGE ── */
+        .sdg-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+        }
+
+        .sdg-badge:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        /* ── STAT ── */
+        .stat-number {
+            font-family: 'Sora', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            background: linear-gradient(135deg, #10b981, #06b6d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* ── TIMELINE ── */
+        .timeline-dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: #10b981;
+            border: 3px solid #e8e8e8;
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.3);
+            flex-shrink: 0;
+            margin-top: 4px;
+        }
+
+        .timeline-line {
+            width: 2px;
+            background: linear-gradient(to bottom, #10b981, rgba(16, 185, 129, 0.1));
+            flex-shrink: 0;
+        }
+
+        /* ── HOVER GLOW ── */
+        .hover-glow-emerald {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .hover-glow-emerald:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 25px rgba(16, 185, 129, 0.6), 0 0 50px rgba(16, 185, 129, 0.3);
+            background-color: #10b981 !important;
+        }
+
+        /* ── SECTION LABEL ── */
+        .section-label {
+            display: inline-block;
+            padding: 5px 18px;
+            border-radius: 30px;
+            border: 1px solid rgba(16, 185, 129, 0.4);
+            background: rgba(16, 185, 129, 0.08);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.25em;
+            color: #10b981;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        @keyframes heroTextIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-animate {
+            animation: heroTextIn 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+        }
+
+        /* scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0a0a0a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #10b981;
+            border-radius: 3px;
+        }
+    </style>
+    <link rel="icon" type="image/png" href="/assets/images/logo.png">
+
+    <style id="navbar-dynamic-colors">
+        .nav-text-dark {}
+
+        .nav-text-dark-light {
+            color: #374151;
+        }
+    </style>
+    <link rel="stylesheet" href="/assets/css/index.css">
+</head>
+
+<body class="antialiased">
+
+    <!-- ═══ NAVBAR ═══ -->
+    <!-- ADAPTIVE NAVBAR -->
+
+    {{> navbar }}
+    <script type="module" src="/assets/js/navbar.js"></script>
+
+    <!-- ═══ HERO ═══ -->
+    <section id="about-hero" data-navbar-theme="dark">
+        <div class="hero-grid-lines"></div>
+        <div class="hero-glow-1"></div>
+        <div class="hero-glow-2"></div>
+
+        <!-- Floating orbs -->
+        <div class="orb" style="width:8px;height:8px;background:#10b981;top:25%;left:15%;animation-delay:0s;"></div>
+        <div class="orb" style="width:5px;height:5px;background:#06b6d4;top:55%;left:80%;animation-delay:2s;"></div>
+        <div class="orb"
+            style="width:10px;height:10px;background:#10b981;top:70%;left:30%;animation-delay:4s;opacity:0.4;"></div>
+        <div class="orb" style="width:6px;height:6px;background:#4ade80;top:35%;left:65%;animation-delay:1s;"></div>
+
+        <div class="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-12 pt-32 pb-24">
+            <div class="max-w-4xl">
+                <!-- Label -->
+                <div class="hero-animate" style="animation-delay:0.1s;">
+                    <span class="section-label"
+                        style="background:rgba(16,185,129,0.1);border-color:rgba(16,185,129,0.4);">About
+                        UrbanTree</span>
+                </div>
+
+                <!-- Headline -->
+                <h1 class="hero-animate"
+                    style="font-family:'Sora',sans-serif;font-size:clamp(2.8rem,6vw,5.5rem);font-weight:800;color:#ffffff;line-height:1.05;margin-bottom:1.5rem;animation-delay:0.2s;">
+                    Engineering<br>
+                    <span
+                        style="background:linear-gradient(135deg,#10b981,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Cleaner
+                        Futures</span><br>
+                    For Urban Living
+                </h1>
+
+                <!-- Subheadline -->
+                <p class="hero-animate"
+                    style="font-size:1.15rem;color:#94a3b8;max-width:580px;line-height:1.8;margin-bottom:2.5rem;animation-delay:0.35s;">
+                    UrbanTree is part of SunEx Technologies, focused on building intelligent clean-air infrastructure
+                    for healthier and future-ready cities.
+                </p>
+
+                <!-- CTA row -->
+                <div class="hero-animate flex flex-wrap gap-4" style="animation-delay:0.5s;">
+                    <a href="#our-story"
+                        class="hover-glow-emerald px-8 py-3.5 bg-emerald-500 text-white rounded-full font-semibold shadow-lg shadow-emerald-500/30 transition-all duration-300">
+                        Our Story
+                    </a>
+                    <a href="#founders"
+                        class="px-8 py-3.5 bg-white/10 backdrop-blur-sm border border-white/20 text-white rounded-full font-semibold hover:bg-white/20 transition-all duration-300">
+                        Meet the Founders
+                    </a>
+                </div>
+            </div>
+
+            <!-- Stats row -->
+            <div class="hero-animate grid grid-cols-2 md:grid-cols-4 gap-6 mt-20 pt-16 border-t border-white/10"
+                style="animation-delay:0.65s;">
+                <div>
+                    <div class="stat-number">2.5+</div>
+                    <div style="font-size:13px;color:#6b7280;margin-top:4px;font-weight:500;">Years of R&D</div>
+                </div>
+                <div>
+                    <div class="stat-number">9</div>
+                    <div style="font-size:13px;color:#6b7280;margin-top:4px;font-weight:500;">Purification Stages</div>
+                </div>
+                <div>
+                    <div class="stat-number">99.97%</div>
+                    <div style="font-size:13px;color:#6b7280;margin-top:4px;font-weight:500;">Particle Capture</div>
+                </div>
+                <div>
+                    <div class="stat-number">4</div>
+                    <div style="font-size:13px;color:#6b7280;margin-top:4px;font-weight:500;">UN SDGs Addressed</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ SECTION: WHAT IS URBANTREE ═══ -->
+    <section id="our-story" class="relative bg-[#f4f9f6] py-20 overflow-hidden" data-navbar-theme="dark">
+        <!-- Floating Faded Leaves -->
+        <img src="/assets/images/leaf_blur_1.png" alt=""
+            class="absolute top-[10%] left-[-5%] w-[300px] opacity-40 z-0 pointer-events-none animate-[float_8s_ease-in-out_infinite] rotate-[15deg] blur-[2px]"
+            aria-hidden="true" loading="lazy">
+        <img src="/assets/images/leaf_blur_3.png" alt=""
+            class="absolute bottom-[-10%] right-[-5%] w-[400px] opacity-40 z-0 pointer-events-none animate-[float_10s_ease-in-out_infinite_1s] -rotate-[15deg] blur-[3px]"
+            aria-hidden="true" loading="lazy">
+
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-12 relative z-10">
+            <!-- Grid Layout -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+
+                <!-- Left Column (Text) -->
+                <div class="lg:col-span-5 fade-up flex flex-col justify-center relative z-20">
+                    <!-- Subtle background glow to ensure text readability over the overlapping image -->
+                    <div class="absolute inset-y-0 left-[-50px] right-[-20px] bg-[#f4f9f6] opacity-90 blur-[40px] -z-10 pointer-events-none lg:block hidden"></div>
+
+                    <div
+                        class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 font-bold text-[10px] tracking-widest uppercase mb-6 w-max">
+                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z">
+                            </path>
+                        </svg>
+                        WHAT IS URBANTREE
+                    </div>
+
+                    <h2
+                        class="font-serif font-extrabold text-[2.5rem] lg:text-[2.75rem] leading-[1.15] text-slate-900 mb-5">
+                        A Bio-Mechanical<br>
+                        Air Purification<br>
+                        <span class="text-emerald-600">Ecosystem</span>
+                    </h2>
+
+                    <p
+                        class="text-[0.7rem] font-bold text-slate-500 tracking-[0.15em] mb-8 border-l-2 border-emerald-500 pl-4">
+                        CLEANER AIR. SMARTER CITIES. SUSTAINABLE FUTURE.
+                    </p>
+
+                    <div class="text-base text-slate-600 leading-relaxed space-y-6 lg:pr-6">
+                        <p>
+                            Urban air pollution and declining air quality have emerged as critical challenges affecting
+                            public health, environmental sustainability, and the future of urban living. Rising levels
+                            of particulate matter, airborne pollutants, and harmful emissions continue to impact cities
+                            worldwide, creating an urgent need for scalable and intelligent clean-air infrastructure.
+                        </p>
+                        <p>
+                            UrbanTree is an advanced bio-mechanical air purification ecosystem developed by SunEx
+                            Technologies to improve urban air quality and support healthier environments through
+                            localized breathable <strong class="text-emerald-600 font-semibold">Air Pocket
+                                zones.</strong> Combining multi-stage filtration, biological purification, intelligent
+                            airflow engineering, and AI-driven environmental monitoring, the system is designed to
+                            reduce airborne pollutants including PM2.5, PM10, VOCs, odors, and harmful microorganisms.
+                        </p>
+                        <p>
+                            Powered by smart environmental analytics, sustainable purification technologies, and
+                            energy-efficient infrastructure, UrbanTree continuously monitors and adapts to changing
+                            environmental conditions to optimize purification performance and improve AQI levels in real
+                            time.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Center Column (Image) -->
+                <div class="lg:col-span-3 fade-up flex justify-center items-center relative py-10"
+                    style="transition-delay: 100ms;">
+                    <!-- Circular glow behind image -->
+                    <div
+                        class="absolute inset-0 bg-emerald-500/10 rounded-full blur-[80px] scale-150 pointer-events-none translate-x-32">
+                    </div>
+
+                    <!-- Dotted circular rings -->
+                    <div
+                        class="absolute inset-0 border border-emerald-500/20 rounded-full scale-[1.3] border-dashed animate-[spin_60s_linear_infinite] translate-x-32">
+                    </div>
+                    <div
+                        class="absolute inset-0 border border-emerald-500/20 rounded-full scale-[1.5] animate-[spin_40s_linear_infinite_reverse] translate-x-32">
+                    </div>
+
+                    <!-- Main Image (Absolutely positioned to pull deep behind the cards) -->
+                    <img src="/assets/images/original_tree_city.png" alt="Bio-Mechanical Floating City"
+                        class="absolute top-1/2 -translate-y-1/2 -right-[100%] w-[250%] max-w-[900px] z-10 mix-blend-multiply animate-[orbFloat_8s_ease-in-out_infinite] object-contain pointer-events-none">
+                </div>
+
+                <!-- Right Column (Cards) -->
+                <div class="lg:col-span-4 fade-up flex flex-col gap-6 relative z-20" style="transition-delay: 200ms;">
+
+                    <!-- Card 1 -->
+                    <div
+                        class="bg-white rounded-3xl p-6 shadow-xl shadow-slate-200/50 flex gap-5 border border-white relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300">
+                        <div
+                            class="absolute right-6 top-6 text-emerald-100/50 font-serif text-4xl font-extrabold select-none pointer-events-none group-hover:text-emerald-50 transition-colors">
+                            01</div>
+                        <div
+                            class="w-16 h-16 rounded-full bg-emerald-50 flex-shrink-0 flex items-center justify-center border border-emerald-100 relative z-10">
+                            <!-- Building icon SVG -->
+                            <svg class="w-8 h-8 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4">
+                                </path>
+                            </svg>
+                        </div>
+                        <div class="relative z-10">
+                            <h3 class="font-serif font-bold text-slate-900 text-lg mb-2 leading-snug pr-8">Smart Cities
+                                &<br>Public Infrastructure</h3>
+                            <p class="text-[0.75rem] text-slate-500 leading-relaxed mb-4">Designed for transportation
+                                hubs, corporate campuses, industrial environments, and residential communities.</p>
+                            <a href="#"
+                                class="inline-flex w-8 h-8 rounded-full bg-emerald-100 text-emerald-600 items-center justify-center hover:bg-emerald-600 hover:text-white transition-colors">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div
+                        class="bg-white rounded-3xl p-6 shadow-xl shadow-slate-200/50 flex gap-5 border border-white relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300">
+                        <div
+                            class="absolute right-6 top-6 text-sky-100/50 font-serif text-4xl font-extrabold select-none pointer-events-none group-hover:text-sky-50 transition-colors">
+                            02</div>
+                        <div
+                            class="w-16 h-16 rounded-full bg-sky-50 flex-shrink-0 flex items-center justify-center border border-sky-100 relative z-10">
+                            <!-- Brain icon SVG -->
+                            <svg class="w-8 h-8 text-sky-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z">
+                                </path>
+                            </svg>
+                        </div>
+                        <div class="relative z-10">
+                            <h3 class="font-serif font-bold text-slate-900 text-lg mb-2 leading-snug pr-8">
+                                AI-Driven<br>Environmental Monitoring</h3>
+                            <p class="text-[0.75rem] text-slate-500 leading-relaxed mb-4">Real-time analytics that
+                                continuously adapt purification performance to dynamic urban environments.</p>
+                            <a href="#"
+                                class="inline-flex w-8 h-8 rounded-full bg-sky-100 text-sky-600 items-center justify-center hover:bg-sky-500 hover:text-white transition-colors">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div
+                        class="bg-white rounded-3xl p-6 shadow-xl shadow-slate-200/50 flex gap-5 border border-white relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300">
+                        <div
+                            class="absolute right-6 top-6 text-lime-100/50 font-serif text-4xl font-extrabold select-none pointer-events-none group-hover:text-lime-50 transition-colors">
+                            03</div>
+                        <div
+                            class="w-16 h-16 rounded-full bg-lime-50 flex-shrink-0 flex items-center justify-center border border-lime-100 relative z-10">
+                            <!-- Energy icon SVG -->
+                            <svg class="w-8 h-8 text-lime-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                            </svg>
+                        </div>
+                        <div class="relative z-10">
+                            <h3 class="font-serif font-bold text-slate-900 text-lg mb-2 leading-snug pr-8">Hybrid
+                                Energy<br>Infrastructure</h3>
+                            <p class="text-[0.75rem] text-slate-500 leading-relaxed mb-4">Integrates conventional grid
+                                supply with solar energy for reliable, energy-efficient, and sustainable operation.</p>
+                            <a href="#"
+                                class="inline-flex w-8 h-8 rounded-full bg-lime-100 text-lime-600 items-center justify-center hover:bg-lime-600 hover:text-white transition-colors">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Bottom Stats Banner -->
+            <div class="fade-up mt-16" style="transition-delay: 300ms;">
+                <div
+                    class="bg-[#0f172a] rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-8 border border-white/10 shadow-2xl relative overflow-hidden">
+                    <!-- Subtle gradient bg for banner -->
+                    <div
+                        class="absolute inset-0 bg-gradient-to-r from-emerald-900/40 via-sky-900/40 to-lime-900/40 pointer-events-none">
+                    </div>
+
+                    <div class="flex items-center gap-4 relative z-10 flex-1 justify-center md:justify-start">
+                        <div
+                            class="w-12 h-12 rounded-full border border-emerald-500/30 flex items-center justify-center bg-emerald-500/10 text-emerald-400">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="text-3xl font-serif font-bold text-emerald-400">99%</div>
+                            <div class="text-[10px] text-slate-400 font-bold uppercase tracking-widest mt-1">PM
+                                REDUCTION</div>
+                        </div>
+                    </div>
+
+                    <div class="hidden md:block w-px h-12 bg-white/10"></div>
+
+                    <div class="flex items-center gap-4 relative z-10 flex-1 justify-center">
+                        <div class="w-12 h-12 text-sky-400 flex items-center justify-center">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.514">
+                                </path>
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="text-3xl font-serif font-bold text-sky-400">Live</div>
+                            <div class="text-[10px] text-slate-400 font-bold uppercase tracking-widest mt-1">LOCAL AQI
+                                IMPROVEMENT</div>
+                        </div>
+                    </div>
+
+                    <div class="hidden md:block w-px h-12 bg-white/10"></div>
+
+                    <div class="flex items-center gap-4 relative z-10 flex-1 justify-center">
+                        <div class="w-12 h-12 text-emerald-400 flex items-center justify-center relative">
+                            <!-- Custom particle svg -->
+                            <div
+                                class="absolute inset-0 border border-emerald-500/30 rounded-full animate-ping opacity-20">
+                            </div>
+                            <svg class="w-6 h-6 animate-pulse" fill="currentColor" viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="6"></circle>
+                                <circle cx="5" cy="5" r="2"></circle>
+                                <circle cx="19" cy="5" r="3"></circle>
+                                <circle cx="5" cy="19" r="3"></circle>
+                                <circle cx="19" cy="19" r="2"></circle>
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="text-3xl font-serif font-bold text-emerald-400">0.3μ</div>
+                            <div class="text-[10px] text-slate-400 font-bold uppercase tracking-widest mt-1">PARTICULATE
+                                CAPTURE</div>
+                        </div>
+                    </div>
+
+                    <div class="hidden md:block w-px h-12 bg-white/10"></div>
+
+                    <div class="flex items-center gap-4 relative z-10 flex-1 justify-center md:justify-end">
+                        <div
+                            class="w-12 h-12 rounded-full border border-lime-500/30 flex items-center justify-center bg-lime-500/10 text-lime-400">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z">
+                                </path>
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="text-3xl font-serif font-bold text-lime-400">Hybrid</div>
+                            <div class="text-[10px] text-slate-400 font-bold uppercase tracking-widest mt-1">ENERGY
+                                OPTIMIZATION</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ═══ SUNEX TECHNOLOGIES ═══ -->
+    <section id="sunex" class="relative py-24 overflow-hidden" data-navbar-theme="dark"
+        style="background: linear-gradient(135deg, #f8fafc 0%, #ecfdf5 100%);">
+
+        <!-- The Dome Image (Right Side) -->
+        <div class="absolute inset-y-0 right-0 w-full lg:w-3/5 z-0 pointer-events-none flex items-center justify-end opacity-90"
+            style="mask-image: radial-gradient(circle at center, black 40%, transparent 80%); -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 80%);">
+            <img src="/assets/images/eco_city_dome.png" alt="Eco City Dome"
+                class="w-full h-[150%] object-cover mix-blend-multiply opacity-80 translate-x-[20%]" />
+        </div>
+
+        <!-- Floating Leaves -->
+        <!-- Top Left -->
+        <div class="absolute top-[10%] left-[5%] w-16 h-16 opacity-70 z-0 pointer-events-none"
+            style="transform: rotate(45deg);">
+            <img src="/assets/images/green_leaf.png" class="w-full h-full object-contain mix-blend-multiply blur-[2px]"
+                alt="leaf" />
+        </div>
+        <!-- Bottom Left -->
+        <div class="absolute bottom-[5%] left-[2%] w-32 h-32 opacity-90 z-0 pointer-events-none"
+            style="transform: rotate(-30deg);">
+            <img src="/assets/images/green_leaf.png" class="w-full h-full object-contain mix-blend-multiply blur-[6px]"
+                alt="leaf" />
+        </div>
+        <!-- Top Right -->
+        <div class="absolute top-[5%] right-[30%] w-12 h-12 opacity-80 z-0 pointer-events-none"
+            style="transform: rotate(15deg);">
+            <img src="/assets/images/green_leaf.png" class="w-full h-full object-contain mix-blend-multiply blur-[1px]"
+                alt="leaf" />
+        </div>
+        <!-- Center Right -->
+        <div class="absolute bottom-[20%] right-[5%] w-24 h-24 opacity-80 z-0 pointer-events-none"
+            style="transform: rotate(-60deg);">
+            <img src="/assets/images/green_leaf.png" class="w-full h-full object-contain mix-blend-multiply blur-[4px]"
+                alt="leaf" />
+        </div>
+
+        <!-- Subtle green glowing arcs (CSS) -->
+        <div class="absolute top-[-10%] left-[-10%] w-[50%] h-[120%] rounded-[100%] border-[2px] border-green-400/20 z-0 pointer-events-none"
+            style="box-shadow: inset 0 0 50px rgba(74,222,128,0.1);"></div>
+        <div class="absolute top-[10%] right-[-10%] w-[60%] h-[120%] rounded-[100%] border-[2px] border-green-500/20 z-0 pointer-events-none"
+            style="box-shadow: inset 0 0 50px rgba(34,197,94,0.1);"></div>
+
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+                <!-- LEFT: company info -->
+                <div>
+                    <!-- Powered By Pill -->
+                    <div
+                        class="fade-up inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white shadow-sm border border-gray-100 mb-6">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5"
+                            class="text-green-500">
+                            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+                        </svg>
+                        <span class="text-[11px] font-bold text-green-600 uppercase tracking-widest">Powered By</span>
+                    </div>
+
+                    <h2 class="fade-up font-serif font-extrabold text-[#166534] leading-[1.1] mb-2"
+                        style="font-size:clamp(3rem,5vw,4.5rem);">
+                        <span class="text-gray-900">SunEx</span><br>
+                        Technologies
+                    </h2>
+
+                    <div class="fade-up flex items-center gap-2 mb-8">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+                            <circle cx="12" cy="10" r="3" />
+                        </svg>
+                        <p class="text-[15px] text-green-600 font-bold tracking-wide">Bangalore, India</p>
+                    </div>
+
+                    <div class="fade-up space-y-6 text-gray-700 font-medium text-[15px] leading-relaxed pr-8">
+                        <p>A future-focused technology startup founded by three innovators — <strong
+                                class="text-gray-900">Umesh H, Sanjeeth M S, and Dr. Raghavendra Deshpande</strong> —
+                            driven by a shared vision to address one of the country's most pressing environmental
+                            challenges: urban air pollution.</p>
+                        <p class="text-gray-500">Over the past 2.5 years, the founding team has been actively engaged in
+                            research, development, and engineering of intelligent air purification technologies. This
+                            journey led to the creation of <strong class="text-green-600">UrbanTree</strong>, an
+                            advanced bio-mechanical <strong class="text-green-600">air purification</strong> ecosystem
+                            designed to support cleaner, smarter, and more sustainable cities.</p>
+                        <p>SunEx Technologies focuses on designing next-generation smart technology solutions,
+                            AI-enabled systems, automation platforms, IoT-integrated infrastructure, and
+                            sustainability-driven innovations across residential, commercial, industrial, institutional,
+                            and governmental sectors.</p>
+                    </div>
+
+                    <!-- Viksit Bharat badge -->
+                    <div
+                        class="fade-up mt-10 inline-flex items-center gap-4 px-6 py-4 rounded-2xl bg-white/80 shadow-lg shadow-black/5 border border-white backdrop-blur-md">
+                        <div class="w-10 h-10 rounded-xl bg-green-50 flex items-center justify-center">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#22c55e"
+                                stroke-width="2">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                                <circle cx="9" cy="7" r="4" />
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="text-[10px] text-gray-400 font-bold tracking-widest uppercase mb-0.5">Aligned
+                                with</div>
+                            <div class="text-[15px] text-gray-900 font-extrabold">Viksit Bharat <span
+                                    class="text-green-600">2047</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RIGHT: focus areas grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 fade-up relative z-10 pl-0 lg:pl-4">
+
+                    <!-- Card 1 -->
+                    <div
+                        class="bg-white/95 backdrop-blur-md rounded-2xl p-6 shadow-xl shadow-green-900/5 border border-white flex gap-5 items-start transition-transform hover:-translate-y-1">
+                        <div
+                            class="relative shrink-0 w-12 h-12 rounded-xl bg-green-50 flex items-center justify-center border border-green-100">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#16a34a"
+                                stroke-width="1.5">
+                                <path
+                                    d="M12 2a2 2 0 0 1 2 2c0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2zm0 14c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm10-6c0-1.1-.9-2-2-2s-2 .9-2 2 .9 2 2 2 2-.9 2-2zM4 12c0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2 2 .9 2 2zm11.3 4.3a1.99 1.99 0 0 1-2.8 0 1.99 1.99 0 0 1 0-2.8l2.8-2.8a1.99 1.99 0 0 1 2.8 0 1.99 1.99 0 0 1 0 2.8l-2.8 2.8zm-9.8-9.8a1.99 1.99 0 0 1 2.8 0l2.8 2.8a1.99 1.99 0 0 1 0 2.8 1.99 1.99 0 0 1-2.8 0l-2.8-2.8a1.99 1.99 0 0 1 0-2.8z" />
+                            </svg>
+                            <div class="absolute -bottom-1 -left-1 w-6 h-1 bg-green-500 rounded-full"></div>
+                        </div>
+                        <div>
+                            <h4 class="font-serif text-[15px] font-bold text-gray-900 mb-1.5">Artificial Intelligence
+                            </h4>
+                            <p class="text-[12px] text-gray-500 leading-relaxed font-medium">Smart environmental systems
+                                & AI-enabled platforms</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div
+                        class="bg-white/95 backdrop-blur-md rounded-2xl p-6 shadow-xl shadow-green-900/5 border border-white flex gap-5 items-start transition-transform hover:-translate-y-1">
+                        <div
+                            class="relative shrink-0 w-12 h-12 rounded-xl bg-green-50 flex items-center justify-center border border-green-100">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#16a34a"
+                                stroke-width="1.5">
+                                <circle cx="12" cy="12" r="4" />
+                                <path
+                                    d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
+                            </svg>
+                            <div class="absolute -bottom-1 -left-1 w-6 h-1 bg-green-500 rounded-full"></div>
+                        </div>
+                        <div>
+                            <h4 class="font-serif text-[15px] font-bold text-gray-900 mb-1.5">Renewable Energy</h4>
+                            <p class="text-[12px] text-gray-500 leading-relaxed font-medium">Solar integration &
+                                energy-efficient infrastructure</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div
+                        class="bg-white/95 backdrop-blur-md rounded-2xl p-6 shadow-xl shadow-green-900/5 border border-white flex gap-5 items-start transition-transform hover:-translate-y-1">
+                        <div
+                            class="relative shrink-0 w-12 h-12 rounded-xl bg-green-50 flex items-center justify-center border border-green-100">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#16a34a"
+                                stroke-width="1.5">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                                <path d="M12 8v4" />
+                                <path d="M12 16h.01" />
+                            </svg>
+                            <div class="absolute -bottom-1 -left-1 w-6 h-1 bg-green-500 rounded-full"></div>
+                        </div>
+                        <div>
+                            <h4 class="font-serif text-[15px] font-bold text-gray-900 mb-1.5">IoT Infrastructure</h4>
+                            <p class="text-[12px] text-gray-500 leading-relaxed font-medium">Connected sensors &
+                                real-time environmental monitoring</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div
+                        class="bg-white/95 backdrop-blur-md rounded-2xl p-6 shadow-xl shadow-green-900/5 border border-white flex gap-5 items-start transition-transform hover:-translate-y-1">
+                        <div
+                            class="relative shrink-0 w-12 h-12 rounded-xl bg-green-50 flex items-center justify-center border border-green-100">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#16a34a"
+                                stroke-width="1.5">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+                                <circle cx="12" cy="10" r="3" />
+                            </svg>
+                            <div class="absolute -bottom-1 -left-1 w-6 h-1 bg-green-500 rounded-full"></div>
+                        </div>
+                        <div>
+                            <h4 class="font-serif text-[15px] font-bold text-gray-900 mb-1.5">Smart Cities</h4>
+                            <p class="text-[12px] text-gray-500 leading-relaxed font-medium">Future-ready urban
+                                infrastructure & digital transformation</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 5 (Full Width) -->
+                    <div
+                        class="bg-white/95 backdrop-blur-md rounded-2xl p-6 shadow-xl shadow-green-900/5 border border-white flex gap-5 items-start md:col-span-2 transition-transform hover:-translate-y-1">
+                        <div
+                            class="relative shrink-0 w-12 h-12 rounded-xl bg-green-50 flex items-center justify-center border border-green-100">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#16a34a"
+                                stroke-width="1.5">
+                                <path
+                                    d="M11 20A7 7 0 019.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z" />
+                                <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12" />
+                            </svg>
+                            <div class="absolute -bottom-1 -left-1 w-6 h-1 bg-green-500 rounded-full"></div>
+                        </div>
+                        <div>
+                            <h4 class="font-serif text-[15px] font-bold text-gray-900 mb-1.5">Sustainability Engineering
+                            </h4>
+                            <p class="text-[12px] text-gray-500 leading-relaxed font-medium">Environmentally responsible
+                                infrastructure for cleaner, healthier urban ecosystems and long-term climate resilience
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ═══ FOUNDERS ═══ -->
+    <section class="content-section-alt" id="founders" data-navbar-theme="dark">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="text-center mb-16">
+                <span class="section-label fade-up">The People Behind It</span>
+                <h2 class="fade-up"
+                    style="font-family:'Sora',sans-serif;font-size:clamp(2rem,4vw,3rem);font-weight:800;line-height:1.15;">
+                    Meet the Founders
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12 max-w-6xl mx-auto">
+                <!-- Founder 1 -->
+                <div class="fade-up flex flex-col items-start text-left group cursor-pointer"
+                    style="transition-delay:0s;">
+                    <div class="w-full aspect-square mb-5 overflow-hidden rounded-2xl relative bg-white">
+                        <img src="/assets/images/sanjeeth.jpg" alt="Sanjeeth Suresh"
+                            class="w-full h-full object-cover object-center transition-all duration-500 transform group-hover:scale-105 brightness-110 contrast-125">
+                    </div>
+                    <h3 style="font-family:'Sora',sans-serif;font-weight:800;font-size:1.15rem;margin-bottom:4px;">
+                        Sanjeeth Suresh</h3>
+                    <p style="font-size:13px;font-weight:600;color:#6b7280;font-style:italic;margin-bottom:14px;">
+                        Co-Founder</p>
+                    <p class="text-left" style="font-size:0.9rem;color: #9ca3af;line-height:1.6;">Visionary leader
+                        responsible for defining the company's direction, identifying new opportunities, and
+                        transforming ideas into successful business initiatives. Leads strategic planning and
+                        organizational growth.</p>
+                </div>
+
+                <!-- Founder 2 -->
+                <div class="fade-up flex flex-col items-start text-left group cursor-pointer"
+                    style="transition-delay:0.1s;">
+                    <div class="w-full aspect-square mb-5 overflow-hidden rounded-2xl relative bg-gray-200">
+                        <img src="/assets/images/umesh.jpeg" alt="Umesh H"
+                            class="w-full h-full object-cover object-[center_top] transition-all duration-500 transform group-hover:scale-105 brightness-110 contrast-125">
+                    </div>
+                    <h3 style="font-family:'Sora',sans-serif;font-weight:800;font-size:1.15rem;margin-bottom:4px;">
+                        Umesh H</h3>
+                    <p style="font-size:13px;font-weight:600;color:#6b7280;font-style:italic;margin-bottom:14px;">
+                        Co-Founder | Innovator | Product Visionary</p>
+                    <p class="text-left" style="font-size:0.9rem;color: #9ca3af;line-height:1.6;">Focused on envisioning
+                        what comes next and bringing it to life through strategic thinking, design excellence, and
+                        technological innovation. Committed to creating solutions that leave a lasting impact on people,
+                        communities, and the future.</p>
+                </div>
+
+                <!-- Founder 3 -->
+                <div class="fade-up flex flex-col items-start text-left group cursor-pointer"
+                    style="transition-delay:0.2s;">
+                    <div class="w-full aspect-square mb-5 overflow-hidden rounded-2xl relative bg-gray-200">
+                        <img src="/assets/images/raghavendra.jpg" alt="Dr. Raghavendra Deshpande"
+                            class="w-full h-full object-cover object-[center_top] transition-all duration-500 transform group-hover:scale-105 brightness-110 contrast-125">
+                    </div>
+                    <h3 style="font-family:'Sora',sans-serif;font-weight:800;font-size:1.15rem;margin-bottom:4px;">
+                        Dr. Raghavendra Deshpande</h3>
+                    <p style="font-size:13px;font-weight:600;color:#6b7280;font-style:italic;margin-bottom:14px;">
+                        Co-Founder</p>
+                    <p class="text-left" style="font-size:0.9rem;color: #9ca3af;line-height:1.6;">Scientific lead and
+                        domain expert guiding the engineering design, research frameworks, and bio-mechanical innovation
+                        at the core of UrbanTree.</p>
+                </div>
+
+                <!-- Founder 4 -->
+                <div class="fade-up flex flex-col items-start text-left group cursor-pointer"
+                    style="transition-delay:0.3s;">
+                    <div class="w-full aspect-square mb-5 overflow-hidden rounded-2xl relative bg-gray-200">
+                        <img src="/assets/images/vishwas.jpg" alt="Vishwas SP"
+                            class="w-full h-full object-cover object-center transition-all duration-500 transform group-hover:scale-105 brightness-110 contrast-125">
+                    </div>
+                    <h3 style="font-family:'Sora',sans-serif;font-weight:800;font-size:1.15rem;margin-bottom:4px;">
+                        Vishwas S P</h3>
+                    <p style="font-size:13px;font-weight:600;color:#6b7280;font-style:italic;margin-bottom:14px;">
+                        Product Design Engineer</p>
+                </div>
+
+                <!-- Founder 5 -->
+                <div class="fade-up flex flex-col items-start text-left group cursor-pointer"
+                    style="transition-delay:0.4s;">
+                    <div class="w-full aspect-square mb-5 overflow-hidden rounded-2xl relative bg-gray-200">
+                        <div class="w-full h-full" style="transform: scale(1.12); transform-origin: center top;">
+                            <img src="/assets/images/keshava.jpg" alt="Keshava Prasad B S"
+                                class="w-full h-full object-cover transition-all duration-500 transform group-hover:scale-105 brightness-110 contrast-125"
+                                style="object-position: center top;">
+                        </div>
+                    </div>
+                    <h3 style="font-family:'Sora',sans-serif;font-weight:800;font-size:1.15rem;margin-bottom:4px;">
+                        Keshava Prasad B S</h3>
+                    <p style="font-size:13px;font-weight:600;color:#6b7280;font-style:italic;margin-bottom:14px;">
+                        Strategic Advisor</p>
+                </div>
+
+                <!-- Founder 6 -->
+                <div class="fade-up flex flex-col items-start text-left group cursor-pointer"
+                    style="transition-delay:0.5s;">
+                    <div class="w-full aspect-square mb-5 overflow-hidden rounded-2xl relative bg-gray-200">
+                        <img src="/assets/images/omkar.jpg" alt="Omkar Chaithanya R"
+                            class="w-full h-full object-cover object-center transition-all duration-500 transform group-hover:scale-105 brightness-110 contrast-125">
+                    </div>
+                    <h3 style="font-family:'Sora',sans-serif;font-weight:800;font-size:1.15rem;margin-bottom:4px;">
+                        Omkar Chaithanya R</h3>
+                    <p style="font-size:13px;font-weight:600;color:#6b7280;font-style:italic;margin-bottom:14px;">
+                        Developer</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- 🌿🌿🌿 SDG ALIGNMENT 🌿🌿🌿 -->
+    <section style="background:#0a0a0a;padding:100px 0;position:relative;overflow:hidden;" data-navbar-theme="dark">
+        <div
+            style="position:absolute;top:-10%;left:50%;transform:translateX(-50%);width:800px;height:400px;background:radial-gradient(ellipse,rgba(16,185,129,0.1) 0%,transparent 70%);pointer-events:none;">
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+            <div class="text-center mb-16">
+                <span class="section-label fade-up"
+                    style="background:rgba(16,185,129,0.1);border-color:rgba(16,185,129,0.4);">Global Impact</span>
+                <h2 class="fade-up"
+                    style="font-family:'Sora',sans-serif;font-size:clamp(2rem,4vw,3rem);font-weight:800;color:#ffffff;line-height:1.15;margin-bottom:1rem;">
+                    Aligned with the UN<br><span
+                        style="background:linear-gradient(135deg,#10b981,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Sustainable
+                        Development Goals</span>
+                </h2>
+                <p class="fade-up"
+                    style="color:#94a3b8;max-width:640px;margin:0 auto;line-height:1.8;font-size:0.97rem;">
+                    UrbanTree aligns with the vision of the Government of India and global SDGs by addressing critical
+                    urban air pollution challenges through intelligent and sustainable clean-air infrastructure.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 fade-up">
+                <!-- SDG 3 -->
+                <div class="dark-card rounded-2xl p-7 flex items-start gap-5">
+                    <div
+                        style="min-width:56px;height:56px;border-radius:16px;background:rgba(68,196,120,0.15);border:1px solid rgba(68,196,120,0.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                        <span
+                            style="font-family:'Sora',sans-serif;font-weight:800;font-size:18px;color:#4ec478;">3</span>
+                    </div>
+                    <div>
+                        <h3 style="font-family:'Sora',sans-serif;font-weight:700;color:#f1f5f9;margin-bottom:8px;">SDG 3
+                            — Good Health & Well-Being</h3>
+                        <p style="font-size:0.875rem;color:#6b7280;line-height:1.7;">Reducing airborne pollutants PM2.5,
+                            PM10, VOCs, and harmful microorganisms to create healthier breathing environments in urban
+                            spaces.</p>
+                    </div>
+                </div>
+
+                <!-- SDG 9 -->
+                <div class="dark-card rounded-2xl p-7 flex items-start gap-5">
+                    <div
+                        style="min-width:56px;height:56px;border-radius:16px;background:rgba(244,144,0,0.12);border:1px solid rgba(244,144,0,0.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                        <span
+                            style="font-family:'Sora',sans-serif;font-weight:800;font-size:18px;color:#f49000;">9</span>
+                    </div>
+                    <div>
+                        <h3 style="font-family:'Sora',sans-serif;font-weight:700;color:#f1f5f9;margin-bottom:8px;">SDG 9
+                            — Industry, Innovation & Infrastructure</h3>
+                        <p style="font-size:0.875rem;color:#6b7280;line-height:1.7;">Building next-generation
+                            intelligent infrastructure through AI, IoT, automation, and advanced engineering for
+                            future-ready urban ecosystems.</p>
+                    </div>
+                </div>
+
+                <!-- SDG 11 -->
+                <div class="dark-card rounded-2xl p-7 flex items-start gap-5">
+                    <div
+                        style="min-width:56px;height:56px;border-radius:16px;background:rgba(253,185,19,0.12);border:1px solid rgba(253,185,19,0.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                        <span
+                            style="font-family:'Sora',sans-serif;font-weight:800;font-size:18px;color:#fdb913;">11</span>
+                    </div>
+                    <div>
+                        <h3 style="font-family:'Sora',sans-serif;font-weight:700;color:#f1f5f9;margin-bottom:8px;">SDG
+                            11 — Sustainable Cities & Communities</h3>
+                        <p style="font-size:0.875rem;color:#6b7280;line-height:1.7;">Deploying scalable clean-air
+                            infrastructure for smart cities, public spaces, and urban communities to improve
+                            environmental livability.</p>
+                    </div>
+                </div>
+
+                <!-- SDG 13 -->
+                <div class="dark-card rounded-2xl p-7 flex items-start gap-5">
+                    <div
+                        style="min-width:56px;height:56px;border-radius:16px;background:rgba(63,162,68,0.12);border:1px solid rgba(63,162,68,0.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                        <span
+                            style="font-family:'Sora',sans-serif;font-weight:800;font-size:18px;color:#3fa244;">13</span>
+                    </div>
+                    <div>
+                        <h3 style="font-family:'Sora',sans-serif;font-weight:700;color:#f1f5f9;margin-bottom:8px;">SDG
+                            13 — Climate Action</h3>
+                        <p style="font-size:0.875rem;color:#6b7280;line-height:1.7;">Addressing urban emissions,
+                            improving AQI levels, and contributing toward India's long-term environmental resilience
+                            through sustainable technology.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom note -->
+            <div class="fade-up mt-12 p-8 rounded-2xl text-center"
+                style="background:rgba(16,185,129,0.06);border:1px solid rgba(16,185,129,0.2);">
+                <p style="color:#94a3b8;font-size:0.97rem;line-height:1.85;max-width:780px;margin:0 auto;">
+                    Through AI-driven environmental monitoring, advanced purification technologies, and localized
+                    breathable Air Pocket ecosystems, UrbanTree contributes toward building <strong
+                        style="color:#10b981;">cleaner, healthier, smarter, and environmentally responsible urban
+                        ecosystems</strong> — aligned with India's Viksit Bharat 2047 mission.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ CTA ═══ -->
+    <section class="content-section" style="padding:80px 0;" data-navbar-theme="dark">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <span class="section-label fade-up">Get Involved</span>
+            <h2 class="fade-up text-slate-900"
+                style="font-family:'Sora',sans-serif;font-size:clamp(2rem,4vw,3rem);font-weight:800;line-height:1.15;margin-bottom:1.2rem;">
+                Ready to Breathe Cleaner Air<br>in Your City?
+            </h2>
+            <p class="fade-up"
+                style="color:#6b7280;font-size:1rem;line-height:1.8;margin-bottom:2.5rem;max-width:520px;margin-left:auto;margin-right:auto;">
+                Partner with UrbanTree to deploy intelligent clean-air infrastructure in your urban environment.
+            </p>
+            <div class="fade-up flex flex-wrap gap-4 justify-center">
+                <a href="../index.html#enquiry"
+                    class="hover-glow-emerald px-10 py-4 bg-emerald-500 text-white rounded-full font-semibold shadow-lg shadow-emerald-500/30 transition-all duration-300 text-sm">
+                    Make an Enquiry
+                </a>
+                <a href="../pages/technology.html"
+                    class="px-10 py-4 bg-gray-900 text-white rounded-full font-semibold hover:bg-gray-800 transition-all duration-300 text-sm">
+                    Explore Technology
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ FOOTER (identical to main site) ═══ -->
+    {{> footer }}
+
+    <script>
+        // Scroll reveal
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+
+    </script>
+</body>
+
+</html>

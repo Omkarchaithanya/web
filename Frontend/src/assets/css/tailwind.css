@@ -1,0 +1,12 @@
+@import "tailwindcss";
+@source "../../pages";
+@source "../../partials";
+@source "../../legal";
+
+@theme {
+  --color-brand-emerald: #4a9e3f;
+  --color-brand-cyan: #4a9e3f;
+  --font-sans: "Inter", sans-serif;
+  --font-serif: "Sora", sans-serif;
+}
+

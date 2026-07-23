@@ -82,12 +82,12 @@ This project is built using modern, lightweight web technologies to ensure maxim
 <!-- GETTING STARTED -->
 ## Getting Started
 
-To get a local copy up and running, follow these simple steps. Because this is a static client-side application, no complex build pipeline is required.
+To get a local copy up and running, follow these simple steps. This project uses Vite as a modern build tool.
 
 ### Prerequisites
 
-You only need a modern web browser and optionally a local web server for testing.
-* Python (Optional, for running a local server)
+* Node.js (v18 or higher)
+* npm
 * Git
 
 ### Installation
@@ -96,16 +96,22 @@ You only need a modern web browser and optionally a local web server for testing
    ```sh
    git clone https://github.com/SunEx-Technologies/urbantree.git
    ```
-2. Navigate to the project directory
+2. Navigate to the frontend directory
    ```sh
-   cd urbantree
+   cd urbantree/Frontend
    ```
-3. Start a local server (Recommended for preventing CORS issues with local assets)
+3. Install dependencies
    ```sh
-   # If using Python 3
-   python -m http.server 8000
+   npm install
    ```
-4. Open your web browser and navigate to `http://localhost:8000`
+4. Start the development server
+   ```sh
+   npm run dev
+   ```
+5. Build for production
+   ```sh
+   npm run build
+   ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

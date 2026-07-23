@@ -1,0 +1,2415 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>UrbanTree by SunEx Technologies | Bio-Mechanical Air Purification</title>
+    <link rel="icon" type="image/png" href="/assets/images/logo.png">
+    <meta name="description"
+        content="UrbanTree combines nature-powered purification with advanced engineering to create healthier environments through localized breathable Air Pocket zones.">
+    <meta name="keywords"
+        content="UrbanTree, SunEx Technologies, Bio-Mechanical Air Purification, Smart City, Sustainable Air Purifier, AQI Monitoring, Urban Air Crisis, Air Pocket">
+
+    <meta property="og:title" content="UrbanTree by SunEx Technologies | Bio-Mechanical Air Purification">
+    <meta property="og:description"
+        content="UrbanTree combines nature-powered purification with advanced engineering to create healthier environments through localized breathable Air Pocket zones.">
+    <meta property="og:image" content="dashboard-preview.jpg">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.urbantree-sunex.com">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/assets/css/tailwind.css">
+    <link rel="stylesheet" href="/assets/css/index.css?v=20260719">
+
+</head>
+
+<body class="antialiased selection:bg-brand-emerald selection:">
+
+    {{> navbar }}
+
+    <div id="snap-container">
+        <!-- ═══ FLOATING NAVBAR ═══ -->
+        <!-- ADAPTIVE NAVBAR -->
+
+
+        <script type="module" src="/assets/js/navbar.js"></script>
+
+
+        <!-- ═══ SECTION 1: HERO ═══ -->
+        <section class="snap-section bg-black" style="height:100vh; min-height:100vh;" id="hero-section"
+            data-navbar-theme="dark">
+            <video id="hero-video" playsinline preload="auto">
+                <source src="/videos/moss.mp4" type="video/mp4">
+            </video>
+            <!-- Intro Prompt -->
+            <div id="hero-click-prompt" class="absolute inset-0 z-30" style="background: transparent;">
+                <div id="prompt-inner" onclick="startHeroVideo()" class="cursor-pointer select-none"
+                    style="height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1rem; transition: opacity 0.5s ease, transform 0.5s ease;">
+
+                    <p
+                        style="font-family:'Sora',sans-serif; font-size:clamp(2.5rem, 5vw, 4.5rem); font-weight:800; color:#fff; text-shadow: 0 2px 16px rgba(0,0,0,0.7); margin:0; text-align:center; padding:0 6vw;">
+                        <span id="hero-typing-text" data-text="Every Breathe Matters..."></span><span
+                            id="hero-typing-cursor" aria-hidden="true">|</span>
+                    </p>
+                    <div id="see-action-button"
+                        style="display:flex; align-items:center; justify-content:center; gap:0.85rem; opacity:0; visibility:hidden; transform:translateY(10px); transition:opacity 0.45s ease, transform 0.45s ease; animation:seeActionReveal 0.45s ease 3.1s forwards; position:relative; z-index:2;">
+                        <button type="button" class="orange-cta action-pulse"
+                            style="font-family:'Inter',sans-serif; font-size:1.2rem; font-weight:700; color:#fff; background:#f97316; border:0; border-radius:999px; padding:0.75rem 2rem; box-shadow:0 10px 28px rgba(249,115,22,0.34); cursor:pointer; text-align:center;">
+                            See it in action
+                        </button>
+                        <button type="button" aria-label="Play video" class="orange-cta"
+                            style="width:4rem; height:4rem; display:inline-flex; align-items:center; justify-content:center; color:#fff; background:#f97316; border:0; border-radius:999px; box-shadow:0 10px 28px rgba(249,115,22,0.34); cursor:pointer; padding:0;">
+                            <span
+                                style="display:inline-flex; align-items:center; justify-content:center; font-size:1.75rem; line-height:1;">▶</span>
+                        </button>
+                    </div>
+
+                    <!-- Play button — fixed at viewport center (moss hole) -->
+                    <div style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%);">
+                        <div class="relative flex items-center justify-center">
+                            <span
+                                class="absolute inline-flex h-20 w-20 rounded-full bg-[#4a9e3f] opacity-30 animate-ping"></span>
+                            <span
+                                class="relative inline-flex h-14 w-14 rounded-full bg-[#4a9e3f] items-center justify-center shadow-lg shadow-[#4a9e3f]/40">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white ml-1"
+                                    fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M8 5v14l11-7z" />
+                                </svg>
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Bottom text -->
+                    <div style="text-align:center; padding-bottom: 4vh;">
+                        <p
+                            style="font-family:'Sora',sans-serif; font-size:clamp(2.5rem, 5vw, 4.5rem); font-weight:800; color:#4a9e3f; text-shadow: 0 2px 16px rgba(0,0,0,0.7); margin:0;">
+                            Click here!
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+
+            <div id="hero-overlay" class="absolute inset-0 flex flex-col items-center justify-center px-12 md:px-16"
+                style="background: linear-gradient(to bottom, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.38) 28%, transparent 68%);">
+
+                <div id="hero-text"
+                    class="opacity-0 transform translate-y-8 transition-all duration-1000 ease-out text-center flex flex-col items-center">
+                    <h1 class="text-3xl md:text-5xl lg:text-6xl font-serif font-extrabold mb-8 leading-tight text-white max-w-5xl drop-shadow-2xl text-center"
+                        style="letter-spacing:0;">
+                        <span class="block md:inline-block md:whitespace-nowrap">Reinventing Urban Air With</span>
+                        <span class="block md:inline-block md:whitespace-nowrap text-[#f97316]">Bio-Mechanical
+                            Intelligence</span>
+                    </h1>
+                    <button id="hero-modal-play-button" type="button" class="orange-cta hero-modal-play-button"
+                        aria-label="Open video preview">
+                        <span>▶</span>
+                    </button>
+                    <p
+                        class="text-lg md:text-xl text-white max-w-4xl leading-relaxed mb-8 drop-shadow-lg text-center px-4">
+                        <span class="block md:inline-block md:whitespace-nowrap">UrbanTree combines nature-powered
+                            purification with advanced engineering</span>
+                        <span class="block md:inline-block md:whitespace-nowrap">to create healthier environments
+                            through localized breathable</span>
+                        <span class="block md:inline-block md:whitespace-nowrap">Air Pocket zones.</span>
+                    </p>
+
+                    <div class="flex items-center justify-center space-x-4">
+                        <a href="pages/technology.html" class="orange-cta"
+                            style="font-family:'Inter',sans-serif; font-size:1.2rem; font-weight:700; color:#fff; background:#f97316; border:0; border-radius:999px; padding:0.75rem 2rem; box-shadow:0 10px 28px rgba(249,115,22,0.34); text-align:center;">
+                            Explore Technology
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-scroll-hint" aria-hidden="true">
+                <span>⌄</span>
+            </div>
+            <div id="hero-video-modal" class="hero-video-modal" aria-hidden="true">
+                <div class="hero-video-modal-backdrop" data-hero-video-close></div>
+                <div class="hero-video-modal-panel" role="dialog" aria-modal="true"
+                    aria-label="UrbanTree video preview">
+                    <button type="button" class="hero-video-modal-close" aria-label="Close video"
+                        data-hero-video-close>×</button>
+                    <video id="hero-modal-video" controls playsinline preload="metadata">
+                        <source src="/videos/moss.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══ SECTION 2: PRODUCT INTRODUCTION ═══ -->
+        <section class="snap-section relative overflow-hidden" id="product-intro" style="background: #0a0a0a;"
+            data-navbar-theme="dark">
+
+            <!-- Subtle emerald radial glow behind product -->
+            <div
+                style="position:absolute; left:50%; top:50%; transform:translate(-50%, -50%); width:520px; height:520px; border-radius:50%; background: radial-gradient(circle, rgba(74,158,63,0.18) 0%, transparent 70%); pointer-events:none; z-index:0;">
+            </div>
+
+            <!-- Cinematic word overlay -->
+            <div id="cinema-overlay"
+                style="display:none; position:absolute; inset:0; z-index:50; background:#0a0a0a; align-items:center; justify-content:center;">
+                <span id="cinema-word"
+                    style="font-family:'Sora',sans-serif; font-size:clamp(3.5rem,9vw,8rem); font-weight:900; color:#fff; letter-spacing:-0.02em; text-shadow: 0 0 60px rgba(74,158,63,0.4);"></span>
+            </div>
+
+            <div id="intro-brand-reveal" class="intro-brand-reveal" aria-hidden="true">
+                <span class="intro-brand-urban text-4xl md:text-6xl lg:text-7xl mr-2">URBAN</span><span
+                    class="intro-brand-tree text-4xl md:text-6xl lg:text-7xl">Tree</span>
+            </div>
+
+            <!-- Device assembly animation -->
+            <div id="device-assembly-stage" class="device-assembly-stage" aria-hidden="true">
+                <div class="device-assembly-frame">
+                    <img class="assembly-piece assembly-top" src="/assets/images/device_ka_image.png" alt="">
+                    <img class="assembly-piece assembly-moss" src="/assets/images/device_ka_image.png" alt="">
+                    <img class="assembly-piece assembly-band" src="/assets/images/device_ka_image.png" alt="">
+                    <img class="assembly-piece assembly-base" src="/assets/images/device_ka_image.png" alt="">
+                    <img class="assembly-final" src="/assets/images/device_ka_image.png" alt="">
+                    <div class="assembly-title">URBANTREE</div>
+                </div>
+                <div class="assembly-showcase-copy" aria-hidden="true">
+                    <div class="assembly-feature-row">
+                        <div class="assembly-feature" style="--feature-delay:0ms;--feature-offset:0px;">
+                            <img src="/assets/images/1.png" alt="">
+                            <span>Sustainable Biological Systems</span>
+                        </div>
+                        <div class="assembly-feature" style="--feature-delay:190ms;--feature-offset:22px;">
+                            <img src="/assets/images/2.png" alt="">
+                            <span>Advanced Engineering</span>
+                        </div>
+                        <div class="assembly-feature assembly-feature-large-icon"
+                            style="--feature-delay:380ms;--feature-offset:44px;">
+                            <img src="/assets/images/3.png" alt="">
+                            <span>Real-Time Environmental Intelligence</span>
+                        </div>
+                        <div class="assembly-feature" style="--feature-delay:570ms;--feature-offset:66px;">
+                            <img src="/assets/images/4.png" alt="">
+                            <span>Breathable Air Pocket Ecosystems</span>
+                        </div>
+                        <div class="assembly-feature" style="--feature-delay:760ms;--feature-offset:88px;">
+                            <img src="/assets/images/5.png" alt="">
+                            <span>Cleaner, Healthier, Future-Ready Communities</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main content wrapper -->
+            <div id="product-content"
+                style="opacity:0; display:flex; width:100%; height:100%; align-items:center; justify-content:center;">
+
+                <!-- LEFT: Text -->
+                <div class="z-10 px-12 md:px-20 w-full lg:w-1/2" style="display:none;">
+
+                    <h2 class="cinema-reveal"
+                        style="font-family:'Sora',sans-serif; font-size:clamp(2rem,4.5vw,4rem); font-weight:800; line-height:1.1; color:#fff; margin-bottom:0.5rem; opacity:0;">
+                        Outdoor Bio
+                    </h2>
+
+                    <h2 class="cinema-reveal"
+                        style="font-family:'Sora',sans-serif; font-size:clamp(2rem,4.5vw,4rem); font-weight:800; line-height:1.1; color:#fff; margin-bottom:0.5rem; opacity:0;">
+                        Air Purifier
+                    </h2>
+
+                    <h2 id="urbantree-name"
+                        style="font-family:'Sora',sans-serif; font-size:clamp(2.5rem,5.5vw,5rem); font-weight:900; line-height:1.1; margin-bottom:2rem; background: linear-gradient(to right, #4a9e3f, #4a9e3f); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; opacity:0; transform:scale(0.7);">
+                        "URBANTREE"
+                    </h2>
+
+                    <div class="cinema-reveal"
+                        style="width:60px; height:3px; background: linear-gradient(to right, #4a9e3f, #4a9e3f); border-radius:2px; margin-bottom:2rem; opacity:0;">
+                    </div>
+
+                    <p class="cinema-reveal"
+                        style="font-family:'Inter',sans-serif; font-size:1.05rem; color:#9ca3af; line-height:1.8; max-width:460px; opacity:0;">
+                        Nature engineered. City deployed. UrbanTree harnesses the power of living moss and
+                        bio-mechanical intelligence to purify the air around you — block by block.
+                    </p>
+
+                </div>
+
+                <!-- RIGHT: Product Image -->
+                <div class="z-10 w-full flex items-center justify-center" id="product-img-wrap"
+                    style="opacity:0; transform:translateY(18px); transition: opacity 0.9s cubic-bezier(0.2,0.8,0.2,1), transform 0.9s cubic-bezier(0.2,0.8,0.2,1);">
+                    <img src="/assets/images/device_ka_image.png" alt="UrbanTree Product"
+                        style="height: 64vh; max-height:620px; width:auto; object-fit:contain; filter: drop-shadow(0 0 40px rgba(74,158,63,0.35)) drop-shadow(0 0 80px rgba(74,158,63,0.15)); animation: floatProduct 4s ease-in-out infinite;">
+                </div>
+
+            </div>
+
+        </section>
+
+        <style>
+            @keyframes floatProduct {
+
+                0%,
+                100% {
+                    transform: translateY(0px);
+                }
+
+                50% {
+                    transform: translateY(-18px);
+                }
+            }
+        </style>
+        <!-- ═══ SECTION 2.5: URBAN AIR CRISIS ═══ -->
+        <section class="snap-section relative overflow-hidden bg-black" id="air-crisis" data-navbar-theme="dark">
+            <div id="crisis-slider" class="absolute inset-0 cursor-ew-resize select-none touch-pan-y">
+                <img src="/assets/images/city-clean.png" alt="Clean city"
+                    class="absolute inset-0 w-full h-full object-cover object-[25%_center] md:object-center">
+
+                <div id="polluted-layer" class="absolute inset-y-0 left-0 overflow-hidden" style="width:100%;">
+                    <img src="/assets/images/city-polluted.png" alt="Polluted city"
+                        class="absolute inset-y-0 left-0 w-full h-full object-cover object-[25%_center] md:object-center max-w-none">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/20 to-black/10 pointer-events-none">
+                    </div>
+                    <div
+                        class="absolute left-8 md:left-16 bottom-20 md:bottom-24 w-[calc(100%-4rem)] md:w-[calc(100%-8rem)] lg:w-[42rem] pointer-events-none">
+                        <span class="text-xs font-bold uppercase tracking-[0.3em] text-[#4a9e3f] mb-5 block">The Urban
+                            Air Crisis</span>
+                        <h2
+                            class="font-serif font-extrabold leading-tight text-4xl md:text-6xl text-white drop-shadow-2xl">
+                            <span id="crisis-line1" class="block text-white">Cities Are Growing.</span>
+                            <span id="crisis-line2" class="block mt-2 text-white">So Is Air Pollution.</span>
+                        </h2>
+                    </div>
+                </div>
+
+                <div id="slider-divider"
+                    class="absolute top-0 bottom-0 w-1 bg-white shadow-[0_0_18px_rgba(255,255,255,0.85)]"
+                    style="left:100%;">
+                    <div
+                        class="absolute top-1/2 left-1/2 h-14 w-14 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/70 bg-black/45 backdrop-blur-md flex items-center justify-center text-white text-xl font-bold shadow-2xl">
+                        ↔</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══ SECTION 3: VISION & MISSION ═══ -->
+        <section class="snap-section vm-section" id="vision-mission" data-navbar-theme="dark">
+            <div class="vm-decor vm-decor--topo" aria-hidden="true"></div>
+            <div class="vm-decor vm-decor--city" aria-hidden="true"></div>
+            <!-- Floating Faded Leaves -->
+            <img src="/assets/images/aesthetic_leaf_1.png" alt=""
+                class="absolute top-[10%] left-[-5%] w-[350px] opacity-70 z-0 pointer-events-none animate-[float_7s_ease-in-out_infinite] rotate-[15deg] blur-[1px]"
+                aria-hidden="true" loading="lazy">
+            <img src="/assets/images/aesthetic_leaf_2.png" alt=""
+                class="absolute bottom-[5%] right-[-5%] w-[450px] opacity-60 z-0 pointer-events-none animate-[float_9s_ease-in-out_infinite_1s] -rotate-[25deg] blur-[2px]"
+                aria-hidden="true" loading="lazy">
+
+            <div class="vm-shell">
+                <header class="vm-header fade-up">
+                    <div class="vm-kicker">
+                        <svg class="vm-kicker-leaf" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <path d="M12 21c-4-6-8-10-8-14a8 8 0 0116 0c0 4-4 8-8 14z" stroke="currentColor"
+                                stroke-width="1.5" />
+                            <path d="M12 21V7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                        </svg>
+                        <span>Purpose-Led Deployment</span>
+                    </div>
+                    <h2 class="vm-title">Vision <span class="vm-amp">&amp;</span> Mission</h2>
+                    <div class="vm-divider" aria-hidden="true">
+                        <span class="vm-divider-line"></span>
+                        <span class="vm-divider-icon">
+                            <svg viewBox="0 0 24 24" fill="none">
+                                <path d="M12 21c-4-6-8-10-8-14a8 8 0 0116 0c0 4-4 8-8 14z" stroke="currentColor"
+                                    stroke-width="1.5" />
+                                <path d="M12 21V7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                            </svg>
+                        </span>
+                        <span class="vm-divider-line"></span>
+                    </div>
+                    <p class="vm-lead">Building breathable, sustainable, and <strong>future-ready cities.</strong></p>
+                </header>
+
+                <div class="vm-duo">
+                    <article class="vm-panel vm-panel--vision fade-up">
+                        <div class="vm-panel-content">
+                            <div class="vm-panel-badge">
+                                <span class="vm-panel-icon" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" fill="none">
+                                        <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z" stroke="currentColor"
+                                            stroke-width="1.5" />
+                                        <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5" />
+                                    </svg>
+                                </span>
+                                <span>Our Vision</span>
+                            </div>
+                            <h3 class="vm-panel-title">Breathable urban infrastructure for <em>future-ready cities.</em>
+                            </h3>
+                            <p class="vm-panel-copy">To integrate sustainable biological systems and real-time
+                                environmental intelligence to create future-ready, breathable urban infrastructure under
+                                Viksit Bharat 2047.</p>
+                        </div>
+                        <div class="vm-panel-visual vm-panel-visual--vision" aria-hidden="true">
+                            <div class="vm-visual-ring">
+                                <img src="/assets/images/vm-vision-city.png"
+                                    alt="Futuristic green sustainable city skyline" loading="lazy" width="320"
+                                    height="320">
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="vm-panel vm-panel--mission fade-up" style="transition-delay: 100ms;">
+                        <div class="vm-panel-content">
+                            <div class="vm-panel-badge">
+                                <span class="vm-panel-icon" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" fill="none">
+                                        <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5" />
+                                        <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.5" />
+                                        <circle cx="12" cy="12" r="1.5" fill="currentColor" />
+                                    </svg>
+                                </span>
+                                <span>Our Mission</span>
+                            </div>
+                            <h3 class="vm-panel-title">Scalable <em>clean-air</em> pockets across dense city ecosystems.
+                            </h3>
+                            <p class="vm-panel-copy">To deploy advanced bio-mechanical engineering systems across dense
+                                city ecosystems, delivering scalable clean air pockets that consistently improve public
+                                health.</p>
+                        </div>
+                        <div class="vm-panel-visual vm-panel-visual--mission" aria-hidden="true">
+                            <div class="vm-visual-ring vm-visual-ring--glow">
+                                <img src="/assets/images/device_ka_image.png"
+                                    alt="UrbanTree bio-mechanical air purification unit" loading="lazy" width="320"
+                                    height="320">
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="vm-impact fade-up" style="transition-delay: 180ms;">
+                    <div class="vm-impact-divider">
+                        <span class="vm-impact-divider-line"></span>
+                        <span class="vm-impact-divider-text">Global Impact Alignment</span>
+                        <span class="vm-impact-divider-line"></span>
+                    </div>
+
+                    <div class="vm-sdg-grid">
+                        <article class="vm-sdg vm-sdg--health" style="--sdg:#4C9F38;">
+                            <div class="vm-sdg-watermark" aria-hidden="true"></div>
+                            <div class="vm-sdg-top">
+                                <span class="vm-sdg-icon-wrap">
+                                    <svg viewBox="0 0 64 64" class="vm-sdg-icon" aria-hidden="true">
+                                        <path
+                                            d="M32 52s-20-12.4-20-27a11 11 0 0120-6.3A11 11 0 0152 25c0 14.6-20 27-20 27z" />
+                                        <path d="M19 33h8l4-9 5 17 4-8h7" />
+                                    </svg>
+                                </span>
+                                <span class="vm-sdg-num">3</span>
+                            </div>
+                            <h5 class="vm-sdg-name">Good Health and Well-Being</h5>
+                            <p>Cleaner air zones that reduce exposure to harmful urban pollutants.</p>
+                        </article>
+
+                        <article class="vm-sdg vm-sdg--industry" style="--sdg:#FD6925;">
+                            <div class="vm-sdg-watermark" aria-hidden="true"></div>
+                            <div class="vm-sdg-top">
+                                <span class="vm-sdg-icon-wrap">
+                                    <svg viewBox="0 0 64 64" class="vm-sdg-icon" aria-hidden="true">
+                                        <path d="M10 50h44M14 50V26l12-8v32M26 30l12-8v28M38 34l12-8v24" />
+                                        <path d="M18 34h4M30 38h4M42 42h4" />
+                                    </svg>
+                                </span>
+                                <span class="vm-sdg-num">9</span>
+                            </div>
+                            <h5 class="vm-sdg-name">Industry, Innovation and Infrastructure</h5>
+                            <p>Bio-mechanical infrastructure designed for smart, scalable deployment.</p>
+                        </article>
+
+                        <article class="vm-sdg vm-sdg--cities" style="--sdg:#FD9D24;">
+                            <div class="vm-sdg-watermark" aria-hidden="true"></div>
+                            <div class="vm-sdg-top">
+                                <span class="vm-sdg-icon-wrap">
+                                    <svg viewBox="0 0 64 64" class="vm-sdg-icon" aria-hidden="true">
+                                        <path d="M12 52V20h12v32M24 52V12h16v40M40 52V26h12v26" />
+                                        <path d="M17 28h2M17 36h2M29 20h2M29 28h2M29 36h2M45 34h2M45 42h2" />
+                                    </svg>
+                                </span>
+                                <span class="vm-sdg-num">11</span>
+                            </div>
+                            <h5 class="vm-sdg-name">Sustainable Cities and Communities</h5>
+                            <p>Localized breathable pockets for public, commercial, and civic spaces.</p>
+                        </article>
+
+                        <article class="vm-sdg vm-sdg--climate" style="--sdg:#3F7E44;">
+                            <div class="vm-sdg-watermark" aria-hidden="true"></div>
+                            <div class="vm-sdg-top">
+                                <span class="vm-sdg-icon-wrap">
+                                    <svg viewBox="0 0 64 64" class="vm-sdg-icon" aria-hidden="true">
+                                        <path d="M32 8a24 24 0 1024 24A24 24 0 0032 8z" />
+                                        <path d="M20 35c8-1 10-13 22-13-2 13-9 21-22 22 5-5 6-8 6-8" />
+                                    </svg>
+                                </span>
+                                <span class="vm-sdg-num">13</span>
+                            </div>
+                            <h5 class="vm-sdg-name">Climate Action</h5>
+                            <p>Hybrid power and biological systems supporting lower-impact operations.</p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══ SECTION 4: TECHNOLOGY — How It Works (REDESIGNED) ═══ -->
+        <section class="snap-section-scroll relative" id="technology" style="background: #f0f4f1; overflow: hidden;"
+            data-navbar-theme="dark">
+
+            <!-- Floating Faded Leaves -->
+            <img src="/assets/images/leaf_blur_3.png" alt=""
+                class="absolute top-[20%] right-[-10%] w-[400px] opacity-60 z-0 pointer-events-none animate-[float_8s_ease-in-out_infinite] rotate-[45deg] blur-[3px]"
+                aria-hidden="true" loading="lazy">
+            <img src="/assets/images/leaf_blur_1.png" alt=""
+                class="absolute bottom-[-10%] left-[-5%] w-[300px] opacity-50 z-0 pointer-events-none animate-[float_10s_ease-in-out_infinite_0.5s] -rotate-[15deg] blur-[2px] scale-x-[-1]"
+                aria-hidden="true" loading="lazy">
+
+            <!-- Deep radial glow -->
+            <div
+                style="position:absolute;top:-10%;left:50%;transform:translateX(-50%);width:900px;height:500px;background:radial-gradient(ellipse,rgba(74,158,63,0.08) 0%,transparent 70%);pointer-events:none;z-index:0;">
+            </div>
+
+            <!-- ── HEADER ── -->
+            <div class="relative z-10 text-center pt-24 pb-0 px-6" id="tech-header">
+                <div
+                    style="display:inline-block;padding:5px 18px;border-radius:30px;border:1px solid rgba(74,158,63,0.4);background:rgba(74,158,63,0.08);margin-bottom:20px;">
+                    <span
+                        style="font-family:'Inter',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.25em;color:#4a9e3f;text-transform:uppercase;">How
+                        UrbanTree Works</span>
+                </div>
+                <h2
+                    style="font-family:'Sora',sans-serif;font-size:clamp(2.2rem,5vw,4rem);font-weight:800;line-height:1.1;margin-bottom:1.2rem;">
+                    Nature + Engineering<br>
+                    <span
+                        style="background:linear-gradient(135deg,#4a9e3f,#4a9e3f);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">In
+                        Perfect Balance</span>
+                </h2>
+            </div>
+
+            <!-- ── TWO-COLUMN LAYOUT: Image LEFT, Steps RIGHT ── -->
+            <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 pb-24 pt-12"
+                style="display:grid;grid-template-columns:minmax(320px,0.95fr) minmax(520px,1.35fr);gap:48px;align-items:start;">
+
+                <!-- LEFT: Sticky image with floating badges -->
+                <div style="position:sticky;top:80px;" id="tech-image-col">
+                    <div style="position:relative;">
+                        <!-- Glow ring behind image -->
+                        <div
+                            style="position:absolute;inset:-30px;background:radial-gradient(ellipse,rgba(74,158,63,0.12) 0%,transparent 70%);border-radius:50%;pointer-events:none;">
+                        </div>
+
+                        <img src="/assets/images/Nature__engineering_in_perfect_balance.png"
+                            alt="Nature and Engineering in Perfect Balance"
+                            style="width:100%;border-radius:24px;object-fit:cover;position:relative;z-index:1;filter:drop-shadow(0 20px 60px rgba(74,158,63,0.2));animation:techImgFloat 6s ease-in-out infinite;">
+
+                    </div>
+
+                    <div class="tech-image-copy">
+                        <p>
+                            UrbanTree is designed to operate through a hybrid power infrastructure integrating
+                            conventional grid supply with solar energy systems, enabling reliable, energy-efficient, and
+                            sustainable operation across diverse urban and outdoor environments. This multi-stage
+                            purification system combines biological absorption, smart airflow engineering, and advanced
+                            filtration technologies to create breathable environments within urban spaces.
+                        </p>
+                    </div>
+                </div>
+                <!-- RIGHT: Step data reshaped into tabs by index.js -->
+                <div id="tech-steps-col"
+                    style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;padding-top:8px;">
+
+                    <!-- Step 1 -->
+                    <div class="tech-step-card" data-step="1" data-label="Atmospheric Intake"
+                        style="background:rgba(0,0,0,0.03);border:1px solid rgba(0,0,0,0.08);border-radius:20px;padding:22px 26px;cursor:default;transition:all 0.45s cubic-bezier(0.4,0,0.2,1);position:relative;overflow:hidden;">
+                        <div class="step-glow"
+                            style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(74,158,63,0.10),transparent);opacity:0;transition:opacity 0.45s ease;border-radius:20px;pointer-events:none;">
+                        </div>
+                        <div style="display:flex;align-items:flex-start;gap:18px;position:relative;z-index:1;">
+                            <div class="step-num"
+                                style="min-width:48px;height:48px;border-radius:14px;background:rgba(74,158,63,0.12);border:1px solid rgba(74,158,63,0.3);display:flex;align-items:center;justify-content:center;transition:all 0.4s ease;">
+                                <span
+                                    style="font-family:'Sora',sans-serif;font-weight:800;font-size:18px;color:#4a9e3f;">01</span>
+                            </div>
+                            <div style="flex:1;">
+                                <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
+                                    <h3
+                                        style="font-family:'Sora',sans-serif;font-weight:700;font-size:1.05rem;margin:0;">
+                                        Atmospheric Intake System</h3>
+                                    <div class="step-icon" style="opacity:0.5;transition:opacity 0.4s;">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4a9e3f"
+                                            stroke-width="2">
+                                            <path d="M12 22V12M12 12C12 12 7 8 7 4a5 5 0 0110 0c0 4-5 8-5 8z" />
+                                            <path d="M8 16s-3 0-4 2M16 16s3 0 4 2" />
+                                        </svg>
+                                    </div>
+                                </div>
+                                <p
+                                    style="font-family:'Inter',sans-serif;font-size:0.875rem;color: #9ca3af;line-height:1.7;margin:0;">
+                                    Smart directional airflow channels collect polluted air efficiently from the
+                                    surrounding urban environment.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="tech-step-card" data-step="2" data-label="Mechanical Filtration"
+                        style="background:rgba(0,0,0,0.03);border:1px solid rgba(0,0,0,0.08);border-radius:20px;padding:22px 26px;cursor:default;transition:all 0.45s cubic-bezier(0.4,0,0.2,1);position:relative;overflow:hidden;">
+                        <div class="step-glow"
+                            style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(74,158,63,0.10),transparent);opacity:0;transition:opacity 0.45s ease;border-radius:20px;pointer-events:none;">
+                        </div>
+                        <div style="display:flex;align-items:flex-start;gap:18px;position:relative;z-index:1;">
+                            <div class="step-num"
+                                style="min-width:48px;height:48px;border-radius:14px;background:rgba(74,158,63,0.12);border:1px solid rgba(74,158,63,0.3);display:flex;align-items:center;justify-content:center;transition:all 0.4s ease;">
+                                <span
+                                    style="font-family:'Sora',sans-serif;font-weight:800;font-size:18px;color:#4a9e3f;">02</span>
+                            </div>
+                            <div style="flex:1;">
+                                <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
+                                    <h3
+                                        style="font-family:'Sora',sans-serif;font-weight:700;font-size:1.05rem;margin:0;">
+                                        Mechanical Filtration Chamber</h3>
+                                    <div class="step-icon" style="opacity:0.5;transition:opacity 0.4s;">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4a9e3f"
+                                            stroke-width="2">
+                                            <circle cx="12" cy="12" r="3" />
+                                            <path
+                                                d="M12 2v4M12 18v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M2 12h4M18 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83" />
+                                        </svg>
+                                    </div>
+                                </div>
+                                <p
+                                    style="font-family:'Inter',sans-serif;font-size:0.875rem;color: #9ca3af;line-height:1.7;margin:0;">
+                                    Captures heavy dust particles using patented centrifugal funnel dust collection
+                                    technology for maximum mechanical separation.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="tech-step-card" data-step="3" data-label="Prefilter Layer"
+                        style="background:rgba(0,0,0,0.03);border:1px solid rgba(0,0,0,0.08);border-radius:20px;padding:22px 26px;cursor:default;transition:all 0.45s cubic-bezier(0.4,0,0.2,1);position:relative;overflow:hidden;">
+                        <div class="step-glow"
+                            style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(74,158,63,0.10),transparent);opacity:0;transition:opacity 0.45s ease;border-radius:20px;pointer-events:none;">
+                        </div>
+                        <div style="display:flex;align-items:flex-start;gap:18px;position:relative;z-index:1;">
+                            <div class="step-num"
+                                style="min-width:48px;height:48px;border-radius:14px;background:rgba(74,158,63,0.12);border:1px solid rgba(74,158,63,0.3);display:flex;align-items:center;justify-content:center;transition:all 0.4s ease;">
+                                <span
+                                    style="font-family:'Sora',sans-serif;font-weight:800;font-size:18px;color:#4a9e3f;">03</span>
+                            </div>
+                            <div style="flex:1;">
+                                <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
+                                    <h3
+                                        style="font-family:'Sora',sans-serif;font-weight:700;font-size:1.05rem;margin:0;">
+                                        Prefilter Layer</h3>
+                                    <div class="step-icon" style="opacity:0.5;transition:opacity 0.4s;">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4a9e3f"
+                                            stroke-width="2">
+                                            <rect x="3" y="3" width="18" height="18" rx="2" />
+                                            <line x1="3" y1="9" x2="21" y2="9" />
+                                            <line x1="3" y1="15" x2="21" y2="15" />
+                                        </svg>
+                                    </div>
+                                </div>
+                                <p
+                                    style="font-family:'Inter',sans-serif;font-size:0.875rem;color: #9ca3af;line-height:1.7;margin:0;">
+                                    Traps large airborne particles such as dust, lint, pet hair and dander before they
+                                    reach the main filter stages.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="tech-step-card" data-step="4" data-label="Carbon Filter"
+                        style="background:rgba(0,0,0,0.03);border:1px solid rgba(0,0,0,0.08);border-radius:20px;padding:22px 26px;cursor:default;transition:all 0.45s cubic-bezier(0.4,0,0.2,1);position:relative;overflow:hidden;">
+                        <div class="step-glow"
+                            style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(74,158,63,0.10),transparent);opacity:0;transition:opacity 0.45s ease;border-radius:20px;pointer-events:none;">
+                        </div>
+                        <div style="display:flex;align-items:flex-start;gap:18px;position:relative;z-index:1;">
+                            <div class="step-num"
+                                style="min-width:48px;height:48px;border-radius:14px;background:rgba(74,158,63,0.12);border:1px solid rgba(74,158,63,0.3);display:flex;align-items:center;justify-content:center;transition:all 0.4s ease;">
+                                <span
+                                    style="font-family:'Sora',sans-serif;font-weight:800;font-size:18px;color:#4a9e3f;">04</span>
+                            </div>
+                            <div style="flex:1;">
+                                <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
+                                    <h3
+                                        style="font-family:'Sora',sans-serif;font-weight:700;font-size:1.05rem;margin:0;">
+                                        Carbon Filter</h3>
+                                    <div class="step-icon" style="opacity:0.5;transition:opacity 0.4s;">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4a9e3f"
+                                            stroke-width="2">
+                                            <path d="M12 2a7 7 0 017 7c0 5-7 13-7 13S5 14 5 9a7 7 0 017-7z" />
+                                            <circle cx="12" cy="9" r="2.5" />
+                                        </svg>
+                                    </div>
+                                </div>
+                                <p
+                                    style="font-family:'Inter',sans-serif;font-size:0.875rem;color: #9ca3af;line-height:1.7;margin:0;">
+                                    Removes VOCs, odors, fumes, moisture and gaseous pollutants through advanced
+                                    activated carbon adsorption.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 5 -->
+                    <div class="tech-step-card" data-step="5" data-label="HEPA Filter"
+                        style="background:rgba(0,0,0,0.03);border:1px solid rgba(0,0,0,0.08);border-radius:20px;padding:22px 26px;cursor:default;transition:all 0.45s cubic-bezier(0.4,0,0.2,1);position:relative;overflow:hidden;">
+                        <div class="step-glow"
+                            style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(74,158,63,0.10),transparent);opacity:0;transition:opacity 0.45s ease;border-radius:20px;pointer-events:none;">
+                        </div>
+                        <div style="display:flex;align-items:flex-start;gap:18px;position:relative;z-index:1;">
+                            <div class="step-num"
+                                style="min-width:48px;height:48px;border-radius:14px;background:rgba(74,158,63,0.12);border:1px solid rgba(74,158,63,0.3);display:flex;align-items:center;justify-content:center;transition:all 0.4s ease;">
+                                <span
+                                    style="font-family:'Sora',sans-serif;font-weight:800;font-size:18px;color:#4a9e3f;">05</span>
+                            </div>
+                            <div style="flex:1;">
+                                <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
+                                    <h3
+                                        style="font-family:'Sora',sans-serif;font-weight:700;font-size:1.05rem;margin:0;">
+                                        HEPA Filter</h3>
+                                    <div class="step-icon" style="opacity:0.5;transition:opacity 0.4s;">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4a9e3f"
+                                            stroke-width="2">
+                                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                                        </svg>
+                                    </div>
+                                </div>
+                                <p
+                                    style="font-family:'Inter',sans-serif;font-size:0.875rem;color: #9ca3af;line-height:1.7;margin:0;">
+                                    Primary defence against airborne contaminants, designed to trap <strong
+                                        style="color:#4a9e3f;">99.97%</strong> of particles as small as 0.3 micron,
+                                    including PM2.5, PM10 and other pollutants.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 6 — HERO/FEATURED -->
+                    <div class="tech-step-card" data-step="6" data-label="Bio-Purification Core"
+                        style="background:rgba(74,158,63,0.06);border:1px solid rgba(74,158,63,0.35);border-radius:20px;padding:22px 26px;cursor:default;transition:all 0.45s cubic-bezier(0.4,0,0.2,1);position:relative;overflow:hidden;">
+                        <div class="step-glow"
+                            style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(74,158,63,0.15),transparent);opacity:0;transition:opacity 0.45s ease;border-radius:20px;pointer-events:none;">
+                        </div>
+                        <!-- Animated moss speckles -->
+                        <div style="position:absolute;top:12px;right:16px;display:flex;gap:4px;opacity:0.6;">
+                            <span
+                                style="width:6px;height:6px;border-radius:50%;background:#4a9e3f;animation:mossSpeckle 2s ease-in-out infinite;"></span>
+                            <span
+                                style="width:4px;height:4px;border-radius:50%;background:#4ade80;animation:mossSpeckle 2s ease-in-out 0.4s infinite;"></span>
+                            <span
+                                style="width:6px;height:6px;border-radius:50%;background:#4a9e3f;animation:mossSpeckle 2s ease-in-out 0.8s infinite;"></span>
+                        </div>
+                        <div style="display:flex;align-items:flex-start;gap:18px;position:relative;z-index:1;">
+                            <div class="step-num"
+                                style="min-width:48px;height:48px;border-radius:14px;background:rgba(74,158,63,0.25);border:1px solid rgba(74,158,63,0.6);display:flex;align-items:center;justify-content:center;transition:all 0.4s ease;">
+                                <span
+                                    style="font-family:'Sora',sans-serif;font-weight:800;font-size:18px;color:#15803d;">06</span>
+                            </div>
+                            <div style="flex:1;">
+                                <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
+                                    <h3
+                                        style="font-family:'Sora',sans-serif;font-weight:700;font-size:1.05rem;color:#15803d;margin:0;">
+                                        Bio-Purification Core</h3>
+                                </div>
+                                <p
+                                    style="font-family:'Inter',sans-serif;font-size:0.875rem;color:#166534;line-height:1.7;margin:0;">
+                                    Living moss chamber that kills airborne pollutants and improves air quality through
+                                    natural biological absorption — nature's own filter at work.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 7 -->
+                    <div class="tech-step-card" data-step="7" data-label="UV Chamber"
+                        style="background:rgba(0,0,0,0.03);border:1px solid rgba(0,0,0,0.08);border-radius:20px;padding:22px 26px;cursor:default;transition:all 0.45s cubic-bezier(0.4,0,0.2,1);position:relative;overflow:hidden;">
+                        <div class="step-glow"
+                            style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(74,158,63,0.10),transparent);opacity:0;transition:opacity 0.45s ease;border-radius:20px;pointer-events:none;">
+                        </div>
+                        <div style="display:flex;align-items:flex-start;gap:18px;position:relative;z-index:1;">
+                            <div class="step-num"
+                                style="min-width:48px;height:48px;border-radius:14px;background:rgba(74,158,63,0.12);border:1px solid rgba(74,158,63,0.3);display:flex;align-items:center;justify-content:center;transition:all 0.4s ease;">
+                                <span
+                                    style="font-family:'Sora',sans-serif;font-weight:800;font-size:18px;color:#4a9e3f;">07</span>
+                            </div>
+                            <div style="flex:1;">
+                                <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
+                                    <h3
+                                        style="font-family:'Sora',sans-serif;font-weight:700;font-size:1.05rem;margin:0;">
+                                        UV Chamber</h3>
+                                    <div class="step-icon" style="opacity:0.5;transition:opacity 0.4s;">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4a9e3f"
+                                            stroke-width="2">
+                                            <circle cx="12" cy="12" r="4" />
+                                            <path
+                                                d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+                                        </svg>
+                                    </div>
+                                </div>
+                                <p
+                                    style="font-family:'Inter',sans-serif;font-size:0.875rem;color: #9ca3af;line-height:1.7;margin:0;">
+                                    UV light acts as a powerful disinfectant, inactivating and killing airborne
+                                    microorganisms — bacteria, mold spores, and viruses including Covid-19.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 8 -->
+                    <div class="tech-step-card" data-step="8" data-label="Clean Air Output"
+                        style="background:rgba(0,0,0,0.03);border:1px solid rgba(0,0,0,0.08);border-radius:20px;padding:22px 26px;cursor:default;transition:all 0.45s cubic-bezier(0.4,0,0.2,1);position:relative;overflow:hidden;">
+                        <div class="step-glow"
+                            style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(74,158,63,0.10),transparent);opacity:0;transition:opacity 0.45s ease;border-radius:20px;pointer-events:none;">
+                        </div>
+                        <div style="display:flex;align-items:flex-start;gap:18px;position:relative;z-index:1;">
+                            <div class="step-num"
+                                style="min-width:48px;height:48px;border-radius:14px;background:rgba(74,158,63,0.12);border:1px solid rgba(74,158,63,0.3);display:flex;align-items:center;justify-content:center;transition:all 0.4s ease;">
+                                <span
+                                    style="font-family:'Sora',sans-serif;font-weight:800;font-size:18px;color:#4a9e3f;">08</span>
+                            </div>
+                            <div style="flex:1;">
+                                <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
+                                    <h3
+                                        style="font-family:'Sora',sans-serif;font-weight:700;font-size:1.05rem;margin:0;">
+                                        Clean Air Redistribution</h3>
+                                    <div class="step-icon" style="opacity:0.5;transition:opacity 0.4s;">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4a9e3f"
+                                            stroke-width="2">
+                                            <path d="M17 8l4 4-4 4M3 12h18M7 8l-4 4 4 4" />
+                                        </svg>
+                                    </div>
+                                </div>
+                                <p
+                                    style="font-family:'Inter',sans-serif;font-size:0.875rem;color: #9ca3af;line-height:1.7;margin:0;">
+                                    Purified, healthy, and breathable air is redistributed to create localized
+                                    breathable zones with improved environmental air quality.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 9 -->
+                    <div class="tech-step-card" data-step="9" data-label="Smart Sensor Network"
+                        style="background:rgba(0,0,0,0.03);border:1px solid rgba(0,0,0,0.08);border-radius:20px;padding:22px 26px;cursor:default;transition:all 0.45s cubic-bezier(0.4,0,0.2,1);position:relative;overflow:hidden;">
+                        <div class="step-glow"
+                            style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(74,158,63,0.10),transparent);opacity:0;transition:opacity 0.45s ease;border-radius:20px;pointer-events:none;">
+                        </div>
+                        <div style="display:flex;align-items:flex-start;gap:18px;position:relative;z-index:1;">
+                            <div class="step-num"
+                                style="min-width:48px;height:48px;border-radius:14px;background:rgba(74,158,63,0.12);border:1px solid rgba(74,158,63,0.3);display:flex;align-items:center;justify-content:center;transition:all 0.4s ease;">
+                                <span
+                                    style="font-family:'Sora',sans-serif;font-weight:800;font-size:18px;color:#4a9e3f;">09</span>
+                            </div>
+                            <div style="flex:1;">
+                                <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
+                                    <h3
+                                        style="font-family:'Sora',sans-serif;font-weight:700;font-size:1.05rem;margin:0;">
+                                        Smart Sensor Network</h3>
+                                    <div class="step-icon" style="opacity:0.5;transition:opacity 0.4s;">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4a9e3f"
+                                            stroke-width="2">
+                                            <rect x="2" y="3" width="20" height="14" rx="2" />
+                                            <path d="M8 21h8M12 17v4" />
+                                        </svg>
+                                    </div>
+                                </div>
+                                <p
+                                    style="font-family:'Inter',sans-serif;font-size:0.875rem;color: #9ca3af;line-height:1.7;margin:0;">
+                                    Real-time environmental monitoring and performance analytics continuously adapt the
+                                    system for optimal purification output.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Mobile: single-column override -->
+            <style>
+                @media (max-width: 768px) {
+                    #technology>.relative>div[style*="grid-template-columns"] {
+                        grid-template-columns: 1fr !important;
+                    }
+
+                    #tech-image-col {
+                        position: relative !important;
+                        top: auto !important;
+                    }
+                }
+
+                @media (max-width: 768px) {
+                    #tech-steps-col {
+                        grid-template-columns: 1fr !important;
+                    }
+                }
+            </style>
+
+        </section>
+
+        <!-- Technology section keyframes & styles -->
+        <style>
+            @keyframes techImgFloat {
+
+                0%,
+                100% {
+                    transform: translateY(0px) scale(1);
+                }
+
+                50% {
+                    transform: translateY(-14px) scale(1.01);
+                }
+            }
+
+            @keyframes badgePulse1 {
+
+                0%,
+                100% {
+                    transform: translateY(0);
+                    box-shadow: 0 0 0 rgba(74, 158, 63, 0);
+                }
+
+                50% {
+                    transform: translateY(-4px);
+                    box-shadow: 0 8px 24px rgba(74, 158, 63, 0.2);
+                }
+            }
+
+            @keyframes badgePulse2 {
+
+                0%,
+                100% {
+                    transform: translateY(0);
+                    box-shadow: 0 0 0 rgba(74, 158, 63, 0);
+                }
+
+                50% {
+                    transform: translateY(-4px);
+                    box-shadow: 0 8px 24px rgba(74, 158, 63, 0.2);
+                }
+            }
+
+            @keyframes mossSpeckle {
+
+                0%,
+                100% {
+                    opacity: 0.5;
+                    transform: scale(1);
+                }
+
+                50% {
+                    opacity: 1;
+                    transform: scale(1.3);
+                }
+            }
+
+            .tech-image-copy {
+                margin-top: 24px;
+                border-left: 4px solid #4a9e3f;
+                border-radius: 18px;
+                background: rgba(255, 255, 255, 0.68);
+                box-shadow: 0 18px 48px rgba(15, 23, 42, 0.08);
+                padding: 22px 24px;
+            }
+
+            .tech-image-copy p {
+                margin: 0;
+                color: #374151;
+                font-family: 'Inter', sans-serif;
+                font-size: 0.98rem;
+                line-height: 1.85;
+            }
+
+            .tech-tabs-shell {
+                display: flex;
+                flex-direction: column;
+                gap: 18px;
+                padding-top: 8px;
+            }
+
+            .tech-tabs-grid {
+                display: grid;
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: 10px;
+            }
+
+            .tech-step-tab {
+                min-height: 58px;
+                border: 1px solid rgba(17, 24, 39, 0.1);
+                border-radius: 14px;
+                background: rgba(255, 255, 255, 0.68);
+
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                padding: 12px 14px;
+                text-align: left;
+                font-family: 'Sora', sans-serif;
+                font-size: 0.82rem;
+                font-weight: 750;
+                line-height: 1.25;
+                box-shadow: 0 10px 26px rgba(15, 23, 42, 0.06);
+                transition: transform 0.22s ease, border-color 0.22s ease, background 0.22s ease, box-shadow 0.22s ease;
+            }
+
+            .tech-step-tab:hover {
+                transform: translateY(-2px);
+                border-color: rgba(74, 158, 63, 0.36);
+                background: rgba(255, 255, 255, 0.92);
+            }
+
+            .tech-step-tab.active {
+                background: #111827;
+                border-color: rgba(74, 158, 63, 0.8);
+                color: #ffffff;
+                box-shadow: 0 16px 34px rgba(17, 24, 39, 0.18), 0 0 0 1px rgba(74, 158, 63, 0.18);
+            }
+
+            .tech-tab-num {
+                width: 27px;
+                height: 27px;
+                border-radius: 9px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                flex: 0 0 auto;
+                background: rgba(74, 158, 63, 0.12);
+                color: #4a9e3f;
+                font-size: 0.72rem;
+                font-weight: 850;
+            }
+
+            .tech-step-tab.active .tech-tab-num {
+                background: #4a9e3f;
+                color: #ffffff;
+            }
+
+            .tech-detail-panel {
+                min-height: 290px;
+                border: 1px solid rgba(74, 158, 63, 0.28);
+                border-radius: 24px;
+                background:
+                    radial-gradient(circle at top right, rgba(74, 158, 63, 0.16), transparent 38%),
+                    linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(255, 255, 255, 0.76));
+                box-shadow: 0 24px 70px rgba(15, 23, 42, 0.12);
+                padding: clamp(24px, 3vw, 38px);
+                position: relative;
+                overflow: hidden;
+            }
+
+            .tech-detail-panel::before {
+                content: "";
+                position: absolute;
+                inset: 16px;
+                border: 1px solid rgba(74, 158, 63, 0.16);
+                border-radius: 18px;
+                pointer-events: none;
+            }
+
+            .tech-detail-kicker {
+                position: relative;
+                z-index: 1;
+                color: #4a9e3f;
+                font-family: 'Inter', sans-serif;
+                font-size: 0.72rem;
+                font-weight: 850;
+                letter-spacing: 0.18em;
+                text-transform: uppercase;
+                margin-bottom: 14px;
+            }
+
+            .tech-detail-title {
+                position: relative;
+                z-index: 1;
+                font-family: 'Sora', sans-serif;
+                font-size: clamp(1.8rem, 3vw, 2.75rem);
+                font-weight: 850;
+                line-height: 1.06;
+
+                margin: 0 0 18px;
+            }
+
+            .tech-detail-copy {
+                position: relative;
+                z-index: 1;
+                max-width: 620px;
+                color: #374151;
+                font-family: 'Inter', sans-serif;
+                font-size: 1rem;
+                line-height: 1.85;
+                margin: 0;
+            }
+
+            .tech-detail-badges {
+                position: relative;
+                z-index: 1;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+                margin-top: 26px;
+            }
+
+            .tech-detail-badge {
+                border-radius: 999px;
+                border: 1px solid rgba(74, 158, 63, 0.24);
+                background: rgba(74, 158, 63, 0.08);
+                color: #1f2937;
+                padding: 8px 12px;
+                font-size: 0.74rem;
+                font-weight: 750;
+            }
+
+            .tech-detail-panel.panel-swap {
+                animation: techPanelSwap 0.34s ease both;
+            }
+
+            @keyframes techPanelSwap {
+                from {
+                    opacity: 0;
+                    transform: translateY(10px);
+                }
+
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            /* Step card hover/active */
+            .tech-step-card.active {
+                background: rgba(74, 158, 63, 0.08) !important;
+                border-color: rgba(74, 158, 63, 0.45) !important;
+                transform: translateX(6px);
+            }
+
+            .tech-step-card.active .step-glow {
+                opacity: 1 !important;
+            }
+
+            .tech-step-card.active .step-num {
+                background: rgba(74, 158, 63, 0.25) !important;
+                border-color: rgba(74, 158, 63, 0.6) !important;
+                box-shadow: 0 0 16px rgba(74, 158, 63, 0.25);
+            }
+
+            .tech-step-card.active .step-icon {
+                opacity: 1 !important;
+            }
+
+            /* Progress dots */
+            .tech-dot {
+                height: 4px;
+                flex: 1;
+                border-radius: 2px;
+                background: rgba(0, 0, 0, 0.1);
+                transition: all 0.4s ease;
+            }
+
+            .tech-dot.active {
+                background: #4a9e3f;
+                box-shadow: 0 0 8px rgba(74, 158, 63, 0.5);
+            }
+
+            .tech-dot.done {
+                background: rgba(74, 158, 63, 0.4);
+            }
+
+            @media (max-width: 1024px) {
+                #technology>.relative[style*="grid-template-columns"] {
+                    grid-template-columns: 1fr !important;
+                }
+
+                .tech-tabs-grid {
+                    grid-template-columns: repeat(2, minmax(0, 1fr));
+                }
+            }
+
+            @media (max-width: 640px) {
+                .tech-tabs-grid {
+                    grid-template-columns: 1fr;
+                }
+
+                .tech-step-tab {
+                    min-height: 50px;
+                }
+            }
+        </style>
+
+
+        <!-- ═══ SECTION 5: INTELLIGENT CAPABILITIES ═══ -->
+        <section
+            class="snap-section content-section capabilities-section bg-[#f5f7f6] flex items-center relative overflow-hidden py-16"
+            id="capabilities" data-navbar-theme="dark">
+
+            <!-- Floating Faded Leaves -->
+            <img src="/assets/images/leaf_blur_2.png" alt=""
+                class="absolute top-[-5%] left-[20%] w-[200px] opacity-70 z-0 pointer-events-none animate-[float_6s_ease-in-out_infinite_2s] rotate-[60deg] blur-[1px]"
+                aria-hidden="true" loading="lazy">
+            <img src="/assets/images/leaf_blur_3.png" alt=""
+                class="absolute bottom-[10%] right-[-15%] w-[450px] opacity-50 z-0 pointer-events-none animate-[float_9s_ease-in-out_infinite] -rotate-[45deg] blur-[4px] scale-y-[-1]"
+                aria-hidden="true" loading="lazy">
+
+            <div class="w-full max-w-[1600px] mx-auto px-6 lg:px-12 relative z-10 flex flex-col justify-center">
+
+                <!-- Main Split Grid -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-12">
+
+                    <!-- Left Content (7 columns) -->
+                    <div class="lg:col-span-7 fade-up">
+
+                        <!-- Eyebrow -->
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="h-[2px] w-12 bg-[#378b2e]"></div>
+                            <span class="text-[#378b2e] font-bold text-xs tracking-widest uppercase">SMARTER OPERATIONS.
+                                CLEANER TOMORROW. 🍃</span>
+                        </div>
+
+                        <!-- Heading -->
+                        <h2 class="font-serif font-extrabold mb-4 leading-[1.1]"
+                            style="font-size: clamp(3rem, 5vw, 5rem);">
+                            <span class="text-[#1a2b3c] block">Intelligent</span>
+                            <span class="text-[#378b2e] block">Capabilities</span>
+                        </h2>
+
+                        <p class="text-gray-600 max-w-lg mb-12 text-lg leading-relaxed">
+                            Adapts operations continuously to maintain optimized fresh air through intelligent
+                            environmental management.
+                        </p>
+
+                        <!-- 3 Cards Grid -->
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+                            <!-- Card 1 -->
+                            <div
+                                class="bg-white rounded-[2rem] p-6 shadow-[0_20px_50px_rgba(0,0,0,0.03)] relative overflow-hidden group hover:-translate-y-1 transition-transform border border-gray-100">
+                                <!-- Wavy background graphic -->
+                                <div
+                                    class="absolute -bottom-6 -right-6 w-32 h-32 opacity-20 group-hover:opacity-40 transition-opacity">
+                                    <svg viewBox="0 0 100 100" class="w-full h-full text-yellow-400" fill="none"
+                                        stroke="currentColor" stroke-width="1.5">
+                                        <path
+                                            d="M0,100 Q25,75 50,100 T100,100 M0,85 Q25,60 50,85 T100,85 M0,70 Q25,45 50,70 T100,70 M0,55 Q25,30 50,55 T100,55 M0,40 Q25,15 50,40 T100,40" />
+                                    </svg>
+                                </div>
+                                <div
+                                    class="relative w-16 h-16 mb-6 z-10 group-hover:scale-110 transition-transform duration-500">
+                                    <div class="absolute inset-0 bg-yellow-400 blur-xl opacity-30 rounded-full"></div>
+                                    <div
+                                        class="relative w-full h-full rounded-2xl bg-gradient-to-br from-white to-yellow-50/50 border border-white shadow-[0_4px_20px_rgba(250,204,21,0.15)] flex items-center justify-center backdrop-blur-md">
+                                        <svg viewBox="0 0 24 24" fill="none" class="w-8 h-8 drop-shadow-sm">
+                                            <path
+                                                d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"
+                                                stroke="#eab308" stroke-width="2" stroke-linecap="round" />
+                                            <circle cx="12" cy="12" r="4" fill="#fef08a" stroke="#eab308"
+                                                stroke-width="2" />
+                                        </svg>
+                                    </div>
+                                </div>
+                                <h3 class="font-serif font-bold text-gray-900 mb-3 relative z-10 text-lg">Solar Powered
+                                </h3>
+                                <p class="text-gray-500 text-xs leading-relaxed relative z-10 pr-2">Integrates solar
+                                    energy with grid-powered infrastructure to support energy-efficient operations
+                                    across outdoor and smart environments.</p>
+                                <!-- Bottom border indicator -->
+                                <div class="absolute bottom-6 left-6 w-8 h-[2px] bg-yellow-400"></div>
+                            </div>
+
+                            <!-- Card 2 -->
+                            <div
+                                class="bg-white rounded-[2rem] p-6 shadow-[0_20px_50px_rgba(0,0,0,0.03)] relative overflow-hidden group hover:-translate-y-1 transition-transform border border-gray-100">
+                                <div
+                                    class="absolute -bottom-6 -right-6 w-32 h-32 opacity-20 group-hover:opacity-40 transition-opacity">
+                                    <svg viewBox="0 0 100 100" class="w-full h-full text-[#378b2e]" fill="none"
+                                        stroke="currentColor" stroke-width="1.5">
+                                        <path
+                                            d="M0,100 Q25,75 50,100 T100,100 M0,85 Q25,60 50,85 T100,85 M0,70 Q25,45 50,70 T100,70 M0,55 Q25,30 50,55 T100,55 M0,40 Q25,15 50,40 T100,40" />
+                                    </svg>
+                                </div>
+                                <div
+                                    class="relative w-16 h-16 mb-6 z-10 group-hover:scale-110 transition-transform duration-500">
+                                    <div class="absolute inset-0 bg-emerald-500 blur-xl opacity-30 rounded-full"></div>
+                                    <div
+                                        class="relative w-full h-full rounded-2xl bg-gradient-to-br from-white to-emerald-50/50 border border-white shadow-[0_4px_20px_rgba(16,185,129,0.15)] flex items-center justify-center backdrop-blur-md">
+                                        <svg viewBox="0 0 24 24" fill="none" class="w-8 h-8 drop-shadow-sm">
+                                            <path
+                                                d="M12 22C17.5 18 20 13.5 20 9C20 5 16.5 2 12 2C7.5 2 4 5 4 9C4 13.5 6.5 18 12 22Z"
+                                                fill="#a7f3d0" opacity="0.6" />
+                                            <path
+                                                d="M12 22C17.5 18 20 13.5 20 9C20 5 16.5 2 12 2C7.5 2 4 5 4 9C4 13.5 6.5 18 12 22Z"
+                                                stroke="#059669" stroke-width="2" stroke-linejoin="round" />
+                                            <path d="M12 22V10" stroke="#059669" stroke-width="2"
+                                                stroke-linecap="round" />
+                                            <circle cx="12" cy="7" r="2.5" fill="#059669" />
+                                        </svg>
+                                    </div>
+                                </div>
+                                <h3 class="font-serif font-bold text-gray-900 mb-3 relative z-10 text-lg">Bio-Mechanical
+                                </h3>
+                                <p class="text-gray-500 text-xs leading-relaxed relative z-10 pr-2">Combines biological
+                                    purification systems with advanced mechanical filtration to deliver sustainable,
+                                    high-efficiency performance.</p>
+                                <div class="absolute bottom-6 left-6 w-8 h-[2px] bg-[#378b2e]"></div>
+                            </div>
+
+                            <!-- Card 3 -->
+                            <div
+                                class="bg-white rounded-[2rem] p-6 shadow-[0_20px_50px_rgba(0,0,0,0.03)] relative overflow-hidden group hover:-translate-y-1 transition-transform border border-gray-100">
+                                <div
+                                    class="absolute -bottom-6 -right-6 w-32 h-32 opacity-20 group-hover:opacity-40 transition-opacity">
+                                    <svg viewBox="0 0 100 100" class="w-full h-full text-blue-500" fill="none"
+                                        stroke="currentColor" stroke-width="1.5">
+                                        <path
+                                            d="M0,100 Q25,75 50,100 T100,100 M0,85 Q25,60 50,85 T100,85 M0,70 Q25,45 50,70 T100,70 M0,55 Q25,30 50,55 T100,55 M0,40 Q25,15 50,40 T100,40" />
+                                    </svg>
+                                </div>
+                                <div
+                                    class="relative w-16 h-16 mb-6 z-10 group-hover:scale-110 transition-transform duration-500">
+                                    <div class="absolute inset-0 bg-blue-500 blur-xl opacity-30 rounded-full"></div>
+                                    <div
+                                        class="relative w-full h-full rounded-2xl bg-gradient-to-br from-white to-blue-50/50 border border-white shadow-[0_4px_20px_rgba(59,130,246,0.15)] flex items-center justify-center backdrop-blur-md">
+                                        <svg viewBox="0 0 24 24" fill="none" class="w-8 h-8 drop-shadow-sm">
+                                            <path d="M12 2L2 7l10 5 10-5-10-5Z" fill="#bfdbfe" opacity="0.6" />
+                                            <path d="M12 2L2 7l10 5 10-5-10-5Z" stroke="#2563eb" stroke-width="2"
+                                                stroke-linejoin="round" />
+                                            <path d="M2 17l10 5 10-5M2 12l10 5 10-5" stroke="#2563eb" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                            <circle cx="12" cy="12" r="2.5" fill="#2563eb" />
+                                        </svg>
+                                    </div>
+                                </div>
+                                <h3 class="font-serif font-bold text-gray-900 mb-3 relative z-10 text-lg">AI Driven</h3>
+                                <p class="text-gray-500 text-xs leading-relaxed relative z-10 pr-2">Environmental
+                                    intelligence continuously adapts system operations based on changing pollution
+                                    levels and airflow conditions.</p>
+                                <div class="absolute bottom-6 left-6 w-8 h-[2px] bg-blue-500"></div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Right Image Portal (5 columns) -->
+                    <div
+                        class="lg:col-span-5 h-[400px] lg:h-[600px] relative fade-up flex items-center justify-center group">
+
+                        <!-- Custom CSS for portal animations -->
+                        <style>
+                            @keyframes portalSpin {
+                                from {
+                                    transform: rotate(0deg);
+                                }
+
+                                to {
+                                    transform: rotate(360deg);
+                                }
+                            }
+
+                            @keyframes portalSpinReverse {
+                                from {
+                                    transform: rotate(360deg);
+                                }
+
+                                to {
+                                    transform: rotate(0deg);
+                                }
+                            }
+
+                            @keyframes floatParticle {
+
+                                0%,
+                                100% {
+                                    transform: translateY(0) rotate(0deg);
+                                }
+
+                                50% {
+                                    transform: translateY(-20px) rotate(15deg);
+                                }
+                            }
+
+                            @keyframes floatPortal {
+
+                                0%,
+                                100% {
+                                    transform: translate(-50%, -50%) translateY(0);
+                                }
+
+                                50% {
+                                    transform: translate(-50%, -50%) translateY(-15px);
+                                }
+                            }
+                        </style>
+
+                        <!-- Animated Aura Rings (appear on hover) -->
+                        <div class="absolute w-[400px] h-[400px] lg:w-[600px] lg:h-[600px] border border-[#378b2e]/20 rounded-full group-hover:scale-105 transition-all duration-1000 opacity-50 group-hover:opacity-100"
+                            style="animation: portalSpin 30s linear infinite;"></div>
+                        <div class="absolute w-[350px] h-[350px] lg:w-[500px] lg:h-[500px] border border-emerald-400/15 rounded-full group-hover:scale-95 transition-all duration-1000 opacity-30 group-hover:opacity-100"
+                            style="animation: portalSpinReverse 20s linear infinite;"></div>
+
+                        <!-- Floating Portal Mask -->
+                        <div class="w-[120%] h-[120%] max-w-[800px] absolute top-1/2 left-1/2"
+                            style="mask-image: radial-gradient(circle at center, black 40%, transparent 68%); -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 68%); animation: floatPortal 6s ease-in-out infinite;">
+                            <img src="/assets/images/capabilities_portal.png" alt="Futuristic Clean City"
+                                class="w-full h-full object-cover mix-blend-multiply opacity-95">
+                        </div>
+
+                        <!-- Floating Particles (Leaves) -->
+                        <div class="absolute top-[20%] left-[10%] text-2xl drop-shadow-sm pointer-events-none"
+                            style="animation: floatParticle 5s ease-in-out infinite 1s; opacity: 0.6; filter: blur(1px);">
+                            🍃</div>
+                        <div class="absolute bottom-[25%] right-[5%] text-4xl drop-shadow-sm pointer-events-none"
+                            style="animation: floatParticle 7s ease-in-out infinite 2.5s; opacity: 0.4; filter: blur(2px);">
+                            🍃</div>
+                        <div class="absolute top-[45%] left-0 text-xl drop-shadow-sm pointer-events-none"
+                            style="animation: floatParticle 4s ease-in-out infinite 0.5s; opacity: 0.8;">🍃</div>
+                    </div>
+
+                </div>
+
+                <!-- Bottom Dark Metrics Bar -->
+                <div
+                    class="w-full bg-[#111c16] rounded-3xl p-8 lg:p-10 relative overflow-hidden shadow-2xl border border-white/5 fade-up mx-auto z-20">
+                    <!-- Subtle glowing bottom line -->
+                    <div
+                        class="absolute bottom-0 left-10 right-10 h-1 bg-[#378b2e] shadow-[0_0_30px_5px_rgba(55,139,46,0.5)]">
+                    </div>
+
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 divide-x divide-white/10">
+
+                        <!-- Metric 1 -->
+                        <div class="flex flex-col items-center justify-center text-center px-4">
+                            <div class="flex items-center gap-3 mb-2">
+                                <svg class="w-8 h-8 text-[#378b2e]" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                        d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4">
+                                    </path>
+                                </svg>
+                                <span class="text-4xl md:text-5xl font-extrabold text-[#378b2e]">99%</span>
+                            </div>
+                            <span class="text-[10px] text-gray-400 font-bold uppercase tracking-widest mt-1">PM
+                                Reduction</span>
+                        </div>
+
+                        <!-- Metric 2 -->
+                        <div class="flex flex-col items-center justify-center text-center px-4">
+                            <div class="flex items-center gap-3 mb-2">
+                                <svg class="w-8 h-8 text-[#378b2e]" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                        d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                </svg>
+                                <span class="text-4xl md:text-5xl font-extrabold text-[#378b2e]">Live</span>
+                            </div>
+                            <span class="text-[10px] text-gray-400 font-bold uppercase tracking-widest mt-1">Local AQI
+                                Improvement</span>
+                        </div>
+
+                        <!-- Metric 3 -->
+                        <div class="flex flex-col items-center justify-center text-center px-4">
+                            <div class="flex items-center gap-3 mb-2">
+                                <svg class="w-8 h-8 text-[#378b2e]" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                        d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
+                                </svg>
+                                <span class="text-4xl md:text-5xl font-extrabold text-[#378b2e]">0.3µ</span>
+                            </div>
+                            <span class="text-[10px] text-gray-400 font-bold uppercase tracking-widest mt-1">Particulate
+                                Capture</span>
+                        </div>
+
+                        <!-- Metric 4 -->
+                        <div class="flex flex-col items-center justify-center text-center px-4">
+                            <div class="flex items-center gap-3 mb-2">
+                                <svg class="w-8 h-8 text-[#378b2e]" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                        d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15">
+                                    </path>
+                                </svg>
+                                <span class="text-4xl md:text-5xl font-extrabold text-[#378b2e]">Hybrid</span>
+                            </div>
+                            <span class="text-[10px] text-gray-400 font-bold uppercase tracking-widest mt-1">Energy
+                                Optimization</span>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ═══ SECTION 6: SUSTAINABILITY ═══ -->
+        <section
+            class="snap-section content-section sustainability-section relative overflow-hidden flex items-center bg-[#f8fafc] py-24"
+            id="sustainability" data-navbar-theme="dark">
+
+            <!-- Floating Faded Leaves -->
+            <img src="/assets/images/aesthetic_leaf_1.png" alt=""
+                class="absolute top-[-5%] right-[5%] w-[350px] opacity-80 z-0 pointer-events-none animate-[float_7s_ease-in-out_infinite_1s] -rotate-[10deg] blur-[1px]"
+                aria-hidden="true" loading="lazy">
+            <img src="/assets/images/aesthetic_leaf_2.png" alt=""
+                class="absolute bottom-[20%] left-[-10%] w-[450px] opacity-70 z-0 pointer-events-none animate-[float_10s_ease-in-out_infinite] rotate-[30deg] blur-[2px]"
+                aria-hidden="true" loading="lazy">
+            <img src="/assets/images/aesthetic_leaf_1.png" alt=""
+                class="absolute bottom-[-15%] right-[15%] w-[300px] opacity-60 z-0 pointer-events-none animate-[float_8s_ease-in-out_infinite_2s] -rotate-[60deg] blur-[3px] scale-x-[-1]"
+                aria-hidden="true" loading="lazy">
+
+            <!-- Background subtle gradients -->
+            <div
+                class="absolute inset-0 w-full h-full bg-gradient-to-br from-emerald-50/80 via-transparent to-transparent opacity-80 pointer-events-none">
+            </div>
+            <div
+                class="absolute bottom-[-10%] right-[-10%] w-[600px] h-[600px] rounded-full bg-emerald-100/40 blur-[150px] pointer-events-none">
+            </div>
+
+            <!-- Content Container -->
+            <div class="section-shell relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-12 flex flex-col gap-12">
+
+                <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-8">
+                    <!-- LEFT: Text content -->
+                    <div class="w-full lg:w-1/2 fade-up">
+                        <!-- Eyebrow -->
+                        <div
+                            class="flex items-center gap-3 text-brand-emerald text-sm font-bold uppercase tracking-wider mb-6">
+                            <div class="w-6 h-[2px] bg-brand-emerald"></div>
+                            ENVIRONMENTAL COMMITMENT
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 21.5C8 18.5 4 14 4 9.5a7.5 7.5 0 0115 0c0 4.5-4 9-8 12z"></path>
+                            </svg>
+                        </div>
+
+                        <!-- Headings -->
+                        <h2 class="font-serif font-extrabold text-slate-900 mb-2 drop-shadow-sm"
+                            style="font-size: clamp(2rem, 4vw, 3.5rem); line-height: 1.1;">
+                            Sustainability
+                        </h2>
+                        <h3 class="font-serif font-extrabold text-brand-emerald mb-6 drop-shadow-sm"
+                            style="font-size: clamp(1.75rem, 3.5vw, 2.5rem); line-height: 1.1;">
+                            Designed for Tomorrow
+                        </h3>
+
+                        <!-- Description -->
+                        <p class="text-slate-600 text-lg leading-relaxed mb-8 max-w-xl font-medium">
+                            Urban Tree reduces dependence on traditional urban air management systems by creating
+                            sustainable ecosystems within dense urban environments.
+                        </p>
+
+                        <!-- Divider -->
+                        <div class="flex items-center gap-2 mb-10 text-brand-emerald">
+                            <div class="w-16 h-[2px] bg-brand-emerald"></div>
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M12 21.5C8 18.5 4 14 4 9.5a7.5 7.5 0 0115 0c0 4.5-4 9-8 12z"></path>
+                            </svg>
+                            <div class="w-2 h-2 rounded-full bg-brand-emerald"></div>
+                        </div>
+
+                        <!-- 4-Card Grid -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <!-- Card 1 -->
+                            <div
+                                class="bg-white p-5 rounded-3xl shadow-[0_10px_30px_rgba(0,0,0,0.03)] border border-slate-100 hover:-translate-y-1 transition-transform duration-300">
+                                <div class="flex items-start gap-4 mb-3">
+                                    <div class="w-10 h-10 rounded-full flex items-center justify-center shrink-0">
+                                        <svg class="w-6 h-6 text-brand-emerald" fill="none" stroke="currentColor"
+                                            stroke-width="1.5" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <div class="text-brand-emerald font-bold text-sm mb-0.5">01</div>
+                                        <h4 class="text-slate-900 font-bold text-[13px] leading-tight">
+                                            Energy-efficient<br>operations</h4>
+                                    </div>
+                                </div>
+                                <p class="text-slate-500 text-[11px] leading-relaxed">Optimized systems that deliver
+                                    high performance while consuming less energy.</p>
+                            </div>
+
+                            <!-- Card 2 -->
+                            <div
+                                class="bg-white p-5 rounded-3xl shadow-[0_10px_30px_rgba(0,0,0,0.03)] border border-slate-100 hover:-translate-y-1 transition-transform duration-300">
+                                <div class="flex items-start gap-4 mb-3">
+                                    <div class="w-10 h-10 rounded-full flex items-center justify-center shrink-0">
+                                        <svg class="w-6 h-6 text-brand-emerald" fill="none" stroke="currentColor"
+                                            stroke-width="1.5" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M12 21.5C8 18.5 4 14 4 9.5a7.5 7.5 0 0115 0c0 4.5-4 9-8 12z" />
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <div class="text-brand-emerald font-bold text-sm mb-0.5">02</div>
+                                        <h4 class="text-slate-900 font-bold text-[13px] leading-tight">Scalable
+                                            bio<br>systems</h4>
+                                    </div>
+                                </div>
+                                <p class="text-slate-500 text-[11px] leading-relaxed">Biological solutions that
+                                    integrate seamlessly and grow with urban needs.</p>
+                            </div>
+
+                            <!-- Card 3 -->
+                            <div
+                                class="bg-white p-5 rounded-3xl shadow-[0_10px_30px_rgba(0,0,0,0.03)] border border-slate-100 hover:-translate-y-1 transition-transform duration-300">
+                                <div class="flex items-start gap-4 mb-3">
+                                    <div class="w-10 h-10 rounded-full flex items-center justify-center shrink-0">
+                                        <svg class="w-6 h-6 text-brand-emerald" fill="none" stroke="currentColor"
+                                            stroke-width="1.5" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <div class="text-brand-emerald font-bold text-sm mb-0.5">03</div>
+                                        <h4 class="text-slate-900 font-bold text-[13px] leading-tight">Low
+                                            maintenance<br>infrastructure</h4>
+                                    </div>
+                                </div>
+                                <p class="text-slate-500 text-[11px] leading-relaxed">Built for reliability with minimal
+                                    upkeep and long-term cost efficiency.</p>
+                            </div>
+
+                            <!-- Card 4 -->
+                            <div
+                                class="bg-white p-5 rounded-3xl shadow-[0_10px_30px_rgba(0,0,0,0.03)] border border-slate-100 hover:-translate-y-1 transition-transform duration-300">
+                                <div class="flex items-start gap-4 mb-3">
+                                    <div class="w-10 h-10 rounded-full flex items-center justify-center shrink-0">
+                                        <svg class="w-6 h-6 text-brand-emerald" fill="none" stroke="currentColor"
+                                            stroke-width="1.5" viewBox="0 0 24 24">
+                                            <path d="M12 21v-8m0 0a4 4 0 10-8 0v2h8v-2zM12 13a4 4 0 118 0v2h-8v-2z" />
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <div class="text-brand-emerald font-bold text-sm mb-0.5">04</div>
+                                        <h4 class="text-slate-900 font-bold text-[13px] leading-tight">Hybrid
+                                            power<br>infrastructure</h4>
+                                    </div>
+                                </div>
+                                <p class="text-slate-500 text-[11px] leading-relaxed">Smart integration of solar and
+                                    grid power for uninterrupted operations.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT: Dome Image & Badges -->
+                    <div class="w-full lg:w-1/2 relative flex items-center justify-center fade-up min-h-[400px] lg:min-h-[500px]"
+                        style="transition-delay: 200ms;">
+
+                        <!-- Wrapper for image and badges to keep them together -->
+                        <div
+                            class="relative w-full max-w-[450px] aspect-square mx-auto flex items-center justify-center">
+
+                            <!-- Dotted Orbit Lines -->
+                            <div
+                                class="absolute inset-0 -left-[12%] -top-[12%] w-[124%] h-[124%] rounded-full border-[1.5px] border-dashed border-brand-emerald/30 z-0 animate-[spin_40s_linear_infinite]">
+                            </div>
+                            <div
+                                class="absolute inset-0 -left-[4%] -top-[4%] w-[108%] h-[108%] rounded-full border-[1px] border-dashed border-brand-emerald/40 z-0 animate-[spin_30s_linear_infinite_reverse]">
+                            </div>
+
+                            <!-- Floating Badges -->
+                            <!-- Solar Energy -->
+                            <div
+                                class="absolute top-[12%] -left-[5%] md:-left-[12%] bg-white/90 backdrop-blur-md rounded-full shadow-xl shadow-brand-emerald/10 border border-brand-emerald/10 w-[80px] h-[80px] md:w-[90px] md:h-[90px] flex flex-col items-center justify-center p-2 z-20 hover:scale-110 transition-transform duration-300">
+                                <svg class="w-7 h-7 text-brand-emerald mb-1.5" fill="none" stroke="currentColor"
+                                    stroke-width="1.5" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16v8H4z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M4 10h16M10 6v8M14 6v8M12 14v6M8 20h8" />
+                                </svg>
+                                <span
+                                    class="text-[8px] md:text-[9px] font-bold text-slate-800 text-center leading-tight">SOLAR<br>ENERGY</span>
+                            </div>
+
+                            <!-- Cleaner Air -->
+                            <div
+                                class="absolute top-[20%] -right-[5%] md:-right-[12%] bg-white/90 backdrop-blur-md rounded-full shadow-xl shadow-brand-emerald/10 border border-brand-emerald/10 w-[80px] h-[80px] md:w-[90px] md:h-[90px] flex flex-col items-center justify-center p-2 z-20 hover:scale-110 transition-transform duration-300">
+                                <svg class="w-7 h-7 text-brand-emerald mb-1.5" fill="none" stroke="currentColor"
+                                    stroke-width="1.5" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M5 20v-8a4 4 0 014-4h8M13 4l5 4-5 4" />
+                                </svg>
+                                <span
+                                    class="text-[8px] md:text-[9px] font-bold text-slate-800 text-center leading-tight">CLEANER<br>AIR</span>
+                            </div>
+
+                            <!-- Smart Systems -->
+                            <div
+                                class="absolute bottom-[22%] -left-[2%] md:-left-[8%] bg-white/90 backdrop-blur-md rounded-full shadow-xl shadow-brand-emerald/10 border border-brand-emerald/10 w-[80px] h-[80px] md:w-[90px] md:h-[90px] flex flex-col items-center justify-center p-2 z-20 hover:scale-110 transition-transform duration-300">
+                                <svg class="w-7 h-7 text-brand-emerald mb-1.5" fill="none" stroke="currentColor"
+                                    stroke-width="1.5" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M10 14c-1.5-1.5-1.5-3.5 0-5s3.5-1.5 5 0-1.5 3.5-3 5-3.5 1.5-5 0z" />
+                                </svg>
+                                <span
+                                    class="text-[8px] md:text-[9px] font-bold text-slate-800 text-center leading-tight">SMART<br>SYSTEMS</span>
+                            </div>
+
+                            <!-- Greener Future -->
+                            <div
+                                class="absolute bottom-[22%] -right-[2%] md:-right-[8%] bg-white/90 backdrop-blur-md rounded-full shadow-xl shadow-brand-emerald/10 border border-brand-emerald/10 w-[80px] h-[80px] md:w-[90px] md:h-[90px] flex flex-col items-center justify-center p-2 z-20 hover:scale-110 transition-transform duration-300">
+                                <svg class="w-7 h-7 text-brand-emerald mb-1.5" fill="none" stroke="currentColor"
+                                    stroke-width="1.5" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 21v-6" />
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M12 15c-3-2-5-5-5-8 0-1 1-2 2-2s2 1 2 2c0 2 1 4 3 4" />
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M12 15c3-2 5-5 5-8 0-1-1-2-2-2s-2 1-2 2c0 2-1 4-3 4" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9c0-1.5-1-3-2-3" />
+                                </svg>
+                                <span
+                                    class="text-[8px] md:text-[9px] font-bold text-slate-800 text-center leading-tight">GREENER<br>FUTURE</span>
+                            </div>
+
+                            <!-- Ambient Hero Glow -->
+                            <div
+                                class="absolute inset-0 w-3/4 h-3/4 m-auto bg-brand-emerald/15 blur-[60px] rounded-full animate-pulse z-0 pointer-events-none">
+                            </div>
+
+                            <!-- Main Image -->
+                            <img src="/assets/images/sustainability_dome.png" alt="Sustainable City Terrarium Dome"
+                                class="relative z-10 w-full object-contain hover:scale-105 transition-transform duration-700 animate-[float_6s_ease-in-out_infinite]">
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Bottom Metrics Pill -->
+                <div
+                    class="w-full bg-white rounded-[3rem] shadow-[0_20px_60px_rgba(16,185,129,0.08)] border border-slate-100 p-8 fade-up z-20 mt-6 relative overflow-hidden">
+                    <!-- Subtle background decoration -->
+                    <div class="absolute bottom-0 left-0 w-32 h-32 opacity-10">
+                        <svg viewBox="0 0 100 100" class="w-full h-full text-brand-emerald" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <path d="M0,100 Q25,75 50,100 T100,100 M0,85 Q25,60 50,85 T100,85" />
+                        </svg>
+                    </div>
+                    <div class="absolute top-0 right-0 w-32 h-32 opacity-10 rotate-180">
+                        <svg viewBox="0 0 100 100" class="w-full h-full text-brand-emerald" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <path d="M0,100 Q25,75 50,100 T100,100 M0,85 Q25,60 50,85 T100,85" />
+                        </svg>
+                    </div>
+
+                    <div class="relative z-10 grid grid-cols-1 md:grid-cols-4 gap-8 divide-x divide-slate-100">
+
+                        <!-- Metric 1 -->
+                        <div class="flex items-center gap-4 pl-4 md:pl-0 justify-center md:justify-start">
+                            <div
+                                class="w-14 h-14 rounded-full border-2 border-brand-emerald border-dashed flex items-center justify-center text-brand-emerald shrink-0">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"
+                                    viewBox="0 0 24 24">
+                                    <path d="M12 21.5C8 18.5 4 14 4 9.5a7.5 7.5 0 0115 0c0 4.5-4 9-8 12z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="text-4xl font-extrabold text-brand-emerald mb-1">99%</div>
+                                <div class="text-[10px] uppercase font-bold tracking-widest text-slate-500">PM REDUCTION
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Metric 2 -->
+                        <div class="flex items-center gap-4 pl-4 md:pl-8 justify-center md:justify-start">
+                            <div class="w-14 h-14 text-brand-emerald flex items-center justify-center shrink-0">
+                                <svg class="w-10 h-10" fill="none" stroke="currentColor" stroke-width="1.5"
+                                    viewBox="0 0 24 24">
+                                    <path
+                                        d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2" />
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="text-4xl font-extrabold text-brand-emerald mb-1">Live</div>
+                                <div class="text-[10px] uppercase font-bold tracking-widest text-slate-500">LOCAL AQI
+                                    IMPROVEMENT</div>
+                            </div>
+                        </div>
+
+                        <!-- Metric 3 -->
+                        <div class="flex items-center gap-4 pl-4 md:pl-8 justify-center md:justify-start">
+                            <div class="w-14 h-14 text-brand-emerald flex items-center justify-center shrink-0">
+                                <svg class="w-10 h-10" fill="none" stroke="currentColor" stroke-width="1.5"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="text-4xl font-extrabold text-brand-emerald mb-1">0.3μ</div>
+                                <div class="text-[10px] uppercase font-bold tracking-widest text-slate-500">PARTICULATE
+                                    CAPTURE</div>
+                            </div>
+                        </div>
+
+                        <!-- Metric 4 -->
+                        <div class="flex items-center gap-4 pl-4 md:pl-8 justify-center md:justify-start">
+                            <div class="w-14 h-14 text-brand-emerald flex items-center justify-center shrink-0">
+                                <svg class="w-10 h-10" fill="none" stroke="currentColor" stroke-width="1.5"
+                                    viewBox="0 0 24 24">
+                                    <path d="M12 21.5C8 18.5 4 14 4 9.5a7.5 7.5 0 0115 0c0 4.5-4 9-8 12z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="text-4xl font-extrabold text-brand-emerald mb-1">Hybrid</div>
+                                <div class="text-[10px] uppercase font-bold tracking-widest text-slate-500">ENERGY
+                                    OPTIMIZATION</div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <style>
+                @keyframes float {
+
+                    0%,
+                    100% {
+                        transform: translateY(0px) rotate(0deg);
+                    }
+
+                    50% {
+                        transform: translateY(-15px) rotate(2deg);
+                    }
+                }
+            </style>
+        </section>
+
+        <!-- ═══ SECTION 7: LIVE ENVIRONMENTAL INTELLIGENCE ═══ -->
+        <section class="snap-section content-section intelligence-section bg-[#e8e8e8] flex items-center"
+            id="environmental-intelligence" data-navbar-theme="dark">
+            <div class="section-shell w-full max-w-7xl mx-auto px-6">
+                <div class="text-center mb-10 fade-up">
+                    <span class="text-xs font-bold uppercase tracking-[0.3em] text-brand-emerald mb-4 block">Smart Cloud
+                        Connectivity</span>
+                    <h2 class="text-4xl md:text-5xl font-serif font-bold text-gray-900">Live Environmental Intelligence
+                    </h2>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+                    <!-- AQI Live Monitor Dashboard -->
+                    <div class="rounded-2xl overflow-hidden shadow-xl border border-white/10 fade-up"
+                        style="background:#111827; position:relative;">
+                        <!-- Title bar -->
+                        <div class="px-4 py-2.5 border-b border-white/10 flex items-center justify-between"
+                            style="background:#0d1117;">
+                            <div class="flex items-center gap-2">
+                                <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-[#4a9e3f]"></div>
+                                <span
+                                    class="ml-3 text-xs font-mono font-bold text-gray-400 uppercase tracking-widest">AQI
+                                    Live Monitor</span>
+                            </div>
+                            <span class="text-xs font-mono text-gray-500">AQI reduction since UrbanTree
+                                deployment</span>
+                        </div>
+                        <div class="p-4" id="aqi-dashboard">
+                            <!-- Before vs After header -->
+                            <div class="text-xs font-mono font-bold text-gray-300 uppercase tracking-widest mb-3">Before
+                                vs After Installation — ROI View</div>
+                            <!-- ROI Grid -->
+                            <div class="grid grid-cols-3 gap-2 mb-3" id="roi-grid"></div>
+                            <!-- Zone Overview -->
+                            <div
+                                class="text-xs font-mono font-bold text-gray-300 uppercase tracking-widest mb-2 flex items-center justify-between">
+                                <span>Zone Overview — Click any zone for details</span>
+                                <span class="flex gap-3 text-[10px] font-mono">
+                                    <span class="text-[#4a9e3f]">● Good</span>
+                                    <span class="text-yellow-400">● Moderate</span>
+                                    <span class="text-orange-400">● USG</span>
+                                    <span class="text-red-400">● Unhealthy</span>
+                                    <span class="text-purple-400">● Hazardous</span>
+                                </span>
+                            </div>
+                            <div class="grid grid-cols-4 gap-1.5" id="zone-grid"></div>
+                        </div>
+                        <!-- Zone Modal for box 1 -->
+                        <div id="zone-modal-1"
+                            style="display:none; position:absolute; inset:0; z-index:100; background:rgba(0,0,0,0.85); backdrop-filter:blur(4px); align-items:center; justify-content:center; border-radius:16px;">
+                            <div
+                                style="background:#0d1117; border:1px solid #ffffff20; border-radius:12px; padding:24px; width:92%; max-height:88%; overflow-y:auto; position:relative; font-family:monospace;">
+                                <button onclick="closeZoneModal(1)"
+                                    style="position:absolute; top:14px; right:14px; background:#ffffff15; border:none; color:white; border-radius:6px; width:28px; height:28px; cursor:pointer; font-size:16px;">✕</button>
+                                <div id="zone-modal-body-1"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Analytics & Performance Dashboard -->
+                    <div class="rounded-2xl overflow-hidden shadow-xl border border-white/10 fade-up"
+                        style="background:#111827; position:relative; transition-delay:100ms;">
+                        <div class="px-4 py-2.5 border-b border-white/10 flex items-center justify-between"
+                            style="background:#0d1117;">
+                            <div class="flex items-center gap-2">
+                                <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-[#4a9e3f]"></div>
+                                <span
+                                    class="ml-3 text-xs font-mono font-bold text-gray-400 uppercase tracking-widest">Analytics
+                                    & Performance</span>
+                            </div>
+                            <span class="text-xs font-mono text-gray-500">AQI reduction since UrbanTree
+                                deployment</span>
+                        </div>
+                        <div class="p-4" id="analytics-dashboard">
+                            <div class="text-xs font-mono font-bold text-gray-300 uppercase tracking-widest mb-3">Before
+                                vs After Installation — ROI View</div>
+                            <div class="grid grid-cols-3 gap-2 mb-3" id="roi-grid-2"></div>
+                            <div
+                                class="text-xs font-mono font-bold text-gray-300 uppercase tracking-widest mb-2 flex items-center justify-between">
+                                <span>Zone Overview — Click any zone for details</span>
+                                <span class="flex gap-3 text-[10px] font-mono">
+                                    <span class="text-[#4a9e3f]">● Good</span>
+                                    <span class="text-yellow-400">● Moderate</span>
+                                    <span class="text-orange-400">● USG</span>
+                                    <span class="text-red-400">● Unhealthy</span>
+                                    <span class="text-purple-400">● Hazardous</span>
+                                </span>
+                            </div>
+                            <div class="grid grid-cols-4 gap-1.5" id="zone-grid-2"></div>
+                        </div>
+                        <!-- Zone Modal for box 2 -->
+                        <div id="zone-modal-2"
+                            style="display:none; position:absolute; inset:0; z-index:100; background:rgba(0,0,0,0.85); backdrop-filter:blur(4px); align-items:center; justify-content:center; border-radius:16px;">
+                            <div
+                                style="background:#0d1117; border:1px solid #ffffff20; border-radius:12px; padding:24px; width:92%; max-height:88%; overflow-y:auto; position:relative; font-family:monospace;">
+                                <button onclick="closeZoneModal(2)"
+                                    style="position:absolute; top:14px; right:14px; background:#ffffff15; border:none; color:white; border-radius:6px; width:28px; height:28px; cursor:pointer; font-size:16px;">✕</button>
+                                <div id="zone-modal-body-2"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Demo note -->
+                <p class="text-center text-xs text-gray-400 mt-4 fade-up">* All data shown is illustrative. This is how
+                    the live dashboard appears when logged into the UrbanTree monitoring platform.</p>
+            </div>
+        </section>
+
+
+
+        <!-- ═══ SECTION 8: SCALABLE APPLICATIONS + FOOTER ═══ -->
+        <section class="snap-section-scroll applications-section bg-[#e0e0e0] border-t border-black/5" id="applications"
+            data-navbar-theme="dark">
+            <div class="applications-shell w-full max-w-7xl mx-auto px-6 pt-16">
+                <div class="text-center mb-12 fade-up">
+                    <h2 class="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-4">Applications</h2>
+                    <p class="text-gray-600 max-w-2xl mx-auto">Flexible integration into diverse environments requiring
+                        sustainable air quality solutions.</p>
+                </div>
+
+
+                <div class="flex flex-col lg:flex-row w-full h-[950px] lg:h-[600px] gap-2 lg:gap-4 mb-6"
+                    id="app-accordion-container">
+                    <!-- Accordion items rendered here by JS -->
+                </div>
+
+                <style>
+                    .custom-scrollbar::-webkit-scrollbar {
+                        width: 4px;
+                    }
+
+                    .custom-scrollbar::-webkit-scrollbar-track {
+                        background: rgba(0, 0, 0, 0.05);
+                        border-radius: 4px;
+                    }
+
+                    .custom-scrollbar::-webkit-scrollbar-thumb {
+                        background: #10b981;
+                        border-radius: 4px;
+                    }
+                </style>
+
+            </div>
+
+            <!-- FOOTER merged into same section -->
+            {{> footer }}
+        </section>
+
+    </div>
+
+    <script type="module" src="/assets/js/index.js"></script>
+
+
+    <!-- Enquiry Modal -->
+    <div id="enquiry-modal"
+        class="fixed inset-0 z-[9999] bg-black/40 backdrop-blur-sm flex items-center justify-center p-4"
+        style="display: none;" onclick="if(event.target===this)closeEnquiry()">
+        <div class="bg-white w-full max-w-2xl rounded-3xl shadow-2xl relative overflow-hidden"
+            style="max-height: 90vh; overflow-y: auto;">
+            <!-- Header -->
+            <div class="bg-[#f0f4f1] px-8 py-6 border-b border-black/5">
+                <button type="button" onclick="closeEnquiry()" aria-label="Close enquiry form"
+                    class="absolute top-6 right-6 w-10 h-10 bg-white rounded-full flex items-center justify-center text-gray-400 hover:text-gray-800 shadow-sm border border-black/5 transition-colors">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+                <div
+                    class="inline-block px-4 py-1.5 rounded-full border border-brand-emerald/30 bg-brand-emerald/10 text-brand-emerald text-xs font-bold uppercase tracking-widest mb-3">
+                    Enquiry
+                </div>
+                <h2 class="font-serif text-3xl font-bold text-gray-900 mb-2">Talk to SunEx Technologies</h2>
+                <p class="font-sans text-sm text-gray-500 leading-relaxed">Share your details and requirements.
+                    Submitting will open your email app with this enquiry addressed to our team.</p>
+            </div>
+
+            <!-- Form -->
+            <div class="px-8 py-8">
+                <form id="enquiry-form" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Name -->
+                    <div class="flex flex-col gap-2">
+                        <label class="font-sans text-xs font-bold text-gray-500 uppercase tracking-wide">Name *</label>
+                        <input type="text" id="enquiry-name" name="name" required
+                            class="w-full bg-[#f8faf9] border border-black/10 rounded-xl px-4 py-3 text-gray-800 placeholder-gray-400 focus:outline-none focus:border-brand-emerald focus:ring-1 focus:ring-brand-emerald transition-all"
+                            placeholder="John Doe">
+                    </div>
+                    <!-- Email -->
+                    <div class="flex flex-col gap-2">
+                        <label class="font-sans text-xs font-bold text-gray-500 uppercase tracking-wide">Email *</label>
+                        <input type="email" id="enquiry-email" name="email" required
+                            class="w-full bg-[#f8faf9] border border-black/10 rounded-xl px-4 py-3 text-gray-800 placeholder-gray-400 focus:outline-none focus:border-brand-emerald focus:ring-1 focus:ring-brand-emerald transition-all"
+                            placeholder="john@example.com">
+                    </div>
+                    <!-- Phone -->
+                    <div class="flex flex-col gap-2">
+                        <label class="font-sans text-xs font-bold text-gray-500 uppercase tracking-wide">Phone
+                            Number</label>
+                        <input type="tel" id="enquiry-phone" name="phone"
+                            class="w-full bg-[#f8faf9] border border-black/10 rounded-xl px-4 py-3 text-gray-800 placeholder-gray-400 focus:outline-none focus:border-brand-emerald focus:ring-1 focus:ring-brand-emerald transition-all"
+                            placeholder="+1 (555) 000-0000">
+                    </div>
+                    <!-- Company -->
+                    <div class="flex flex-col gap-2">
+                        <label class="font-sans text-xs font-bold text-gray-500 uppercase tracking-wide">Company /
+                            Organization</label>
+                        <input type="text" id="enquiry-company" name="company"
+                            class="w-full bg-[#f8faf9] border border-black/10 rounded-xl px-4 py-3 text-gray-800 placeholder-gray-400 focus:outline-none focus:border-brand-emerald focus:ring-1 focus:ring-brand-emerald transition-all"
+                            placeholder="Organization Name">
+                    </div>
+                    <!-- Requirements -->
+                    <div class="flex flex-col gap-2 md:col-span-2">
+                        <label class="font-sans text-xs font-bold text-gray-500 uppercase tracking-wide">Requirements
+                            *</label>
+                        <textarea id="enquiry-requirements" name="requirements" required rows="4"
+                            class="w-full bg-[#f8faf9] border border-black/10 rounded-xl px-4 py-3 text-gray-800 placeholder-gray-400 focus:outline-none focus:border-brand-emerald focus:ring-1 focus:ring-brand-emerald transition-all resize-none"
+                            placeholder="Please describe your air purification needs or intended deployment environment..."></textarea>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="md:col-span-2 pt-2">
+                        <button type="submit"
+                            class="w-full bg-brand-emerald hover:bg-[#3d8334] text-white font-bold py-4 rounded-xl shadow-lg shadow-brand-emerald/20 transition-all transform hover:-translate-y-0.5">
+                            Create Enquiry Email
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openTerms() {
+            const m = document.getElementById('terms-modal');
+            m.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+        function closeTerms() {
+            const m = document.getElementById('terms-modal');
+            m.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') { closeTerms(); closePrivacy(); closeDisclaimer(); closeCookie(); closeIP(); closeEnquiry(); }
+        });
+
+        function openEnquiry() {
+            const m = document.getElementById('enquiry-modal');
+            if (!m) return;
+            m.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            const firstInput = m.querySelector('input[name="name"]');
+            setTimeout(() => firstInput && firstInput.focus(), 50);
+        }
+        function closeEnquiry() {
+            const m = document.getElementById('enquiry-modal');
+            if (!m) return;
+            m.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+
+        // Hero Video Interaction
+        function startHeroVideo() {
+            const video = document.getElementById('hero-video');
+            const prompt = document.getElementById('hero-click-prompt');
+            const text = document.getElementById('hero-text');
+
+            if (video) {
+                video.play().catch(e => console.log('Video autoplay blocked or failed', e));
+                video.loop = true;
+                video.muted = true;
+            }
+
+            if (prompt) {
+                prompt.style.opacity = '0';
+                prompt.style.pointerEvents = 'none';
+                setTimeout(() => prompt.style.display = 'none', 600);
+            }
+
+            if (text) {
+                text.classList.remove('opacity-0', 'translate-y-8');
+            }
+        }
+        function submitEnquiry(event) {
+            event.preventDefault();
+            const form = event.currentTarget;
+            const data = new FormData(form);
+            const name = (data.get('name') || '').trim();
+            const email = (data.get('email') || '').trim();
+            const phone = (data.get('phone') || '').trim();
+            const company = (data.get('company') || '').trim();
+            const requirements = (data.get('requirements') || '').trim();
+            const subject = `UrbanTree enquiry - ${company || name || 'Website visitor'}`;
+            const body = [
+                'New UrbanTree enquiry',
+                '',
+                `Name: ${name}`,
+                `Email: ${email}`,
+                `Phone: ${phone || 'Not provided'}`,
+                `Company / Organization: ${company || 'Not provided'}`,
+                '',
+                'Requirements:',
+                requirements
+            ].join('\n');
+            window.location.href = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            closeEnquiry();
+        }
+
+        document.querySelectorAll('a[href$="#enquiry"], a[href$="#enquiry-form"]').forEach(link => {
+            link.addEventListener('click', event => {
+                event.preventDefault();
+                openEnquiry();
+            });
+        });
+
+        if (window.location.hash === '#enquiry' || window.location.hash === '#enquiry-form') {
+            setTimeout(() => {
+                openEnquiry();
+                history.replaceState(null, document.title, window.location.pathname + window.location.search);
+            }, 100);
+        }
+
+        const enquiryForm = document.getElementById('enquiry-form');
+        if (enquiryForm) enquiryForm.addEventListener('submit', submitEnquiry);
+
+        function openPrivacy() {
+            const m = document.getElementById('privacy-modal');
+            m.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+        function closePrivacy() {
+            const m = document.getElementById('privacy-modal');
+            m.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+
+        function openDisclaimer() {
+            const m = document.getElementById('disclaimer-modal');
+            m.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+        function closeDisclaimer() {
+            const m = document.getElementById('disclaimer-modal');
+            m.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+
+        function openCookie() {
+            const m = document.getElementById('cookie-modal');
+            m.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+        function closeCookie() {
+            const m = document.getElementById('cookie-modal');
+            m.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+
+        function openIP() {
+            const m = document.getElementById('ip-modal');
+            m.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+        function closeIP() {
+            const m = document.getElementById('ip-modal');
+            m.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+    </script>
+
+
+
+
+
+    <!-- Application Showcase JS -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const appsData = [
+                {
+                    title: "Smart Cities",
+                    desc: "Designed for next-generation urban environments, the air purifier integrates with smart city infrastructure to create breathable Air Pocket across outdoor and semi-outdoor spaces.",
+                    svg_inner: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v3M12 14v3M16 14v3" />`,
+                    image: "assets/images/app_smart_cities.jpg"
+                },
+                {
+                    title: "Tech Parks",
+                    desc: "The system enhances workplace wellness by creating fresh environments across innovation hubs, IT campuses, and high-footfall outdoor areas.",
+                    svg_inner: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />`,
+                    image: "assets/images/app_tech_parks.jpg"
+                },
+                {
+                    title: "Residential Communities",
+                    desc: "The purifier creates fresh Air zones within residential communities, helping reduce exposure to dust, smoke, and harmful airborne pollutants.",
+                    svg_inner: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />`,
+                    image: "assets/images/app_residential.jpg"
+                },
+                {
+                    title: "Industrial Zones",
+                    desc: "Engineered to support pollution control in and around industrial environments where particulate matter and emissions are higher. The solution contributes to safer surroundings for workers and nearby communities through continuous purification and monitoring.",
+                    svg_inner: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />`,
+                    image: "assets/images/app_industrial.jpg"
+                },
+                {
+                    title: "Schools & Universities",
+                    desc: "Creates healthier learning environments by reducing airborne pollutants around campuses, classrooms, and gathering spaces. Cleaner air supports student well-being, concentration, and overall campus sustainability initiatives.",
+                    svg_inner: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />`,
+                    image: "assets/images/app_schools.jpg"
+                },
+                {
+                    title: "Airports & Metro Stations",
+                    desc: "Built for high-density public transit environments, the system creates fresh Air zones that improve commuter comfort and public air quality.",
+                    svg_inner: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />`,
+                    image: "assets/images/app_airports.jpg"
+                },
+                {
+                    title: "Corporate Campuses",
+                    desc: "Enhances outdoor and semi-outdoor workplace environments by generating Air zones across walkways, seating areas, and shared spaces.",
+                    svg_inner: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />`,
+                    image: "assets/images/app_corporate.jpg"
+                },
+                {
+                    title: "Public & Private Infrastructure",
+                    desc: "Suitable for deployment across government buildings, commercial complexes, healthcare facilities, and civic infrastructure projects. Its modular architecture allows flexible integration into diverse environments requiring sustainable air quality solutions.",
+                    svg_inner: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z" />`,
+                    image: "assets/images/app_public.jpg"
+                },
+                {
+                    title: "Government Office Spaces",
+                    desc: "Supports healthier workplaces by creating healthy air environments in administrative and public interaction spaces.",
+                    svg_inner: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-2 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />`,
+                    image: "assets/images/app_government.jpg"
+                }
+            ];
+
+            const accordionContainer = document.getElementById('app-accordion-container');
+            let activeIndex = 0;
+            const accordionItems = [];
+
+            function initAccordion() {
+                if (!accordionContainer) return;
+                accordionContainer.innerHTML = '';
+
+                appsData.forEach((app, index) => {
+                    const item = document.createElement('div');
+                    // Base classes set here, dynamic classes handled in updateAccordion
+                    item.className = 'app-accordion-item relative overflow-hidden rounded-3xl transition-all duration-[800ms] ease-[cubic-bezier(0.87,0,0.13,1)] cursor-pointer group flex-shrink-0 border';
+
+                    item.onclick = () => {
+                        if (activeIndex !== index) {
+                            activeIndex = index;
+                            updateAccordion();
+
+                            // Scroll if needed on mobile
+                            setTimeout(() => {
+                                const rect = item.getBoundingClientRect();
+                                if (rect.top < 100 || rect.bottom > window.innerHeight) {
+                                    item.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                                }
+                            }, 300);
+                        }
+                    };
+
+                    item.innerHTML = `
+                        <!-- Background Image -->
+                        <img src="${app.image}" class="bg-img absolute inset-0 w-full h-full object-cover transition-all duration-[1200ms] ease-[cubic-bezier(0.87,0,0.13,1)] origin-center" alt="${app.title}" />
+                        
+                        <!-- Overlay for Active State -->
+                        <div class="active-overlay absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent transition-opacity duration-700"></div>
+                        
+                        <!-- Overlay for Inactive State -->
+                        <div class="inactive-overlay absolute inset-0 bg-black/30 transition-opacity duration-700 group-hover:bg-black/10"></div>
+                        
+                        <!-- Inactive State Content -->
+                        <div class="inactive-content absolute inset-0 flex flex-row lg:flex-col items-center justify-center transition-opacity duration-500">
+                            <!-- Title Mobile (Horizontal) -->
+                            <div class="flex lg:hidden items-center justify-center w-full px-4">
+                                <h3 class="font-serif font-bold text-white/90 text-sm tracking-widest uppercase group-hover:text-white transition-colors duration-300 drop-shadow-md text-center">
+                                    ${app.title}
+                                </h3>
+                            </div>
+                            
+                            <!-- Title Desktop (Vertical Strip) -->
+                            <div class="hidden lg:flex flex-1 items-center justify-center overflow-hidden w-full py-6">
+                                <h3 class="font-serif font-bold text-white/90 tracking-[0.2em] text-sm uppercase group-hover:text-white transition-colors duration-300 drop-shadow-md whitespace-nowrap" style="writing-mode: vertical-rl; transform: rotate(180deg);">
+                                    ${app.title}
+                                </h3>
+                            </div>
+                        </div>
+
+                        <!-- Active State Content -->
+                        <div class="active-content absolute inset-0 p-6 md:p-10 flex flex-col justify-end transition-opacity duration-[800ms] delay-100">
+                            <!-- Header -->
+                            <div class="active-header flex items-center gap-4 lg:gap-6 z-10 transform transition-transform duration-700 w-full">
+                                <div class="w-12 h-12 lg:w-16 lg:h-16 rounded-2xl bg-brand-emerald text-white shadow-lg shadow-brand-emerald/20 flex items-center justify-center shrink-0">
+                                    <svg class="w-6 h-6 lg:w-8 lg:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">${app.svg_inner}</svg>
+                                </div>
+                                <h3 class="font-serif font-bold text-2xl lg:text-4xl text-white drop-shadow-md truncate pr-4">
+                                    ${app.title}
+                                </h3>
+                            </div>
+                            
+                            <!-- Description -->
+                            <div class="active-desc mt-4 lg:mt-6 z-10 w-full max-w-3xl transform transition-transform duration-700 delay-100">
+                                <p class="text-gray-200 text-base lg:text-lg leading-relaxed line-clamp-3 lg:line-clamp-4">
+                                    ${app.desc}
+                                </p>
+                            </div>
+                        </div>
+                    `;
+
+                    accordionItems.push(item);
+                    accordionContainer.appendChild(item);
+                });
+
+                updateAccordion();
+            }
+
+            function updateAccordion() {
+                accordionItems.forEach((item, index) => {
+                    const isActive = index === activeIndex;
+
+                    // 1. Root Item
+                    const baseItemClass = 'app-accordion-item relative overflow-hidden rounded-3xl transition-all duration-[800ms] ease-[cubic-bezier(0.87,0,0.13,1)] cursor-pointer group flex-shrink-0 border';
+                    item.className = `${baseItemClass} ${isActive ? 'is-active flex-grow shadow-2xl border-transparent h-[400px] lg:h-full lg:w-0' : 'is-inactive h-16 lg:h-full lg:w-20 border-black/10 hover:border-brand-emerald/50'}`;
+
+                    // 2. Background Image
+                    const bgImg = item.querySelector('.bg-img');
+                    const baseImgClass = 'bg-img absolute inset-0 w-full h-full object-cover transition-all duration-[1200ms] ease-[cubic-bezier(0.87,0,0.13,1)] origin-center';
+                    bgImg.className = `${baseImgClass} ${isActive ? 'scale-100' : 'scale-110 opacity-80 group-hover:scale-105 group-hover:opacity-100'}`;
+
+                    // 3. Active Overlay
+                    const activeOverlay = item.querySelector('.active-overlay');
+                    const baseActiveOverlay = 'active-overlay absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent transition-opacity duration-700';
+                    activeOverlay.className = `${baseActiveOverlay} ${isActive ? 'opacity-100' : 'opacity-0 pointer-events-none'}`;
+
+                    // 4. Inactive Overlay
+                    const inactiveOverlay = item.querySelector('.inactive-overlay');
+                    const baseInactiveOverlay = 'inactive-overlay absolute inset-0 bg-black/30 transition-opacity duration-700 group-hover:bg-black/10';
+                    inactiveOverlay.className = `${baseInactiveOverlay} ${isActive ? 'opacity-0 pointer-events-none' : 'opacity-100'}`;
+
+                    // 5. Inactive Content
+                    const inactiveContent = item.querySelector('.inactive-content');
+                    const baseInactiveContent = 'inactive-content absolute inset-0 flex flex-row lg:flex-col items-center justify-center transition-opacity duration-500';
+                    inactiveContent.className = `${baseInactiveContent} ${isActive ? 'opacity-0 pointer-events-none' : 'opacity-100'}`;
+
+                    // 6. Active Content
+                    const activeContent = item.querySelector('.active-content');
+                    const baseActiveContent = 'active-content absolute inset-0 p-6 md:p-10 flex flex-col justify-end transition-opacity duration-[800ms] delay-100';
+                    activeContent.className = `${baseActiveContent} ${isActive ? 'opacity-100' : 'opacity-0 pointer-events-none'}`;
+
+                    // 7. Active Header
+                    const activeHeader = item.querySelector('.active-header');
+                    const baseActiveHeader = 'active-header flex items-center gap-4 lg:gap-6 z-10 transform transition-transform duration-700 w-full';
+                    activeHeader.className = `${baseActiveHeader} ${isActive ? 'translate-y-0' : 'translate-y-4'}`;
+
+                    // 8. Active Desc
+                    const activeDesc = item.querySelector('.active-desc');
+                    const baseActiveDesc = 'active-desc mt-4 lg:mt-6 z-10 w-full max-w-3xl transform transition-transform duration-700 delay-100';
+                    activeDesc.className = `${baseActiveDesc} ${isActive ? 'translate-y-0' : 'translate-y-4'}`;
+                });
+            }
+
+            // Preload images
+            appsData.forEach(app => {
+                const img = new Image();
+                img.src = app.image;
+            });
+
+            initAccordion();
+        });
+    </script>
+
+
+</body>
+
+</html><script>
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        const bodyRect = document.body.getBoundingClientRect();
+        const navRect = document.querySelector('nav').getBoundingClientRect();
+        const htmlRect = document.documentElement.getBoundingClientRect();
+        const debugInfo = 
+            Window Inner: \x\
+            HTML: \x\
+            Body: \x\, padding-right: \, margin-right: \
+            Nav: \x\
+        ;
+        fetch('/debug', { method: 'POST', body: debugInfo }); // This will fail but show in terminal if we start a tiny server, OR we can just write it to a local storage or DOM element.
+        // Better: create a visible debug div on screen!
+        const div = document.createElement('div');
+        div.style.position = 'fixed';
+        div.style.top = '50px';
+        div.style.left = '50px';
+        div.style.background = 'red';
+        div.style.color = 'white';
+        div.style.zIndex = '999999';
+        div.style.padding = '20px';
+        div.style.fontSize = '16px';
+        div.innerText = debugInfo;
+        document.body.appendChild(div);
+    }, 2000);
+});
+</script>
+<script>
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        const bodyRect = document.body.getBoundingClientRect();
+        const htmlRect = document.documentElement.getBoundingClientRect();
+        const navRect = document.querySelector('nav').getBoundingClientRect();
+        const info = Window: \x\, HTML: \, Body: \, Nav: \;
+        console.log(info);
+        // Write to local storage for us to read? Or just create a div
+        const div = document.createElement('div');
+        div.id = 'debug-info-agent';
+        div.innerHTML = info;
+        div.style.display = 'none';
+        document.body.appendChild(div);
+    }, 1000);
+});
+</script>
