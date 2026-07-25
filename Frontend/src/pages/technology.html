@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Technology | UrbanTree by SunEx Technologies</title>
-    <link rel="icon" type="image/png" href="/assets/images/logo.png">
+    <link rel="icon" type="image/png" href="/assets/images/shared/logo.png">
     <meta name="description"
         content="UrbanTree's bio-mechanical air purification technology — 9-stage multi-layer purification system combining advanced engineering and biological intelligence.">
 
@@ -143,11 +143,50 @@
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 16px;
             transition: all 0.3s ease;
+            color: #ffffff;
         }
 
         .dark-card:hover {
             background: rgba(16, 185, 129, 0.08);
             border-color: rgba(16, 185, 129, 0.3);
+        }
+
+        .dark-card h3 {
+            color: #ffffff;
+        }
+
+        .stat-number {
+            font-family: 'Sora', sans-serif;
+            font-weight: 800;
+            background: linear-gradient(135deg, #10b981, #06b6d4);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: #10b981;
+            line-height: 1.1;
+        }
+
+        .metric-icon {
+            width: 56px;
+            height: 56px;
+            margin: 0 auto 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            border: 1px solid rgba(16, 185, 129, 0.35);
+            background: rgba(16, 185, 129, 0.08);
+            color: #10b981;
+            transition: transform 0.3s ease;
+        }
+
+        .group:hover .metric-icon {
+            transform: scale(1.1);
+        }
+
+        .metric-icon svg {
+            width: 28px;
+            height: 28px;
         }
 
         /* ── STEP NUMBER ── */
@@ -239,7 +278,7 @@
             overflow: hidden;
         }
     </style>
-    <link rel="icon" type="image/png" href="/assets/images/logo.png">
+    <link rel="icon" type="image/png" href="/assets/images/shared/logo.png">
 
     <style id="navbar-dynamic-colors">
         .nav-text-dark {}
@@ -336,28 +375,6 @@
         </div>
     </section>
 
-    <!-- ═══ SECTION: TECH SEQUENCE ANIMATION ═══ -->
-    <section id="tech-sequence-section" data-navbar-theme="dark"
-        style="position: relative; width: 100%; background-color: #0a0a0a;">
-        <div id="tech-sequence-container" style="width: 100%; height: 100vh; position: relative; overflow: hidden;">
-            <div id="sequence-loading-overlay"
-                style="position: absolute; inset: 0; background: #0a0a0a; z-index: 10; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.6s ease;">
-                <div class="sequence-loader-spinner"
-                    style="width: 40px; height: 40px; border: 3px solid rgba(255, 255, 255, 0.1); border-radius: 50%; border-top-color: #10b981; animation: sequence-spin 1s ease-in-out infinite; margin-bottom: 1rem;">
-                </div>
-                <div id="sequence-loading-progress"
-                    style="font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 600; color: #fff; letter-spacing: 0.1em;">
-                    0%</div>
-            </div>
-            <canvas id="tech-sequence-canvas" style="display: block; width: 100%; height: 100%;"></canvas>
-        </div>
-    </section>
-
-    <!-- GSAP & ScrollTrigger for tech sequence -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script type="module" src="/assets/js/tech-sequence.js"></script>
-
     <!-- ═══ SECTION 1: SYSTEM ARCHITECTURE ═══ -->
     <section id="architecture" data-navbar-theme="dark">
         <div class="max-w-7xl mx-auto px-6 lg:px-12">
@@ -412,7 +429,7 @@
 <section class="section-dark relative" id="components" data-navbar-theme="dark" style="background-color:#050505; overflow:hidden; padding: 120px 0;">
     
     <style>
-    /* HUD Layout Styles matching Screenshot */
+    /* Pillars of Innovation — match design mockup */
     .screenshot-layout {
         font-family: 'Inter', sans-serif;
         color: white;
@@ -421,15 +438,16 @@
     .screenshot-header {
         display: grid;
         grid-template-columns: 1fr;
-        gap: 40px;
+        gap: 32px;
         align-items: center;
-        margin-bottom: 80px;
+        margin-bottom: 56px;
         position: relative;
         z-index: 10;
     }
     @media (min-width: 1024px) {
         .screenshot-header {
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+            gap: 48px;
         }
     }
 
@@ -437,15 +455,16 @@
         display: inline-flex;
         align-items: center;
         gap: 8px;
-        border: 1px solid rgba(16,185,129,0.3);
-        border-radius: 20px;
-        padding: 6px 16px;
+        border: 1px solid rgba(16,185,129,0.35);
+        border-radius: 999px;
+        padding: 6px 14px;
         font-size: 10px;
         font-weight: 700;
-        letter-spacing: 0.15em;
+        letter-spacing: 0.16em;
         color: #10b981;
         text-transform: uppercase;
-        margin-bottom: 24px;
+        margin-bottom: 20px;
+        background: rgba(16,185,129,0.06);
     }
     .pill-tag svg {
         width: 14px;
@@ -454,72 +473,97 @@
 
     .screenshot-title {
         font-family: 'Sora', sans-serif;
-        font-size: clamp(3rem, 5vw, 4.5rem);
+        font-size: clamp(2.6rem, 5vw, 4.25rem);
         font-weight: 800;
-        line-height: 1.1;
-        margin-bottom: 16px;
+        line-height: 1.05;
+        margin: 0 0 18px;
+        letter-spacing: -0.02em;
     }
+    .screenshot-title span {
+        color: #10b981;
+    }
+
     .screenshot-subtitle {
-        font-size: 1.15rem;
+        font-size: 1rem;
         color: #d1d5db;
         display: flex;
         align-items: center;
-        gap: 16px;
+        gap: 14px;
+        white-space: nowrap;
     }
+    .screenshot-subtitle::before,
     .screenshot-subtitle::after {
         content: '';
         height: 1px;
-        flex-grow: 1;
-        background: linear-gradient(90deg, rgba(16,185,129,0.5), transparent);
-        max-width: 200px;
+        flex: 1;
+        max-width: 72px;
+        background: linear-gradient(90deg, transparent, rgba(16,185,129,0.55));
+    }
+    .screenshot-subtitle::after {
+        background: linear-gradient(90deg, rgba(16,185,129,0.55), transparent);
+    }
+
+    .header-right {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+    .header-right-copy {
+        font-size: 0.95rem;
+        color: #9ca3af;
+        line-height: 1.75;
+        max-width: 240px;
+        flex-shrink: 0;
+        margin: 0;
+    }
+    .header-right-copy span {
+        color: #10b981;
     }
 
     .hero-graphic-container {
         position: relative;
-        width: 100%;
-        aspect-ratio: 16/9;
-        border-radius: 24px;
-        overflow: hidden;
+        flex: 1;
+        min-width: 0;
+        max-width: 340px;
+        aspect-ratio: 1;
+        margin-left: auto;
     }
     .hero-graphic-container img {
         width: 100%;
         height: 100%;
-        object-fit: cover;
-        mask-image: linear-gradient(to right, transparent, black 20%);
-        -webkit-mask-image: linear-gradient(to right, transparent, black 20%);
+        object-fit: contain;
+        filter: drop-shadow(0 0 28px rgba(16,185,129,0.28));
     }
 
     .screenshot-grid {
         display: grid;
         grid-template-columns: 1fr;
-        gap: 24px;
+        gap: 20px;
         position: relative;
         z-index: 10;
+        align-items: stretch;
     }
     @media (min-width: 1024px) {
         .screenshot-grid {
-            grid-template-columns: 1fr 120px 1fr;
-            gap: 24px 0;
+            grid-template-columns: 1fr 96px 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 28px 16px;
         }
     }
 
-    .col-left, .col-right {
-        display: flex;
-        flex-direction: column;
-        gap: 24px;
-    }
-
     .ss-card {
-        background: rgba(10, 15, 20, 0.6);
-        border: 1px solid rgba(16, 185, 129, 0.15);
-        border-radius: 24px;
-        padding: 32px;
+        background: rgba(8, 12, 16, 0.85);
+        border: 1px solid rgba(16, 185, 129, 0.18);
+        border-radius: 20px;
+        padding: 26px 24px;
         display: flex;
         flex-direction: column;
-        gap: 24px;
+        gap: 18px;
         position: relative;
-        transition: all 0.3s ease;
-        backdrop-filter: blur(10px);
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        height: 100%;
+        min-height: 0;
+        box-sizing: border-box;
     }
     @media (min-width: 640px) {
         .ss-card {
@@ -527,106 +571,104 @@
             align-items: flex-start;
         }
     }
+    @media (min-width: 1024px) {
+        .ss-card-1 { grid-column: 1; grid-row: 1; }
+        .ss-card-2 { grid-column: 3; grid-row: 1; }
+        .ss-card-3 { grid-column: 1; grid-row: 2; }
+        .ss-card-4 { grid-column: 3; grid-row: 2; }
+    }
     .ss-card:hover {
-        border-color: rgba(16, 185, 129, 0.4);
-        box-shadow: 0 0 40px rgba(16, 185, 129, 0.1);
+        border-color: rgba(16, 185, 129, 0.45);
+        box-shadow: 0 0 36px rgba(16, 185, 129, 0.12);
     }
 
     .ss-icon-wrapper {
-        width: 100px;
-        height: 100px;
+        width: 84px;
+        height: 84px;
         border-radius: 50%;
-        border: 1px solid rgba(16, 185, 129, 0.3);
+        border: 1px solid rgba(16, 185, 129, 0.35);
         display: flex;
         align-items: center;
         justify-content: center;
         flex-shrink: 0;
         position: relative;
-        box-shadow: inset 0 0 20px rgba(16, 185, 129, 0.1);
+        background: radial-gradient(circle at center, rgba(16,185,129,0.12), transparent 70%);
+        box-shadow: inset 0 0 18px rgba(16, 185, 129, 0.12), 0 0 16px rgba(16,185,129,0.15);
     }
-    .ss-icon-wrapper::before {
-        content: '';
-        position: absolute;
-        inset: -1px;
-        border-radius: 50%;
-        border: 1px solid #10b981;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-    }
-    .ss-card:hover .ss-icon-wrapper::before {
-        opacity: 0.5;
-    }
-
-    .ss-icon-wrapper svg {
-        width: 48px;
-        height: 48px;
-        color: #10b981;
-        filter: drop-shadow(0 0 8px rgba(16,185,129,0.6));
+    .ss-icon-wrapper img {
+        width: 42px;
+        height: 42px;
+        object-fit: contain;
+        filter: drop-shadow(0 0 8px rgba(16,185,129,0.65));
     }
 
     .ss-content {
         flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
     }
 
     .ss-number-tag {
         display: inline-flex;
         align-items: center;
-        gap: 12px;
+        gap: 10px;
         font-size: 10px;
         font-weight: 700;
-        letter-spacing: 0.15em;
+        letter-spacing: 0.14em;
         color: #10b981;
         text-transform: uppercase;
-        margin-bottom: 12px;
+        margin-bottom: 10px;
     }
     .ss-num {
         background: rgba(16, 185, 129, 0.15);
-        padding: 4px 8px;
+        padding: 3px 8px;
         border-radius: 4px;
     }
 
     .ss-card h3 {
         font-family: 'Sora', sans-serif;
-        font-size: 1.5rem;
+        font-size: 1.35rem;
         font-weight: 700;
         color: white;
-        margin-bottom: 12px;
+        margin: 0 0 10px;
     }
     .ss-card p {
-        font-size: 0.9rem;
+        font-size: 0.88rem;
         color: #9ca3af;
-        line-height: 1.6;
-        margin-bottom: 24px;
+        line-height: 1.65;
+        margin: 0 0 18px;
+        flex-grow: 1;
     }
 
     .ss-stats {
         display: flex;
-        gap: 16px;
+        gap: 10px;
         flex-wrap: wrap;
+        margin-top: auto;
     }
     .ss-stat-box {
-        border: 1px solid rgba(16, 185, 129, 0.2);
+        border: 1px solid rgba(16, 185, 129, 0.22);
         border-radius: 8px;
-        padding: 12px 16px;
+        padding: 10px 12px;
         display: flex;
         flex-direction: column;
-        min-width: 120px;
-        background: rgba(0,0,0,0.3);
+        min-width: 108px;
+        background: rgba(0,0,0,0.35);
     }
     .ss-stat-val {
         color: #10b981;
-        font-size: 1.25rem;
+        font-size: 1.1rem;
         font-weight: 700;
-        margin-bottom: 4px;
+        margin-bottom: 2px;
     }
     .ss-stat-lbl {
-        font-size: 0.65rem;
+        font-size: 0.62rem;
         color: #6b7280;
         text-transform: uppercase;
         letter-spacing: 0.1em;
     }
 
-    /* Central HUD Node */
     .center-hud-col {
         display: none;
     }
@@ -636,12 +678,15 @@
             align-items: center;
             justify-content: center;
             position: relative;
+            grid-column: 2;
+            grid-row: 1 / 3;
+            z-index: 15;
         }
     }
 
     .hud-node {
-        width: 120px;
-        height: 120px;
+        width: 88px;
+        height: 88px;
         position: relative;
         display: flex;
         align-items: center;
@@ -651,42 +696,69 @@
     .hud-node-circle {
         position: absolute;
         inset: 0;
-        border: 1px solid rgba(16, 185, 129, 0.4);
+        border: 1px solid rgba(16, 185, 129, 0.5);
         border-radius: 50%;
+        box-shadow: 0 0 24px rgba(16,185,129,0.25);
+        background: rgba(5,10,8,0.9);
     }
     .hud-node-circle-inner {
         position: absolute;
-        inset: 15px;
-        border: 1px dashed rgba(16, 185, 129, 0.3);
+        inset: 12px;
+        border: 1px dashed rgba(16, 185, 129, 0.35);
         border-radius: 50%;
         animation: spinSlow 20s linear infinite;
     }
     .hud-node-icon {
-        width: 40px;
-        height: 40px;
-        color: #10b981;
-        filter: drop-shadow(0 0 10px rgba(16, 185, 129, 0.8));
+        width: 34px;
+        height: 34px;
+        object-fit: contain;
+        filter: drop-shadow(0 0 10px rgba(16, 185, 129, 0.85));
+        position: relative;
+        z-index: 1;
     }
     @keyframes spinSlow { 100% { transform: rotate(360deg); } }
 
-    /* Connection Lines overlay */
     .connection-overlay {
         position: absolute;
         inset: 0;
+        width: 100%;
+        height: 100%;
         pointer-events: none;
         z-index: 5;
+        grid-column: 1 / -1;
+        grid-row: 1 / -1;
     }
     @media (max-width: 1023px) {
         .connection-overlay { display: none; }
     }
     .conn-path {
         fill: none;
-        stroke: rgba(16, 185, 129, 0.3);
+        stroke: rgba(16, 185, 129, 0.45);
         stroke-width: 1.5;
-        stroke-dasharray: 4 4;
+        stroke-dasharray: 3 5;
+        filter: drop-shadow(0 0 4px rgba(16,185,129,0.35));
     }
     .conn-dot {
         fill: #10b981;
+        filter: drop-shadow(0 0 4px rgba(16,185,129,0.8));
+    }
+
+    @media (max-width: 767px) {
+        .header-right {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .header-right-copy {
+            max-width: none;
+        }
+        .hero-graphic-container {
+            max-width: 260px;
+            margin: 0 auto;
+        }
+        .screenshot-subtitle {
+            white-space: normal;
+            flex-wrap: wrap;
+        }
     }
     </style>
 
@@ -699,15 +771,15 @@
                     <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                     Core Philosophy
                 </div>
-                <h2 class="screenshot-title">Pillars of<br><span style="color:#10b981;">Innovation</span></h2>
+                <h2 class="screenshot-title">Pillars of<br><span>Innovation</span></h2>
                 <div class="screenshot-subtitle">Engineering a Sustainable Tomorrow</div>
             </div>
-            <div class="header-right flex items-center gap-6">
-                <p style="font-size:0.95rem;color:#9ca3af;line-height:1.7;max-width:250px;">
-                    We integrate biomimicry, artificial intelligence, and sustainable design to create a <span style="color:#10b981;">revolutionary environmental ecosystem.</span>
+            <div class="header-right">
+                <p class="header-right-copy">
+                    We integrate biomimicry, artificial intelligence, and sustainable design to create a <span>revolutionary environmental ecosystem.</span>
                 </p>
                 <div class="hero-graphic-container">
-                    <img src="../assets/images/hero_eco_city.png" alt="Futuristic Eco City Hologram">
+                    <img src="/assets/images/technology/hero_eco_city.png" alt="Futuristic Eco City Hologram">
                 </div>
             </div>
         </div>
@@ -715,74 +787,37 @@
         <!-- GRID -->
         <div class="screenshot-grid fade-up">
             
-            <!-- SVG Connection Lines -->
+            <!-- SVG Connection Lines — from card inner edges to center node -->
             <svg class="connection-overlay" preserveAspectRatio="none" viewBox="0 0 1000 600">
-                <!-- TL to Center -->
-                <path class="conn-path" d="M 450,150 L 480,150 L 500,280"></path>
-                <circle class="conn-dot" cx="450" cy="150" r="3"></circle>
-                <!-- BL to Center -->
-                <path class="conn-path" d="M 450,450 L 480,450 L 500,320"></path>
-                <circle class="conn-dot" cx="450" cy="450" r="3"></circle>
-                <!-- TR to Center -->
-                <path class="conn-path" d="M 550,150 L 520,150 L 500,280"></path>
-                <circle class="conn-dot" cx="550" cy="150" r="3"></circle>
-                <!-- BR to Center -->
-                <path class="conn-path" d="M 550,450 L 520,450 L 500,320"></path>
-                <circle class="conn-dot" cx="550" cy="450" r="3"></circle>
-                
-                <!-- Central Node Dots -->
-                <circle class="conn-dot" cx="500" cy="280" r="4"></circle>
-                <circle class="conn-dot" cx="500" cy="320" r="4"></circle>
+                <path class="conn-path" d="M 430,150 H 470 L 500,270"></path>
+                <circle class="conn-dot" cx="430" cy="150" r="3.5"></circle>
+                <path class="conn-path" d="M 430,450 H 470 L 500,330"></path>
+                <circle class="conn-dot" cx="430" cy="450" r="3.5"></circle>
+                <path class="conn-path" d="M 570,150 H 530 L 500,270"></path>
+                <circle class="conn-dot" cx="570" cy="150" r="3.5"></circle>
+                <path class="conn-path" d="M 570,450 H 530 L 500,330"></path>
+                <circle class="conn-dot" cx="570" cy="450" r="3.5"></circle>
+                <circle class="conn-dot" cx="500" cy="270" r="4"></circle>
+                <circle class="conn-dot" cx="500" cy="330" r="4"></circle>
             </svg>
 
-            <!-- LEFT COLUMN -->
-            <div class="col-left">
-                <!-- Card 1 -->
-                <div class="ss-card">
-                    <div class="ss-icon-wrapper">
-                        <!-- Butterfly SVG -->
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path>
-                            <!-- Internal wing details -->
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M7 8c0 1.5 1.5 3 2.5 3M17 8c0 1.5-1.5 3-2.5 3"></path>
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="2 2" d="M12 6v6"></path>
-                        </svg>
-                    </div>
-                    <div class="ss-content">
-                        <div class="ss-number-tag"><span class="ss-num">01</span> PRIMARY FILTRATION</div>
-                        <h3>Bio-Mimetic Engineering</h3>
-                        <p>Utilizing biologically-inspired nano-structures—replicating butterfly wings—to naturally absorb airborne pollutants at the molecular level.</p>
-                        <div class="ss-stats">
-                            <div class="ss-stat-box">
-                                <span class="ss-stat-val">500x</span>
-                                <span class="ss-stat-lbl">More Effective</span>
-                            </div>
-                            <div class="ss-stat-box">
-                                <span class="ss-stat-val">0.3μ</span>
-                                <span class="ss-stat-lbl">Particle Capture</span>
-                            </div>
-                        </div>
-                    </div>
+            <!-- Card 1 -->
+            <div class="ss-card ss-card-1">
+                <div class="ss-icon-wrapper">
+                    <img src="/assets/images/technology/icon_butterfly.png" alt="">
                 </div>
-
-                <!-- Card 3 -->
-                <div class="ss-card">
-                    <div class="ss-icon-wrapper">
-                        <!-- Recycle SVG -->
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 7l-2 3h4l-2-3zM8 14l2 3h-4l2-3zM16 14l-2 3h4l-2-3z"></path>
-                        </svg>
-                    </div>
-                    <div class="ss-content">
-                        <div class="ss-number-tag"><span class="ss-num">03</span> LIFECYCLE</div>
-                        <h3>Sustainable Architecture</h3>
-                        <p>Built with advanced, recyclable materials that actively reduce the need for toxic, disposable filters found in traditional purifiers.</p>
-                        <div class="ss-stats">
-                            <div class="ss-stat-box">
-                                <span class="ss-stat-val">100%</span>
-                                <span class="ss-stat-lbl">Recyclable Base</span>
-                            </div>
+                <div class="ss-content">
+                    <div class="ss-number-tag"><span class="ss-num">01</span> PRIMARY FILTRATION</div>
+                    <h3>Bio-Mimetic Engineering</h3>
+                    <p>Utilizing biologically-inspired nano-structures—replicating butterfly wings—to naturally absorb airborne pollutants at the molecular level.</p>
+                    <div class="ss-stats">
+                        <div class="ss-stat-box">
+                            <span class="ss-stat-val">500x</span>
+                            <span class="ss-stat-lbl">More Effective</span>
+                        </div>
+                        <div class="ss-stat-box">
+                            <span class="ss-stat-val">0.3μ</span>
+                            <span class="ss-stat-lbl">Particle Capture</span>
                         </div>
                     </div>
                 </div>
@@ -793,60 +828,59 @@
                 <div class="hud-node">
                     <div class="hud-node-circle"></div>
                     <div class="hud-node-circle-inner"></div>
-                    <!-- Leaf SVG -->
-                    <svg class="hud-node-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"></path>
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 20.25V11"></path>
-                    </svg>
+                    <img class="hud-node-icon" src="/assets/images/technology/icon_center_leaf.png" alt="">
                 </div>
             </div>
 
-            <!-- RIGHT COLUMN -->
-            <div class="col-right">
-                <!-- Card 2 -->
-                <div class="ss-card">
-                    <div class="ss-icon-wrapper">
-                        <!-- Brain SVG -->
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path>
-                            <!-- Nodes inside -->
-                            <circle cx="12" cy="12" r="1" fill="currentColor"></circle>
-                            <circle cx="10" cy="14" r="1" fill="currentColor"></circle>
-                            <circle cx="14" cy="10" r="1" fill="currentColor"></circle>
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="2 2" d="M12 12l-2 2m2-2l2-2"></path>
-                        </svg>
-                    </div>
-                    <div class="ss-content">
-                        <div class="ss-number-tag"><span class="ss-num">02</span> NEURAL NET</div>
-                        <h3>Adaptive AI Intelligence</h3>
-                        <p>Smart sensors dynamically adjust purification intensity in real-time, integrating global datasets to predict and intercept smog.</p>
-                        <div class="ss-stats">
-                            <div class="ss-stat-box">
-                                <span class="ss-stat-val">LIVE</span>
-                                <span class="ss-stat-lbl">WHO 2024 AQI SYNC</span>
-                            </div>
+            <!-- Card 2 -->
+            <div class="ss-card ss-card-2">
+                <div class="ss-icon-wrapper">
+                    <img src="/assets/images/technology/icon_brain.png" alt="">
+                </div>
+                <div class="ss-content">
+                    <div class="ss-number-tag"><span class="ss-num">02</span> NEURAL NET</div>
+                    <h3>Adaptive AI Intelligence</h3>
+                    <p>Smart sensors dynamically adjust purification intensity in real-time, integrating global datasets to predict and intercept smog.</p>
+                    <div class="ss-stats">
+                        <div class="ss-stat-box">
+                            <span class="ss-stat-val">LIVE</span>
+                            <span class="ss-stat-lbl">WHO 2024 AQI SYNC</span>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- Card 4 -->
-                <div class="ss-card">
-                    <div class="ss-icon-wrapper">
-                        <!-- Audio Wave SVG -->
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 12v.01M8 8v8M12 4v16M16 8v8M20 12v.01"></path>
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 10v4M10 6v12M14 6v12M18 10v4"></path>
-                        </svg>
+            <!-- Card 3 -->
+            <div class="ss-card ss-card-3">
+                <div class="ss-icon-wrapper">
+                    <img src="/assets/images/technology/icon_recycle.png" alt="">
+                </div>
+                <div class="ss-content">
+                    <div class="ss-number-tag"><span class="ss-num">03</span> LIFECYCLE</div>
+                    <h3>Sustainable Architecture</h3>
+                    <p>Built with advanced, recyclable materials that actively reduce the need for toxic, disposable filters found in traditional purifiers.</p>
+                    <div class="ss-stats">
+                        <div class="ss-stat-box">
+                            <span class="ss-stat-val">100%</span>
+                            <span class="ss-stat-lbl">Recyclable Base</span>
+                        </div>
                     </div>
-                    <div class="ss-content">
-                        <div class="ss-number-tag"><span class="ss-num">04</span> ACOUSTICS</div>
-                        <h3>Whisper-Quiet Operation</h3>
-                        <p>Utilizing tremor-inspired passive ventilation mechanics, we've bypassed energy-heavy, loud mechanical fans to purify silently.</p>
-                        <div class="ss-stats">
-                            <div class="ss-stat-box">
-                                <span class="ss-stat-val">&lt;30</span>
-                                <span class="ss-stat-lbl">DECIBELS</span>
-                            </div>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="ss-card ss-card-4">
+                <div class="ss-icon-wrapper">
+                    <img src="/assets/images/technology/icon_waveform.png" alt="">
+                </div>
+                <div class="ss-content">
+                    <div class="ss-number-tag"><span class="ss-num">04</span> ACOUSTICS</div>
+                    <h3>Whisper-Quiet Operation</h3>
+                    <p>Utilizing tremor-inspired passive ventilation mechanics, we've bypassed energy-heavy, loud mechanical fans to purify silently.</p>
+                    <div class="ss-stats">
+                        <div class="ss-stat-box">
+                            <span class="ss-stat-val">&lt;30</span>
+                            <span class="ss-stat-lbl">DECIBELS</span>
                         </div>
                     </div>
                 </div>
@@ -894,6 +928,15 @@
                 padding: 40px;
                 transform: translateY(30px);
                 transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+                color: #ffffff;
+            }
+
+            .impact-content h3 {
+                color: #ffffff !important;
+            }
+
+            .impact-content .impact-badge {
+                color: #ffffff;
             }
 
             .impact-card:hover .impact-content {
@@ -905,6 +948,7 @@
                 height: 0;
                 overflow: hidden;
                 transition: opacity 0.5s ease, height 0.5s ease;
+                color: #d1d5db;
             }
 
             .impact-card:hover .impact-desc {
@@ -930,17 +974,17 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <!-- App 1 -->
                 <div class="impact-card h-[400px] fade-up">
-                    <img src="../assets/images/tech_impact_smartcity.png" alt="Smart Cities"
+                    <img src="/assets/images/technology/tech_impact_smartcity.png" alt="Smart Cities"
                         class="w-full h-full object-cover">
                     <div class="impact-overlay"></div>
                     <div class="impact-content">
                         <div class="flex items-center gap-3 mb-2">
                             <span
-                                class="bg-emerald-500  text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">Urban
+                                class="impact-badge bg-emerald-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">Urban
                                 Edge</span>
                         </div>
-                        <h3 class=" font-bold text-3xl font-['Sora']">Smart Cities</h3>
-                        <div class="impact-desc text-gray-300 font-medium">
+                        <h3 class="text-white font-bold text-3xl font-['Sora']">Smart Cities</h3>
+                        <div class="impact-desc font-medium">
                             Creating breathable safe zones in heavily congested urban centers. Our units protect
                             citizens from toxic vehicular emissions, industrial smog, and soaring urban heat islands.
                         </div>
@@ -949,16 +993,16 @@
 
                 <!-- App 2 -->
                 <div class="impact-card h-[400px] fade-up" style="transition-delay:0.1s;">
-                    <img src="../assets/images/tech_impact_corporate.png" alt="Corporate Campuses"
+                    <img src="/assets/images/technology/tech_impact_corporate.png" alt="Corporate Campuses"
                         class="w-full h-full object-cover">
                     <div class="impact-overlay"></div>
                     <div class="impact-content">
                         <div class="flex items-center gap-3 mb-2">
                             <span
-                                class="bg-blue-500  text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">Wellness</span>
+                                class="impact-badge bg-blue-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">Wellness</span>
                         </div>
-                        <h3 class=" font-bold text-3xl font-['Sora']">Corporate Campuses</h3>
-                        <div class="impact-desc text-gray-300 font-medium">
+                        <h3 class="text-white font-bold text-3xl font-['Sora']">Corporate Campuses</h3>
+                        <div class="impact-desc font-medium">
                             Enhancing employee well-being and cognitive productivity by establishing clean air bubbles
                             across tech parks, courtyards, and outdoor collaborative spaces.
                         </div>
@@ -967,16 +1011,16 @@
 
                 <!-- App 3 -->
                 <div class="impact-card h-[400px] fade-up" style="transition-delay:0.2s;">
-                    <img src="../assets/images/tech_impact_hospital.png" alt="Healthcare Facilities"
+                    <img src="/assets/images/technology/tech_impact_hospital.png" alt="Healthcare Facilities"
                         class="w-full h-full object-cover">
                     <div class="impact-overlay"></div>
                     <div class="impact-content">
                         <div class="flex items-center gap-3 mb-2">
                             <span
-                                class="bg-cyan-500  text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">Protection</span>
+                                class="impact-badge bg-cyan-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">Protection</span>
                         </div>
-                        <h3 class=" font-bold text-3xl font-['Sora']">Healthcare Facilities</h3>
-                        <div class="impact-desc text-gray-300 font-medium">
+                        <h3 class="text-white font-bold text-3xl font-['Sora']">Healthcare Facilities</h3>
+                        <div class="impact-desc font-medium">
                             Providing an extra layer of critical atmospheric protection outside hospitals, ensuring
                             vulnerable patients, visitors, and healthcare workers breathe safely from the moment they
                             arrive.
@@ -986,17 +1030,17 @@
 
                 <!-- App 4 -->
                 <div class="impact-card h-[400px] fade-up" style="transition-delay:0.3s;">
-                    <img src="../assets/images/tech_impact_school.png" alt="Educational Institutions"
+                    <img src="/assets/images/technology/tech_impact_school.png" alt="Educational Institutions"
                         class="w-full h-full object-cover">
                     <div class="impact-overlay"></div>
                     <div class="impact-content">
                         <div class="flex items-center gap-3 mb-2">
                             <span
-                                class="bg-amber-500  text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">Future
+                                class="impact-badge bg-amber-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">Future
                                 Generation</span>
                         </div>
-                        <h3 class=" font-bold text-3xl font-['Sora']">Educational Institutions</h3>
-                        <div class="impact-desc text-gray-300 font-medium">
+                        <h3 class="text-white font-bold text-3xl font-['Sora']">Educational Institutions</h3>
+                        <div class="impact-desc font-medium">
                             Ensuring safe, clean environments for schools and universities. We protect growing lungs
                             during outdoor recess, physical education, and open-air studies.
                         </div>
@@ -1017,7 +1061,7 @@
                     style="font-family:'Sora',sans-serif;font-size:clamp(2rem,4vw,3rem);font-weight:800;color:#ffffff;line-height:1.15;">
                     Performance & Metrics
                 </h2>
-                <p class="fade-up mt-5 max-w-2xl mx-auto" style="color:#94a3b8;line-height:1.8;font-size:1.05rem;">
+                <p class="fade-up mt-5 max-w-2xl mx-auto" style="color:#cbd5e1;line-height:1.8;font-size:1.05rem;">
                     We focus purely on the data and the outcome. Our verifiable performance metrics provide B2B buyers
                     and government entities with the hard numbers they need.
                 </p>
@@ -1027,9 +1071,15 @@
                 <!-- Metric 1 -->
                 <div class="dark-card p-10 rounded-3xl text-center fade-up group"
                     style="border:1px solid rgba(16,185,129,0.2);">
-                    <div class="text-5xl mb-6 group-hover:scale-110 transition-transform duration-300">≡ƒ½º</div>
+                    <div class="metric-icon" aria-hidden="true">
+                        <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="8"></circle>
+                            <circle cx="12" cy="12" r="3.5"></circle>
+                            <path stroke-linecap="round" d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22"></path>
+                        </svg>
+                    </div>
                     <div class="stat-number mb-2" style="font-size:3.5rem;">50m</div>
-                    <h3 class=" font-bold text-xl mb-4 font-['Sora']">Clean Air Bubble</h3>
+                    <h3 class="text-white font-bold text-xl mb-4 font-['Sora']">Clean Air Bubble</h3>
                     <p style="color:#94a3b8;line-height:1.7;">Visualizing the extensive radius of pure, breathable air
                         generated continuously by a single UrbanTree unit.</p>
                 </div>
@@ -1037,9 +1087,13 @@
                 <!-- Metric 2 -->
                 <div class="dark-card p-10 rounded-3xl text-center fade-up group"
                     style="transition-delay:0.1s; border:1px solid rgba(6,182,212,0.2);">
-                    <div class="text-5xl mb-6 group-hover:scale-110 transition-transform duration-300">≡ƒî¼∩╕Å</div>
+                    <div class="metric-icon" aria-hidden="true" style="border-color:rgba(6,182,212,0.4);background:rgba(6,182,212,0.08);color:#06b6d4;">
+                        <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 12h6.75M3.75 7.5h10.5M3.75 16.5h4.5M14.25 9.75c1.5-1.5 3.75-1.5 5.25 0s1.5 3.75 0 5.25"></path>
+                        </svg>
+                    </div>
                     <div class="stat-number mb-2" style="font-size:3.5rem;">10K</div>
-                    <h3 class=" font-bold text-xl mb-4 font-['Sora']">Cubic Meters / Hour</h3>
+                    <h3 class="text-white font-bold text-xl mb-4 font-['Sora']">Cubic Meters / Hour</h3>
                     <p style="color:#94a3b8;line-height:1.7;">Highlighting the sheer volume of polluted air processed
                         and purified at maximum operational capacity.</p>
                 </div>
@@ -1047,9 +1101,13 @@
                 <!-- Metric 3 -->
                 <div class="dark-card p-10 rounded-3xl text-center fade-up group"
                     style="transition-delay:0.2s; border:1px solid rgba(16,185,129,0.2);">
-                    <div class="text-5xl mb-6 group-hover:scale-110 transition-transform duration-300">≡ƒ¢í∩╕Å</div>
+                    <div class="metric-icon" aria-hidden="true">
+                        <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"></path>
+                        </svg>
+                    </div>
                     <div class="stat-number mb-2" style="font-size:3.5rem;">99.9%</div>
-                    <h3 class=" font-bold text-xl mb-4 font-['Sora']">Particulate Removal</h3>
+                    <h3 class="text-white font-bold text-xl mb-4 font-['Sora']">Particulate Removal</h3>
                     <p style="color:#94a3b8;line-height:1.7;">Emphasizing the total eradication of PM2.5, PM10, and VOCs
                         without exposing the underlying filtration mechanics.</p>
                 </div>
@@ -1214,7 +1272,7 @@
             <div
                 style="background:#0f1a14;border:1px solid rgba(16,185,129,0.25);border-radius:24px;max-width:680px;width:100%;max-height:85vh;overflow-y:auto;padding:40px;position:relative;">
                 <button onclick="closePrivacy()"
-                    style="position:absolute;top:20px;right:20px;background:rgba(255,255,255,0.08);border:none;color:#9ca3af;width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;">Γ£ò</button>
+                    style="position:absolute;top:20px;right:20px;background:rgba(255,255,255,0.08);border:none;color:#9ca3af;width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;">&#215;</button>
                 <div
                     style="display:inline-block;padding:4px 14px;border-radius:20px;border:1px solid rgba(16,185,129,0.4);background:rgba(16,185,129,0.08);font-size:10px;font-weight:700;letter-spacing:0.2em;color:#10b981;text-transform:uppercase;margin-bottom:16px;">
                     Legal</div>
@@ -1285,7 +1343,7 @@
             <div
                 style="background:#0f1a14;border:1px solid rgba(16,185,129,0.25);border-radius:24px;max-width:680px;width:100%;max-height:85vh;overflow-y:auto;padding:40px;position:relative;">
                 <button onclick="closeTerms()"
-                    style="position:absolute;top:20px;right:20px;background:rgba(255,255,255,0.08);border:none;color:#9ca3af;width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;">Γ£ò</button>
+                    style="position:absolute;top:20px;right:20px;background:rgba(255,255,255,0.08);border:none;color:#9ca3af;width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;">&#215;</button>
                 <div
                     style="display:inline-block;padding:4px 14px;border-radius:20px;border:1px solid rgba(16,185,129,0.4);background:rgba(16,185,129,0.08);font-size:10px;font-weight:700;letter-spacing:0.2em;color:#10b981;text-transform:uppercase;margin-bottom:16px;">
                     Legal</div>
@@ -1342,7 +1400,7 @@
             <div
                 style="background:#0f1a14;border:1px solid rgba(16,185,129,0.25);border-radius:24px;max-width:680px;width:100%;max-height:85vh;overflow-y:auto;padding:40px;position:relative;">
                 <button onclick="closeDisclaimer()"
-                    style="position:absolute;top:20px;right:20px;background:rgba(255,255,255,0.08);border:none;color:#9ca3af;width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;">Γ£ò</button>
+                    style="position:absolute;top:20px;right:20px;background:rgba(255,255,255,0.08);border:none;color:#9ca3af;width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;">&#215;</button>
                 <div
                     style="display:inline-block;padding:4px 14px;border-radius:20px;border:1px solid rgba(16,185,129,0.4);background:rgba(16,185,129,0.08);font-size:10px;font-weight:700;letter-spacing:0.2em;color:#10b981;text-transform:uppercase;margin-bottom:16px;">
                     Legal</div>
@@ -1384,7 +1442,7 @@
             <div
                 style="background:#0f1a14;border:1px solid rgba(16,185,129,0.25);border-radius:24px;max-width:680px;width:100%;max-height:85vh;overflow-y:auto;padding:40px;position:relative;">
                 <button onclick="closeCookie()"
-                    style="position:absolute;top:20px;right:20px;background:rgba(255,255,255,0.08);border:none;color:#9ca3af;width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;">Γ£ò</button>
+                    style="position:absolute;top:20px;right:20px;background:rgba(255,255,255,0.08);border:none;color:#9ca3af;width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;">&#215;</button>
                 <div
                     style="display:inline-block;padding:4px 14px;border-radius:20px;border:1px solid rgba(16,185,129,0.4);background:rgba(16,185,129,0.08);font-size:10px;font-weight:700;letter-spacing:0.2em;color:#10b981;text-transform:uppercase;margin-bottom:16px;">
                     Legal</div>
@@ -1430,7 +1488,7 @@
             <div
                 style="background:#0f1a14;border:1px solid rgba(16,185,129,0.25);border-radius:24px;max-width:680px;width:100%;max-height:85vh;overflow-y:auto;padding:40px;position:relative;">
                 <button onclick="closeIP()"
-                    style="position:absolute;top:20px;right:20px;background:rgba(255,255,255,0.08);border:none;color:#9ca3af;width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;">Γ£ò</button>
+                    style="position:absolute;top:20px;right:20px;background:rgba(255,255,255,0.08);border:none;color:#9ca3af;width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;">&#215;</button>
                 <div
                     style="display:inline-block;padding:4px 14px;border-radius:20px;border:1px solid rgba(16,185,129,0.4);background:rgba(16,185,129,0.08);font-size:10px;font-weight:700;letter-spacing:0.2em;color:#10b981;text-transform:uppercase;margin-bottom:16px;">
                     Legal</div>

@@ -86,6 +86,20 @@ const initNavbar = () => {
     }
     updateNavbarState();
 
+    // Set active class based on current URL
+    const navLinks = document.querySelectorAll('.nav-link, .mobile-link');
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        const href = link.getAttribute('href');
+        if (!href || href.includes('#')) return;
+        
+        if (isHomepage && (href.endsWith('index.html') || href === '/')) {
+            link.classList.add('active');
+        } else if (!isHomepage && path.includes(href)) {
+            link.classList.add('active');
+        }
+    });
+
     let isMenuOpen = false;
 
     function setMenuState(open) {

@@ -1,11 +1,11 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog - Insights & Impact | UrbanTree by SunEx Technologies</title>
-    <link rel="icon" type="image/png" href="/assets/images/logo.png">
+    <link rel="icon" type="image/png" href="/assets/images/shared/logo.png">
     <meta name="description"
         content="Read the latest insights and case studies on urban air purification and environmental technology by UrbanTree.">
 
@@ -246,9 +246,9 @@
 
             <!-- Featured Post -->
             <div class="blog-card fade-up flex flex-col lg:flex-row mb-16 cursor-pointer" data-category="technology"
-                onclick="window.location.href='blog-smart-cities.html'">
+                data-href='blog-smart-cities.html'>
                 <div class="lg:w-1/2 relative overflow-hidden">
-                    <img src="/assets/images/blog_featured_city.png" alt="Smart Cities"
+                    <img src="/assets/images/blog/blog_featured_city.png" alt="Smart Cities"
                         class="w-full h-full object-cover min-h-[350px] transform hover:scale-105 transition duration-700">
                     <div
                         class="absolute top-4 left-4 bg-emerald-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
@@ -287,9 +287,9 @@
 
                 <!-- Post 1 -->
                 <div class="blog-card fade-up flex flex-col group cursor-pointer" data-category="case-studies"
-                    onclick="window.location.href='blog-smart-cities.html'">
+                    data-href='blog-smart-cities.html'>
                     <div class="h-56 overflow-hidden relative">
-                        <img src="/assets/images/blog_corporate.png" alt="Corporate Wellness"
+                        <img src="/assets/images/blog/blog_corporate.png" alt="Corporate Wellness"
                             class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
                         <div
                             class="absolute top-4 left-4 bg-white/90 backdrop-blur text-gray-900 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
@@ -314,9 +314,9 @@
 
                 <!-- Post 2 -->
                 <div class="blog-card fade-up flex flex-col group cursor-pointer" style="transition-delay:0.1s;"
-                    data-category="environment" onclick="window.location.href='blog-bio-mimicry.html'">
+                    data-category="environment" data-href='blog-bio-mimicry.html'>
                     <div class="h-56 overflow-hidden relative">
-                        <img src="/assets/images/blog_biomimicry.png" alt="Bio-Mimicry"
+                        <img src="/assets/images/blog/blog_biomimicry.png" alt="Bio-Mimicry"
                             class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
                         <div
                             class="absolute top-4 left-4 bg-white/90 backdrop-blur text-gray-900 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
@@ -341,9 +341,9 @@
 
                 <!-- Post 3 -->
                 <div class="blog-card fade-up flex flex-col group cursor-pointer" style="transition-delay:0.2s;"
-                    data-category="technology" onclick="window.location.href='blog-smart-cities.html'">
+                    data-category="technology" data-href='blog-smart-cities.html'>
                     <div class="h-56 overflow-hidden relative">
-                        <img src="/assets/images/blog_tech_airflow.png" alt="Airflow Technology"
+                        <img src="/assets/images/blog/blog_tech_airflow.png" alt="Airflow Technology"
                             class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
                         <div
                             class="absolute top-4 left-4 bg-white/90 backdrop-blur text-gray-900 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
@@ -413,51 +413,8 @@
     <!-- ═══ FOOTER ═══ -->
     {{> footer }}
 
-    <script>
-        // Scroll reveal
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('visible');
-            });
-        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+    <script type="module" src="/assets/js/blog.js"></script>
 
-        // Blog Filtering Logic
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const blogCards = document.querySelectorAll('.blog-card');
-
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                // Update active class
-                filterBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-
-                // Filter cards
-                const filterValue = btn.getAttribute('data-filter');
-                blogCards.forEach(card => {
-                    // Reset animation for re-triggering
-                    card.style.transition = 'none';
-                    card.classList.remove('visible');
-                    card.style.opacity = '0';
-                    card.style.transform = 'translateY(36px)';
-
-                    if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
-                        card.style.display = card.classList.contains('lg:flex-row') ? 'flex' : 'flex';
-
-                        // Re-trigger animation
-                        setTimeout(() => {
-                            card.style.transition = 'opacity 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1)';
-                            card.classList.add('visible');
-                            card.style.opacity = '1';
-                            card.style.transform = 'translateY(0)';
-                        }, 50);
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-            });
-        });
-    </script>
 </body>
 
 </html>

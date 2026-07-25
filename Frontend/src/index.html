@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>UrbanTree by SunEx Technologies | Bio-Mechanical Air Purification</title>
-    <link rel="icon" type="image/png" href="/assets/images/logo.png">
+    <link rel="icon" type="image/png" href="/assets/images/shared/logo.png">
     <meta name="description"
         content="UrbanTree combines nature-powered purification with advanced engineering to create healthier environments through localized breathable Air Pocket zones.">
     <meta name="keywords"
@@ -27,7 +27,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="/assets/css/tailwind.css">
-    <link rel="stylesheet" href="/assets/css/index.css?v=20260719">
+    <link rel="stylesheet" href="/assets/css/index.css">
 
 </head>
 
@@ -44,14 +44,14 @@
 
 
         <!-- ═══ SECTION 1: HERO ═══ -->
-        <section class="snap-section bg-black" style="height:100vh; min-height:100vh;" id="hero-section"
+        <section class="snap-section bg-black" id="hero-section"
             data-navbar-theme="dark">
             <video id="hero-video" playsinline preload="auto">
                 <source src="/videos/moss.mp4" type="video/mp4">
             </video>
             <!-- Intro Prompt -->
             <div id="hero-click-prompt" class="absolute inset-0 z-30" style="background: transparent;">
-                <div id="prompt-inner" onclick="startHeroVideo()" class="cursor-pointer select-none"
+                <div id="prompt-inner" class="select-none"
                     style="height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1rem; transition: opacity 0.5s ease, transform 0.5s ease;">
 
                     <p
@@ -59,42 +59,6 @@
                         <span id="hero-typing-text" data-text="Every Breathe Matters..."></span><span
                             id="hero-typing-cursor" aria-hidden="true">|</span>
                     </p>
-                    <div id="see-action-button"
-                        style="display:flex; align-items:center; justify-content:center; gap:0.85rem; opacity:0; visibility:hidden; transform:translateY(10px); transition:opacity 0.45s ease, transform 0.45s ease; animation:seeActionReveal 0.45s ease 3.1s forwards; position:relative; z-index:2;">
-                        <button type="button" class="orange-cta action-pulse"
-                            style="font-family:'Inter',sans-serif; font-size:1.2rem; font-weight:700; color:#fff; background:#f97316; border:0; border-radius:999px; padding:0.75rem 2rem; box-shadow:0 10px 28px rgba(249,115,22,0.34); cursor:pointer; text-align:center;">
-                            See it in action
-                        </button>
-                        <button type="button" aria-label="Play video" class="orange-cta"
-                            style="width:4rem; height:4rem; display:inline-flex; align-items:center; justify-content:center; color:#fff; background:#f97316; border:0; border-radius:999px; box-shadow:0 10px 28px rgba(249,115,22,0.34); cursor:pointer; padding:0;">
-                            <span
-                                style="display:inline-flex; align-items:center; justify-content:center; font-size:1.75rem; line-height:1;">▶</span>
-                        </button>
-                    </div>
-
-                    <!-- Play button — fixed at viewport center (moss hole) -->
-                    <div style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%);">
-                        <div class="relative flex items-center justify-center">
-                            <span
-                                class="absolute inline-flex h-20 w-20 rounded-full bg-[#4a9e3f] opacity-30 animate-ping"></span>
-                            <span
-                                class="relative inline-flex h-14 w-14 rounded-full bg-[#4a9e3f] items-center justify-center shadow-lg shadow-[#4a9e3f]/40">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white ml-1"
-                                    fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M8 5v14l11-7z" />
-                                </svg>
-                            </span>
-                        </div>
-                    </div>
-
-                    <!-- Bottom text -->
-                    <div style="text-align:center; padding-bottom: 4vh;">
-                        <p
-                            style="font-family:'Sora',sans-serif; font-size:clamp(2.5rem, 5vw, 4.5rem); font-weight:800; color:#4a9e3f; text-shadow: 0 2px 16px rgba(0,0,0,0.7); margin:0;">
-                            Click here!
-                        </p>
-                    </div>
-
                 </div>
             </div>
 
@@ -105,14 +69,10 @@
                     class="opacity-0 transform translate-y-8 transition-all duration-1000 ease-out text-center flex flex-col items-center">
                     <h1 class="text-3xl md:text-5xl lg:text-6xl font-serif font-extrabold mb-8 leading-tight text-white max-w-5xl drop-shadow-2xl text-center"
                         style="letter-spacing:0;">
-                        <span class="block md:inline-block md:whitespace-nowrap">Reinventing Urban Air With</span>
-                        <span class="block md:inline-block md:whitespace-nowrap text-[#f97316]">Bio-Mechanical
-                            Intelligence</span>
+                        <span class="block whitespace-nowrap">Reinventing Urban Air</span>
+                        <span class="block whitespace-nowrap">With</span>
+                        <span class="block whitespace-nowrap hero-accent-text">Bio-Mechanical Intelligence</span>
                     </h1>
-                    <button id="hero-modal-play-button" type="button" class="orange-cta hero-modal-play-button"
-                        aria-label="Open video preview">
-                        <span>▶</span>
-                    </button>
                     <p
                         class="text-lg md:text-xl text-white max-w-4xl leading-relaxed mb-8 drop-shadow-lg text-center px-4">
                         <span class="block md:inline-block md:whitespace-nowrap">UrbanTree combines nature-powered
@@ -123,8 +83,7 @@
                     </p>
 
                     <div class="flex items-center justify-center space-x-4">
-                        <a href="pages/technology.html" class="orange-cta"
-                            style="font-family:'Inter',sans-serif; font-size:1.2rem; font-weight:700; color:#fff; background:#f97316; border:0; border-radius:999px; padding:0.75rem 2rem; box-shadow:0 10px 28px rgba(249,115,22,0.34); text-align:center;">
+                        <a href="pages/technology.html" class="hero-explore-btn">
                             Explore Technology
                         </a>
                     </div>
@@ -132,17 +91,6 @@
             </div>
             <div class="hero-scroll-hint" aria-hidden="true">
                 <span>⌄</span>
-            </div>
-            <div id="hero-video-modal" class="hero-video-modal" aria-hidden="true">
-                <div class="hero-video-modal-backdrop" data-hero-video-close></div>
-                <div class="hero-video-modal-panel" role="dialog" aria-modal="true"
-                    aria-label="UrbanTree video preview">
-                    <button type="button" class="hero-video-modal-close" aria-label="Close video"
-                        data-hero-video-close>×</button>
-                    <video id="hero-modal-video" controls playsinline preload="metadata">
-                        <source src="/videos/moss.mp4" type="video/mp4">
-                    </video>
-                </div>
             </div>
         </section>
 
@@ -167,115 +115,110 @@
                     class="intro-brand-tree text-4xl md:text-6xl lg:text-7xl">Tree</span>
             </div>
 
-            <!-- Device assembly animation -->
-            <div id="device-assembly-stage" class="device-assembly-stage" aria-hidden="true">
-                <div class="device-assembly-frame">
-                    <img class="assembly-piece assembly-top" src="/assets/images/device_ka_image.png" alt="">
-                    <img class="assembly-piece assembly-moss" src="/assets/images/device_ka_image.png" alt="">
-                    <img class="assembly-piece assembly-band" src="/assets/images/device_ka_image.png" alt="">
-                    <img class="assembly-piece assembly-base" src="/assets/images/device_ka_image.png" alt="">
-                    <img class="assembly-final" src="/assets/images/device_ka_image.png" alt="">
-                    <div class="assembly-title">URBANTREE</div>
-                </div>
-                <div class="assembly-showcase-copy" aria-hidden="true">
-                    <div class="assembly-feature-row">
-                        <div class="assembly-feature" style="--feature-delay:0ms;--feature-offset:0px;">
-                            <img src="/assets/images/1.png" alt="">
-                            <span>Sustainable Biological Systems</span>
-                        </div>
-                        <div class="assembly-feature" style="--feature-delay:190ms;--feature-offset:22px;">
-                            <img src="/assets/images/2.png" alt="">
-                            <span>Advanced Engineering</span>
-                        </div>
-                        <div class="assembly-feature assembly-feature-large-icon"
-                            style="--feature-delay:380ms;--feature-offset:44px;">
-                            <img src="/assets/images/3.png" alt="">
-                            <span>Real-Time Environmental Intelligence</span>
-                        </div>
-                        <div class="assembly-feature" style="--feature-delay:570ms;--feature-offset:66px;">
-                            <img src="/assets/images/4.png" alt="">
-                            <span>Breathable Air Pocket Ecosystems</span>
-                        </div>
-                        <div class="assembly-feature" style="--feature-delay:760ms;--feature-offset:88px;">
-                            <img src="/assets/images/5.png" alt="">
-                            <span>Cleaner, Healthier, Future-Ready Communities</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <!-- Device / feature showcase intentionally unused — sequence ends on URBAN Tree -->
+            <div id="device-assembly-stage" class="device-assembly-stage" aria-hidden="true" style="display:none;"></div>
 
-            <!-- Main content wrapper -->
+            <!-- Main content wrapper (kept hidden; sequence ends on brand reveal) -->
             <div id="product-content"
-                style="opacity:0; display:flex; width:100%; height:100%; align-items:center; justify-content:center;">
-
-                <!-- LEFT: Text -->
-                <div class="z-10 px-12 md:px-20 w-full lg:w-1/2" style="display:none;">
-
-                    <h2 class="cinema-reveal"
-                        style="font-family:'Sora',sans-serif; font-size:clamp(2rem,4.5vw,4rem); font-weight:800; line-height:1.1; color:#fff; margin-bottom:0.5rem; opacity:0;">
-                        Outdoor Bio
-                    </h2>
-
-                    <h2 class="cinema-reveal"
-                        style="font-family:'Sora',sans-serif; font-size:clamp(2rem,4.5vw,4rem); font-weight:800; line-height:1.1; color:#fff; margin-bottom:0.5rem; opacity:0;">
-                        Air Purifier
-                    </h2>
-
-                    <h2 id="urbantree-name"
-                        style="font-family:'Sora',sans-serif; font-size:clamp(2.5rem,5.5vw,5rem); font-weight:900; line-height:1.1; margin-bottom:2rem; background: linear-gradient(to right, #4a9e3f, #4a9e3f); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; opacity:0; transform:scale(0.7);">
-                        "URBANTREE"
-                    </h2>
-
-                    <div class="cinema-reveal"
-                        style="width:60px; height:3px; background: linear-gradient(to right, #4a9e3f, #4a9e3f); border-radius:2px; margin-bottom:2rem; opacity:0;">
-                    </div>
-
-                    <p class="cinema-reveal"
-                        style="font-family:'Inter',sans-serif; font-size:1.05rem; color:#9ca3af; line-height:1.8; max-width:460px; opacity:0;">
-                        Nature engineered. City deployed. UrbanTree harnesses the power of living moss and
-                        bio-mechanical intelligence to purify the air around you — block by block.
-                    </p>
-
-                </div>
-
-                <!-- RIGHT: Product Image -->
+                style="opacity:0; display:none; width:100%; height:100%; align-items:center; justify-content:center;">
                 <div class="z-10 w-full flex items-center justify-center" id="product-img-wrap"
-                    style="opacity:0; transform:translateY(18px); transition: opacity 0.9s cubic-bezier(0.2,0.8,0.2,1), transform 0.9s cubic-bezier(0.2,0.8,0.2,1);">
-                    <img src="/assets/images/device_ka_image.png" alt="UrbanTree Product"
-                        style="height: 64vh; max-height:620px; width:auto; object-fit:contain; filter: drop-shadow(0 0 40px rgba(74,158,63,0.35)) drop-shadow(0 0 80px rgba(74,158,63,0.15)); animation: floatProduct 4s ease-in-out infinite;">
+                    style="opacity:0; transform:translateY(18px);">
                 </div>
-
             </div>
 
         </section>
 
-        <style>
-            @keyframes floatProduct {
+        <!-- ═══ SECTION: WHAT IS URBANTREE ═══ -->
+        <section class="snap-section ut-define-section" id="what-is-urbantree" data-navbar-theme="dark">
+            <div class="ut-define-atmosphere" aria-hidden="true">
+                <span class="ut-define-ring ut-define-ring--1"></span>
+                <span class="ut-define-ring ut-define-ring--2"></span>
+                <span class="ut-define-ring ut-define-ring--3"></span>
+                <span class="ut-define-watermark">UrbanTree</span>
+            </div>
 
-                0%,
-                100% {
-                    transform: translateY(0px);
-                }
+            <div class="ut-define-shell">
+                <div class="ut-define-copy fade-up">
+                    <p class="ut-define-kicker">
+                        <span>SunEx Technologies</span>
+                        <span class="ut-define-kicker-dot" aria-hidden="true"></span>
+                        <span>What is UrbanTree</span>
+                    </p>
 
-                50% {
-                    transform: translateY(-18px);
-                }
-            }
-        </style>
+                    <h2 class="ut-define-title">
+                        An advanced bio-mechanical
+                        <em>air purification ecosystem</em>
+                        for the city.
+                    </h2>
+
+                    <p class="ut-define-lead">
+                        UrbanTree improves urban air quality and supports healthier environments by creating
+                        localized breathable <strong>Air Pocket</strong> zones — where multi-stage filtration,
+                        biological purification, intelligent airflow, and AI-driven monitoring work as one system.
+                    </p>
+
+                    <p class="ut-define-body">
+                        Powered by smart environmental analytics and energy-efficient infrastructure, it
+                        continuously monitors conditions, adapts in real time, and optimizes purification
+                        performance to improve AQI where people actually breathe.
+                    </p>
+                </div>
+
+                <div class="ut-define-stage fade-up">
+                    <div class="ut-define-device-wrap">
+                        <img src="/assets/images/home/device.png"
+                            alt="UrbanTree bio-mechanical air purification unit"
+                            class="ut-define-device" loading="lazy" width="420" height="720">
+                    </div>
+
+                    <ol class="ut-define-stack" aria-label="UrbanTree system layers">
+                        <li>
+                            <span class="ut-define-stack-index">01</span>
+                            <span class="ut-define-stack-label">Multi-stage filtration</span>
+                        </li>
+                        <li>
+                            <span class="ut-define-stack-index">02</span>
+                            <span class="ut-define-stack-label">Biological purification</span>
+                        </li>
+                        <li>
+                            <span class="ut-define-stack-index">03</span>
+                            <span class="ut-define-stack-label">Intelligent airflow</span>
+                        </li>
+                        <li>
+                            <span class="ut-define-stack-index">04</span>
+                            <span class="ut-define-stack-label">AI environmental monitoring</span>
+                        </li>
+                    </ol>
+                </div>
+
+                <div class="ut-define-targets fade-up" aria-label="Pollutants UrbanTree is designed to reduce">
+                    <span class="ut-define-targets-label">Designed to reduce</span>
+                    <ul class="ut-define-targets-list" role="list">
+                        <li>PM2.5</li>
+                        <li>PM10</li>
+                        <li>VOCs</li>
+                        <li>Odors</li>
+                        <li>Microorganisms</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
         <!-- ═══ SECTION 2.5: URBAN AIR CRISIS ═══ -->
         <section class="snap-section relative overflow-hidden bg-black" id="air-crisis" data-navbar-theme="dark">
             <div id="crisis-slider" class="absolute inset-0 cursor-ew-resize select-none touch-pan-y">
-                <img src="/assets/images/city-clean.png" alt="Clean city"
+                <img src="/assets/images/home/city-clean.png" alt="Clean city"
                     class="absolute inset-0 w-full h-full object-cover object-[25%_center] md:object-center">
 
                 <div id="polluted-layer" class="absolute inset-y-0 left-0 overflow-hidden" style="width:100%;">
-                    <img src="/assets/images/city-polluted.png" alt="Polluted city"
-                        class="absolute inset-y-0 left-0 w-full h-full object-cover object-[25%_center] md:object-center max-w-none">
+                    <img src="/assets/images/home/city-polluted.png" alt="Polluted city"
+                        class="absolute inset-y-0 left-0 max-w-none h-full object-cover object-[25%_center] md:object-center"
+                        id="polluted-img" style="width:100vw;">
                     <div
-                        class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/20 to-black/10 pointer-events-none">
+                        class="absolute inset-0 bg-gradient-to-l from-black/75 via-black/25 to-transparent pointer-events-none">
                     </div>
                     <div
-                        class="absolute left-8 md:left-16 bottom-20 md:bottom-24 w-[calc(100%-4rem)] md:w-[calc(100%-8rem)] lg:w-[42rem] pointer-events-none">
+                        class="absolute right-8 md:right-16 bottom-20 md:bottom-24 w-[min(42rem,calc(100%-4rem))] md:w-[min(42rem,calc(100%-8rem))] text-right pointer-events-none">
                         <span class="text-xs font-bold uppercase tracking-[0.3em] text-[#4a9e3f] mb-5 block">The Urban
                             Air Crisis</span>
                         <h2
@@ -301,10 +244,10 @@
             <div class="vm-decor vm-decor--topo" aria-hidden="true"></div>
             <div class="vm-decor vm-decor--city" aria-hidden="true"></div>
             <!-- Floating Faded Leaves -->
-            <img src="/assets/images/aesthetic_leaf_1.png" alt=""
+            <img src="/assets/images/home/aesthetic_leaf_1.png" alt=""
                 class="absolute top-[10%] left-[-5%] w-[350px] opacity-70 z-0 pointer-events-none animate-[float_7s_ease-in-out_infinite] rotate-[15deg] blur-[1px]"
                 aria-hidden="true" loading="lazy">
-            <img src="/assets/images/aesthetic_leaf_2.png" alt=""
+            <img src="/assets/images/home/aesthetic_leaf_2.png" alt=""
                 class="absolute bottom-[5%] right-[-5%] w-[450px] opacity-60 z-0 pointer-events-none animate-[float_9s_ease-in-out_infinite_1s] -rotate-[25deg] blur-[2px]"
                 aria-hidden="true" loading="lazy">
 
@@ -346,15 +289,15 @@
                                 </span>
                                 <span>Our Vision</span>
                             </div>
-                            <h3 class="vm-panel-title">Breathable urban infrastructure for <em>future-ready cities.</em>
+                            <h3 class="vm-panel-title text-slate-900">Breathable urban infrastructure for <em>future-ready cities.</em>
                             </h3>
-                            <p class="vm-panel-copy">To integrate sustainable biological systems and real-time
+                            <p class="vm-panel-copy text-slate-700">To integrate sustainable biological systems and real-time
                                 environmental intelligence to create future-ready, breathable urban infrastructure under
                                 Viksit Bharat 2047.</p>
                         </div>
                         <div class="vm-panel-visual vm-panel-visual--vision" aria-hidden="true">
                             <div class="vm-visual-ring">
-                                <img src="/assets/images/vm-vision-city.png"
+                                <img src="/assets/images/home/vm-vision-city.png"
                                     alt="Futuristic green sustainable city skyline" loading="lazy" width="320"
                                     height="320">
                             </div>
@@ -381,7 +324,7 @@
                         </div>
                         <div class="vm-panel-visual vm-panel-visual--mission" aria-hidden="true">
                             <div class="vm-visual-ring vm-visual-ring--glow">
-                                <img src="/assets/images/device_ka_image.png"
+                                <img src="/assets/images/home/device.png"
                                     alt="UrbanTree bio-mechanical air purification unit" loading="lazy" width="320"
                                     height="320">
                             </div>
@@ -467,10 +410,10 @@
             data-navbar-theme="dark">
 
             <!-- Floating Faded Leaves -->
-            <img src="/assets/images/leaf_blur_3.png" alt=""
+            <img src="/assets/images/shared/leaf_blur_3.png" alt=""
                 class="absolute top-[20%] right-[-10%] w-[400px] opacity-60 z-0 pointer-events-none animate-[float_8s_ease-in-out_infinite] rotate-[45deg] blur-[3px]"
                 aria-hidden="true" loading="lazy">
-            <img src="/assets/images/leaf_blur_1.png" alt=""
+            <img src="/assets/images/shared/leaf_blur_1.png" alt=""
                 class="absolute bottom-[-10%] left-[-5%] w-[300px] opacity-50 z-0 pointer-events-none animate-[float_10s_ease-in-out_infinite_0.5s] -rotate-[15deg] blur-[2px] scale-x-[-1]"
                 aria-hidden="true" loading="lazy">
 
@@ -508,7 +451,7 @@
                             style="position:absolute;inset:-30px;background:radial-gradient(ellipse,rgba(74,158,63,0.12) 0%,transparent 70%);border-radius:50%;pointer-events:none;">
                         </div>
 
-                        <img src="/assets/images/Nature__engineering_in_perfect_balance.png"
+                        <img src="/assets/images/home/Nature__engineering_in_perfect_balance.png"
                             alt="Nature and Engineering in Perfect Balance"
                             style="width:100%;border-radius:24px;object-fit:cover;position:relative;z-index:1;filter:drop-shadow(0 20px 60px rgba(74,158,63,0.2));animation:techImgFloat 6s ease-in-out infinite;">
 
@@ -1150,10 +1093,10 @@
             id="capabilities" data-navbar-theme="dark">
 
             <!-- Floating Faded Leaves -->
-            <img src="/assets/images/leaf_blur_2.png" alt=""
+            <img src="/assets/images/home/leaf_blur_2.png" alt=""
                 class="absolute top-[-5%] left-[20%] w-[200px] opacity-70 z-0 pointer-events-none animate-[float_6s_ease-in-out_infinite_2s] rotate-[60deg] blur-[1px]"
                 aria-hidden="true" loading="lazy">
-            <img src="/assets/images/leaf_blur_3.png" alt=""
+            <img src="/assets/images/shared/leaf_blur_3.png" alt=""
                 class="absolute bottom-[10%] right-[-15%] w-[450px] opacity-50 z-0 pointer-events-none animate-[float_9s_ease-in-out_infinite] -rotate-[45deg] blur-[4px] scale-y-[-1]"
                 aria-hidden="true" loading="lazy">
 
@@ -1355,7 +1298,7 @@
                         <!-- Floating Portal Mask -->
                         <div class="w-[120%] h-[120%] max-w-[800px] absolute top-1/2 left-1/2"
                             style="mask-image: radial-gradient(circle at center, black 40%, transparent 68%); -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 68%); animation: floatPortal 6s ease-in-out infinite;">
-                            <img src="/assets/images/capabilities_portal.png" alt="Futuristic Clean City"
+                            <img src="/assets/images/home/capabilities_portal.png" alt="Futuristic Clean City"
                                 class="w-full h-full object-cover mix-blend-multiply opacity-95">
                         </div>
 
@@ -1374,7 +1317,7 @@
 
                 <!-- Bottom Dark Metrics Bar -->
                 <div
-                    class="w-full bg-[#111c16] rounded-3xl p-8 lg:p-10 relative overflow-hidden shadow-2xl border border-white/5 fade-up mx-auto z-20">
+                    class="w-full max-w-full bg-[#111c16] rounded-3xl p-8 lg:p-10 relative overflow-hidden shadow-2xl border border-white/5 fade-up mx-auto z-20">
                     <!-- Subtle glowing bottom line -->
                     <div
                         class="absolute bottom-0 left-10 right-10 h-1 bg-[#378b2e] shadow-[0_0_30px_5px_rgba(55,139,46,0.5)]">
@@ -1452,13 +1395,13 @@
             id="sustainability" data-navbar-theme="dark">
 
             <!-- Floating Faded Leaves -->
-            <img src="/assets/images/aesthetic_leaf_1.png" alt=""
+            <img src="/assets/images/home/aesthetic_leaf_1.png" alt=""
                 class="absolute top-[-5%] right-[5%] w-[350px] opacity-80 z-0 pointer-events-none animate-[float_7s_ease-in-out_infinite_1s] -rotate-[10deg] blur-[1px]"
                 aria-hidden="true" loading="lazy">
-            <img src="/assets/images/aesthetic_leaf_2.png" alt=""
+            <img src="/assets/images/home/aesthetic_leaf_2.png" alt=""
                 class="absolute bottom-[20%] left-[-10%] w-[450px] opacity-70 z-0 pointer-events-none animate-[float_10s_ease-in-out_infinite] rotate-[30deg] blur-[2px]"
                 aria-hidden="true" loading="lazy">
-            <img src="/assets/images/aesthetic_leaf_1.png" alt=""
+            <img src="/assets/images/home/aesthetic_leaf_1.png" alt=""
                 class="absolute bottom-[-15%] right-[15%] w-[300px] opacity-60 z-0 pointer-events-none animate-[float_8s_ease-in-out_infinite_2s] -rotate-[60deg] blur-[3px] scale-x-[-1]"
                 aria-hidden="true" loading="lazy">
 
@@ -1678,7 +1621,7 @@
                             </div>
 
                             <!-- Main Image -->
-                            <img src="/assets/images/sustainability_dome.png" alt="Sustainable City Terrarium Dome"
+                            <img src="/assets/images/home/sustainability_dome.png" alt="Sustainable City Terrarium Dome"
                                 class="relative z-10 w-full object-contain hover:scale-105 transition-transform duration-700 animate-[float_6s_ease-in-out_infinite]">
                         </div>
                     </div>
@@ -1687,7 +1630,7 @@
 
                 <!-- Bottom Metrics Pill -->
                 <div
-                    class="w-full bg-white rounded-[3rem] shadow-[0_20px_60px_rgba(16,185,129,0.08)] border border-slate-100 p-8 fade-up z-20 mt-6 relative overflow-hidden">
+                    class="w-full max-w-full bg-white rounded-[3rem] shadow-[0_20px_60px_rgba(16,185,129,0.08)] border border-slate-100 p-8 fade-up z-20 mt-6 relative overflow-hidden">
                     <!-- Subtle background decoration -->
                     <div class="absolute bottom-0 left-0 w-32 h-32 opacity-10">
                         <svg viewBox="0 0 100 100" class="w-full h-full text-brand-emerald" fill="none"
@@ -1842,7 +1785,7 @@
                             style="display:none; position:absolute; inset:0; z-index:100; background:rgba(0,0,0,0.85); backdrop-filter:blur(4px); align-items:center; justify-content:center; border-radius:16px;">
                             <div
                                 style="background:#0d1117; border:1px solid #ffffff20; border-radius:12px; padding:24px; width:92%; max-height:88%; overflow-y:auto; position:relative; font-family:monospace;">
-                                <button onclick="closeZoneModal(1)"
+                                <button data-modal-close="zone-modal-1"
                                     style="position:absolute; top:14px; right:14px; background:#ffffff15; border:none; color:white; border-radius:6px; width:28px; height:28px; cursor:pointer; font-size:16px;">✕</button>
                                 <div id="zone-modal-body-1"></div>
                             </div>
@@ -1887,7 +1830,7 @@
                             style="display:none; position:absolute; inset:0; z-index:100; background:rgba(0,0,0,0.85); backdrop-filter:blur(4px); align-items:center; justify-content:center; border-radius:16px;">
                             <div
                                 style="background:#0d1117; border:1px solid #ffffff20; border-radius:12px; padding:24px; width:92%; max-height:88%; overflow-y:auto; position:relative; font-family:monospace;">
-                                <button onclick="closeZoneModal(2)"
+                                <button data-modal-close="zone-modal-2"
                                     style="position:absolute; top:14px; right:14px; background:#ffffff15; border:none; color:white; border-radius:6px; width:28px; height:28px; cursor:pointer; font-size:16px;">✕</button>
                                 <div id="zone-modal-body-2"></div>
                             </div>
@@ -1949,12 +1892,12 @@
     <!-- Enquiry Modal -->
     <div id="enquiry-modal"
         class="fixed inset-0 z-[9999] bg-black/40 backdrop-blur-sm flex items-center justify-center p-4"
-        style="display: none;" onclick="if(event.target===this)closeEnquiry()">
+        style="display: none;" data-modal-bg="enquiry-modal">
         <div class="bg-white w-full max-w-2xl rounded-3xl shadow-2xl relative overflow-hidden"
             style="max-height: 90vh; overflow-y: auto;">
             <!-- Header -->
             <div class="bg-[#f0f4f1] px-8 py-6 border-b border-black/5">
-                <button type="button" onclick="closeEnquiry()" aria-label="Close enquiry form"
+                <button type="button" data-modal-close="enquiry-modal" aria-label="Close enquiry form"
                     class="absolute top-6 right-6 w-10 h-10 bg-white rounded-full flex items-center justify-center text-gray-400 hover:text-gray-800 shadow-sm border border-black/5 transition-colors">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -2024,392 +1967,7 @@
         </div>
     </div>
 
-    <script>
-        function openTerms() {
-            const m = document.getElementById('terms-modal');
-            m.style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        }
-        function closeTerms() {
-            const m = document.getElementById('terms-modal');
-            m.style.display = 'none';
-            document.body.style.overflow = '';
-        }
-        document.addEventListener('keydown', e => {
-            if (e.key === 'Escape') { closeTerms(); closePrivacy(); closeDisclaimer(); closeCookie(); closeIP(); closeEnquiry(); }
-        });
-
-        function openEnquiry() {
-            const m = document.getElementById('enquiry-modal');
-            if (!m) return;
-            m.style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-            const firstInput = m.querySelector('input[name="name"]');
-            setTimeout(() => firstInput && firstInput.focus(), 50);
-        }
-        function closeEnquiry() {
-            const m = document.getElementById('enquiry-modal');
-            if (!m) return;
-            m.style.display = 'none';
-            document.body.style.overflow = '';
-        }
-
-        // Hero Video Interaction
-        function startHeroVideo() {
-            const video = document.getElementById('hero-video');
-            const prompt = document.getElementById('hero-click-prompt');
-            const text = document.getElementById('hero-text');
-
-            if (video) {
-                video.play().catch(e => console.log('Video autoplay blocked or failed', e));
-                video.loop = true;
-                video.muted = true;
-            }
-
-            if (prompt) {
-                prompt.style.opacity = '0';
-                prompt.style.pointerEvents = 'none';
-                setTimeout(() => prompt.style.display = 'none', 600);
-            }
-
-            if (text) {
-                text.classList.remove('opacity-0', 'translate-y-8');
-            }
-        }
-        function submitEnquiry(event) {
-            event.preventDefault();
-            const form = event.currentTarget;
-            const data = new FormData(form);
-            const name = (data.get('name') || '').trim();
-            const email = (data.get('email') || '').trim();
-            const phone = (data.get('phone') || '').trim();
-            const company = (data.get('company') || '').trim();
-            const requirements = (data.get('requirements') || '').trim();
-            const subject = `UrbanTree enquiry - ${company || name || 'Website visitor'}`;
-            const body = [
-                'New UrbanTree enquiry',
-                '',
-                `Name: ${name}`,
-                `Email: ${email}`,
-                `Phone: ${phone || 'Not provided'}`,
-                `Company / Organization: ${company || 'Not provided'}`,
-                '',
-                'Requirements:',
-                requirements
-            ].join('\n');
-            window.location.href = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-            closeEnquiry();
-        }
-
-        document.querySelectorAll('a[href$="#enquiry"], a[href$="#enquiry-form"]').forEach(link => {
-            link.addEventListener('click', event => {
-                event.preventDefault();
-                openEnquiry();
-            });
-        });
-
-        if (window.location.hash === '#enquiry' || window.location.hash === '#enquiry-form') {
-            setTimeout(() => {
-                openEnquiry();
-                history.replaceState(null, document.title, window.location.pathname + window.location.search);
-            }, 100);
-        }
-
-        const enquiryForm = document.getElementById('enquiry-form');
-        if (enquiryForm) enquiryForm.addEventListener('submit', submitEnquiry);
-
-        function openPrivacy() {
-            const m = document.getElementById('privacy-modal');
-            m.style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        }
-        function closePrivacy() {
-            const m = document.getElementById('privacy-modal');
-            m.style.display = 'none';
-            document.body.style.overflow = '';
-        }
-
-        function openDisclaimer() {
-            const m = document.getElementById('disclaimer-modal');
-            m.style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        }
-        function closeDisclaimer() {
-            const m = document.getElementById('disclaimer-modal');
-            m.style.display = 'none';
-            document.body.style.overflow = '';
-        }
-
-        function openCookie() {
-            const m = document.getElementById('cookie-modal');
-            m.style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        }
-        function closeCookie() {
-            const m = document.getElementById('cookie-modal');
-            m.style.display = 'none';
-            document.body.style.overflow = '';
-        }
-
-        function openIP() {
-            const m = document.getElementById('ip-modal');
-            m.style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        }
-        function closeIP() {
-            const m = document.getElementById('ip-modal');
-            m.style.display = 'none';
-            document.body.style.overflow = '';
-        }
-    </script>
-
-
-
-
-
-    <!-- Application Showcase JS -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const appsData = [
-                {
-                    title: "Smart Cities",
-                    desc: "Designed for next-generation urban environments, the air purifier integrates with smart city infrastructure to create breathable Air Pocket across outdoor and semi-outdoor spaces.",
-                    svg_inner: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v3M12 14v3M16 14v3" />`,
-                    image: "assets/images/app_smart_cities.jpg"
-                },
-                {
-                    title: "Tech Parks",
-                    desc: "The system enhances workplace wellness by creating fresh environments across innovation hubs, IT campuses, and high-footfall outdoor areas.",
-                    svg_inner: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />`,
-                    image: "assets/images/app_tech_parks.jpg"
-                },
-                {
-                    title: "Residential Communities",
-                    desc: "The purifier creates fresh Air zones within residential communities, helping reduce exposure to dust, smoke, and harmful airborne pollutants.",
-                    svg_inner: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />`,
-                    image: "assets/images/app_residential.jpg"
-                },
-                {
-                    title: "Industrial Zones",
-                    desc: "Engineered to support pollution control in and around industrial environments where particulate matter and emissions are higher. The solution contributes to safer surroundings for workers and nearby communities through continuous purification and monitoring.",
-                    svg_inner: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />`,
-                    image: "assets/images/app_industrial.jpg"
-                },
-                {
-                    title: "Schools & Universities",
-                    desc: "Creates healthier learning environments by reducing airborne pollutants around campuses, classrooms, and gathering spaces. Cleaner air supports student well-being, concentration, and overall campus sustainability initiatives.",
-                    svg_inner: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />`,
-                    image: "assets/images/app_schools.jpg"
-                },
-                {
-                    title: "Airports & Metro Stations",
-                    desc: "Built for high-density public transit environments, the system creates fresh Air zones that improve commuter comfort and public air quality.",
-                    svg_inner: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />`,
-                    image: "assets/images/app_airports.jpg"
-                },
-                {
-                    title: "Corporate Campuses",
-                    desc: "Enhances outdoor and semi-outdoor workplace environments by generating Air zones across walkways, seating areas, and shared spaces.",
-                    svg_inner: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />`,
-                    image: "assets/images/app_corporate.jpg"
-                },
-                {
-                    title: "Public & Private Infrastructure",
-                    desc: "Suitable for deployment across government buildings, commercial complexes, healthcare facilities, and civic infrastructure projects. Its modular architecture allows flexible integration into diverse environments requiring sustainable air quality solutions.",
-                    svg_inner: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z" />`,
-                    image: "assets/images/app_public.jpg"
-                },
-                {
-                    title: "Government Office Spaces",
-                    desc: "Supports healthier workplaces by creating healthy air environments in administrative and public interaction spaces.",
-                    svg_inner: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-2 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />`,
-                    image: "assets/images/app_government.jpg"
-                }
-            ];
-
-            const accordionContainer = document.getElementById('app-accordion-container');
-            let activeIndex = 0;
-            const accordionItems = [];
-
-            function initAccordion() {
-                if (!accordionContainer) return;
-                accordionContainer.innerHTML = '';
-
-                appsData.forEach((app, index) => {
-                    const item = document.createElement('div');
-                    // Base classes set here, dynamic classes handled in updateAccordion
-                    item.className = 'app-accordion-item relative overflow-hidden rounded-3xl transition-all duration-[800ms] ease-[cubic-bezier(0.87,0,0.13,1)] cursor-pointer group flex-shrink-0 border';
-
-                    item.onclick = () => {
-                        if (activeIndex !== index) {
-                            activeIndex = index;
-                            updateAccordion();
-
-                            // Scroll if needed on mobile
-                            setTimeout(() => {
-                                const rect = item.getBoundingClientRect();
-                                if (rect.top < 100 || rect.bottom > window.innerHeight) {
-                                    item.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                                }
-                            }, 300);
-                        }
-                    };
-
-                    item.innerHTML = `
-                        <!-- Background Image -->
-                        <img src="${app.image}" class="bg-img absolute inset-0 w-full h-full object-cover transition-all duration-[1200ms] ease-[cubic-bezier(0.87,0,0.13,1)] origin-center" alt="${app.title}" />
-                        
-                        <!-- Overlay for Active State -->
-                        <div class="active-overlay absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent transition-opacity duration-700"></div>
-                        
-                        <!-- Overlay for Inactive State -->
-                        <div class="inactive-overlay absolute inset-0 bg-black/30 transition-opacity duration-700 group-hover:bg-black/10"></div>
-                        
-                        <!-- Inactive State Content -->
-                        <div class="inactive-content absolute inset-0 flex flex-row lg:flex-col items-center justify-center transition-opacity duration-500">
-                            <!-- Title Mobile (Horizontal) -->
-                            <div class="flex lg:hidden items-center justify-center w-full px-4">
-                                <h3 class="font-serif font-bold text-white/90 text-sm tracking-widest uppercase group-hover:text-white transition-colors duration-300 drop-shadow-md text-center">
-                                    ${app.title}
-                                </h3>
-                            </div>
-                            
-                            <!-- Title Desktop (Vertical Strip) -->
-                            <div class="hidden lg:flex flex-1 items-center justify-center overflow-hidden w-full py-6">
-                                <h3 class="font-serif font-bold text-white/90 tracking-[0.2em] text-sm uppercase group-hover:text-white transition-colors duration-300 drop-shadow-md whitespace-nowrap" style="writing-mode: vertical-rl; transform: rotate(180deg);">
-                                    ${app.title}
-                                </h3>
-                            </div>
-                        </div>
-
-                        <!-- Active State Content -->
-                        <div class="active-content absolute inset-0 p-6 md:p-10 flex flex-col justify-end transition-opacity duration-[800ms] delay-100">
-                            <!-- Header -->
-                            <div class="active-header flex items-center gap-4 lg:gap-6 z-10 transform transition-transform duration-700 w-full">
-                                <div class="w-12 h-12 lg:w-16 lg:h-16 rounded-2xl bg-brand-emerald text-white shadow-lg shadow-brand-emerald/20 flex items-center justify-center shrink-0">
-                                    <svg class="w-6 h-6 lg:w-8 lg:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">${app.svg_inner}</svg>
-                                </div>
-                                <h3 class="font-serif font-bold text-2xl lg:text-4xl text-white drop-shadow-md truncate pr-4">
-                                    ${app.title}
-                                </h3>
-                            </div>
-                            
-                            <!-- Description -->
-                            <div class="active-desc mt-4 lg:mt-6 z-10 w-full max-w-3xl transform transition-transform duration-700 delay-100">
-                                <p class="text-gray-200 text-base lg:text-lg leading-relaxed line-clamp-3 lg:line-clamp-4">
-                                    ${app.desc}
-                                </p>
-                            </div>
-                        </div>
-                    `;
-
-                    accordionItems.push(item);
-                    accordionContainer.appendChild(item);
-                });
-
-                updateAccordion();
-            }
-
-            function updateAccordion() {
-                accordionItems.forEach((item, index) => {
-                    const isActive = index === activeIndex;
-
-                    // 1. Root Item
-                    const baseItemClass = 'app-accordion-item relative overflow-hidden rounded-3xl transition-all duration-[800ms] ease-[cubic-bezier(0.87,0,0.13,1)] cursor-pointer group flex-shrink-0 border';
-                    item.className = `${baseItemClass} ${isActive ? 'is-active flex-grow shadow-2xl border-transparent h-[400px] lg:h-full lg:w-0' : 'is-inactive h-16 lg:h-full lg:w-20 border-black/10 hover:border-brand-emerald/50'}`;
-
-                    // 2. Background Image
-                    const bgImg = item.querySelector('.bg-img');
-                    const baseImgClass = 'bg-img absolute inset-0 w-full h-full object-cover transition-all duration-[1200ms] ease-[cubic-bezier(0.87,0,0.13,1)] origin-center';
-                    bgImg.className = `${baseImgClass} ${isActive ? 'scale-100' : 'scale-110 opacity-80 group-hover:scale-105 group-hover:opacity-100'}`;
-
-                    // 3. Active Overlay
-                    const activeOverlay = item.querySelector('.active-overlay');
-                    const baseActiveOverlay = 'active-overlay absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent transition-opacity duration-700';
-                    activeOverlay.className = `${baseActiveOverlay} ${isActive ? 'opacity-100' : 'opacity-0 pointer-events-none'}`;
-
-                    // 4. Inactive Overlay
-                    const inactiveOverlay = item.querySelector('.inactive-overlay');
-                    const baseInactiveOverlay = 'inactive-overlay absolute inset-0 bg-black/30 transition-opacity duration-700 group-hover:bg-black/10';
-                    inactiveOverlay.className = `${baseInactiveOverlay} ${isActive ? 'opacity-0 pointer-events-none' : 'opacity-100'}`;
-
-                    // 5. Inactive Content
-                    const inactiveContent = item.querySelector('.inactive-content');
-                    const baseInactiveContent = 'inactive-content absolute inset-0 flex flex-row lg:flex-col items-center justify-center transition-opacity duration-500';
-                    inactiveContent.className = `${baseInactiveContent} ${isActive ? 'opacity-0 pointer-events-none' : 'opacity-100'}`;
-
-                    // 6. Active Content
-                    const activeContent = item.querySelector('.active-content');
-                    const baseActiveContent = 'active-content absolute inset-0 p-6 md:p-10 flex flex-col justify-end transition-opacity duration-[800ms] delay-100';
-                    activeContent.className = `${baseActiveContent} ${isActive ? 'opacity-100' : 'opacity-0 pointer-events-none'}`;
-
-                    // 7. Active Header
-                    const activeHeader = item.querySelector('.active-header');
-                    const baseActiveHeader = 'active-header flex items-center gap-4 lg:gap-6 z-10 transform transition-transform duration-700 w-full';
-                    activeHeader.className = `${baseActiveHeader} ${isActive ? 'translate-y-0' : 'translate-y-4'}`;
-
-                    // 8. Active Desc
-                    const activeDesc = item.querySelector('.active-desc');
-                    const baseActiveDesc = 'active-desc mt-4 lg:mt-6 z-10 w-full max-w-3xl transform transition-transform duration-700 delay-100';
-                    activeDesc.className = `${baseActiveDesc} ${isActive ? 'translate-y-0' : 'translate-y-4'}`;
-                });
-            }
-
-            // Preload images
-            appsData.forEach(app => {
-                const img = new Image();
-                img.src = app.image;
-            });
-
-            initAccordion();
-        });
-    </script>
-
-
+    <script type="module" src="/assets/js/index-interactions.js"></script>
+    <script type="module" src="/assets/js/index-showcase.js"></script>
 </body>
-
-</html><script>
-window.addEventListener('load', () => {
-    setTimeout(() => {
-        const bodyRect = document.body.getBoundingClientRect();
-        const navRect = document.querySelector('nav').getBoundingClientRect();
-        const htmlRect = document.documentElement.getBoundingClientRect();
-        const debugInfo = 
-            Window Inner: \x\
-            HTML: \x\
-            Body: \x\, padding-right: \, margin-right: \
-            Nav: \x\
-        ;
-        fetch('/debug', { method: 'POST', body: debugInfo }); // This will fail but show in terminal if we start a tiny server, OR we can just write it to a local storage or DOM element.
-        // Better: create a visible debug div on screen!
-        const div = document.createElement('div');
-        div.style.position = 'fixed';
-        div.style.top = '50px';
-        div.style.left = '50px';
-        div.style.background = 'red';
-        div.style.color = 'white';
-        div.style.zIndex = '999999';
-        div.style.padding = '20px';
-        div.style.fontSize = '16px';
-        div.innerText = debugInfo;
-        document.body.appendChild(div);
-    }, 2000);
-});
-</script>
-<script>
-window.addEventListener('load', () => {
-    setTimeout(() => {
-        const bodyRect = document.body.getBoundingClientRect();
-        const htmlRect = document.documentElement.getBoundingClientRect();
-        const navRect = document.querySelector('nav').getBoundingClientRect();
-        const info = Window: \x\, HTML: \, Body: \, Nav: \;
-        console.log(info);
-        // Write to local storage for us to read? Or just create a div
-        const div = document.createElement('div');
-        div.id = 'debug-info-agent';
-        div.innerHTML = info;
-        div.style.display = 'none';
-        document.body.appendChild(div);
-    }, 1000);
-});
-</script>
+</html>

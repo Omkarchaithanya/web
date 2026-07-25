@@ -2,7 +2,8 @@ import { Request, Response, NextFunction } from 'express';
 import { UserRole } from '@prisma/client';
 import { prisma } from '../config/database';
 import { env } from '../config/env';
-import { verifyAccessToken } from '../utils/jwt';
+import crypto from 'crypto';
+import { verifyAccessToken, ROLE_HIERARCHY } from '../utils/jwt';
 import { AppError } from '../utils/http';
 
 export async function authenticate(
@@ -58,7 +59,6 @@ export function authorizeAtLeast(minimumRole: UserRole) {
     if (!req.user) {
       throw new AppError(401, 'Authentication required', 'UNAUTHORIZED');
     }
-    const { ROLE_HIERARCHY } = require('../utils/jwt');
     const userLevel = ROLE_HIERARCHY[req.user.role];
     const requiredLevel = ROLE_HIERARCHY[minimumRole];
     
@@ -72,7 +72,18 @@ export function authorizeAtLeast(minimumRole: UserRole) {
 export function iotApiKeyAuth(req: Request, _res: Response, next: NextFunction): void {
   const apiKey = req.headers['x-api-key'] as string;
 
-  if (!apiKey || apiKey !== env.IOT_API_KEY) {
+  if (!apiKey || typeof apiKey !== 'string') {
+    throw new AppError(401, 'Invalid IoT API key', 'INVALID_API_KEY');
+  }
+
+  const expectedKey = env.IOT_API_KEY || '';
+  const keyBuffer = Buffer.from(apiKey);
+  const envKeyBuffer = Buffer.from(expectedKey);
+
+  if (
+    keyBuffer.length !== envKeyBuffer.length ||
+    !crypto.timingSafeEqual(keyBuffer, envKeyBuffer)
+  ) {
     throw new AppError(401, 'Invalid IoT API key', 'INVALID_API_KEY');
   }
   next();

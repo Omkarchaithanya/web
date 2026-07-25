@@ -1,3 +1,15 @@
+import { apiFetch } from './api.js';
+
+function escapeHTML(str) {
+    if (str === null || str === undefined) return '';
+    return String(str)
+         .replace(/&/g, "&amp;")
+         .replace(/</g, "&lt;")
+         .replace(/>/g, "&gt;")
+         .replace(/"/g, "&quot;")
+         .replace(/'/g, "&#039;");
+}
+
 const initIndex = () => {
 
     // --- 1. SCROLL REVEAL ---
@@ -26,78 +38,14 @@ const initIndex = () => {
     const heroClickPrompt = document.getElementById('hero-click-prompt');
     const promptInner = document.getElementById('prompt-inner');
     const heroScrollHint = document.querySelector('.hero-scroll-hint');
-
-    const heroModalPlayButton = document.getElementById('hero-modal-play-button');
-    const heroVideoModal = document.getElementById('hero-video-modal');
-    const heroModalVideo = document.getElementById('hero-modal-video');
-
-    function openHeroVideoModal() {
-        if (!heroVideoModal || !heroModalVideo) return;
-        heroVideoModal.classList.add('open');
-        heroVideoModal.setAttribute('aria-hidden', 'false');
-        heroModalVideo.currentTime = 0;
-        heroModalVideo.play().catch(() => { });
-    }
-
-    function closeHeroVideoModal() {
-        if (!heroVideoModal || !heroModalVideo) return;
-        heroModalVideo.pause();
-        heroVideoModal.classList.remove('open');
-        heroVideoModal.setAttribute('aria-hidden', 'true');
-    }
-
-    if (heroModalPlayButton) {
-        heroModalPlayButton.addEventListener('click', event => {
-            event.stopPropagation();
-            openHeroVideoModal();
-        });
-    }
-
-    document.querySelectorAll('[data-hero-video-close]').forEach(closeButton => {
-        closeButton.addEventListener('click', closeHeroVideoModal);
-    });
-
-    document.addEventListener('keydown', event => {
-        if (event.key === 'Escape') closeHeroVideoModal();
-    });
     const heroTypingText = document.getElementById('hero-typing-text');
     const heroTypingCursor = document.getElementById('hero-typing-cursor');
-    const seeActionButton = document.getElementById('see-action-button');
-    const seeActionSound = new Audio('see it in action.aac');
+    let heroVideoStarted = false;
 
-    if (heroTypingText) {
-        const text = heroTypingText.dataset.text || '';
-        let index = 0;
-        heroTypingText.textContent = '';
-        const typeNextLetter = () => {
-            heroTypingText.textContent = text.slice(0, index);
-            index += 1;
-            if (index <= text.length) {
-                setTimeout(typeNextLetter, 75);
-            } else {
-                if (heroTypingCursor) {
-                    heroTypingCursor.style.animation = 'heroCursorBlink 0.8s steps(2, start) infinite';
-                }
-                setTimeout(() => {
-                    if (seeActionButton) {
-                        seeActionButton.style.display = 'flex';
-                        requestAnimationFrame(() => {
-                            seeActionButton.style.opacity = '1';
-                            seeActionButton.style.transform = 'translateY(0)';
-                        });
-                    }
-                    try {
-                        seeActionSound.currentTime = 0;
-                        const playPromise = seeActionSound.play();
-                        if (playPromise) playPromise.catch(() => { });
-                    } catch (error) { }
-                }, 800);
-            }
-        };
-        setTimeout(typeNextLetter, 350);
-    }
     if (heroVideo) {
         heroVideo.loop = false;
+        heroVideo.playsInline = true;
+        heroVideo.setAttribute('playsinline', '');
         heroVideo.addEventListener('ended', () => { heroVideo.pause(); });
     }
 
@@ -116,12 +64,14 @@ const initIndex = () => {
         const buttons = heroText.querySelector('div');
 
         setTimeout(() => {
+            if (!subtitle) return;
             subtitle.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
             subtitle.style.opacity = '1';
             subtitle.style.transform = 'translateY(0)';
         }, 350);
 
         setTimeout(() => {
+            if (!buttons) return;
             buttons.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
             buttons.style.opacity = '1';
             buttons.style.transform = 'translateY(0)';
@@ -129,24 +79,10 @@ const initIndex = () => {
     }
 
     window.startHeroVideo = function () {
-        if (!heroVideo) return;
-        if (promptInner) {
-            promptInner.style.opacity = '0';
-            promptInner.style.transform = 'scale(0.9)';
-        }
-        setTimeout(() => {
-            if (heroClickPrompt) heroClickPrompt.style.display = 'none';
-        }, 500);
-        heroVideo.muted = false;
-        heroVideo.volume = 1;
-        heroVideo.play();
-        heroVideo.addEventListener('ended', revealHeroText);
-    };
+        if (!heroVideo || heroVideoStarted) return;
+        heroVideoStarted = true;
 
-    window.startHeroVideo = function () {
-        if (!heroVideo) return;
-
-        // Fade out & remove the prompt
+        // Fade out & remove the typing prompt
         if (promptInner) {
             promptInner.style.opacity = '0';
             promptInner.style.transform = 'scale(0.9)';
@@ -155,32 +91,109 @@ const initIndex = () => {
             if (heroClickPrompt) heroClickPrompt.style.display = 'none';
         }, 500);
 
-        // Play video
+        const playVideo = () => {
+            const playPromise = heroVideo.play();
+            if (playPromise && typeof playPromise.then === 'function') {
+                playPromise.catch(() => {
+                    // Browsers block unmuted autoplay — fall back to muted so it still starts
+                    heroVideo.muted = true;
+                    heroVideo.play().catch(() => { });
+                });
+            }
+        };
+
+        // Prefer sound; muted fallback if autoplay policy blocks it
         heroVideo.muted = false;
         heroVideo.volume = 1;
-        heroVideo.play();
-        heroVideo.addEventListener('ended', revealHeroText);
+        playVideo();
+        heroVideo.addEventListener('ended', revealHeroText, { once: true });
     };
+
+    if (heroTypingText) {
+        const text = heroTypingText.dataset.text || '';
+        let index = 0;
+        heroTypingText.textContent = '';
+        const typeNextLetter = () => {
+            heroTypingText.textContent = text.slice(0, index);
+            index += 1;
+            if (index <= text.length) {
+                setTimeout(typeNextLetter, 75);
+            } else {
+                if (heroTypingCursor) {
+                    heroTypingCursor.style.animation = 'heroCursorBlink 0.8s steps(2, start) infinite';
+                }
+                // After typing finishes, autoplay the hero video
+                setTimeout(() => {
+                    if (typeof window.startHeroVideo === 'function') {
+                        window.startHeroVideo();
+                    }
+                }, 600);
+            }
+        };
+        setTimeout(typeNextLetter, 350);
+    }
 
     // --- 3. AIR CRISIS SLIDER ---
     const crisisSlider = document.getElementById('crisis-slider');
     const pollutedLayer = document.getElementById('polluted-layer');
+    const pollutedImg = document.getElementById('polluted-img');
     const sliderDivider = document.getElementById('slider-divider');
     const crisisSection = document.getElementById('air-crisis');
 
     if (crisisSlider && pollutedLayer && sliderDivider && crisisSection) {
         let crisisDragging = false;
         let crisisAutoPlayed = false;
+        let crisisSplitPercent = 100;
+
+        function easeInOutCubic(t) {
+            return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+        }
+
+        function syncPollutedImgWidth() {
+            if (pollutedImg) pollutedImg.style.width = `${crisisSlider.clientWidth}px`;
+        }
 
         function setCrisisSplit(percent) {
-            pollutedLayer.style.clipPath = `inset(0 0 0 ${percent}%)`;
-            sliderDivider.style.left = `${percent}%`;
+            crisisSplitPercent = Math.max(0, Math.min(100, percent));
+            pollutedLayer.style.width = `${crisisSplitPercent}%`;
+            sliderDivider.style.left = `${crisisSplitPercent}%`;
         }
+
         function setCrisisSplitFromClientX(clientX) {
             const rect = crisisSlider.getBoundingClientRect();
             const percent = ((clientX - rect.left) / rect.width) * 100;
             setCrisisSplit(percent);
         }
+
+        function animateCrisisSplit(from, to, duration) {
+            return new Promise(resolve => {
+                let start = null;
+                function frame(timestamp) {
+                    if (!start) start = timestamp;
+                    const progress = Math.min((timestamp - start) / duration, 1);
+                    setCrisisSplit(from + (to - from) * easeInOutCubic(progress));
+                    if (progress < 1) requestAnimationFrame(frame);
+                    else resolve();
+                }
+                requestAnimationFrame(frame);
+            });
+        }
+
+        function wait(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        async function playCrisisSequence() {
+            setCrisisSplit(100);
+            await wait(700);
+            await animateCrisisSplit(100, 0, 2200);
+            await wait(900);
+            await animateCrisisSplit(0, 50, 1600);
+        }
+
+        syncPollutedImgWidth();
+        window.addEventListener('resize', syncPollutedImgWidth);
+        setCrisisSplit(100);
 
         crisisSlider.addEventListener('pointerdown', event => {
             crisisDragging = true;
@@ -204,59 +217,26 @@ const initIndex = () => {
             crisisDragging = false;
         });
 
+        document.addEventListener('mouseup', () => {
+            crisisDragging = false;
+        });
+
         const crisisSnapObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     if (crisisAutoPlayed) return;
                     crisisAutoPlayed = true;
-                    let start = null;
-                    const duration = 1600;
-                    function animateSlider(timestamp) {
-                        if (!start) start = timestamp;
-                        const progress = Math.min((timestamp - start) / duration, 1);
-                        const eased = progress < 0.5 ? 2 * progress * progress : -1 + (4 - 2 * progress) * progress;
-                        setCrisisSplit(100 - (eased * 50));
-                        if (progress < 1) requestAnimationFrame(animateSlider);
-                    }
-                    setCrisisSplit(100);
-                    setTimeout(() => requestAnimationFrame(animateSlider), 350);
+                    playCrisisSequence();
                 } else {
                     crisisDragging = false;
                 }
-                document.addEventListener('mouseup', () => {
-                    crisisDragging = false;
-                });
             });
-        }, { threshold: 0.6 });
+        }, { threshold: 0.55 });
         crisisSnapObserver.observe(crisisSection);
     }
 
     // --- 4. DASHBOARD ---
-    (function () {
-        const roiData = [
-            { zone: 'INDIRANAGAR', before: 198, after: 42, pct: -79 },
-            { zone: 'PEENYA INDUSTRIAL', before: 362, after: 247, pct: -32 },
-            { zone: 'SILK BOARD', before: 224, after: 142, pct: -37 },
-            { zone: 'WHITEFIELD', before: 189, after: 56, pct: -70 },
-            { zone: 'BTM LAYOUT', before: 268, after: 178, pct: -34 },
-            { zone: 'KORAMANGALA', before: 176, after: 95, pct: -46 },
-        ];
-
-        const zoneData = [
-            { name: 'Indiranagar', aqi: 44, label: 'GOOD', color: '#4a9e3f' },
-            { name: 'MG Road', aqi: 94, label: 'MODERATE', color: '#eab308' },
-            { name: 'Silk Board', aqi: 142, label: 'UNHEALTHY FOR SOME', color: '#f97316' },
-            { name: 'BTM Layout', aqi: 179, label: 'UNHEALTHY', color: '#ef4444' },
-            { name: 'Whitefield', aqi: 59, label: 'GOOD', color: '#4a9e3f' },
-            { name: 'Koramangala', aqi: 97, label: 'MODERATE', color: '#eab308' },
-            { name: 'Marathahalli', aqi: 132, label: 'UNHEALTHY FOR SOME', color: '#f97316' },
-            { name: 'Jayanagar', aqi: 58, label: 'GOOD', color: '#4a9e3f' },
-            { name: 'Peenya Indl.', aqi: 252, label: 'HAZARDOUS', color: '#a855f7' },
-            { name: 'Yeshwanthpur', aqi: 156, label: 'UNHEALTHY', color: '#ef4444' },
-            { name: 'HSR Layout', aqi: 97, label: 'MODERATE', color: '#eab308' },
-            { name: 'Sarjapur', aqi: 45, label: 'GOOD', color: '#4a9e3f' },
-        ];
-
+    (async function () {
         function roiCard(d) {
             const barW = Math.round((1 - d.after / d.before) * 100);
             return `<div style="background:#1a2332; border:1px solid #ffffff15; border-radius:10px; padding:10px;">
@@ -275,135 +255,207 @@ const initIndex = () => {
         }
 
         function zoneCard(z, boxNum) {
-            return `<div style="background:#1a2332; border:1px solid ${z.color}33; border-radius:8px; padding:8px; cursor:pointer;" onmouseover="this.style.borderColor='${z.color}99'" onmouseout="this.style.borderColor='${z.color}33'" onclick="openZoneModal('${z.name}', ${boxNum})">
+            return `<div class="zone-card-dynamic" data-zone-name="${escapeHTML(z.name)}" data-box-num="${boxNum}" data-base-color="${escapeHTML(z.color)}" style="background:#1a2332; border:1px solid ${escapeHTML(z.color)}33; border-radius:8px; padding:8px; cursor:pointer;">
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:2px;">
-                    <span style="font-family:monospace; font-size:9px; color:#9ca3af;">${z.name}</span>
-                    <span style="width:7px; height:7px; border-radius:50%; background:${z.color}; display:inline-block;"></span>
+                    <span style="font-family:monospace; font-size:9px; color:#9ca3af;">${escapeHTML(z.name)}</span>
+                    <span style="width:7px; height:7px; border-radius:50%; background:${escapeHTML(z.color)}; display:inline-block;"></span>
                 </div>
-                <div style="font-family:monospace; font-size:18px; font-weight:700; color:${z.color}; line-height:1;">${z.aqi}</div>
-                <div style="font-family:monospace; font-size:8px; color:${z.color}; opacity:0.7; margin-top:2px; text-transform:uppercase; letter-spacing:0.05em;">${z.label}</div>
+                <div style="font-family:monospace; font-size:18px; font-weight:700; color:${escapeHTML(z.color)}; line-height:1;">${escapeHTML(z.aqi)}</div>
+                <div style="font-family:monospace; font-size:8px; color:${escapeHTML(z.color)}; opacity:0.7; margin-top:2px; text-transform:uppercase; letter-spacing:0.05em;">${escapeHTML(z.label)}</div>
             </div>`;
         }
 
-        function renderDashboard(roiId, zoneId, boxNum) {
+        function renderDashboard(roiId, zoneId, boxNum, roiData, zoneData) {
             const roiEl = document.getElementById(roiId);
             const zoneEl = document.getElementById(zoneId);
             if (roiEl) roiEl.innerHTML = roiData.map(roiCard).join('');
             if (zoneEl) zoneEl.innerHTML = zoneData.map(z => zoneCard(z, boxNum)).join('');
         }
 
-        renderDashboard('roi-grid', 'zone-grid', 1);
-        renderDashboard('roi-grid-2', 'zone-grid-2', 2);
+        try {
+            const zonesRes = await apiFetch('/zones');
+            const zones = zonesRes.data || zonesRes;
+            
+            const roiData = (zones || []).map(z => ({
+                zone: (z.name || '').toUpperCase(),
+                before: z.beforeAqi || 0,
+                after: z.afterAqi || 0,
+                pct: z.beforeAqi ? Math.round(((z.beforeAqi - z.afterAqi) / z.beforeAqi) * 100) : 0
+            }));
+
+            const zoneData = (zones || []).map(z => {
+                const aqi = z.afterAqi || 0;
+                let label = 'GOOD';
+                if(aqi > 50) label = 'MODERATE';
+                if(aqi > 100) label = 'UNHEALTHY FOR SOME';
+                if(aqi > 150) label = 'UNHEALTHY';
+                if(aqi > 200) label = 'HAZARDOUS';
+                
+                let color = '#4a9e3f'; // good
+                if(aqi > 50) color = '#eab308'; // moderate
+                if(aqi > 100) color = '#f97316'; // unhealthy for some
+                if(aqi > 150) color = '#ef4444'; // unhealthy
+                if(aqi > 200) color = '#a855f7'; // hazardous
+                
+                return {
+                    name: z.name,
+                    aqi: aqi,
+                    label: label,
+                    color: color
+                };
+            });
+
+            renderDashboard('roi-grid', 'zone-grid', 1, roiData, zoneData);
+            renderDashboard('roi-grid-2', 'zone-grid-2', 2, roiData, zoneData);
+
+            // Add event delegation for zone cards
+            document.querySelectorAll('.zone-card-dynamic').forEach(el => {
+                el.addEventListener('mouseover', function() {
+                    this.style.borderColor = this.dataset.baseColor + '99';
+                });
+                el.addEventListener('mouseout', function() {
+                    this.style.borderColor = this.dataset.baseColor + '33';
+                });
+                el.addEventListener('click', function() {
+                    if (typeof window.openZoneModal === 'function') {
+                        window.openZoneModal(this.dataset.zoneName, this.dataset.boxNum);
+                    }
+                });
+            });
+
+        } catch (e) {
+            console.error("Failed to load dashboard data", e);
+        }
     })();
 
     // --- 5. NAVBAR LOGO COLOR (Removed to prevent conflict with index.html setTheme logic) ---
 
-    // --- 6. PRODUCT INTRO CINEMATIC REVEAL ---
-    const productImgWrap = document.getElementById('product-img-wrap');
+    // --- 6. PRODUCT INTRO CINEMATIC REVEAL (ends on URBAN Tree → auto-scroll) ---
     const productSection = document.getElementById('product-intro');
 
-    if (productSection && productImgWrap) {
+    if (productSection) {
+        let introPlayed = false;
+        let introAutoScrolled = false;
+
+        function scrollToWhatIsUrbanTree() {
+            if (introAutoScrolled) return;
+            const nextSection = document.getElementById('what-is-urbantree');
+            if (!nextSection) return;
+            introAutoScrolled = true;
+
+            const snap = document.getElementById('snap-container');
+            if (snap) {
+                const top = nextSection.offsetTop;
+                snap.scrollTo({ top, behavior: 'smooth' });
+            } else {
+                nextSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        function showStaticBrand(introBrandReveal, overlay) {
+            if (overlay) {
+                overlay.style.display = 'none';
+                overlay.style.opacity = '0';
+            }
+            if (introBrandReveal) {
+                introBrandReveal.style.display = 'flex';
+                introBrandReveal.style.opacity = '1';
+                introBrandReveal.classList.add('active');
+            }
+        }
+
         const productObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const contentBlock = document.getElementById('product-content');
-                    contentBlock.style.opacity = '0';
+                const overlay = document.getElementById('cinema-overlay');
+                const wordEl = document.getElementById('cinema-word');
+                const introBrandReveal = document.getElementById('intro-brand-reveal');
+                const assemblyStage = document.getElementById('device-assembly-stage');
+                const contentBlock = document.getElementById('product-content');
+                const productImgWrap = document.getElementById('product-img-wrap');
+
+                // Keep device / feature showcase hidden — sequence stops at URBAN Tree
+                if (assemblyStage) {
+                    assemblyStage.style.display = 'none';
+                    assemblyStage.classList.remove('active', 'settled', 'showcase', 'fade-out');
+                }
+                if (contentBlock) contentBlock.style.opacity = '0';
+                if (productImgWrap) {
                     productImgWrap.style.opacity = '0';
                     productImgWrap.style.transform = 'translateY(18px)';
+                }
 
-                    const overlay = document.getElementById('cinema-overlay');
+                if (entry.isIntersecting) {
+                    // Already played once: keep brand visible, do not restart or re-scroll
+                    if (introPlayed) {
+                        showStaticBrand(introBrandReveal, overlay);
+                        return;
+                    }
+                    introPlayed = true;
+
                     const words = ['Introducing', 'The', "World's", 'First', 'Outdoor', 'Bio Air Purifier'];
-                    overlay.style.display = 'flex';
-                    overlay.style.zIndex = '20';
-                    overlay.style.opacity = '1';
-
-                    const wordEl = document.getElementById('cinema-word');
-                    let i = 0;
-
-                    function revealProductContent() {
-                        contentBlock.style.opacity = '0';
-                    }
-
-                    function playDeviceAssembly(done) {
-                        const stage = document.getElementById('device-assembly-stage');
-                        if (!stage) {
-                            done();
-                            return;
-                        }
-                        stage.classList.remove('active', 'settled', 'showcase', 'fade-out');
-                        stage.style.display = 'flex';
-                        void stage.offsetWidth;
-                        stage.classList.add('active');
-                        setTimeout(() => {
-                            stage.classList.add('settled');
-                            stage.classList.add('showcase');
-                            done();
-                        }, 2450);
-                    }
-
-                    function playIntroBrandReveal(done) {
-                        const brandReveal = document.getElementById('intro-brand-reveal');
-                        if (!brandReveal) {
-                            done();
-                            return;
-                        }
-                        brandReveal.classList.remove('active');
-                        brandReveal.style.display = 'flex';
-                        void brandReveal.offsetWidth;
-                        brandReveal.classList.add('active');
-                        setTimeout(() => {
-                            brandReveal.style.opacity = '0';
-                            setTimeout(() => {
-                                brandReveal.classList.remove('active');
-                                brandReveal.style.display = 'none';
-                                brandReveal.style.opacity = '';
-                                done();
-                            }, 320);
-                        }, 2250);
-                    }
-
-                    function showNextWord() {
-                        if (i >= words.length) {
-                            overlay.style.transition = 'opacity 0.5s ease';
-                            overlay.style.opacity = '0';
-                            setTimeout(() => {
-                                overlay.style.display = 'none';
-                                playIntroBrandReveal(() => playDeviceAssembly(revealProductContent));
-                            }, 500);
-                            return;
-                        }
-                        wordEl.style.transition = 'none';
-                        wordEl.style.opacity = '0';
-                        wordEl.style.transform = 'scale(0.8) translateY(20px)';
-                        wordEl.textContent = words[i];
-                        setTimeout(() => {
-                            wordEl.style.transition = 'opacity 0.25s ease, transform 0.3s cubic-bezier(0.2,0.8,0.2,1)';
-                            wordEl.style.opacity = '1';
-                            wordEl.style.transform = 'scale(1) translateY(0)';
-                        }, 50);
-                        i++;
-                        setTimeout(showNextWord, 850);
-                    }
-                    showNextWord();
-
-                } else {
-                    const overlay = document.getElementById('cinema-overlay');
-                    const assemblyStage = document.getElementById('device-assembly-stage');
-                    const introBrandReveal = document.getElementById('intro-brand-reveal');
-                    overlay.style.display = 'none';
-                    overlay.style.opacity = '0';
-                    if (assemblyStage) {
-                        assemblyStage.classList.remove('active', 'settled', 'showcase', 'fade-out');
-                        assemblyStage.style.display = 'none';
+                    if (overlay) {
+                        overlay.style.display = 'flex';
+                        overlay.style.zIndex = '20';
+                        overlay.style.opacity = '1';
+                        overlay.style.transition = 'none';
                     }
                     if (introBrandReveal) {
                         introBrandReveal.classList.remove('active');
                         introBrandReveal.style.display = 'none';
                         introBrandReveal.style.opacity = '';
                     }
-                    document.getElementById('product-content').style.opacity = '0';
-                    productImgWrap.style.opacity = '0';
-                    productImgWrap.style.transform = 'translateY(18px)';
+
+                    let i = 0;
+
+                    function playIntroBrandReveal() {
+                        if (!introBrandReveal) {
+                            scrollToWhatIsUrbanTree();
+                            return;
+                        }
+                        introBrandReveal.classList.remove('active');
+                        introBrandReveal.style.display = 'flex';
+                        introBrandReveal.style.opacity = '1';
+                        void introBrandReveal.offsetWidth;
+                        introBrandReveal.classList.add('active');
+                        // Brand settles (~1.45s), hold briefly, then scroll to What is UrbanTree
+                        setTimeout(scrollToWhatIsUrbanTree, 2800);
+                    }
+
+                    function showNextWord() {
+                        if (!wordEl || !overlay) return;
+                        if (i >= words.length) {
+                            overlay.style.transition = 'opacity 0.7s ease';
+                            overlay.style.opacity = '0';
+                            setTimeout(() => {
+                                overlay.style.display = 'none';
+                                playIntroBrandReveal();
+                            }, 700);
+                            return;
+                        }
+                        wordEl.style.transition = 'none';
+                        wordEl.style.opacity = '0';
+                        wordEl.style.transform = 'scale(0.86) translateY(24px)';
+                        wordEl.textContent = words[i];
+                        setTimeout(() => {
+                            wordEl.style.transition = 'opacity 0.5s ease, transform 0.65s cubic-bezier(0.2,0.8,0.2,1)';
+                            wordEl.style.opacity = '1';
+                            wordEl.style.transform = 'scale(1) translateY(0)';
+                        }, 60);
+                        i += 1;
+                        setTimeout(showNextWord, 1400);
+                    }
+                    showNextWord();
+
+                } else if (!introPlayed) {
+                    if (overlay) {
+                        overlay.style.display = 'none';
+                        overlay.style.opacity = '0';
+                    }
+                    if (introBrandReveal) {
+                        introBrandReveal.classList.remove('active');
+                        introBrandReveal.style.display = 'none';
+                        introBrandReveal.style.opacity = '';
+                    }
                     productSection.querySelectorAll('.cinema-reveal').forEach(el => {
                         el.style.opacity = '0';
                         el.style.transform = 'translateY(30px)';
@@ -450,7 +502,7 @@ function getBarColor(val) {
     return '#ef4444';
 }
 
-function openZoneModal(name, boxNum) {
+window.openZoneModal = function openZoneModal(name, boxNum) {
     const d = zoneDetails[name];
     if (!d) return;
     const aqiColor = d.aqi <= 50 ? '#4a9e3f' : d.aqi <= 100 ? '#eab308' : d.aqi <= 150 ? '#f97316' : d.aqi <= 200 ? '#ef4444' : '#a855f7';

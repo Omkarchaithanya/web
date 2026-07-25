@@ -34,8 +34,8 @@ Sentry.init({
   integrations: [
     nodeProfilingIntegration(),
   ],
-  tracesSampleRate: 1.0,
-  profilesSampleRate: 1.0,
+  tracesSampleRate: env.NODE_ENV === 'production' ? 0.1 : 1.0,
+  profilesSampleRate: env.NODE_ENV === 'production' ? 0.1 : 1.0,
 });
 
 Sentry.setupExpressErrorHandler(app);
@@ -49,8 +49,8 @@ app.use(helmet({
   contentSecurityPolicy: {
     directives: {
       defaultSrc: ["'self'"],
-      scriptSrc: ["'self'", "'unsafe-inline'"],
-      styleSrc: ["'self'", "'unsafe-inline'"],
+      scriptSrc: ["'self'"],
+      styleSrc: ["'self'"],
       imgSrc: ["'self'", "data:", "blob:"],
       connectSrc: ["'self'"],
     }
@@ -66,7 +66,7 @@ app.use(
   })
 );
 app.use(compression());
-app.use(express.json());
+app.use(express.json({ limit: '100kb' }));
 app.use(cookieParser());
 app.use(requestIdMiddleware);
 
@@ -79,7 +79,9 @@ if (env.NODE_ENV !== 'test') {
 app.use(globalRateLimiter);
 
 // Swagger Documentation
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+if (env.NODE_ENV !== 'production') {
+  app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+}
 
 // Routes
 app.use('/health', healthRoutes);
