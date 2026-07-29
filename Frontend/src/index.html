@@ -703,20 +703,25 @@
                     <div
                         class="absolute inset-0 bg-gradient-to-l from-black/75 via-black/25 to-transparent pointer-events-none">
                     </div>
-                    <div
-                        class="absolute right-8 md:right-16 bottom-20 md:bottom-24 w-[min(42rem,calc(100%-4rem))] md:w-[min(42rem,calc(100%-8rem))] text-right pointer-events-none">
-                        <span class="text-xs font-bold uppercase tracking-[0.3em] text-[#4a9e3f] mb-5 block">The Urban
-                            Air Crisis</span>
-                        <h2
-                            class="font-serif font-extrabold leading-tight text-4xl md:text-6xl text-white drop-shadow-2xl">
-                            <span id="crisis-line1" class="block text-white">Cities Are Growing.</span>
-                            <span id="crisis-line2" class="block mt-2 text-white">So Is Air Pollution.</span>
-                        </h2>
+                    <!-- Full-width shell: text stays fixed; overflow clip shows it only on polluted side -->
+                    <div id="crisis-copy-shell"
+                        class="absolute inset-y-0 left-0 max-w-none pointer-events-none z-10"
+                        style="width:100vw;">
+                        <div
+                            class="absolute right-8 md:right-16 bottom-20 md:bottom-24 w-[min(42rem,calc(100%-4rem))] md:w-[min(42rem,calc(100%-8rem))] text-right">
+                            <span class="text-xs font-bold uppercase tracking-[0.3em] text-[#4a9e3f] mb-5 block">The Urban
+                                Air Crisis</span>
+                            <h2
+                                class="font-serif font-extrabold leading-tight text-4xl md:text-6xl text-white drop-shadow-2xl">
+                                <span id="crisis-line1" class="block text-white">Cities Are Growing.</span>
+                                <span id="crisis-line2" class="block mt-2 text-white">So Is Air Pollution.</span>
+                            </h2>
+                        </div>
                     </div>
                 </div>
 
                 <div id="slider-divider"
-                    class="absolute top-0 bottom-0 w-1 bg-white shadow-[0_0_18px_rgba(255,255,255,0.85)]"
+                    class="absolute top-0 bottom-0 w-1 bg-white shadow-[0_0_18px_rgba(255,255,255,0.85)] z-20"
                     style="left:100%;">
                     <div
                         class="absolute top-1/2 left-1/2 h-14 w-14 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/70 bg-black/45 backdrop-blur-md flex items-center justify-center text-white text-xl font-bold shadow-2xl">
@@ -894,7 +899,7 @@
         </section>
 
         <!-- ═══ SECTION 4: TECHNOLOGY — How It Works (REDESIGNED) ═══ -->
-        <section class="snap-section-scroll relative" id="technology" style="background: #f0f4f1; overflow: hidden;"
+        <section class="snap-section-scroll relative" id="technology" style="background: #f0f4f1;"
             data-navbar-theme="dark">
 
             <!-- Floating Faded Leaves -->

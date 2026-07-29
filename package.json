@@ -1,0 +1,13 @@
+{
+  "name": "web",
+  "private": true,
+  "scripts": {
+    "build": "npm install --prefix Frontend && npm run build --prefix Frontend",
+    "postinstall": "npm run build",
+    "deploy": "npm run build && wrangler deploy",
+    "preview": "wrangler dev"
+  },
+  "devDependencies": {
+    "wrangler": "^4.115.0"
+  }
+}

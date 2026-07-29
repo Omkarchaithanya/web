@@ -1,0 +1,13 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "web",
+  "compatibility_date": "2026-07-29",
+  // Local `wrangler deploy` builds first. Workers Builds ignores this —
+  // set Build command to `npm run build` in the dashboard (or rely on postinstall).
+  "build": {
+    "command": "npm run build"
+  },
+  "assets": {
+    "directory": "./Frontend/dist"
+  }
+}

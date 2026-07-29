@@ -27,7 +27,6 @@ export default defineConfig(({ mode }) => {
           blog: resolve(__dirname, 'src/pages/blog.html'),
           'blog-bio': resolve(__dirname, 'src/pages/blog-bio-mimicry.html'),
           'blog-smart': resolve(__dirname, 'src/pages/blog-smart-cities.html'),
-          'case-study': resolve(__dirname, 'src/pages/case-study.html'),
           faq: resolve(__dirname, 'src/pages/faq.html'),
           login: resolve(__dirname, 'src/pages/login.html'),
           monitoring: resolve(__dirname, 'src/pages/monitoring.html'),

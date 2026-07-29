@@ -13,11 +13,12 @@ function escapeHTML(str) {
 const initIndex = () => {
 
     // --- 1. SCROLL REVEAL ---
-    const snapRoot = document.getElementById('snap-container');
+    // Homepage uses normal document scroll (no snap container scrolling)
+    const snapRoot = null;
     const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px',
-        root: snapRoot || null,
+        root: null,
     };
     const observer = new IntersectionObserver((entries, obs) => {
         entries.forEach((entry) => {
@@ -153,6 +154,7 @@ const initIndex = () => {
     const crisisSlider = document.getElementById('crisis-slider');
     const pollutedLayer = document.getElementById('polluted-layer');
     const pollutedImg = document.getElementById('polluted-img');
+    const crisisCopyShell = document.getElementById('crisis-copy-shell');
     const sliderDivider = document.getElementById('slider-divider');
     const crisisSection = document.getElementById('air-crisis');
 
@@ -166,7 +168,9 @@ const initIndex = () => {
         }
 
         function syncPollutedImgWidth() {
-            if (pollutedImg) pollutedImg.style.width = `${crisisSlider.clientWidth}px`;
+            const width = `${crisisSlider.clientWidth}px`;
+            if (pollutedImg) pollutedImg.style.width = width;
+            if (crisisCopyShell) crisisCopyShell.style.width = width;
         }
 
         function setCrisisSplit(percent) {
@@ -358,14 +362,7 @@ const initIndex = () => {
             const nextSection = document.getElementById('what-is-urbantree');
             if (!nextSection) return;
             introAutoScrolled = true;
-
-            const snap = document.getElementById('snap-container');
-            if (snap) {
-                const top = nextSection.offsetTop;
-                snap.scrollTo({ top, behavior: 'smooth' });
-            } else {
-                nextSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
+            nextSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
 
         function showStaticBrand(introBrandReveal, overlay) {
@@ -381,8 +378,18 @@ const initIndex = () => {
             }
         }
 
+        let brandScrollTimer = 0;
+        const cancelIntroAutoScroll = () => {
+            if (brandScrollTimer) {
+                clearTimeout(brandScrollTimer);
+                brandScrollTimer = 0;
+            }
+            introAutoScrolled = true;
+        };
+        window.addEventListener('wheel', cancelIntroAutoScroll, { passive: true, once: true });
+        window.addEventListener('touchstart', cancelIntroAutoScroll, { passive: true, once: true });
+
         const isCompactViewport = () => window.matchMedia('(max-width: 1024px)').matches;
-        const productObserverRoot = isCompactViewport() ? null : (snapRoot || null);
 
         const productObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -440,8 +447,7 @@ const initIndex = () => {
                         introBrandReveal.setAttribute('aria-hidden', 'false');
                         void introBrandReveal.offsetWidth;
                         introBrandReveal.classList.add('active');
-                        // Brand settles, hold briefly, then scroll to What is UrbanTree
-                        setTimeout(scrollToWhatIsUrbanTree, brandHoldMs);
+                        brandScrollTimer = window.setTimeout(scrollToWhatIsUrbanTree, brandHoldMs);
                     }
 
                     function showNextWord() {
@@ -490,7 +496,7 @@ const initIndex = () => {
                     }
                 }
             });
-        }, { threshold: isCompactViewport() ? 0.35 : 0.2, root: productObserverRoot });
+        }, { threshold: 0.35, root: null });
         productObserver.observe(productSection);
     }
 

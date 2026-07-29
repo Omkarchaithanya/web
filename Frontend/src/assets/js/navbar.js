@@ -8,7 +8,9 @@ const initNavbar = () => {
     const mobileLinks = document.querySelectorAll('.mobile-link');
     const sections = Array.from(document.querySelectorAll('[data-navbar-theme]'));
     const snapRoot = document.getElementById('snap-container');
-    const scrollTarget = snapRoot || window;
+    // Homepage now uses document scroll; only use #snap-container if it actually scrolls
+    const scrollTarget =
+        snapRoot && getComputedStyle(snapRoot).overflowY === 'auto' ? snapRoot : window;
 
     const NAV_OFFSET = 80;
     let currentTheme = null;
@@ -22,7 +24,9 @@ const initNavbar = () => {
         path.endsWith('/Frontend/');
 
     function getScrollY() {
-        if (snapRoot) return snapRoot.scrollTop;
+        if (scrollTarget !== window && scrollTarget instanceof HTMLElement) {
+            return scrollTarget.scrollTop;
+        }
         return window.scrollY || window.pageYOffset || 0;
     }
 
@@ -91,7 +95,7 @@ const initNavbar = () => {
     const sectionObserver = new IntersectionObserver(
         () => scheduleNavbarUpdate(),
         {
-            root: snapRoot || null,
+            root: null,
             rootMargin: `-${NAV_OFFSET}px 0px -55% 0px`,
             threshold: [0, 0.05, 0.15, 0.35],
         },
