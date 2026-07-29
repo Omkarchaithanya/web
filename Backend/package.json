@@ -20,6 +20,9 @@
   "engines": {
     "node": ">=20.0.0"
   },
+  "prisma": {
+    "seed": "tsx prisma/seed.ts"
+  },
   "keywords": [
     "urbantree",
     "iot",
@@ -43,6 +46,7 @@
     "jsonwebtoken": "^9.0.2",
     "modbus-serial": "^8.0.25",
     "morgan": "^1.10.0",
+    "nodemailer": "^6.10.1",
     "rate-limit-redis": "^4.2.0",
     "swagger-ui-express": "^5.0.1",
     "uuid": "^11.1.0",
@@ -56,20 +60,18 @@
     "@types/cookie-parser": "^1.4.8",
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.0",
-    "@types/jest": "^30.0.0",
     "@types/jsonwebtoken": "^9.0.9",
     "@types/morgan": "^1.9.9",
     "@types/node": "^22.13.10",
+    "@types/nodemailer": "^6.4.17",
     "@types/supertest": "^7.2.0",
     "@types/swagger-jsdoc": "^6.0.4",
     "@types/swagger-ui-express": "^4.1.8",
     "@types/uuid": "^10.0.0",
     "@types/ws": "^8.18.0",
-    "jest": "^30.4.2",
     "prisma": "^6.5.0",
     "supertest": "^7.2.2",
     "swagger-jsdoc": "^6.3.0",
-    "ts-jest": "^29.4.11",
     "tsx": "^4.19.3",
     "typescript": "^5.8.2",
     "vitest": "^3.0.9"

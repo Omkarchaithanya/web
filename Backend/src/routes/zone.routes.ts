@@ -9,6 +9,33 @@ const router = Router();
 
 router.use(authenticate);
 
+/**
+ * @openapi
+ * /zones:
+ *   get:
+ *     summary: List zones (paginated)
+ *     tags: [Zones]
+ *     responses:
+ *       200:
+ *         description: Paginated zone list
+ * /zones/{id}:
+ *   get:
+ *     summary: Get zone by id
+ *     tags: [Zones]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *           format: uuid
+ *   patch:
+ *     summary: Update zone
+ *     tags: [Zones]
+ *   delete:
+ *     summary: Delete zone
+ *     tags: [Zones]
+ */
 router.get('/', asyncHandler(ZoneController.getAll));
 router.get('/:id', validate(getZoneSchema), asyncHandler(ZoneController.getById));
 router.post('/', authorizeAtLeast('GOVT_ADMIN'), validate(createZoneSchema), asyncHandler(ZoneController.create));

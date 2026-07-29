@@ -13,24 +13,40 @@ function escapeHTML(str) {
 const initIndex = () => {
 
     // --- 1. SCROLL REVEAL ---
-    const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) entry.target.classList.add('visible');
-        });
-    }, observerOptions);
-    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-    const sectionObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
+    const snapRoot = document.getElementById('snap-container');
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px',
+        root: snapRoot || null,
+    };
+    const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach((entry) => {
             if (entry.isIntersecting) {
-                entry.target.querySelectorAll('.fade-up').forEach(el => {
-                    setTimeout(() => el.classList.add('visible'), 100);
-                });
+                entry.target.classList.add('visible');
+                obs.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.2 });
-    document.querySelectorAll('.snap-section, .snap-section-scroll').forEach(s => sectionObserver.observe(s));
+    }, observerOptions);
+    document.querySelectorAll('.fade-up').forEach((el) => observer.observe(el));
+
+    const sectionObserver = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('section-in-view');
+                    entry.target.querySelectorAll('.fade-up').forEach((el) => {
+                        el.classList.add('visible');
+                    });
+                } else {
+                    entry.target.classList.remove('section-in-view');
+                }
+            });
+        },
+        { threshold: 0.15, root: snapRoot || null },
+    );
+    document.querySelectorAll('.snap-section, .snap-section-scroll').forEach((s) => {
+        sectionObserver.observe(s);
+    });
 
     // --- 2. HERO VIDEO ---
     const heroVideo = document.getElementById('hero-video');
@@ -231,7 +247,7 @@ const initIndex = () => {
                     crisisDragging = false;
                 }
             });
-        }, { threshold: 0.55 });
+        }, { threshold: 0.55, root: snapRoot || null });
         crisisSnapObserver.observe(crisisSection);
     }
 
@@ -361,8 +377,12 @@ const initIndex = () => {
                 introBrandReveal.style.display = 'flex';
                 introBrandReveal.style.opacity = '1';
                 introBrandReveal.classList.add('active');
+                introBrandReveal.setAttribute('aria-hidden', 'false');
             }
         }
+
+        const isCompactViewport = () => window.matchMedia('(max-width: 1024px)').matches;
+        const productObserverRoot = isCompactViewport() ? null : (snapRoot || null);
 
         const productObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -406,6 +426,8 @@ const initIndex = () => {
                     }
 
                     let i = 0;
+                    const wordHoldMs = isCompactViewport() ? 900 : 1100;
+                    const brandHoldMs = isCompactViewport() ? 1600 : 1800;
 
                     function playIntroBrandReveal() {
                         if (!introBrandReveal) {
@@ -415,34 +437,35 @@ const initIndex = () => {
                         introBrandReveal.classList.remove('active');
                         introBrandReveal.style.display = 'flex';
                         introBrandReveal.style.opacity = '1';
+                        introBrandReveal.setAttribute('aria-hidden', 'false');
                         void introBrandReveal.offsetWidth;
                         introBrandReveal.classList.add('active');
-                        // Brand settles (~1.45s), hold briefly, then scroll to What is UrbanTree
-                        setTimeout(scrollToWhatIsUrbanTree, 2800);
+                        // Brand settles, hold briefly, then scroll to What is UrbanTree
+                        setTimeout(scrollToWhatIsUrbanTree, brandHoldMs);
                     }
 
                     function showNextWord() {
                         if (!wordEl || !overlay) return;
                         if (i >= words.length) {
-                            overlay.style.transition = 'opacity 0.7s ease';
+                            overlay.style.transition = 'opacity 0.4s ease';
                             overlay.style.opacity = '0';
                             setTimeout(() => {
                                 overlay.style.display = 'none';
                                 playIntroBrandReveal();
-                            }, 700);
+                            }, 400);
                             return;
                         }
                         wordEl.style.transition = 'none';
                         wordEl.style.opacity = '0';
-                        wordEl.style.transform = 'scale(0.86) translateY(24px)';
+                        wordEl.style.transform = 'scale(0.9) translateY(16px)';
                         wordEl.textContent = words[i];
                         setTimeout(() => {
-                            wordEl.style.transition = 'opacity 0.5s ease, transform 0.65s cubic-bezier(0.2,0.8,0.2,1)';
+                            wordEl.style.transition = 'opacity 0.3s ease, transform 0.4s cubic-bezier(0.2,0.8,0.2,1)';
                             wordEl.style.opacity = '1';
                             wordEl.style.transform = 'scale(1) translateY(0)';
-                        }, 60);
+                        }, 40);
                         i += 1;
-                        setTimeout(showNextWord, 1400);
+                        setTimeout(showNextWord, wordHoldMs);
                     }
                     showNextWord();
 
@@ -467,7 +490,7 @@ const initIndex = () => {
                     }
                 }
             });
-        }, { threshold: 0.5 });
+        }, { threshold: isCompactViewport() ? 0.35 : 0.2, root: productObserverRoot });
         productObserver.observe(productSection);
     }
 
@@ -601,7 +624,11 @@ document.addEventListener('click', function (e) {
             particles.push(p);
         }
 
+        let particleRafId = 0;
+        let particlesRunning = false;
+
         function animateParticles() {
+            if (!particlesRunning) return;
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             particles.forEach((p, i) => {
                 p.y -= p.speed;
@@ -614,17 +641,35 @@ document.addEventListener('click', function (e) {
                 if (p.y < -10) particles[i] = spawnParticle();
             });
             ctx.globalAlpha = 1;
-            requestAnimationFrame(animateParticles);
+            particleRafId = requestAnimationFrame(animateParticles);
+        }
+
+        function startParticles() {
+            if (particlesRunning) return;
+            particlesRunning = true;
+            particleRafId = requestAnimationFrame(animateParticles);
+        }
+
+        function stopParticles() {
+            particlesRunning = false;
+            if (particleRafId) {
+                cancelAnimationFrame(particleRafId);
+                particleRafId = 0;
+            }
         }
 
         // Only run when section is visible
         const techSection = document.getElementById('technology');
         if (techSection) {
-            const canvasObserver = new IntersectionObserver(entries => {
-                entries.forEach(e => {
-                    if (e.isIntersecting) animateParticles();
-                });
-            }, { threshold: 0.1 });
+            const canvasObserver = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((e) => {
+                        if (e.isIntersecting) startParticles();
+                        else stopParticles();
+                    });
+                },
+                { threshold: 0.1, root: snapRoot || null },
+            );
             canvasObserver.observe(techSection);
         }
     }

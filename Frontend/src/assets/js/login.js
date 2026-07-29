@@ -1,30 +1,28 @@
 import { apiFetch, setAccessToken } from './api.js';
+import { config } from './config.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Role switching
+    // Role switching — credentials come from env only (never hardcoded)
     const roleTabs = document.querySelectorAll('.role-tab');
     roleTabs.forEach(tab => {
         tab.addEventListener('click', () => {
             roleTabs.forEach(t => t.classList.remove('active'));
             tab.classList.add('active');
-            
+
             const role = tab.dataset.role;
             const emailInput = document.getElementById('email');
             const passInput = document.getElementById('password');
-            if (role === 'super') {
-                emailInput.value = 'admin@urbantree.com';
-                passInput.value = 'admin123';
-            } else if (role === 'govt') {
-                emailInput.value = 'govt@urbantree.com';
-                passInput.value = 'govt123';
-            } else if (role === 'tech') {
-                emailInput.value = 'tech@urbantree.com';
-                passInput.value = 'tech123';
-            }
+            const account =
+                role === 'super' ? config.demoAccounts.super :
+                role === 'govt' ? config.demoAccounts.govt :
+                role === 'tech' ? config.demoAccounts.tech :
+                null;
+
+            if (account?.email) emailInput.value = account.email;
+            if (account?.password) passInput.value = account.password;
         });
     });
 
-    // Password toggle
     const toggleIcon = document.getElementById('toggle-password-icon');
     if (toggleIcon) {
         toggleIcon.addEventListener('click', () => {
@@ -40,7 +38,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Login handler
     const loginBtn = document.getElementById('login-btn');
     if (loginBtn) {
         loginBtn.addEventListener('click', handleLogin);
@@ -71,16 +68,19 @@ document.addEventListener('DOMContentLoaded', () => {
         text.textContent = 'Authenticating...';
 
         try {
-            const data = await apiFetch('/auth/login', {
+            const data = await apiFetch(config.routes.authLogin, {
                 method: 'POST',
                 body: { email, password }
             });
 
             if (data && data.accessToken) {
                 setAccessToken(data.accessToken);
+                if (data.user) {
+                    sessionStorage.setItem('urbantree_user', JSON.stringify(data.user));
+                }
                 text.textContent = '✓ Redirecting...';
                 setTimeout(() => {
-                    window.location.href = 'monitoring.html';
+                    window.location.href = config.routes.monitoringPage;
                 }, 600);
             } else {
                 throw new Error('Invalid response from server');
@@ -96,24 +96,24 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Ticker initialization
+    // Decorative ticker (UI chrome only — not production telemetry)
     const zones = [
-        { name: 'Jayanagar', aqi: 61,  cls: 'mod'  },
+        { name: 'Jayanagar', aqi: 61, cls: 'mod' },
         { name: 'Marathahalli', aqi: 136, cls: 'usg' },
         { name: 'Yeshwanthpur', aqi: 163, cls: 'bad' },
-        { name: 'HSR Layout', aqi: 101, cls: 'usg'  },
-        { name: 'Yelahanka', aqi: 48,   cls: 'good' },
+        { name: 'HSR Layout', aqi: 101, cls: 'usg' },
+        { name: 'Yelahanka', aqi: 48, cls: 'good' },
         { name: 'Indiranagar', aqi: 42, cls: 'good' },
-        { name: 'MG Road', aqi: 87,    cls: 'mod'   },
-        { name: 'Silk Board', aqi: 142, cls: 'usg'  },
-        { name: 'BTM Layout', aqi: 179, cls: 'bad'  },
-        { name: 'Whitefield', aqi: 59,  cls: 'mod'  },
-        { name: 'Koramangala', aqi: 95, cls: 'mod'  },
-        { name: 'Peenya Indl.', aqi: 252, cls: 'haz'},
-        { name: 'Sarjapur', aqi: 45,   cls: 'good'  }
+        { name: 'MG Road', aqi: 87, cls: 'mod' },
+        { name: 'Silk Board', aqi: 142, cls: 'usg' },
+        { name: 'BTM Layout', aqi: 179, cls: 'bad' },
+        { name: 'Whitefield', aqi: 59, cls: 'mod' },
+        { name: 'Koramangala', aqi: 95, cls: 'mod' },
+        { name: 'Peenya Indl.', aqi: 252, cls: 'haz' },
+        { name: 'Sarjapur', aqi: 45, cls: 'good' }
     ];
 
-    const labels = { good:'● GOOD', mod:'● MODERATE', usg:'● USG', bad:'● UNHEALTHY', haz:'● HAZARDOUS' };
+    const labels = { good: '● GOOD', mod: '● MODERATE', usg: '● USG', bad: '● UNHEALTHY', haz: '● HAZARDOUS' };
     const track = document.getElementById('ticker-track');
     if (track) {
         [...zones, ...zones].forEach(z => {
@@ -124,7 +124,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Background scrolling columns
     const bgNumbers = document.getElementById('bg-numbers');
     if (bgNumbers) {
         for (let i = 0; i < 12; i++) {
@@ -140,14 +139,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Floating chips
     const container = document.getElementById('chips-container');
     if (container) {
         const chipTexts = [
-            'PM2.5: 38µg/m³','AQI: 94','CO₂: 720ppm','VOC: 1.2mg/m³',
-            'TEMP: 28°C','HUMIDITY: 54%','PM10: 88µg/m³','AQI: 42 GOOD',
-            'HEPA: 91%','SOLAR: 87%','UPTIME: 99.2%','AWD-006 ONLINE',
-            'COVERAGE: 250m','FAN: 80%','PM1: 22µg/m³','AQI: 252 HAZ',
+            'PM2.5: 38µg/m³', 'AQI: 94', 'CO₂: 720ppm', 'VOC: 1.2mg/m³',
+            'TEMP: 28°C', 'HUMIDITY: 54%', 'PM10: 88µg/m³', 'AQI: 42 GOOD',
+            'HEPA: 91%', 'SOLAR: 87%', 'UPTIME: 99.2%', 'AWD-006 ONLINE',
+            'COVERAGE: 250m', 'FAN: 80%', 'PM1: 22µg/m³', 'AQI: 252 HAZ',
         ];
         function spawnChip() {
             const chip = document.createElement('div');

@@ -4,27 +4,29 @@ import { env } from '../config/env';
 import { JwtPayload } from '../types';
 import { AppError } from '../utils/http';
 
+const jwtOptions = {
+  issuer: env.JWT_ISSUER,
+  audience: env.JWT_AUDIENCE,
+} as const;
+
 export function signAccessToken(payload: Omit<JwtPayload, 'type'>): string {
   return jwt.sign({ ...payload, type: 'access' }, env.JWT_ACCESS_SECRET, {
     expiresIn: env.JWT_ACCESS_EXPIRES_IN as jwt.SignOptions['expiresIn'],
-    issuer: 'urbantree-api',
-    audience: 'urbantree-client',
+    ...jwtOptions,
   });
 }
 
 export function signRefreshToken(payload: Omit<JwtPayload, 'type'>): string {
   return jwt.sign({ ...payload, type: 'refresh' }, env.JWT_REFRESH_SECRET, {
     expiresIn: env.JWT_REFRESH_EXPIRES_IN as jwt.SignOptions['expiresIn'],
-    issuer: 'urbantree-api',
-    audience: 'urbantree-client',
+    ...jwtOptions,
   });
 }
 
 export function verifyAccessToken(token: string): JwtPayload {
   try {
     const decoded = jwt.verify(token, env.JWT_ACCESS_SECRET, {
-      issuer: 'urbantree-api',
-      audience: 'urbantree-client',
+      ...jwtOptions,
     }) as JwtPayload;
 
     if (decoded.type !== 'access') {
@@ -39,8 +41,7 @@ export function verifyAccessToken(token: string): JwtPayload {
 export function verifyRefreshToken(token: string): JwtPayload {
   try {
     const decoded = jwt.verify(token, env.JWT_REFRESH_SECRET, {
-      issuer: 'urbantree-api',
-      audience: 'urbantree-client',
+      ...jwtOptions,
     }) as JwtPayload;
 
     if (decoded.type !== 'refresh') {

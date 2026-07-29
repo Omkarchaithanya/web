@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -15,6 +15,15 @@
         html { scroll-behavior: smooth; }
         body { font-family: 'Inter', sans-serif; background: #e8e8e8;  }
         #navbar { transition: background 0.3s ease, backdrop-filter 0.3s ease; }
+        .nav-enquiry-btn {
+            color: #ffffff;
+            border-color: rgba(16, 185, 129, 0.55);
+            background-color: transparent;
+        }
+        .nav-enquiry-btn:hover {
+            background-color: rgba(16, 185, 129, 0.12);
+            color: #ffffff;
+        }
         
         .legal-section { margin-bottom: 3rem; background: #fff; padding: 3.5rem; border-radius: 1rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); }
         .legal-section h2 { font-family: 'Sora', sans-serif; font-size: 2rem; font-weight: 800; margin-bottom: 1.5rem;  }
@@ -46,7 +55,14 @@
         </div>
 
         <div class="z-20 flex justify-end w-1/4">
-            <a href="../index.html#enquiry" class="orange-cta bg-[#f97316] text-white px-6 py-2.5 rounded-full font-bold shadow-md hover:bg-[#ea580c] transition-all duration-300" style="font-family:'Inter',sans-serif;">Enquiry</a>
+            <a href="/index.html#enquiry"
+                class="nav-enquiry-btn inline-flex items-center justify-center gap-2 px-6 py-2 rounded-full border text-[13px] font-medium tracking-wide transition-all duration-300">
+                Enquiry
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+                </svg>
+            </a>
         </div>
     </nav>
     <!-- Mobile Menu Overlay -->

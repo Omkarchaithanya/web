@@ -4,23 +4,56 @@ import { getRedis } from '../config/redis';
 
 const router = Router();
 
+/**
+ * @openapi
+ * /:
+ *   get:
+ *     summary: Health check
+ *     tags: [Health]
+ *     security: []
+ *     responses:
+ *       200:
+ *         description: healthy or degraded
+ *       503:
+ *         description: unhealthy
+ */
 router.get('/', async (_req, res) => {
+  const checks: Record<string, 'up' | 'down'> = { database: 'down', redis: 'down' };
+
   try {
-    // Check DB
     await prisma.$queryRaw`SELECT 1`;
-    
-    // Check Redis
+    checks.database = 'up';
+  } catch {
+    checks.database = 'down';
+  }
+
+  try {
     const redis = getRedis();
     if (redis) {
       await redis.ping();
+      checks.redis = 'up';
     } else {
-      throw new Error('Redis not connected');
+      checks.redis = 'down';
     }
-
-    res.status(200).json({ status: 'ok', timestamp: new Date().toISOString() });
-  } catch (error) {
-    res.status(503).json({ status: 'error', message: 'Service Unavailable' });
+  } catch {
+    checks.redis = 'down';
   }
+
+  if (checks.database === 'down') {
+    res.status(503).json({
+      status: 'unhealthy',
+      checks,
+      timestamp: new Date().toISOString(),
+    });
+    return;
+  }
+
+  const status = checks.redis === 'up' ? 'healthy' : 'degraded';
+  res.status(200).json({
+    status,
+    checks,
+    timestamp: new Date().toISOString(),
+  });
 });
 
 export default router;

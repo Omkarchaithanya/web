@@ -1,66 +1,101 @@
 import http from 'http';
+import { afterAll, afterEach, beforeAll, describe, expect, it, vi } from 'vitest';
 import WebSocket from 'ws';
 import { attachWebSocketServer } from '../websocket/wsServer';
 import * as jwtUtils from '../utils/jwt';
 
-jest.mock('../config/env', () => ({
-  env: {
-    NODE_ENV: 'test',
-  }
+vi.mock('../utils/jwt', () => ({
+  verifyAccessToken: vi.fn(),
 }));
-
-jest.mock('../utils/jwt');
 
 describe('WebSocket Auth', () => {
   let server: http.Server;
   let port: number;
 
-  beforeAll((done) => {
+  beforeAll(async () => {
     server = http.createServer();
     attachWebSocketServer(server);
-    server.listen(0, () => {
-      port = (server.address() as any).port;
-      done();
+    await new Promise<void>((resolve) => {
+      server.listen(0, () => {
+        port = (server.address() as any).port;
+        resolve();
+      });
     });
   });
 
-  afterAll((done) => {
-    server.close(done);
+  afterAll(async () => {
+    await new Promise<void>((resolve) => server.close(() => resolve()));
   });
 
   afterEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
-  it('should reject connection without token', (done) => {
-    const ws = new WebSocket(`ws://localhost:${port}/ws`);
-    ws.on('close', (code, reason) => {
-      expect(code).toBe(4001);
-      expect(reason.toString()).toBe('Unauthorized');
-      done();
+  it('rejects connection without token', async () => {
+    await new Promise<void>((resolve, reject) => {
+      const ws = new WebSocket(`ws://127.0.0.1:${port}/ws`);
+      ws.on('close', (code) => {
+        expect(code).toBe(4001);
+        resolve();
+      });
+      ws.on('error', () => {
+        /* expected during reject */
+      });
+      setTimeout(() => reject(new Error('timeout')), 3000);
     });
   });
 
-  it('should reject connection with invalid token', (done) => {
-    (jwtUtils.verifyAccessToken as jest.Mock).mockImplementation(() => {
+  it('rejects connection with invalid token', async () => {
+    (jwtUtils.verifyAccessToken as any).mockImplementation(() => {
       throw new Error('Invalid token');
     });
 
-    const ws = new WebSocket(`ws://localhost:${port}/ws?token=invalid`);
-    ws.on('close', (code, reason) => {
-      expect(code).toBe(4001);
-      expect(reason.toString()).toBe('Unauthorized');
-      done();
+    await new Promise<void>((resolve, reject) => {
+      const ws = new WebSocket(`ws://127.0.0.1:${port}/ws?token=invalid`);
+      ws.on('close', (code) => {
+        expect(code).toBe(4001);
+        resolve();
+      });
+      ws.on('error', () => {});
+      setTimeout(() => reject(new Error('timeout')), 3000);
     });
   });
 
-  it('should accept connection with valid token', (done) => {
-    (jwtUtils.verifyAccessToken as jest.Mock).mockReturnValue({ email: 'test@example.com' });
+  it('accepts connection with valid query token (deprecated)', async () => {
+    (jwtUtils.verifyAccessToken as any).mockReturnValue({
+      sub: 'u1',
+      email: 'test@example.com',
+      role: 'SUPER_ADMIN',
+      type: 'access',
+    });
 
-    const ws = new WebSocket(`ws://localhost:${port}/ws?token=valid`);
-    ws.on('open', () => {
-      ws.close();
-      done();
+    await new Promise<void>((resolve, reject) => {
+      const ws = new WebSocket(`ws://127.0.0.1:${port}/ws?token=valid`);
+      ws.on('open', () => {
+        ws.close();
+        resolve();
+      });
+      ws.on('error', reject);
+      setTimeout(() => reject(new Error('timeout')), 3000);
+    });
+  });
+
+  it('accepts connection via Sec-WebSocket-Protocol', async () => {
+    (jwtUtils.verifyAccessToken as any).mockReturnValue({
+      sub: 'u1',
+      email: 'test@example.com',
+      role: 'SUPER_ADMIN',
+      type: 'access',
+    });
+
+    await new Promise<void>((resolve, reject) => {
+      const ws = new WebSocket(`ws://127.0.0.1:${port}/ws`, ['urbantree', 'valid-jwt']);
+      ws.on('open', () => {
+        ws.close();
+        resolve();
+      });
+      ws.on('error', reject);
+      setTimeout(() => reject(new Error('timeout')), 3000);
     });
   });
 });

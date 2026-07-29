@@ -399,13 +399,16 @@
                 directly to your inbox.
             </p>
             <div class="fade-up flex justify-center max-w-md mx-auto relative">
-                <input type="email" placeholder="Enter your email address"
-                    class="w-full px-6 py-4 rounded-full bg-white/10 border border-white/20 text-white focus:outline-none focus:border-emerald-500"
-                    style="padding-right: 140px;">
-                <button
-                    class="absolute right-1 top-1 bottom-1 hover-glow-emerald px-6 bg-emerald-500 text-white rounded-full font-semibold shadow-lg shadow-emerald-500/30 transition-all duration-300 text-sm">
-                    Subscribe
-                </button>
+                <form class="js-newsletter-form w-full relative" data-newsletter-source="blog" novalidate>
+                    <input type="email" name="email" required placeholder="Enter your email address"
+                        class="w-full px-6 py-4 rounded-full bg-white/10 border border-white/20 text-white focus:outline-none focus:border-emerald-500"
+                        style="padding-right: 140px;" autocomplete="email">
+                    <button type="submit"
+                        class="absolute right-1 top-1 bottom-1 hover-glow-emerald px-6 bg-emerald-500 text-white rounded-full font-semibold shadow-lg shadow-emerald-500/30 transition-all duration-300 text-sm">
+                        Subscribe
+                    </button>
+                    <p class="js-newsletter-status absolute left-0 right-0 -bottom-8 text-center text-sm" aria-live="polite"></p>
+                </form>
             </div>
         </div>
     </section>

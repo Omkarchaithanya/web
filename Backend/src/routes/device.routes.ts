@@ -7,6 +7,20 @@ import { authenticate, authorizeAtLeast } from '../middleware/auth';
 
 const router = Router();
 
+/**
+ * @openapi
+ * /devices:
+ *   get:
+ *     summary: List devices (paginated)
+ *     tags: [Devices]
+ *     parameters:
+ *       - in: query
+ *         name: page
+ *         schema: { type: integer }
+ *       - in: query
+ *         name: limit
+ *         schema: { type: integer }
+ */
 router.use(authenticate);
 
 router.get('/', asyncHandler(DeviceController.getAll));

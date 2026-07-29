@@ -7,9 +7,12 @@ const initNavbar = () => {
     const mobileMenuIcon = document.getElementById('mobile-menu-icon');
     const mobileLinks = document.querySelectorAll('.mobile-link');
     const sections = Array.from(document.querySelectorAll('[data-navbar-theme]'));
+    const snapRoot = document.getElementById('snap-container');
+    const scrollTarget = snapRoot || window;
 
     const NAV_OFFSET = 80;
     let currentTheme = null;
+    let scrollIdleTimer = null;
 
     const path = window.location.pathname.replace(/\\/g, '/');
     const isHomepage =
@@ -17,6 +20,11 @@ const initNavbar = () => {
         path.endsWith('/') ||
         path.endsWith('/Frontend') ||
         path.endsWith('/Frontend/');
+
+    function getScrollY() {
+        if (snapRoot) return snapRoot.scrollTop;
+        return window.scrollY || window.pageYOffset || 0;
+    }
 
     function updateNavbarTheme(theme) {
         if (!theme || currentTheme === theme) return;
@@ -53,7 +61,7 @@ const initNavbar = () => {
         }
 
         if (isHomepage) {
-            const atHeroTop = window.scrollY < 24;
+            const atHeroTop = getScrollY() < 24;
             navbar.classList.toggle('navbar-at-top', atHeroTop);
         }
     }
@@ -68,16 +76,25 @@ const initNavbar = () => {
         });
     }
 
-    window.addEventListener('scroll', scheduleNavbarUpdate, { passive: true });
+    function onScrollActivity() {
+        navbar.classList.add('navbar-scrolling');
+        if (scrollIdleTimer) clearTimeout(scrollIdleTimer);
+        scrollIdleTimer = setTimeout(() => {
+            navbar.classList.remove('navbar-scrolling');
+        }, 140);
+        scheduleNavbarUpdate();
+    }
+
+    scrollTarget.addEventListener('scroll', onScrollActivity, { passive: true });
     window.addEventListener('resize', scheduleNavbarUpdate, { passive: true });
 
     const sectionObserver = new IntersectionObserver(
         () => scheduleNavbarUpdate(),
         {
-            root: null,
+            root: snapRoot || null,
             rootMargin: `-${NAV_OFFSET}px 0px -55% 0px`,
-            threshold: [0, 0.05, 0.15, 0.35]
-        }
+            threshold: [0, 0.05, 0.15, 0.35],
+        },
     );
     sections.forEach((section) => sectionObserver.observe(section));
 
@@ -88,11 +105,11 @@ const initNavbar = () => {
 
     // Set active class based on current URL
     const navLinks = document.querySelectorAll('.nav-link, .mobile-link');
-    navLinks.forEach(link => {
+    navLinks.forEach((link) => {
         link.classList.remove('active');
         const href = link.getAttribute('href');
         if (!href || href.includes('#')) return;
-        
+
         if (isHomepage && (href.endsWith('index.html') || href === '/')) {
             link.classList.add('active');
         } else if (!isHomepage && path.includes(href)) {

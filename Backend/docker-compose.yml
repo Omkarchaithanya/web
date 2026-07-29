@@ -4,15 +4,15 @@ services:
     container_name: urbantree-postgres
     restart: unless-stopped
     environment:
-      POSTGRES_USER: urbantree
-      POSTGRES_PASSWORD: urbantree_secret
-      POSTGRES_DB: urbantree
+      POSTGRES_USER: ${POSTGRES_USER:-urbantree}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?POSTGRES_PASSWORD is required}
+      POSTGRES_DB: ${POSTGRES_DB:-urbantree}
     ports:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U urbantree -d urbantree"]
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-urbantree} -d ${POSTGRES_DB:-urbantree}"]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -48,12 +48,16 @@ services:
     environment:
       NODE_ENV: production
       PORT: 4000
-      DATABASE_URL: postgresql://urbantree:urbantree_secret@postgres:5432/urbantree?schema=public
-      REDIS_URL: redis://redis:6379
-      JWT_ACCESS_SECRET: ${JWT_ACCESS_SECRET}
-      JWT_REFRESH_SECRET: ${JWT_REFRESH_SECRET}
-      IOT_API_KEY: ${IOT_API_KEY}
-      CORS_ORIGIN: ${CORS_ORIGIN:-http://localhost:8000}
+      DATABASE_URL: ${DATABASE_URL:?DATABASE_URL is required}
+      REDIS_URL: ${REDIS_URL:-redis://redis:6379}
+      JWT_ACCESS_SECRET: ${JWT_ACCESS_SECRET:?JWT_ACCESS_SECRET is required}
+      JWT_REFRESH_SECRET: ${JWT_REFRESH_SECRET:?JWT_REFRESH_SECRET is required}
+      IOT_API_KEY: ${IOT_API_KEY:?IOT_API_KEY is required}
+      CORS_ORIGIN: ${CORS_ORIGIN:-http://localhost:5173,http://127.0.0.1:5173}
+      PLC_MODE: ${PLC_MODE:-simulated}
+      TRUST_PROXY: ${TRUST_PROXY:-true}
+      REGISTER_MAP_CONFIRMED: ${REGISTER_MAP_CONFIRMED:-false}
+      SENSOR_RETENTION_DAYS: ${SENSOR_RETENTION_DAYS:-30}
     volumes:
       - ./logs:/app/logs
 

@@ -1,36 +1,42 @@
+import { describe, expect, it, vi } from 'vitest';
 import request from 'supertest';
-import app from '../app';
 
-
-jest.mock('../config/env', () => ({
-  env: {
-    NODE_ENV: 'test',
-    API_PREFIX: '/api/v1',
-  },
-  corsOrigins: ['*'],
-}));
-
-jest.mock('../config/database', () => ({
+vi.mock('../config/database', () => ({
   prisma: {
-    $queryRaw: jest.fn().mockResolvedValue([{ 1: 1 }]),
+    $queryRaw: vi.fn().mockResolvedValue([{ '?column?': 1 }]),
   },
+  connectDatabase: vi.fn(),
+  disconnectDatabase: vi.fn(),
 }));
 
-jest.mock('express-rate-limit', () => {
-  return () => (req: any, res: any, next: any) => next();
-});
-
-jest.mock('../config/redis', () => ({
-  getRedis: jest.fn().mockReturnValue({
-    ping: jest.fn().mockResolvedValue('PONG'),
-    call: jest.fn().mockResolvedValue(null),
+vi.mock('../config/redis', () => ({
+  getRedis: vi.fn().mockReturnValue({
+    ping: vi.fn().mockResolvedValue('PONG'),
+    call: vi.fn().mockResolvedValue(null),
   }),
+  connectRedis: vi.fn(),
+  disconnectRedis: vi.fn(),
+}));
+
+vi.mock('express-rate-limit', () => ({
+  default: () => (_req: unknown, _res: unknown, next: () => void) => next(),
+}));
+
+vi.mock('rate-limit-redis', () => ({
+  default: class {},
 }));
 
 describe('Health API', () => {
-  it('should return 200 OK', async () => {
-    const res = await request(app).get('/health');
-    expect(res.status).toBe(200);
-    expect(res.body).toHaveProperty('status', 'ok');
-  });
+  it(
+    'returns healthy when DB and Redis are up',
+    async () => {
+      const { default: app } = await import('../app');
+      const res = await request(app).get('/health');
+      expect(res.status).toBe(200);
+      expect(res.body.status).toBe('healthy');
+      expect(res.body.checks.database).toBe('up');
+      expect(res.body.checks.redis).toBe('up');
+    },
+    15_000,
+  );
 });

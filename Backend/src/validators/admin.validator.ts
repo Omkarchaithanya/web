@@ -4,7 +4,7 @@ import { UserRole } from '@prisma/client';
 export const createUserSchema = z.object({
   body: z.object({
     email: z.string().email(),
-    password: z.string().min(6),
+    password: z.string().min(8),
     name: z.string().min(2),
     role: z.nativeEnum(UserRole).default('TECHNICIAN'),
     region: z.string().default('ap-south-1'),

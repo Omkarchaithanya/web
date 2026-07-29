@@ -1,15 +1,17 @@
 import { Request, Response } from 'express';
 import { CommandService } from '../services/command.service';
-import { successResponse } from '../utils/http';
+import { paginatedResponse, successResponse } from '../utils/http';
+import { paginationQuerySchema } from '../validators/pagination.validator';
 
 export class CommandController {
   static async getAll(req: Request, res: Response) {
-    const commands = await CommandService.getAll();
-    successResponse(res, commands);
+    const query = paginationQuerySchema.parse(req.query);
+    const result = await CommandService.getAll(query);
+    paginatedResponse(res, result.data, result.pagination);
   }
 
   static async getById(req: Request, res: Response) {
-    const command = await CommandService.getById((req.params.id as string));
+    const command = await CommandService.getById(req.params.id as string);
     successResponse(res, command);
   }
 

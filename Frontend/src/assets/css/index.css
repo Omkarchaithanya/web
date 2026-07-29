@@ -54,19 +54,26 @@ body {
     transition:
         background-color 280ms ease,
         border-color 280ms ease,
-        box-shadow 280ms ease,
-        backdrop-filter 280ms ease,
-        -webkit-backdrop-filter 280ms ease;
-    -webkit-backdrop-filter: blur(16px) saturate(1.2);
-    backdrop-filter: blur(16px) saturate(1.2);
+        box-shadow 280ms ease;
     border-bottom-width: 1px;
     border-bottom-style: solid;
     isolation: isolate;
 }
 
+/* Light glass only when idle — solid while scrolling to cut backdrop paint */
+#navbar:not(.navbar-scrolling) {
+    -webkit-backdrop-filter: blur(8px) saturate(1.1);
+    backdrop-filter: blur(8px) saturate(1.1);
+}
+
+#navbar.navbar-scrolling {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+}
+
 /* Homepage hero: slightly softer, still readable */
 #navbar.navbar-at-top.theme-dark {
-    background-color: rgba(10, 10, 10, 0.82);
+    background-color: rgba(10, 10, 10, 0.88);
     border-bottom-color: rgba(255, 255, 255, 0.08);
 }
 
@@ -74,7 +81,7 @@ body {
 #navbar.theme-dark {
     --nav-primary: #FFFFFF;
     --nav-secondary: rgba(255, 255, 255, 0.82);
-    background-color: rgba(10, 10, 10, 0.94);
+    background-color: rgba(10, 10, 10, 0.96);
     border-bottom-color: rgba(255, 255, 255, 0.1);
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.28);
 }
@@ -83,7 +90,7 @@ body {
 #navbar.theme-light {
     --nav-primary: #111827;
     --nav-secondary: #4B5563;
-    background-color: rgba(255, 255, 255, 0.96);
+    background-color: rgba(255, 255, 255, 0.98);
     border-bottom-color: rgba(17, 24, 39, 0.08);
     box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08);
 }
@@ -179,6 +186,23 @@ body {
     .nav-link {
         transition-duration: 0.01ms !important;
     }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Pause infinite motion when section is off-screen */
+.snap-section:not(.section-in-view) [class*="animate-"],
+.snap-section-scroll:not(.section-in-view) [class*="animate-"],
+.snap-section:not(.section-in-view) [style*="animation"],
+.snap-section-scroll:not(.section-in-view) [style*="animation"] {
+    animation-play-state: paused !important;
 }
 
 .hover-glow-emerald:hover {
@@ -252,15 +276,19 @@ body {
     display: none;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.15em;
+    padding: 0 1rem;
     background: #0a0a0a;
     pointer-events: none;
     opacity: 0;
     font-family: 'Montserrat', sans-serif;
-    font-size: clamp(3.7rem, 10vw, 9rem);
+    font-size: clamp(3.25rem, 16vw, 11rem);
     line-height: 1;
     letter-spacing: 0;
     filter: drop-shadow(0 0 42px rgba(74, 158, 63, 0.28));
     transition: opacity 0.25s ease;
+    text-align: center;
 }
 
 .intro-brand-reveal.active {
@@ -271,25 +299,49 @@ body {
 .intro-brand-reveal span {
     display: inline-block;
     opacity: 0;
-    transition: transform 1.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.7s ease;
+    font-size: inherit;
+    line-height: inherit;
+    transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.45s ease;
 }
 
 .intro-brand-urban {
     color: #ffffff;
     font-weight: 800;
-    transform: translateX(-42vw);
+    transform: translateX(-28vw);
+    margin-right: 0.2em;
 }
 
 .intro-brand-tree {
     color: #4a9e3f;
     font-weight: 700;
-    transform: translateX(42vw);
+    transform: translateX(28vw);
 }
 
 .intro-brand-reveal.active .intro-brand-urban,
 .intro-brand-reveal.active .intro-brand-tree {
     opacity: 1;
     transform: translateX(0);
+}
+
+@media (max-width: 1024px) {
+    /* Absolute content would collapse this section when snap min-height is auto */
+    #product-intro {
+        min-height: 100svh !important;
+        height: 100svh !important;
+        overflow: hidden !important;
+    }
+
+    .intro-brand-reveal {
+        font-size: clamp(3.5rem, 18vw, 7.5rem);
+    }
+
+    .intro-brand-urban {
+        transform: translateX(-60%);
+    }
+
+    .intro-brand-tree {
+        transform: translateX(60%);
+    }
 }
 
 .device-assembly-frame {
@@ -811,11 +863,16 @@ body {
     color: transparent;
 }
 
-.vm-panel-visual--mission .vm-visual-ring img {
-    object-fit: contain;
-    background: radial-gradient(circle, rgba(74, 158, 63, 0.12) 0%, transparent 70%);
-    padding: 8px;
+.vm-panel-visual--mission .vm-visual-ring {
+    background: #000 !important;
+    border: 1px solid rgba(74, 158, 63, 0.3) !important;
 }
+
+.vm-panel-visual--mission .vm-visual-ring img {
+    object-fit: cover;
+    transform: scale(1.05); /* slightly zoom to hide edges if needed */
+}
+
 
 .vm-impact-divider {
     display: flex;
@@ -1534,7 +1591,8 @@ body {
     flex: 0 0 5rem;
     overflow: hidden;
     border: 1px solid rgba(17, 24, 39, 0.12);
-    transition: flex-basis 0.65s cubic-bezier(0.87, 0, 0.13, 1), flex-grow 0.65s cubic-bezier(0.87, 0, 0.13, 1), box-shadow 0.35s ease;
+    /* Avoid interpolating flex — layout thrash; animate overlays via transform/opacity */
+    transition: box-shadow 0.35s ease, border-color 0.35s ease;
 }
 
 .app-accordion-item.is-active {
@@ -1731,22 +1789,37 @@ body {
 }
 
 @media (max-width: 1024px) {
-    #snap-container {
-        height: auto;
-        overflow-y: visible;
-        scroll-snap-type: none;
+    html:has(#snap-container),
+    body:has(#snap-container) {
+        overflow-x: hidden !important;
+        overflow-y: auto !important;
+    }
+
+    #snap-container,
+    .snap-container {
+        height: auto !important;
+        overflow: visible !important;
+        scroll-snap-type: none !important;
     }
 
     .snap-section,
     .snap-section-scroll {
         height: auto !important;
+        min-height: auto !important;
         max-height: none !important;
-        overflow: hidden !important;
+        overflow-x: clip;
+        overflow-y: visible;
     }
 
     #hero-section {
         height: auto !important;
         min-height: 100svh !important;
+    }
+
+    #product-intro {
+        min-height: 100svh !important;
+        height: 100svh !important;
+        overflow: hidden !important; /* absolute cinema content */
     }
 
     #navbar {
@@ -1976,6 +2049,27 @@ body {
     box-shadow: 0 14px 32px rgba(74, 222, 128, 0.28) !important;
 }
 
+.hero-demo-btn {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #ffffff;
+    background: transparent;
+    border: 1.5px solid rgba(255, 255, 255, 0.55);
+    border-radius: 999px;
+    padding: 0.8rem 2.1rem;
+    text-align: center;
+    text-decoration: none;
+    transition: background 0.3s ease, transform 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+.hero-demo-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #4ade80;
+    color: #ecfdf5;
+    transform: translateY(-2px);
+}
+
 .hero-scroll-hint {
     position: absolute;
     left: 50%;
@@ -2156,7 +2250,7 @@ body {
 
 /* Fluid Navigation Links */
 .fluid-nav-link {
-    font-size: clamp(14px, 1.2vw, 15px);
+    font-size: clamp(12px, 0.9vw, 13px);
 }
 
 /* Ensure Logo and text never overflow */
@@ -2179,35 +2273,42 @@ body::-webkit-scrollbar:horizontal {
 
 
 
-/* Strict Scroll Snapping Pattern to prevent double scrollbars */
-html:has(#snap-container), 
+/* Free document scroll — no snap (snap was causing stuck wheel/trackpad) */
+html:has(#snap-container),
 body:has(#snap-container) {
     margin: 0;
     padding: 0;
     width: 100%;
-    overflow: hidden !important; /* Only snap-container should scroll */
-}
-
-#snap-container, .snap-container {
-    width: 100%;
-    height: 100vh !important;
-    height: 100dvh !important;
+    overflow-x: hidden !important;
     overflow-y: auto !important;
-    scroll-snap-type: y mandatory;
-    scroll-padding-top: 80px;
-    scroll-behavior: smooth;
 }
 
-.snap-section, .snap-section-scroll {
+#snap-container,
+.snap-container {
+    width: 100%;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+    scroll-snap-type: none !important;
+}
+
+.snap-section {
     min-height: 100vh;
     min-height: 100dvh;
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
     position: relative;
     box-sizing: border-box;
-    /* Must be hidden on both axes. overflow-y:visible + overflow-x:hidden
-       computes to overflow-y:auto and creates a nested scrollbar. */
-    overflow: hidden !important;
+    /* clip X only — do not lock Y (that trapped tall sections) */
+    overflow-x: clip;
+    overflow-y: visible;
+}
+
+.snap-section-scroll {
+    min-height: 100vh;
+    min-height: 100dvh;
+    position: relative;
+    box-sizing: border-box;
+    overflow-x: clip;
+    overflow-y: visible;
 }
 
 
@@ -2248,7 +2349,8 @@ body :where(section.bg-slate-50,
     flex: 0 0 5rem;
     overflow: hidden;
     border: 1px solid rgba(17, 24, 39, 0.12);
-    transition: flex-basis 0.65s cubic-bezier(0.87, 0, 0.13, 1), flex-grow 0.65s cubic-bezier(0.87, 0, 0.13, 1), box-shadow 0.35s ease;
+    /* Avoid interpolating flex — layout thrash; animate overlays via transform/opacity */
+    transition: box-shadow 0.35s ease, border-color 0.35s ease;
 }
 
 .app-accordion-item.is-active {

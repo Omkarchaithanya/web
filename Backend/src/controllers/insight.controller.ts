@@ -1,15 +1,17 @@
 import { Request, Response } from 'express';
 import { InsightService } from '../services/insight.service';
-import { successResponse } from '../utils/http';
+import { paginatedResponse, successResponse } from '../utils/http';
+import { paginationQuerySchema } from '../validators/pagination.validator';
 
 export class InsightController {
   static async getAll(req: Request, res: Response) {
-    const insights = await InsightService.getAll();
-    successResponse(res, insights);
+    const query = paginationQuerySchema.parse(req.query);
+    const result = await InsightService.getAll(query);
+    paginatedResponse(res, result.data, result.pagination);
   }
 
   static async getById(req: Request, res: Response) {
-    const insight = await InsightService.getById((req.params.id as string));
+    const insight = await InsightService.getById(req.params.id as string);
     successResponse(res, insight);
   }
 
@@ -19,7 +21,7 @@ export class InsightController {
   }
 
   static async delete(req: Request, res: Response) {
-    await InsightService.delete((req.params.id as string));
+    await InsightService.delete(req.params.id as string);
     successResponse(res, { message: 'Insight deleted successfully' });
   }
 }

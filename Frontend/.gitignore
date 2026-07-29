@@ -11,6 +11,11 @@ desktop.ini
 node_modules/
 package-lock.json
 
+# Env (keep .env.example)
+.env
+.env.local
+.env.*.local
+
 # Build outputs
 dist/
 build/

@@ -8,13 +8,13 @@ const COOKIE_OPTIONS = {
   httpOnly: true,
   secure: env.NODE_ENV === 'production',
   sameSite: 'strict' as const,
-  path: '/api/v1/auth/refresh',
+  path: `${env.API_PREFIX}/auth`,
 };
 
 export class AuthController {
   static async login(req: Request, res: Response) {
     const { email, password } = req.body;
-    
+
     const result = await AuthService.login(
       email,
       password,
@@ -50,10 +50,20 @@ export class AuthController {
   }
 
   static async logout(req: Request, res: Response) {
-    const refreshToken = req.cookies[COOKIE_NAME];
-    if (refreshToken && req.user) {
+    const refreshToken = req.cookies[COOKIE_NAME] as string | undefined;
+    if (!req.user) {
+      throw new AppError(401, 'Authentication required', 'UNAUTHORIZED');
+    }
+
+    if (refreshToken) {
       await AuthService.logout(
         refreshToken,
+        req.user.id,
+        req.headers['user-agent'],
+        req.ip || req.socket.remoteAddress
+      );
+    } else {
+      await AuthService.logoutAllSessions(
         req.user.id,
         req.headers['user-agent'],
         req.ip || req.socket.remoteAddress

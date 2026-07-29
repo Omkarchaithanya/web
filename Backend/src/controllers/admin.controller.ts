@@ -1,11 +1,13 @@
 import { Request, Response } from 'express';
 import { AdminService } from '../services/admin.service';
-import { successResponse } from '../utils/http';
+import { paginatedResponse, successResponse } from '../utils/http';
+import { paginationQuerySchema } from '../validators/pagination.validator';
 
 export class AdminController {
   static async getAllUsers(req: Request, res: Response) {
-    const users = await AdminService.getAllUsers();
-    successResponse(res, users);
+    const query = paginationQuerySchema.parse(req.query);
+    const result = await AdminService.getAllUsers(query);
+    paginatedResponse(res, result.data, result.pagination);
   }
 
   static async createUser(req: Request, res: Response) {
@@ -14,13 +16,13 @@ export class AdminController {
   }
 
   static async updateUser(req: Request, res: Response) {
-    const user = await AdminService.updateUser((req.params.id as string), req.body);
+    const user = await AdminService.updateUser(req.params.id as string, req.body);
     successResponse(res, user);
   }
 
   static async getAuditLogs(req: Request, res: Response) {
-    const limit = parseInt(req.query.limit as string) || 50;
-    const logs = await AdminService.getAuditLogs(limit);
-    successResponse(res, logs);
+    const query = paginationQuerySchema.parse(req.query);
+    const result = await AdminService.getAuditLogs(query);
+    paginatedResponse(res, result.data, result.pagination);
   }
 }

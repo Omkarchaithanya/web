@@ -3,7 +3,14 @@ import { AppError } from '../utils/http';
 import { signAccessToken, signRefreshToken, verifyRefreshToken, parseExpiresIn } from '../utils/jwt';
 import { env } from '../config/env';
 import bcrypt from 'bcryptjs';
+import crypto from 'crypto';
 
+function tokenAuditMeta(token: string) {
+  return {
+    revokedTokenPrefix: token.slice(0, 12),
+    revokedTokenHash: crypto.createHash('sha256').update(token).digest('hex').slice(0, 16),
+  };
+}
 export class AuthService {
   static async login(email: string, passwordPlain: string, userAgent?: string, ipAddress?: string) {
     const user = await prisma.user.findUnique({ where: { email } });
@@ -86,7 +93,7 @@ export class AuthService {
           userId: tokenRecord.userId,
           action: 'TOKEN_THEFT_DETECTED',
           resource: 'AUTH',
-          metadata: { revokedToken: oldRefreshToken },
+          metadata: tokenAuditMeta(oldRefreshToken),
         }
       });
 
@@ -140,6 +147,23 @@ export class AuthService {
       data: {
         userId,
         action: 'LOGOUT',
+        resource: 'AUTH',
+        ipAddress,
+        userAgent,
+      },
+    });
+  }
+
+  static async logoutAllSessions(userId: string, userAgent?: string, ipAddress?: string) {
+    await prisma.refreshToken.updateMany({
+      where: { userId, revokedAt: null },
+      data: { revokedAt: new Date() },
+    });
+
+    await prisma.auditLog.create({
+      data: {
+        userId,
+        action: 'LOGOUT_ALL',
         resource: 'AUTH',
         ipAddress,
         userAgent,

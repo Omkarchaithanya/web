@@ -1,4 +1,5 @@
 import { apiFetch, getAccessToken } from './api.js';
+import { config } from './config.js';
 
 // ── Dropdown toggle ──
 function toggleDropdown(id) {
@@ -166,14 +167,16 @@ function connectWebSocket() {
     const token = getAccessToken();
     if (!token) return;
 
-    const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
-    let host = window.location.host;
-    if (window.location.port === '3000' || window.location.port === '5173') {
-        host = window.location.hostname + ':3001';
+    let wsUrl;
+    if (config.wsUrl) {
+        wsUrl = config.wsUrl.split('?')[0];
+    } else {
+        const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+        wsUrl = `${protocol}//${window.location.host}/ws`;
     }
-    const wsUrl = `${protocol}//${host}/ws?token=${token}`;
 
-    ws = new WebSocket(wsUrl);
+    // Prefer Sec-WebSocket-Protocol auth (token not in URL)
+    ws = new WebSocket(wsUrl, ['urbantree', token]);
 
     ws.onopen = () => {
         console.log('Connected to real-time telemetry');
@@ -205,4 +208,23 @@ function connectWebSocket() {
     };
 }
 
-document.addEventListener('DOMContentLoaded', loadData);
+function hydrateProfile() {
+    try {
+        const raw = sessionStorage.getItem('urbantree_user');
+        if (!raw) return;
+        const user = JSON.parse(raw);
+        const nameEl = document.getElementById('profile-name');
+        const emailEl = document.getElementById('profile-email');
+        const roleEl = document.getElementById('profile-role');
+        if (nameEl && user.name) nameEl.textContent = user.name;
+        if (emailEl && user.email) emailEl.textContent = user.email;
+        if (roleEl && user.role) roleEl.textContent = String(user.role).replace(/_/g, ' ');
+    } catch (e) {
+        // ignore malformed session payload
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    hydrateProfile();
+    loadData();
+});

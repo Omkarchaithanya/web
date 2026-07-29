@@ -69,6 +69,7 @@ export function errorHandler(
   });
 }
 
+/** @deprecated Prefer middleware/validate.ts schema objects */
 export function validateBody<T>(schema: ZodSchema<T>) {
   return (req: Request, _res: Response, next: NextFunction): void => {
     req.body = schema.parse(req.body);

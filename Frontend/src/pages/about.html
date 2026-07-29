@@ -253,6 +253,7 @@
                 0 0 24px rgba(124, 252, 74, 0.12),
                 inset 0 0 24px rgba(124, 252, 74, 0.05);
             animation: ahPulse 6.5s ease-in-out infinite;
+            display: none; /* Hidden because they are baked into the image */
         }
 
         .ah-ring--1 {
@@ -292,20 +293,21 @@
             top: 18%;
             left: 50%;
             transform: translateX(-50%);
-            mix-blend-mode: multiply;
-            filter: drop-shadow(0 0 18px rgba(124, 252, 74, 0.85)) drop-shadow(0 0 40px rgba(74, 222, 128, 0.45)) brightness(1.35) saturate(1.4);
+            display: none;
+            filter: drop-shadow(0 0 18px rgba(124, 252, 74, 0.85)) brightness(1.35) saturate(1.4);
             animation: ahFloat 5s ease-in-out infinite;
         }
 
         .ah-city {
             position: relative;
             z-index: 2;
-            width: 78%;
-            margin-top: 18%;
+            width: 100%;
+            margin-top: 0;
             object-fit: contain;
-            mix-blend-mode: multiply;
-            filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.55)) drop-shadow(0 0 30px rgba(16, 185, 129, 0.25)) contrast(1.05) saturate(1.15);
+            mix-blend-mode: screen;
             animation: ahFloatCity 6.5s ease-in-out infinite 0.4s;
+            -webkit-mask-image: radial-gradient(circle closest-side, black 70%, transparent 95%);
+            mask-image: radial-gradient(circle closest-side, black 70%, transparent 95%);
         }
 
         .ah-features {
@@ -777,7 +779,7 @@
                         <span class="ah-ring ah-ring--1"></span>
                         <span class="ah-ring ah-ring--core"></span>
                         <img src="/assets/images/about/green_leaf.png" alt="" class="ah-hologram" aria-hidden="true">
-                        <img src="/assets/images/about/original_tree_city.png"
+                        <img src="/assets/images/about/premium_eco_city.png"
                             alt="UrbanTree clean-air city concept"
                             class="ah-city"
                             width="640"
@@ -988,7 +990,7 @@
                                 &<br>Public Infrastructure</h3>
                             <p class="text-[0.75rem] text-slate-500 leading-relaxed mb-4">Designed for transportation
                                 hubs, corporate campuses, industrial environments, and residential communities.</p>
-                            <a href="#"
+                            <a href="/pages/case-study.html"
                                 class="inline-flex w-8 h-8 rounded-full bg-emerald-100 text-emerald-600 items-center justify-center hover:bg-emerald-600 hover:text-white transition-colors">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -1018,7 +1020,7 @@
                                 AI-Driven<br>Environmental Monitoring</h3>
                             <p class="text-[0.75rem] text-slate-500 leading-relaxed mb-4">Real-time analytics that
                                 continuously adapt purification performance to dynamic urban environments.</p>
-                            <a href="#"
+                            <a href="/pages/technology.html"
                                 class="inline-flex w-8 h-8 rounded-full bg-sky-100 text-sky-600 items-center justify-center hover:bg-sky-500 hover:text-white transition-colors">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -1047,7 +1049,7 @@
                                 Energy<br>Infrastructure</h3>
                             <p class="text-[0.75rem] text-slate-500 leading-relaxed mb-4">Integrates conventional grid
                                 supply with solar energy for reliable, energy-efficient, and sustainable operation.</p>
-                            <a href="#"
+                            <a href="/pages/technology.html"
                                 class="inline-flex w-8 h-8 rounded-full bg-lime-100 text-lime-600 items-center justify-center hover:bg-lime-600 hover:text-white transition-colors">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

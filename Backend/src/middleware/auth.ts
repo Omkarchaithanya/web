@@ -11,27 +11,32 @@ export async function authenticate(
   _res: Response,
   next: NextFunction,
 ): Promise<void> {
-  const authHeader = req.headers.authorization;
-  if (!authHeader?.startsWith('Bearer ')) {
-    throw new AppError(401, 'Authentication required', 'UNAUTHORIZED');
+  try {
+    const authHeader = req.headers.authorization;
+    if (!authHeader?.startsWith('Bearer ')) {
+      throw new AppError(401, 'Authentication required', 'UNAUTHORIZED');
+    }
+
+    const token = authHeader.slice(7);
+    const payload = verifyAccessToken(token);
+
+    const user = await prisma.user.findUnique({
+      where: { id: payload.sub },
+      select: { id: true, email: true, role: true, name: true, isActive: true },
+    });
+
+    if (!user || !user.isActive) {
+      throw new AppError(401, 'Account inactive or not found', 'UNAUTHORIZED');
+    }
+
+    req.user = user;
+    next();
+  } catch (err) {
+    next(err);
   }
-
-  const token = authHeader.slice(7);
-  const payload = verifyAccessToken(token);
-
-  const user = await prisma.user.findUnique({
-    where: { id: payload.sub },
-    select: { id: true, email: true, role: true, name: true, isActive: true },
-  });
-
-  if (!user || !user.isActive) {
-    throw new AppError(401, 'Account inactive or not found', 'UNAUTHORIZED');
-  }
-
-  req.user = user;
-  next();
 }
 
+/** Unused — prefer explicit `authenticate` on protected routes. Kept for optional public+user endpoints. */
 export function optionalAuth(req: Request, _res: Response, next: NextFunction): void {
   const authHeader = req.headers.authorization;
   if (!authHeader?.startsWith('Bearer ')) {

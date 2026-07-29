@@ -37,22 +37,26 @@ export async function disconnectRedis(): Promise<void> {
   }
 }
 
+/** Unused helper kept for future response caching; prefer explicit Redis use at call sites. */
 export async function cacheGet<T>(key: string): Promise<T | null> {
   if (!redis) return null;
   const value = await redis.get(key);
   return value ? (JSON.parse(value) as T) : null;
 }
 
+/** Unused helper kept for future response caching. */
 export async function cacheSet(key: string, value: unknown, ttlSeconds = 60): Promise<void> {
   if (!redis) return;
   await redis.setex(key, ttlSeconds, JSON.stringify(value));
 }
 
+/** Unused helper kept for future response caching. */
 export async function cacheDel(key: string): Promise<void> {
   if (!redis) return;
   await redis.del(key);
 }
 
+/** Unused helper kept for future response caching. */
 export async function cacheDelPattern(pattern: string): Promise<void> {
   if (!redis) return;
   const keys = await redis.keys(pattern);
