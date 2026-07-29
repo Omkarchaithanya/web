@@ -46,13 +46,19 @@
             --ah-green-soft: #9de764;
             --ah-teal: #2dd4bf;
             background: #050505;
-            min-height: 100vh;
+            min-height: auto;
             position: relative;
             display: flex;
             flex-direction: column;
             justify-content: center;
             overflow: hidden;
-            padding: 7.5rem 0 2.5rem;
+            padding: clamp(5.5rem, 10vh, 6.5rem) 0 clamp(1.75rem, 3vh, 2.25rem);
+        }
+
+        @media (min-width: 1024px) {
+            #about-hero {
+                min-height: min(92vh, 820px);
+            }
         }
 
         .ah-bg {
@@ -83,8 +89,11 @@
         .ah-shell {
             position: relative;
             z-index: 1;
-            width: min(100% - 2.5rem, 1240px);
+            width: 100%;
+            max-width: var(--section-max, 90rem);
             margin-inline: auto;
+            padding-inline: var(--site-gutter, clamp(1.25rem, 3.5vw, 4rem));
+            box-sizing: border-box;
         }
 
         .ah-main {
@@ -105,7 +114,7 @@
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            padding: 0.45rem 0.95rem;
+            padding: 0.4rem 0.85rem;
             border-radius: 999px;
             border: 1px solid rgba(124, 252, 74, 0.35);
             background: rgba(124, 252, 74, 0.08);
@@ -115,7 +124,7 @@
             font-weight: 700;
             letter-spacing: 0.2em;
             text-transform: uppercase;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             box-shadow: 0 0 24px rgba(124, 252, 74, 0.12);
         }
 
@@ -127,7 +136,8 @@
 
         .ah-title {
             color: #ffffff;
-            margin: 0 0 1.15rem;
+            margin: 0 0 0.85rem;
+            font-size: clamp(2.1rem, 4.2vw, 3.25rem);
         }
 
         .ah-title-accent {
@@ -152,7 +162,9 @@
         .ah-lead {
             color: #9ca3af;
             max-width: 32rem;
-            margin: 0 0 2rem;
+            margin: 0 0 1.35rem;
+            font-size: clamp(1rem, 1.15vw, 1.1rem);
+            line-height: 1.65;
         }
 
         .ah-lead em {
@@ -172,10 +184,10 @@
             display: inline-flex;
             align-items: center;
             gap: 0.55rem;
-            padding: 0.9rem 1.55rem;
+            padding: 0.75rem 1.35rem;
             border-radius: 999px;
             font-family: 'Sora', sans-serif;
-            font-size: 0.84rem;
+            font-size: 0.8rem;
             font-weight: 700;
             text-decoration: none;
             transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, border-color 0.25s ease;
@@ -217,13 +229,13 @@
 
         /* Stats bar */
         .ah-stats {
-            margin-top: clamp(1.5rem, 4vh, 2.75rem);
-            border-radius: 1.35rem;
+            margin-top: clamp(1.15rem, 2.5vh, 1.75rem);
+            border-radius: 1.1rem;
             border: 1px solid rgba(124, 252, 74, 0.22);
             background: rgba(7, 19, 15, 0.72);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
-            padding: 1.35rem 1.25rem;
+            padding: 1rem 1.1rem;
             box-shadow: 0 0 40px rgba(16, 185, 129, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.04);
             position: relative;
             overflow: hidden;
@@ -274,8 +286,8 @@
         }
 
         .ah-stat-icon {
-            width: 52px;
-            height: 52px;
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
             border: 1px solid rgba(124, 252, 74, 0.35);
             background: #05090a;
@@ -306,11 +318,11 @@
 
         .ah-stat-value {
             font-family: 'Sora', sans-serif;
-            font-size: clamp(1.45rem, 2vw, 1.85rem);
+            font-size: clamp(1.25rem, 1.6vw, 1.55rem);
             font-weight: 800;
             color: var(--ah-green);
             line-height: 1;
-            margin-bottom: 0.2rem;
+            margin-bottom: 0.15rem;
             text-shadow: 0 0 18px rgba(124, 252, 74, 0.35);
         }
 
@@ -338,14 +350,46 @@
         }
 
         /* ── SECTION STYLES ── */
+        .section-band,
+        .section-band-alt {
+            padding-block: var(--section-pad-y-compact, clamp(3rem, 5vh, 4.25rem));
+            color: #0f172a;
+        }
+
         .section-band {
             background: #e8e8e8;
-            color: #0f172a;
         }
 
         .section-band-alt {
             background: #f0f4f1;
-            color: #0f172a;
+        }
+
+        /* Cap oversized marketing type on content bands */
+        .section-band .type-h2,
+        .section-band-alt .type-h2,
+        .dark-section .type-h2 {
+            font-size: clamp(1.75rem, 2.8vw, 2.45rem);
+            line-height: 1.15;
+        }
+
+        .section-band .type-h3,
+        .section-band-alt .type-h3,
+        .dark-section .type-h3 {
+            font-size: clamp(1.05rem, 1.2vw, 1.2rem);
+            line-height: 1.3;
+        }
+
+        .section-band .type-body,
+        .section-band-alt .type-body,
+        .dark-section .type-body {
+            font-size: clamp(0.9rem, 0.95vw, 0.98rem);
+            line-height: 1.65;
+        }
+
+        .section-band .type-display,
+        .section-band-alt .type-display {
+            font-size: clamp(2rem, 3.4vw, 2.85rem);
+            line-height: 1.08;
         }
 
         #founders .type-h2,
@@ -354,50 +398,116 @@
         }
 
         #founders .founder-role {
-            font-size: 0.8125rem;
+            font-size: 0.78rem;
             font-weight: 600;
             color: #4b5563;
             font-style: italic;
-            margin-bottom: 0.875rem;
+            margin-bottom: 0.65rem;
         }
 
         #founders .founder-bio {
             color: #4b5563;
+            font-size: clamp(0.84rem, 0.9vw, 0.92rem);
+            line-height: 1.55;
+        }
+
+        #founders .site-container > .text-center {
+            margin-bottom: 2.25rem;
+        }
+
+        #founders .grid {
+            gap: 1.5rem 1.75rem;
+        }
+
+        #founders .aspect-square {
+            margin-bottom: 0.85rem;
+            border-radius: 1rem;
         }
 
         .dark-section {
             background: #0a0a0a;
-            padding-block: var(--section-pad-y, clamp(4rem, 7vh, 5.5rem));
+            padding-block: var(--section-pad-y-compact, clamp(3rem, 5vh, 4.25rem));
             position: relative;
             overflow: hidden;
         }
 
-        /* ── GLASS CARD ── */
-        .glass-card {
-            background: rgba(255, 255, 255, 0.65);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        .dark-section .site-container > .text-center {
+            margin-bottom: 2.25rem;
         }
 
-        .glass-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 30px 60px rgba(16, 185, 129, 0.1);
-        }
-
-        /* ── DARK CARD ── */
         .dark-card {
             background: rgba(255, 255, 255, 0.04);
             border: 1px solid rgba(255, 255, 255, 0.08);
             transition: all 0.4s ease;
+            padding: 1.15rem 1.2rem !important;
+            gap: 0.9rem !important;
         }
 
         .dark-card:hover {
             background: rgba(16, 185, 129, 0.08);
             border-color: rgba(16, 185, 129, 0.3);
             transform: translateY(-3px);
+        }
+
+        #sunex .site-container > .grid {
+            gap: 2.5rem;
+        }
+
+        #sunex .type-display {
+            margin-bottom: 0.35rem;
+        }
+
+        #our-story .type-body.space-y-6 > :not([hidden]) ~ :not([hidden]) {
+            margin-top: 1rem;
+        }
+
+        #our-story .lg\:col-span-4 {
+            gap: 0.85rem;
+        }
+
+        #our-story .lg\:col-span-4 > .bg-white {
+            padding: 1.1rem 1.15rem;
+            gap: 0.9rem;
+            border-radius: 1.15rem;
+        }
+
+        #our-story .lg\:col-span-4 .w-16 {
+            width: 2.75rem;
+            height: 2.75rem;
+        }
+
+        #our-story .lg\:col-span-4 .w-16 svg {
+            width: 1.25rem;
+            height: 1.25rem;
+        }
+
+        #our-story .lg\:col-span-4 h3 {
+            font-size: 1rem;
+            margin-bottom: 0.35rem;
+        }
+
+        #our-story .mt-16 {
+            margin-top: 2rem;
+        }
+
+        #sunex .bg-white\/95 {
+            padding: 1.1rem 1.15rem;
+            gap: 0.9rem;
+            border-radius: 1rem;
+        }
+
+        #sunex .bg-white\/95 .w-12 {
+            width: 2.5rem;
+            height: 2.5rem;
+        }
+
+        #sunex .bg-white\/95 h4 {
+            font-size: clamp(1rem, 1.1vw, 1.1rem);
+        }
+
+        #sunex .bg-white\/95 p {
+            font-size: clamp(0.82rem, 0.88vw, 0.9rem);
+            line-height: 1.5;
         }
 
         /* ── FOUNDER CARD ── */
@@ -493,7 +603,7 @@
         /* ── SECTION LABEL ── */
         .section-label {
             display: inline-block;
-            padding: 5px 18px;
+            padding: 4px 14px;
             border-radius: 30px;
             border: 1px solid rgba(16, 185, 129, 0.4);
             background: rgba(16, 185, 129, 0.08);
@@ -502,7 +612,7 @@
             letter-spacing: 0.2em;
             color: #10b981;
             text-transform: uppercase;
-            margin-bottom: 20px;
+            margin-bottom: 12px;
         }
 
         @keyframes heroTextIn {
@@ -676,7 +786,7 @@
             class="absolute bottom-[-10%] right-[-5%] w-[400px] opacity-40 z-0 pointer-events-none animate-[float_10s_ease-in-out_infinite_1s] -rotate-[15deg] blur-[3px]"
             aria-hidden="true" loading="lazy">
 
-        <div class="max-w-[1400px] mx-auto px-6 lg:px-12 relative z-10">
+        <div class="site-container relative z-10">
             <!-- Grid Layout -->
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
 
@@ -686,7 +796,7 @@
                     <div class="absolute inset-y-0 left-[-50px] right-[-20px] bg-[#f4f9f6] opacity-90 blur-[40px] -z-10 pointer-events-none lg:block hidden"></div>
 
                     <div
-                        class="type-eyebrow inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 mb-6 w-max">
+                        class="type-eyebrow inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 mb-4 w-max">
                         <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z">
@@ -695,18 +805,18 @@
                         WHAT IS URBANTREE
                     </div>
 
-                    <h2 class="type-h2 text-slate-900 mb-5">
+                    <h2 class="type-h2 text-slate-900 mb-3">
                         A Bio-Mechanical<br>
                         Air Purification<br>
                         <span class="text-emerald-600">Ecosystem</span>
                     </h2>
 
                     <p
-                        class="type-eyebrow text-slate-500 mb-8 border-l-2 border-emerald-500 pl-4" style="letter-spacing:0.15em;">
+                        class="type-eyebrow text-slate-500 mb-5 border-l-2 border-emerald-500 pl-4" style="letter-spacing:0.15em;">
                         CLEANER AIR. SMARTER CITIES. SUSTAINABLE FUTURE.
                     </p>
 
-                    <div class="type-body text-slate-600 space-y-6 lg:pr-6">
+                    <div class="type-body text-slate-600 space-y-4 lg:pr-6">
                         <p>
                             Urban air pollution and declining air quality have emerged as critical challenges affecting
                             public health, environmental sustainability, and the future of urban living. Rising levels
@@ -752,7 +862,7 @@
                 </div>
 
                 <!-- Right Column (Cards) -->
-                <div class="lg:col-span-4 fade-up flex flex-col gap-6 relative z-20" style="transition-delay: 200ms;">
+                <div class="lg:col-span-4 fade-up flex flex-col gap-4 relative z-20" style="transition-delay: 200ms;">
 
                     <!-- Card 1 -->
                     <div
@@ -847,9 +957,9 @@
             </div>
 
             <!-- Bottom Stats Banner -->
-            <div class="fade-up mt-16" style="transition-delay: 300ms;">
+            <div class="fade-up mt-10" style="transition-delay: 300ms;">
                 <div
-                    class="bg-[#0f172a] rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-8 border border-white/10 shadow-2xl relative overflow-hidden">
+                    class="bg-[#0f172a] rounded-2xl p-5 md:p-6 flex flex-col md:flex-row items-center justify-between gap-6 border border-white/10 shadow-2xl relative overflow-hidden">
                     <!-- Subtle gradient bg for banner -->
                     <div
                         class="absolute inset-0 bg-gradient-to-r from-emerald-900/40 via-sky-900/40 to-lime-900/40 pointer-events-none">
@@ -865,7 +975,7 @@
                         </div>
                         <div>
                             <div class="text-3xl font-serif font-bold text-emerald-400">99%</div>
-                            <div class="text-[10px] text-slate-400 font-bold uppercase tracking-widest mt-1">PM
+                            <div class="text-slate-400 font-bold uppercase tracking-widest mt-1 type-caption">PM
                                 REDUCTION</div>
                         </div>
                     </div>
@@ -882,7 +992,7 @@
                         </div>
                         <div>
                             <div class="text-3xl font-serif font-bold text-sky-400">Live</div>
-                            <div class="text-[10px] text-slate-400 font-bold uppercase tracking-widest mt-1">LOCAL AQI
+                            <div class="text-slate-400 font-bold uppercase tracking-widest mt-1 type-caption">LOCAL AQI
                                 IMPROVEMENT</div>
                         </div>
                     </div>
@@ -905,7 +1015,7 @@
                         </div>
                         <div>
                             <div class="text-3xl font-serif font-bold text-emerald-400">0.3μ</div>
-                            <div class="text-[10px] text-slate-400 font-bold uppercase tracking-widest mt-1">PARTICULATE
+                            <div class="text-slate-400 font-bold uppercase tracking-widest mt-1 type-caption">PARTICULATE
                                 CAPTURE</div>
                         </div>
                     </div>
@@ -923,7 +1033,7 @@
                         </div>
                         <div>
                             <div class="text-3xl font-serif font-bold text-lime-400">Hybrid</div>
-                            <div class="text-[10px] text-slate-400 font-bold uppercase tracking-widest mt-1">ENERGY
+                            <div class="text-slate-400 font-bold uppercase tracking-widest mt-1 type-caption">ENERGY
                                 OPTIMIZATION</div>
                         </div>
                     </div>
@@ -976,19 +1086,19 @@
         <div class="absolute top-[10%] right-[-10%] w-[60%] h-[120%] rounded-[100%] border-[2px] border-green-500/20 z-0 pointer-events-none"
             style="box-shadow: inset 0 0 50px rgba(34,197,94,0.1);"></div>
 
-        <div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div class="site-container relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
 
                 <!-- LEFT: company info -->
                 <div>
                     <!-- Powered By Pill -->
                     <div
-                        class="fade-up inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white shadow-sm border border-gray-100 mb-6">
+                        class="fade-up inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white shadow-sm border border-gray-100 mb-4">
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5"
                             class="text-green-500">
                             <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
                         </svg>
-                        <span class="text-[11px] font-bold text-green-600 uppercase tracking-widest">Powered By</span>
+                        <span class="type-eyebrow text-green-600">Powered By</span>
                     </div>
 
                     <h2 class="fade-up type-display text-[#166534] mb-2">
@@ -996,7 +1106,7 @@
                         Technologies
                     </h2>
 
-                    <div class="fade-up flex items-center gap-2 mb-8">
+                    <div class="fade-up flex items-center gap-2 mb-5">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2">
                             <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
                             <circle cx="12" cy="10" r="3" />
@@ -1004,7 +1114,7 @@
                         <p class="text-[15px] text-green-600 font-bold tracking-wide">Bangalore, India</p>
                     </div>
 
-                    <div class="fade-up space-y-6 text-gray-700 font-medium type-body pr-8">
+                    <div class="fade-up space-y-4 text-gray-700 font-medium type-body pr-8">
                         <p>A future-focused technology startup founded by three innovators — <strong
                                 class="text-gray-900">Umesh H, Sanjeeth M S, and Dr. Raghavendra Deshpande</strong> —
                             driven by a shared vision to address one of the country's most pressing environmental
@@ -1022,7 +1132,7 @@
 
                     <!-- Viksit Bharat badge -->
                     <div
-                        class="fade-up mt-10 inline-flex items-center gap-4 px-6 py-4 rounded-2xl bg-white/80 shadow-lg shadow-black/5 border border-white backdrop-blur-md">
+                        class="fade-up mt-6 inline-flex items-center gap-4 px-5 py-3 rounded-2xl bg-white/80 shadow-lg shadow-black/5 border border-white backdrop-blur-md">
                         <div class="w-10 h-10 rounded-xl bg-green-50 flex items-center justify-center">
                             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#22c55e"
                                 stroke-width="2">
@@ -1057,9 +1167,9 @@
                             <div class="absolute -bottom-1 -left-1 w-6 h-1 bg-green-500 rounded-full"></div>
                         </div>
                         <div>
-                            <h4 class="font-serif text-[15px] font-bold text-gray-900 mb-1.5">Artificial Intelligence
+                            <h4 class="font-serif type-h3 text-gray-900 mb-1.5">Artificial Intelligence
                             </h4>
-                            <p class="text-[12px] text-gray-500 leading-relaxed font-medium">Smart environmental systems
+                            <p class="type-body text-gray-500">Smart environmental systems
                                 & AI-enabled platforms</p>
                         </div>
                     </div>
@@ -1078,8 +1188,8 @@
                             <div class="absolute -bottom-1 -left-1 w-6 h-1 bg-green-500 rounded-full"></div>
                         </div>
                         <div>
-                            <h4 class="font-serif text-[15px] font-bold text-gray-900 mb-1.5">Renewable Energy</h4>
-                            <p class="text-[12px] text-gray-500 leading-relaxed font-medium">Solar integration &
+                            <h4 class="font-serif type-h3 text-gray-900 mb-1.5">Renewable Energy</h4>
+                            <p class="type-body text-gray-500">Solar integration &
                                 energy-efficient infrastructure</p>
                         </div>
                     </div>
@@ -1098,8 +1208,8 @@
                             <div class="absolute -bottom-1 -left-1 w-6 h-1 bg-green-500 rounded-full"></div>
                         </div>
                         <div>
-                            <h4 class="font-serif text-[15px] font-bold text-gray-900 mb-1.5">IoT Infrastructure</h4>
-                            <p class="text-[12px] text-gray-500 leading-relaxed font-medium">Connected sensors &
+                            <h4 class="font-serif type-h3 text-gray-900 mb-1.5">IoT Infrastructure</h4>
+                            <p class="type-body text-gray-500">Connected sensors &
                                 real-time environmental monitoring</p>
                         </div>
                     </div>
@@ -1117,8 +1227,8 @@
                             <div class="absolute -bottom-1 -left-1 w-6 h-1 bg-green-500 rounded-full"></div>
                         </div>
                         <div>
-                            <h4 class="font-serif text-[15px] font-bold text-gray-900 mb-1.5">Smart Cities</h4>
-                            <p class="text-[12px] text-gray-500 leading-relaxed font-medium">Future-ready urban
+                            <h4 class="font-serif type-h3 text-gray-900 mb-1.5">Smart Cities</h4>
+                            <p class="type-body text-gray-500">Future-ready urban
                                 infrastructure & digital transformation</p>
                         </div>
                     </div>
@@ -1137,9 +1247,9 @@
                             <div class="absolute -bottom-1 -left-1 w-6 h-1 bg-green-500 rounded-full"></div>
                         </div>
                         <div>
-                            <h4 class="font-serif text-[15px] font-bold text-gray-900 mb-1.5">Sustainability Engineering
+                            <h4 class="font-serif type-h3 text-gray-900 mb-1.5">Sustainability Engineering
                             </h4>
-                            <p class="text-[12px] text-gray-500 leading-relaxed font-medium">Environmentally responsible
+                            <p class="type-body text-gray-500">Environmentally responsible
                                 infrastructure for cleaner, healthier urban ecosystems and long-term climate resilience
                             </p>
                         </div>
@@ -1153,19 +1263,19 @@
 
     <!-- ═══ FOUNDERS ═══ -->
     <section class="section-band-alt" id="founders" data-navbar-theme="dark">
-        <div class="max-w-7xl mx-auto px-6 lg:px-12">
-            <div class="text-center mb-16">
+        <div class="site-container">
+            <div class="text-center mb-10">
                 <span class="section-label fade-up">The People Behind It</span>
                 <h2 class="fade-up type-h2 text-slate-900">
                     Meet the Founders
                 </h2>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12 max-w-6xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-7 gap-y-8 max-w-6xl mx-auto">
                 <!-- Founder 1 -->
                 <div class="fade-up flex flex-col items-start text-left group cursor-pointer"
                     style="transition-delay:0s;">
-                    <div class="w-full aspect-square mb-5 overflow-hidden rounded-2xl relative bg-white">
+                    <div class="w-full aspect-square mb-3 overflow-hidden rounded-2xl relative bg-white">
                         <img src="/assets/images/about/sanjeeth.jpg" alt="Sanjeeth Suresh"
                             class="w-full h-full object-cover object-center transition-all duration-500 transform group-hover:scale-105 brightness-110 contrast-125">
                     </div>
@@ -1182,7 +1292,7 @@
                 <!-- Founder 2 -->
                 <div class="fade-up flex flex-col items-start text-left group cursor-pointer"
                     style="transition-delay:0.1s;">
-                    <div class="w-full aspect-square mb-5 overflow-hidden rounded-2xl relative bg-gray-200">
+                    <div class="w-full aspect-square mb-3 overflow-hidden rounded-2xl relative bg-gray-200">
                         <img src="/assets/images/about/umesh.jpeg" alt="Umesh H"
                             class="w-full h-full object-cover object-[center_top] transition-all duration-500 transform group-hover:scale-105 brightness-110 contrast-125">
                     </div>
@@ -1199,7 +1309,7 @@
                 <!-- Founder 3 -->
                 <div class="fade-up flex flex-col items-start text-left group cursor-pointer"
                     style="transition-delay:0.2s;">
-                    <div class="w-full aspect-square mb-5 overflow-hidden rounded-2xl relative bg-gray-200">
+                    <div class="w-full aspect-square mb-3 overflow-hidden rounded-2xl relative bg-gray-200">
                         <img src="/assets/images/about/raghavendra.jpg" alt="Dr. Raghavendra Deshpande"
                             class="w-full h-full object-cover object-[center_top] transition-all duration-500 transform group-hover:scale-105 brightness-110 contrast-125">
                     </div>
@@ -1215,7 +1325,7 @@
                 <!-- Founder 4 -->
                 <div class="fade-up flex flex-col items-start text-left group cursor-pointer"
                     style="transition-delay:0.3s;">
-                    <div class="w-full aspect-square mb-5 overflow-hidden rounded-2xl relative bg-gray-200">
+                    <div class="w-full aspect-square mb-3 overflow-hidden rounded-2xl relative bg-gray-200">
                         <img src="/assets/images/about/vishwas.jpg" alt="Vishwas SP"
                             class="w-full h-full object-cover object-center transition-all duration-500 transform group-hover:scale-105 brightness-110 contrast-125">
                     </div>
@@ -1228,7 +1338,7 @@
                 <!-- Founder 5 -->
                 <div class="fade-up flex flex-col items-start text-left group cursor-pointer"
                     style="transition-delay:0.4s;">
-                    <div class="w-full aspect-square mb-5 overflow-hidden rounded-2xl relative bg-gray-200">
+                    <div class="w-full aspect-square mb-3 overflow-hidden rounded-2xl relative bg-gray-200">
                         <div class="w-full h-full" style="transform: scale(1.12); transform-origin: center top;">
                             <img src="/assets/images/about/keshava.jpg" alt="Keshava Prasad B S"
                                 class="w-full h-full object-cover transition-all duration-500 transform group-hover:scale-105 brightness-110 contrast-125"
@@ -1244,7 +1354,7 @@
                 <!-- Founder 6 -->
                 <div class="fade-up flex flex-col items-start text-left group cursor-pointer"
                     style="transition-delay:0.5s;">
-                    <div class="w-full aspect-square mb-5 overflow-hidden rounded-2xl relative bg-gray-200">
+                    <div class="w-full aspect-square mb-3 overflow-hidden rounded-2xl relative bg-gray-200">
                         <img src="/assets/images/about/omkar.jpg" alt="Omkar Chaithanya R"
                             class="w-full h-full object-cover object-center transition-all duration-500 transform group-hover:scale-105 brightness-110 contrast-125">
                     </div>
@@ -1262,11 +1372,11 @@
             style="position:absolute;top:-10%;left:50%;transform:translateX(-50%);width:800px;height:400px;background:radial-gradient(ellipse,rgba(16,185,129,0.1) 0%,transparent 70%);pointer-events:none;">
         </div>
 
-        <div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
-            <div class="text-center mb-16">
+        <div class="site-container relative z-10">
+            <div class="text-center mb-10">
                 <span class="section-label fade-up"
                     style="background:rgba(16,185,129,0.1);border-color:rgba(16,185,129,0.4);">Global Impact</span>
-                <h2 class="fade-up type-h2 text-white mb-4">
+                <h2 class="fade-up type-h2 text-white mb-3">
                     Aligned with the UN<br><span
                         style="background:linear-gradient(135deg,#10b981,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Sustainable
                         Development Goals</span>
@@ -1278,7 +1388,7 @@
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 fade-up">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 fade-up">
                 <!-- SDG 3 -->
                 <div class="dark-card rounded-2xl p-7 flex items-start gap-5">
                     <div
@@ -1345,7 +1455,7 @@
             </div>
 
             <!-- Bottom note -->
-            <div class="fade-up mt-12 p-8 rounded-2xl text-center"
+            <div class="fade-up mt-8 p-6 rounded-2xl text-center"
                 style="background:rgba(16,185,129,0.06);border:1px solid rgba(16,185,129,0.2);">
                 <p class="type-body" style="color:#94a3b8;max-width:780px;margin:0 auto;">
                     Through AI-driven environmental monitoring, advanced purification technologies, and localized
@@ -1361,20 +1471,20 @@
     <section class="section-band" data-navbar-theme="dark">
         <div class="max-w-4xl mx-auto px-6 text-center">
             <span class="section-label fade-up">Get Involved</span>
-            <h2 class="fade-up type-h2 text-slate-900 mb-5">
+            <h2 class="fade-up type-h2 text-slate-900 mb-3">
                 Ready to Breathe Cleaner Air<br>in Your City?
             </h2>
             <p class="fade-up type-body"
-                style="color:#6b7280;margin-bottom:2.5rem;max-width:520px;margin-left:auto;margin-right:auto;">
+                style="color:#6b7280;margin-bottom:1.75rem;max-width:520px;margin-left:auto;margin-right:auto;">
                 Partner with UrbanTree to deploy intelligent clean-air infrastructure in your urban environment.
             </p>
-            <div class="fade-up flex flex-wrap gap-4 justify-center">
+            <div class="fade-up flex flex-wrap gap-3 justify-center">
                 <a href="../index.html#enquiry"
-                    class="hover-glow-emerald px-10 py-4 bg-emerald-500 text-white rounded-full font-semibold shadow-lg shadow-emerald-500/30 transition-all duration-300 text-sm">
+                    class="hover-glow-emerald px-8 py-3.5 bg-emerald-500 text-white rounded-full font-semibold shadow-lg shadow-emerald-500/30 transition-all duration-300 text-sm">
                     Make an Enquiry
                 </a>
                 <a href="../pages/technology.html"
-                    class="px-10 py-4 bg-gray-900 text-white rounded-full font-semibold hover:bg-gray-800 transition-all duration-300 text-sm">
+                    class="px-8 py-3.5 bg-gray-900 text-white rounded-full font-semibold hover:bg-gray-800 transition-all duration-300 text-sm">
                     Explore Technology
                 </a>
             </div>
