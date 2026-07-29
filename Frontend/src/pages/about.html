@@ -92,13 +92,12 @@
             grid-template-columns: 1fr;
             gap: 2rem;
             align-items: center;
+            max-width: 42rem;
         }
 
         @media (min-width: 1024px) {
             .ah-main {
-                grid-template-columns: minmax(280px, 0.95fr) minmax(0, 1.15fr);
-                gap: 1.25rem 1.5rem;
-                min-height: min(62vh, 560px);
+                min-height: min(42vh, 420px);
             }
         }
 
@@ -111,8 +110,8 @@
             border: 1px solid rgba(124, 252, 74, 0.35);
             background: rgba(124, 252, 74, 0.08);
             color: var(--ah-green);
-            font-family: 'Sora', sans-serif;
-            font-size: 0.65rem;
+            font-family: var(--font-sans, 'Inter', sans-serif);
+            font-size: var(--text-eyebrow, 0.7rem);
             font-weight: 700;
             letter-spacing: 0.2em;
             text-transform: uppercase;
@@ -127,11 +126,6 @@
         }
 
         .ah-title {
-            font-family: 'Sora', sans-serif;
-            font-size: clamp(2.35rem, 5.2vw, 4.35rem);
-            font-weight: 800;
-            line-height: 1.08;
-            letter-spacing: -0.03em;
             color: #ffffff;
             margin: 0 0 1.15rem;
         }
@@ -156,10 +150,6 @@
         }
 
         .ah-lead {
-            font-family: 'Inter', sans-serif;
-            font-size: clamp(1rem, 1.35vw, 1.2rem);
-            font-weight: 400;
-            line-height: 1.7;
             color: #9ca3af;
             max-width: 32rem;
             margin: 0 0 2rem;
@@ -223,150 +213,6 @@
 
         .ah-btn--ghost svg {
             color: var(--ah-green);
-        }
-
-        /* Visual stage */
-        .ah-stage {
-            position: relative;
-            display: grid;
-            grid-template-columns: 1fr auto;
-            align-items: center;
-            justify-items: center;
-            min-height: clamp(320px, 52vh, 520px);
-            gap: 0.5rem;
-        }
-
-        .ah-orb {
-            position: relative;
-            width: min(100%, 520px);
-            aspect-ratio: 1;
-            display: grid;
-            place-items: center;
-            background: radial-gradient(circle at 50% 55%, rgba(8, 30, 18, 0.95) 0%, transparent 62%);
-        }
-
-        .ah-ring {
-            position: absolute;
-            border-radius: 50%;
-            border: 1px solid rgba(124, 252, 74, 0.22);
-            box-shadow:
-                0 0 24px rgba(124, 252, 74, 0.12),
-                inset 0 0 24px rgba(124, 252, 74, 0.05);
-            animation: ahPulse 6.5s ease-in-out infinite;
-            display: none; /* Hidden because they are baked into the image */
-        }
-
-        .ah-ring--1 {
-            width: 58%;
-            aspect-ratio: 1;
-            border-color: rgba(124, 252, 74, 0.45);
-            box-shadow: 0 0 40px rgba(124, 252, 74, 0.2), inset 0 0 30px rgba(124, 252, 74, 0.08);
-        }
-
-        .ah-ring--2 {
-            width: 78%;
-            aspect-ratio: 1;
-            border-style: dashed;
-            border-color: rgba(74, 222, 128, 0.28);
-            animation-delay: 0.8s;
-        }
-
-        .ah-ring--3 {
-            width: 96%;
-            aspect-ratio: 1;
-            border-color: rgba(45, 212, 191, 0.16);
-            animation-delay: 1.6s;
-        }
-
-        .ah-ring--core {
-            width: 34%;
-            aspect-ratio: 1;
-            border-color: rgba(124, 252, 74, 0.55);
-            background: radial-gradient(circle, rgba(124, 252, 74, 0.18) 0%, transparent 70%);
-            box-shadow: 0 0 50px rgba(124, 252, 74, 0.35);
-        }
-
-        .ah-hologram {
-            position: absolute;
-            width: 22%;
-            z-index: 3;
-            top: 18%;
-            left: 50%;
-            transform: translateX(-50%);
-            display: none;
-            filter: drop-shadow(0 0 18px rgba(124, 252, 74, 0.85)) brightness(1.35) saturate(1.4);
-            animation: ahFloat 5s ease-in-out infinite;
-        }
-
-        .ah-city {
-            position: relative;
-            z-index: 2;
-            width: 100%;
-            margin-top: 0;
-            object-fit: contain;
-            mix-blend-mode: screen;
-            animation: ahFloatCity 6.5s ease-in-out infinite 0.4s;
-            -webkit-mask-image: radial-gradient(circle closest-side, black 70%, transparent 95%);
-            mask-image: radial-gradient(circle closest-side, black 70%, transparent 95%);
-        }
-
-        .ah-features {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            gap: 1.75rem;
-            position: relative;
-            z-index: 4;
-            align-self: center;
-            padding-right: 0.25rem;
-        }
-
-        .ah-feature {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            position: relative;
-        }
-
-        .ah-feature::before {
-            content: '';
-            position: absolute;
-            right: calc(100% + 0.15rem);
-            width: clamp(28px, 5vw, 56px);
-            height: 1px;
-            border-top: 1px dashed rgba(124, 252, 74, 0.45);
-            opacity: 0.9;
-        }
-
-        .ah-feature-icon {
-            width: 42px;
-            height: 42px;
-            border-radius: 50%;
-            border: 1px solid rgba(124, 252, 74, 0.45);
-            background: rgba(5, 20, 12, 0.85);
-            display: grid;
-            place-items: center;
-            color: var(--ah-green);
-            box-shadow: 0 0 18px rgba(124, 252, 74, 0.25);
-            flex-shrink: 0;
-        }
-
-        .ah-feature-icon svg {
-            width: 18px;
-            height: 18px;
-        }
-
-        .ah-feature-label {
-            font-family: 'Sora', sans-serif;
-            font-size: 0.68rem;
-            font-weight: 700;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: #e7ffe9;
-            text-shadow: 0 0 12px rgba(124, 252, 74, 0.25);
-            white-space: nowrap;
         }
 
         /* Stats bar */
@@ -486,61 +332,42 @@
             color: var(--ah-green);
         }
 
-        @keyframes ahPulse {
-            0%, 100% { opacity: 0.45; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.02); }
-        }
-
-        @keyframes ahFloat {
-            0%, 100% { transform: translateX(-50%) translateY(0); }
-            50% { transform: translateX(-50%) translateY(-10px); }
-        }
-
-        @keyframes ahFloatCity {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
         @keyframes float {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-20px); }
         }
 
-        @media (max-width: 1023px) {
-            .ah-feature::before { display: none; }
-            .ah-features {
-                flex-direction: row;
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 1rem 1.25rem;
-                margin-top: 0.5rem;
-            }
-            .ah-stage {
-                grid-template-columns: 1fr;
-            }
-            .ah-hologram {
-                top: 14%;
-            }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            .ah-ring, .ah-hologram, .ah-city { animation: none; }
-        }
-
         /* ── SECTION STYLES ── */
-        .content-section {
+        .section-band {
             background: #e8e8e8;
-            padding: 100px 0;
+            color: #0f172a;
         }
 
-        .content-section-alt {
+        .section-band-alt {
             background: #f0f4f1;
-            padding: 100px 0;
+            color: #0f172a;
+        }
+
+        #founders .type-h2,
+        #founders .type-h3 {
+            color: #0f172a;
+        }
+
+        #founders .founder-role {
+            font-size: 0.8125rem;
+            font-weight: 600;
+            color: #4b5563;
+            font-style: italic;
+            margin-bottom: 0.875rem;
+        }
+
+        #founders .founder-bio {
+            color: #4b5563;
         }
 
         .dark-section {
             background: #0a0a0a;
-            padding: 100px 0;
+            padding-block: var(--section-pad-y, clamp(4rem, 7vh, 5.5rem));
             position: relative;
             overflow: hidden;
         }
@@ -625,8 +452,8 @@
 
         /* ── STAT ── */
         .stat-number {
-            font-family: 'Sora', sans-serif;
-            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-family: var(--font-serif, 'Sora', sans-serif);
+            font-size: var(--text-display);
             font-weight: 800;
             background: linear-gradient(135deg, #10b981, #06b6d4);
             -webkit-background-clip: text;
@@ -670,9 +497,9 @@
             border-radius: 30px;
             border: 1px solid rgba(16, 185, 129, 0.4);
             background: rgba(16, 185, 129, 0.08);
-            font-size: 11px;
+            font-size: var(--text-eyebrow, 0.7rem);
             font-weight: 700;
-            letter-spacing: 0.25em;
+            letter-spacing: 0.2em;
             color: #10b981;
             text-transform: uppercase;
             margin-bottom: 20px;
@@ -742,7 +569,7 @@
                         About UrbanTree
                     </div>
 
-                    <h1 class="ah-title">
+                    <h1 class="ah-title type-h1">
                         Engineering
                         <span class="ah-title-accent">Cleaner Futures</span>
                         For Urban Living
@@ -750,7 +577,7 @@
 
                     <div class="ah-rule" aria-hidden="true"></div>
 
-                    <p class="ah-lead">
+                    <p class="ah-lead type-lead">
                         UrbanTree is part of SunEx Technologies, focused on building
                         <em>intelligent clean-air infrastructure</em>
                         for healthier and future-ready cities.
@@ -770,48 +597,6 @@
                             </svg>
                         </a>
                     </div>
-                </div>
-
-                <div class="ah-stage hero-animate" style="animation-delay:0.15s">
-                    <div class="ah-orb" aria-hidden="false">
-                        <span class="ah-ring ah-ring--3"></span>
-                        <span class="ah-ring ah-ring--2"></span>
-                        <span class="ah-ring ah-ring--1"></span>
-                        <span class="ah-ring ah-ring--core"></span>
-                        <img src="/assets/images/about/green_leaf.png" alt="" class="ah-hologram" aria-hidden="true">
-                        <img src="/assets/images/about/premium_eco_city.png"
-                            alt="UrbanTree clean-air city concept"
-                            class="ah-city"
-                            width="640"
-                            height="640">
-                    </div>
-
-                    <ul class="ah-features" aria-label="UrbanTree pillars">
-                        <li class="ah-feature">
-                            <span class="ah-feature-icon" aria-hidden="true">
-                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 3c-4 5-6 8-6 11a6 6 0 0012 0c0-3-2-6-6-11z"/>
-                                </svg>
-                            </span>
-                            <span class="ah-feature-label">Sustainable Design</span>
-                        </li>
-                        <li class="ah-feature">
-                            <span class="ah-feature-icon" aria-hidden="true">
-                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 8c3-2 6-2 9 0s6 2 9 0M3 12c3-2 6-2 9 0s6 2 9 0M3 16c3-2 6-2 9 0s6 2 9 0"/>
-                                </svg>
-                            </span>
-                            <span class="ah-feature-label">Smart Airflow</span>
-                        </li>
-                        <li class="ah-feature">
-                            <span class="ah-feature-icon" aria-hidden="true">
-                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 3l7 3v5c0 5-3.5 8.5-7 10-3.5-1.5-7-5-7-10V6l7-3z"/>
-                                </svg>
-                            </span>
-                            <span class="ah-feature-label">Healthier Cities</span>
-                        </li>
-                    </ul>
                 </div>
             </div>
 
@@ -882,7 +667,7 @@
     </section>
 
     <!-- ═══ SECTION: WHAT IS URBANTREE ═══ -->
-    <section id="our-story" class="relative bg-[#f4f9f6] py-20 overflow-hidden" data-navbar-theme="dark">
+    <section id="our-story" class="relative section-band-alt overflow-hidden" data-navbar-theme="dark" style="background:#f4f9f6;">
         <!-- Floating Faded Leaves -->
         <img src="/assets/images/shared/leaf_blur_1.png" alt=""
             class="absolute top-[10%] left-[-5%] w-[300px] opacity-40 z-0 pointer-events-none animate-[float_8s_ease-in-out_infinite] rotate-[15deg] blur-[2px]"
@@ -901,7 +686,7 @@
                     <div class="absolute inset-y-0 left-[-50px] right-[-20px] bg-[#f4f9f6] opacity-90 blur-[40px] -z-10 pointer-events-none lg:block hidden"></div>
 
                     <div
-                        class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 font-bold text-[10px] tracking-widest uppercase mb-6 w-max">
+                        class="type-eyebrow inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 mb-6 w-max">
                         <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z">
@@ -910,19 +695,18 @@
                         WHAT IS URBANTREE
                     </div>
 
-                    <h2
-                        class="font-serif font-extrabold text-[2.5rem] lg:text-[2.75rem] leading-[1.15] text-slate-900 mb-5">
+                    <h2 class="type-h2 text-slate-900 mb-5">
                         A Bio-Mechanical<br>
                         Air Purification<br>
                         <span class="text-emerald-600">Ecosystem</span>
                     </h2>
 
                     <p
-                        class="text-[0.7rem] font-bold text-slate-500 tracking-[0.15em] mb-8 border-l-2 border-emerald-500 pl-4">
+                        class="type-eyebrow text-slate-500 mb-8 border-l-2 border-emerald-500 pl-4" style="letter-spacing:0.15em;">
                         CLEANER AIR. SMARTER CITIES. SUSTAINABLE FUTURE.
                     </p>
 
-                    <div class="text-base text-slate-600 leading-relaxed space-y-6 lg:pr-6">
+                    <div class="type-body text-slate-600 space-y-6 lg:pr-6">
                         <p>
                             Urban air pollution and declining air quality have emerged as critical challenges affecting
                             public health, environmental sustainability, and the future of urban living. Rising levels
@@ -1150,7 +934,7 @@
     </section>
 
     <!-- ═══ SUNEX TECHNOLOGIES ═══ -->
-    <section id="sunex" class="relative py-24 overflow-hidden" data-navbar-theme="dark"
+    <section id="sunex" class="relative section-band overflow-hidden" data-navbar-theme="dark"
         style="background: linear-gradient(135deg, #f8fafc 0%, #ecfdf5 100%);">
 
         <!-- The Dome Image (Right Side) -->
@@ -1207,8 +991,7 @@
                         <span class="text-[11px] font-bold text-green-600 uppercase tracking-widest">Powered By</span>
                     </div>
 
-                    <h2 class="fade-up font-serif font-extrabold text-[#166534] leading-[1.1] mb-2"
-                        style="font-size:clamp(3rem,5vw,4.5rem);">
+                    <h2 class="fade-up type-display text-[#166534] mb-2">
                         <span class="text-gray-900">SunEx</span><br>
                         Technologies
                     </h2>
@@ -1221,7 +1004,7 @@
                         <p class="text-[15px] text-green-600 font-bold tracking-wide">Bangalore, India</p>
                     </div>
 
-                    <div class="fade-up space-y-6 text-gray-700 font-medium text-[15px] leading-relaxed pr-8">
+                    <div class="fade-up space-y-6 text-gray-700 font-medium type-body pr-8">
                         <p>A future-focused technology startup founded by three innovators — <strong
                                 class="text-gray-900">Umesh H, Sanjeeth M S, and Dr. Raghavendra Deshpande</strong> —
                             driven by a shared vision to address one of the country's most pressing environmental
@@ -1369,12 +1152,11 @@
 
 
     <!-- ═══ FOUNDERS ═══ -->
-    <section class="content-section-alt" id="founders" data-navbar-theme="dark">
+    <section class="section-band-alt" id="founders" data-navbar-theme="dark">
         <div class="max-w-7xl mx-auto px-6 lg:px-12">
             <div class="text-center mb-16">
                 <span class="section-label fade-up">The People Behind It</span>
-                <h2 class="fade-up"
-                    style="font-family:'Sora',sans-serif;font-size:clamp(2rem,4vw,3rem);font-weight:800;line-height:1.15;">
+                <h2 class="fade-up type-h2 text-slate-900">
                     Meet the Founders
                 </h2>
             </div>
@@ -1387,11 +1169,11 @@
                         <img src="/assets/images/about/sanjeeth.jpg" alt="Sanjeeth Suresh"
                             class="w-full h-full object-cover object-center transition-all duration-500 transform group-hover:scale-105 brightness-110 contrast-125">
                     </div>
-                    <h3 style="font-family:'Sora',sans-serif;font-weight:800;font-size:1.15rem;margin-bottom:4px;">
+                    <h3 class="type-h3 text-slate-900" style="margin-bottom:4px;">
                         Sanjeeth Suresh</h3>
-                    <p style="font-size:13px;font-weight:600;color:#6b7280;font-style:italic;margin-bottom:14px;">
+                    <p class="founder-role">
                         Co-Founder</p>
-                    <p class="text-left" style="font-size:0.9rem;color: #9ca3af;line-height:1.6;">Visionary leader
+                    <p class="text-left type-body founder-bio">Visionary leader
                         responsible for defining the company's direction, identifying new opportunities, and
                         transforming ideas into successful business initiatives. Leads strategic planning and
                         organizational growth.</p>
@@ -1404,11 +1186,11 @@
                         <img src="/assets/images/about/umesh.jpeg" alt="Umesh H"
                             class="w-full h-full object-cover object-[center_top] transition-all duration-500 transform group-hover:scale-105 brightness-110 contrast-125">
                     </div>
-                    <h3 style="font-family:'Sora',sans-serif;font-weight:800;font-size:1.15rem;margin-bottom:4px;">
+                    <h3 class="type-h3 text-slate-900" style="margin-bottom:4px;">
                         Umesh H</h3>
-                    <p style="font-size:13px;font-weight:600;color:#6b7280;font-style:italic;margin-bottom:14px;">
+                    <p class="founder-role">
                         Co-Founder | Innovator | Product Visionary</p>
-                    <p class="text-left" style="font-size:0.9rem;color: #9ca3af;line-height:1.6;">Focused on envisioning
+                    <p class="text-left type-body founder-bio">Focused on envisioning
                         what comes next and bringing it to life through strategic thinking, design excellence, and
                         technological innovation. Committed to creating solutions that leave a lasting impact on people,
                         communities, and the future.</p>
@@ -1421,11 +1203,11 @@
                         <img src="/assets/images/about/raghavendra.jpg" alt="Dr. Raghavendra Deshpande"
                             class="w-full h-full object-cover object-[center_top] transition-all duration-500 transform group-hover:scale-105 brightness-110 contrast-125">
                     </div>
-                    <h3 style="font-family:'Sora',sans-serif;font-weight:800;font-size:1.15rem;margin-bottom:4px;">
+                    <h3 class="type-h3 text-slate-900" style="margin-bottom:4px;">
                         Dr. Raghavendra Deshpande</h3>
-                    <p style="font-size:13px;font-weight:600;color:#6b7280;font-style:italic;margin-bottom:14px;">
+                    <p class="founder-role">
                         Co-Founder</p>
-                    <p class="text-left" style="font-size:0.9rem;color: #9ca3af;line-height:1.6;">Scientific lead and
+                    <p class="text-left type-body founder-bio">Scientific lead and
                         domain expert guiding the engineering design, research frameworks, and bio-mechanical innovation
                         at the core of UrbanTree.</p>
                 </div>
@@ -1437,9 +1219,9 @@
                         <img src="/assets/images/about/vishwas.jpg" alt="Vishwas SP"
                             class="w-full h-full object-cover object-center transition-all duration-500 transform group-hover:scale-105 brightness-110 contrast-125">
                     </div>
-                    <h3 style="font-family:'Sora',sans-serif;font-weight:800;font-size:1.15rem;margin-bottom:4px;">
+                    <h3 class="type-h3 text-slate-900" style="margin-bottom:4px;">
                         Vishwas S P</h3>
-                    <p style="font-size:13px;font-weight:600;color:#6b7280;font-style:italic;margin-bottom:14px;">
+                    <p class="founder-role">
                         Product Design Engineer</p>
                 </div>
 
@@ -1453,9 +1235,9 @@
                                 style="object-position: center top;">
                         </div>
                     </div>
-                    <h3 style="font-family:'Sora',sans-serif;font-weight:800;font-size:1.15rem;margin-bottom:4px;">
+                    <h3 class="type-h3 text-slate-900" style="margin-bottom:4px;">
                         Keshava Prasad B S</h3>
-                    <p style="font-size:13px;font-weight:600;color:#6b7280;font-style:italic;margin-bottom:14px;">
+                    <p class="founder-role">
                         Strategic Advisor</p>
                 </div>
 
@@ -1466,16 +1248,16 @@
                         <img src="/assets/images/about/omkar.jpg" alt="Omkar Chaithanya R"
                             class="w-full h-full object-cover object-center transition-all duration-500 transform group-hover:scale-105 brightness-110 contrast-125">
                     </div>
-                    <h3 style="font-family:'Sora',sans-serif;font-weight:800;font-size:1.15rem;margin-bottom:4px;">
+                    <h3 class="type-h3 text-slate-900" style="margin-bottom:4px;">
                         Omkar Chaithanya R</h3>
-                    <p style="font-size:13px;font-weight:600;color:#6b7280;font-style:italic;margin-bottom:14px;">
+                    <p class="founder-role">
                         Developer</p>
                 </div>
             </div>
         </div>
     </section>
     <!-- 🌿🌿🌿 SDG ALIGNMENT 🌿🌿🌿 -->
-    <section style="background:#0a0a0a;padding:100px 0;position:relative;overflow:hidden;" data-navbar-theme="dark">
+    <section class="dark-section" data-navbar-theme="dark">
         <div
             style="position:absolute;top:-10%;left:50%;transform:translateX(-50%);width:800px;height:400px;background:radial-gradient(ellipse,rgba(16,185,129,0.1) 0%,transparent 70%);pointer-events:none;">
         </div>
@@ -1484,14 +1266,13 @@
             <div class="text-center mb-16">
                 <span class="section-label fade-up"
                     style="background:rgba(16,185,129,0.1);border-color:rgba(16,185,129,0.4);">Global Impact</span>
-                <h2 class="fade-up"
-                    style="font-family:'Sora',sans-serif;font-size:clamp(2rem,4vw,3rem);font-weight:800;color:#ffffff;line-height:1.15;margin-bottom:1rem;">
+                <h2 class="fade-up type-h2 text-white mb-4">
                     Aligned with the UN<br><span
                         style="background:linear-gradient(135deg,#10b981,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Sustainable
                         Development Goals</span>
                 </h2>
-                <p class="fade-up"
-                    style="color:#94a3b8;max-width:640px;margin:0 auto;line-height:1.8;font-size:0.97rem;">
+                <p class="fade-up type-body"
+                    style="color:#94a3b8;max-width:640px;margin:0 auto;">
                     UrbanTree aligns with the vision of the Government of India and global SDGs by addressing critical
                     urban air pollution challenges through intelligent and sustainable clean-air infrastructure.
                 </p>
@@ -1506,9 +1287,9 @@
                             style="font-family:'Sora',sans-serif;font-weight:800;font-size:18px;color:#4ec478;">3</span>
                     </div>
                     <div>
-                        <h3 style="font-family:'Sora',sans-serif;font-weight:700;color:#f1f5f9;margin-bottom:8px;">SDG 3
+                        <h3 class="type-h3" style="color:#f1f5f9;margin-bottom:8px;">SDG 3
                             — Good Health & Well-Being</h3>
-                        <p style="font-size:0.875rem;color:#6b7280;line-height:1.7;">Reducing airborne pollutants PM2.5,
+                        <p class="type-caption" style="color:#6b7280;">Reducing airborne pollutants PM2.5,
                             PM10, VOCs, and harmful microorganisms to create healthier breathing environments in urban
                             spaces.</p>
                     </div>
@@ -1522,9 +1303,9 @@
                             style="font-family:'Sora',sans-serif;font-weight:800;font-size:18px;color:#f49000;">9</span>
                     </div>
                     <div>
-                        <h3 style="font-family:'Sora',sans-serif;font-weight:700;color:#f1f5f9;margin-bottom:8px;">SDG 9
+                        <h3 class="type-h3" style="color:#f1f5f9;margin-bottom:8px;">SDG 9
                             — Industry, Innovation & Infrastructure</h3>
-                        <p style="font-size:0.875rem;color:#6b7280;line-height:1.7;">Building next-generation
+                        <p class="type-caption" style="color:#6b7280;">Building next-generation
                             intelligent infrastructure through AI, IoT, automation, and advanced engineering for
                             future-ready urban ecosystems.</p>
                     </div>
@@ -1538,9 +1319,9 @@
                             style="font-family:'Sora',sans-serif;font-weight:800;font-size:18px;color:#fdb913;">11</span>
                     </div>
                     <div>
-                        <h3 style="font-family:'Sora',sans-serif;font-weight:700;color:#f1f5f9;margin-bottom:8px;">SDG
+                        <h3 class="type-h3" style="color:#f1f5f9;margin-bottom:8px;">SDG
                             11 — Sustainable Cities & Communities</h3>
-                        <p style="font-size:0.875rem;color:#6b7280;line-height:1.7;">Deploying scalable clean-air
+                        <p class="type-caption" style="color:#6b7280;">Deploying scalable clean-air
                             infrastructure for smart cities, public spaces, and urban communities to improve
                             environmental livability.</p>
                     </div>
@@ -1554,9 +1335,9 @@
                             style="font-family:'Sora',sans-serif;font-weight:800;font-size:18px;color:#3fa244;">13</span>
                     </div>
                     <div>
-                        <h3 style="font-family:'Sora',sans-serif;font-weight:700;color:#f1f5f9;margin-bottom:8px;">SDG
+                        <h3 class="type-h3" style="color:#f1f5f9;margin-bottom:8px;">SDG
                             13 — Climate Action</h3>
-                        <p style="font-size:0.875rem;color:#6b7280;line-height:1.7;">Addressing urban emissions,
+                        <p class="type-caption" style="color:#6b7280;">Addressing urban emissions,
                             improving AQI levels, and contributing toward India's long-term environmental resilience
                             through sustainable technology.</p>
                     </div>
@@ -1566,7 +1347,7 @@
             <!-- Bottom note -->
             <div class="fade-up mt-12 p-8 rounded-2xl text-center"
                 style="background:rgba(16,185,129,0.06);border:1px solid rgba(16,185,129,0.2);">
-                <p style="color:#94a3b8;font-size:0.97rem;line-height:1.85;max-width:780px;margin:0 auto;">
+                <p class="type-body" style="color:#94a3b8;max-width:780px;margin:0 auto;">
                     Through AI-driven environmental monitoring, advanced purification technologies, and localized
                     breathable Air Pocket ecosystems, UrbanTree contributes toward building <strong
                         style="color:#10b981;">cleaner, healthier, smarter, and environmentally responsible urban
@@ -1577,15 +1358,14 @@
     </section>
 
     <!-- ═══ CTA ═══ -->
-    <section class="content-section" style="padding:80px 0;" data-navbar-theme="dark">
+    <section class="section-band" data-navbar-theme="dark">
         <div class="max-w-4xl mx-auto px-6 text-center">
             <span class="section-label fade-up">Get Involved</span>
-            <h2 class="fade-up text-slate-900"
-                style="font-family:'Sora',sans-serif;font-size:clamp(2rem,4vw,3rem);font-weight:800;line-height:1.15;margin-bottom:1.2rem;">
+            <h2 class="fade-up type-h2 text-slate-900 mb-5">
                 Ready to Breathe Cleaner Air<br>in Your City?
             </h2>
-            <p class="fade-up"
-                style="color:#6b7280;font-size:1rem;line-height:1.8;margin-bottom:2.5rem;max-width:520px;margin-left:auto;margin-right:auto;">
+            <p class="fade-up type-body"
+                style="color:#6b7280;margin-bottom:2.5rem;max-width:520px;margin-left:auto;margin-right:auto;">
                 Partner with UrbanTree to deploy intelligent clean-air infrastructure in your urban environment.
             </p>
             <div class="fade-up flex flex-wrap gap-4 justify-center">

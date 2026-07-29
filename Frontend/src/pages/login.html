@@ -286,7 +286,12 @@
             }
 
             .brand-lockup img {
-                height: 40px !important;
+                height: 34px !important;
+            }
+
+            .brand-wordmark {
+                font-size: 1.05rem !important;
+                font-weight: 700 !important;
             }
 
             .hero-heading h1 {
@@ -339,13 +344,13 @@
 
         <!-- Logo — fixed top left -->
 <div class="brand-lockup" style="position:fixed; top:0; left:0; z-index:50; padding:1.2rem 1.5rem;">
-    <a href="../index.html" style="display:flex; align-items:center; gap:12px; text-decoration:none;">
-        <img src="/assets/images/shared/logo.png" alt="UrbanTree Logo" style="height:48px; width:auto;">
+    <a href="../index.html" style="display:flex; align-items:center; gap:10px; text-decoration:none;">
+        <img src="/assets/images/shared/logo.png" alt="UrbanTree Logo" style="height:40px; width:auto;">
         <div class="leading-snug">
-            <div style="font-family:'Montserrat',sans-serif; font-size:1.5rem; font-weight:800; ">
-                URBAN<span style="color:#4a9e3f; font-weight:600;">Tree</span>
+            <div class="brand-wordmark" style="font-family:'Montserrat',sans-serif; font-size:1.15rem; font-weight:700; line-height:1.05; color:#111827; letter-spacing:0.01em;">
+                <span class="brand-urban">URBAN</span><span class="brand-tree" style="color:#4a9e3f; font-weight:600;">Tree</span>
             </div>
-            <div style="font-family:'Montserrat',sans-serif; font-size:11px; font-weight:500; color:#6b7280; letter-spacing:0.05em;">
+            <div style="font-family:'Montserrat',sans-serif; font-size:10px; font-weight:500; color:#6b7280; letter-spacing:0.05em; margin-top:2px;">
                 The City, Reimagined.
             </div>
         </div>
@@ -378,16 +383,16 @@
             </div>
 
             <!-- Role tabs -->
-            <div class="role-tabs">
-                <button class="role-tab active" data-role="super">
+            <div class="role-tabs" role="tablist" aria-label="Sign-in role">
+                <button type="button" class="role-tab active" data-role="super" role="tab" aria-selected="true">
                     <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
                     Super Admin
                 </button>
-                <button class="role-tab" data-role="govt">
+                <button type="button" class="role-tab" data-role="govt" role="tab" aria-selected="false">
                     <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"/></svg>
                     Govt Admin
                 </button>
-                <button class="role-tab" data-role="tech">
+                <button type="button" class="role-tab" data-role="tech" role="tab" aria-selected="false">
                     <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>
                     Technician
                 </button>
@@ -423,7 +428,7 @@
             </div>
 
             <!-- Sign in button -->
-            <button class="btn-signin" id="login-btn">
+            <button type="button" class="btn-signin" id="login-btn">
                 <span id="btn-text">Sign In to Dashboard →</span>
             </button>
 
@@ -450,44 +455,7 @@
     <div class="ticker-track" id="ticker-track"></div>
 </div>
 
-<script>
-    <script>
-        // Mobile Menu Logic
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
-        const mobileMenuIcon = document.getElementById('mobile-menu-icon');
-        let isMenuOpen = false;
-
-        if (mobileMenuBtn && mobileMenuOverlay) {
-            mobileMenuBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                isMenuOpen = !isMenuOpen;
-                if (isMenuOpen) {
-                    mobileMenuOverlay.classList.remove('translate-x-full');
-                    mobileMenuIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>';
-                    document.body.style.overflow = 'hidden';
-                } else {
-                    mobileMenuOverlay.classList.add('translate-x-full');
-                    mobileMenuIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>';
-                    document.body.style.overflow = '';
-                }
-            });
-
-            // Close menu when clicking outside links (optional, for better UX)
-            mobileMenuOverlay.addEventListener('click', (e) => {
-                if(e.target === mobileMenuOverlay && isMenuOpen) {
-                    mobileMenuBtn.click();
-                }
-            });
-        }
-        
-        const mobileLinks = document.querySelectorAll('.mobile-link');
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                if (isMenuOpen) mobileMenuBtn.click();
-            });
-        });
-    </script>
+<script type="module" src="/assets/js/login.js"></script>
 </body>
 </html>
 

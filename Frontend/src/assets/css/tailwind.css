@@ -1,12 +1,26 @@
 @import "tailwindcss";
+@import "./typography.css";
 @source "../../pages";
 @source "../../partials";
 @source "../../legal";
+@source "../index.html";
 
 @theme {
   --color-brand-emerald: #4a9e3f;
   --color-brand-cyan: #4a9e3f;
   --font-sans: "Inter", sans-serif;
   --font-serif: "Sora", sans-serif;
+
+  /* Shared marketing type scale */
+  --text-display: clamp(2.75rem, 5.5vw, 4.5rem);
+  --text-display-xl: clamp(3.25rem, 12vw, 8rem);
+  --text-h1: clamp(2.35rem, 5vw, 3.75rem);
+  --text-h2: clamp(2.1rem, 4vw, 3.25rem);
+  --text-h3: clamp(1.15rem, 1.5vw, 1.35rem);
+  --text-lead: clamp(1rem, 1.2vw, 1.125rem);
+  --text-body: 1rem;
+  --text-body-md: 1.05rem;
+  --text-eyebrow: 0.7rem;
+  --text-caption: 0.75rem;
 }
 

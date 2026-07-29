@@ -1,0 +1,118 @@
+/* Shared marketing typography + section rhythm
+   Tokens live in tailwind.css @theme; these classes are the semantic API. */
+
+:root {
+    --section-pad-y: clamp(4rem, 7vh, 5.5rem);
+    --section-pad-y-compact: clamp(3rem, 5vh, 4.5rem);
+    --section-max: 80rem; /* ~max-w-7xl */
+}
+
+.type-display {
+    font-family: var(--font-serif, "Sora", sans-serif);
+    font-size: var(--text-display);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+}
+
+.type-display-xl {
+    font-family: var(--font-serif, "Sora", sans-serif);
+    font-size: var(--text-display-xl);
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+}
+
+.type-h1 {
+    font-family: var(--font-serif, "Sora", sans-serif);
+    font-size: var(--text-h1);
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+}
+
+.type-h2 {
+    font-family: var(--font-serif, "Sora", sans-serif);
+    font-size: var(--text-h2);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+}
+
+.type-h3 {
+    font-family: var(--font-serif, "Sora", sans-serif);
+    font-size: var(--text-h3);
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+}
+
+.type-lead {
+    font-family: var(--font-sans, "Inter", sans-serif);
+    font-size: var(--text-lead);
+    font-weight: 400;
+    line-height: 1.7;
+}
+
+.type-body {
+    font-family: var(--font-sans, "Inter", sans-serif);
+    font-size: var(--text-body);
+    font-weight: 400;
+    line-height: 1.75;
+}
+
+@media (min-width: 768px) {
+    .type-body {
+        font-size: var(--text-body-md);
+    }
+}
+
+.type-eyebrow {
+    font-family: var(--font-sans, "Inter", sans-serif);
+    font-size: var(--text-eyebrow);
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    line-height: 1.4;
+}
+
+.type-caption {
+    font-family: var(--font-sans, "Inter", sans-serif);
+    font-size: var(--text-caption);
+    font-weight: 500;
+    line-height: 1.45;
+}
+
+/* Marketing page content bands (non-snap) — light surfaces with dark text */
+.section-band {
+    padding-block: var(--section-pad-y);
+    background: #e8e8e8;
+    color: #0f172a;
+}
+
+.section-band-compact {
+    padding-block: var(--section-pad-y-compact);
+    color: #0f172a;
+}
+
+.section-band-alt {
+    padding-block: var(--section-pad-y);
+    background: #f0f4f1;
+    color: #0f172a;
+}
+
+.section-band .type-h1,
+.section-band .type-h2,
+.section-band .type-h3,
+.section-band-alt .type-h1,
+.section-band-alt .type-h2,
+.section-band-alt .type-h3 {
+    color: #0f172a;
+}
+
+.section-band .type-lead,
+.section-band .type-body,
+.section-band-alt .type-lead,
+.section-band-alt .type-body {
+    color: #4b5563;
+}

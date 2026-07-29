@@ -37,24 +37,27 @@
         }
         
         .article-content p {
-            font-size: 1.1rem;
+            font-family: var(--font-sans, 'Inter', sans-serif);
+            font-size: var(--text-lead);
             line-height: 1.8;
             color: #9ca3af;
             margin-bottom: 1.5rem;
         }
         .article-content h2 {
-            font-family: 'Sora', sans-serif;
-            font-size: 1.8rem;
-            font-weight: 700;
-            
+            font-family: var(--font-serif, 'Sora', sans-serif);
+            font-size: var(--text-h2);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
             margin-top: 2.5rem;
             margin-bottom: 1rem;
         }
         .article-content h3 {
-            font-family: 'Sora', sans-serif;
-            font-size: 1.4rem;
-            font-weight: 600;
-            
+            font-family: var(--font-serif, 'Sora', sans-serif);
+            font-size: var(--text-h3);
+            font-weight: 700;
+            line-height: 1.25;
+            letter-spacing: -0.01em;
             margin-top: 2rem;
             margin-bottom: 0.75rem;
         }
@@ -103,7 +106,7 @@
             <div class="mb-6 fade-up">
                 <span class="bg-emerald-500/20 text-emerald-400 text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wide border border-emerald-500/30">Environment</span>
             </div>
-            <h1 class="fade-up" style="font-family:'Sora',sans-serif;font-size:clamp(2.5rem,4vw,3.5rem);font-weight:800;color:#ffffff;line-height:1.2;margin-bottom:1.5rem;">
+            <h1 class="fade-up type-h1 text-white mb-6">
                 Bio-Mimicry in Action: How Nature Inspired Our Filtration
             </h1>
             <div class="flex items-center justify-center gap-4 fade-up mt-8">
@@ -117,7 +120,7 @@
     </section>
 
     <!-- ═══ ARTICLE CONTENT ═══ -->
-    <section class="py-16 bg-[#e8e8e8] fade-up" data-navbar-theme="dark">
+    <section class="section-band bg-[#e8e8e8] fade-up" data-navbar-theme="dark">
         <div class="max-w-3xl mx-auto px-6">
             
             <img src="/assets/images/blog/stage_6_bio.png" onerror="this.src='../assets/images/hero-bg.png'" alt="Bio-Mimicry" class="w-full rounded-2xl shadow-xl mb-12 h-[400px] object-cover">
@@ -131,7 +134,7 @@
                     By 2026, the concept of "Liquid Trees" and algal-based carbon sinks have made headlines globally. But how do we integrate biological efficiency into a mechanical, high-throughput urban air purifier? The answer lies in <strong>Bio-Mimicry</strong>.
                 </p>
 
-                <h2>Beyond the Nanofiber</h2>
+                <h2 class="type-h2">Beyond the Nanofiber</h2>
 
                 <p>
                     Recent advancements in materials science have brought nanofiber filter media into industrial-scale production. These materials offer incredible mechanical filtration efficiency—up to 99.648% for particles as small as PM0.3—while maintaining high airflow porosity.
@@ -145,7 +148,7 @@
                     "We aren't just trapping pollution; we are actively digesting it. Our bio-mechanical ecosystem utilizes specialized cultures to organically break down VOCs and absorb carbon dioxide, releasing clean, oxygen-rich air back into the city."
                 </blockquote>
 
-                <h2>How the Biological Layer Works</h2>
+                <h2 class="type-h2">How the Biological Layer Works</h2>
 
                 <p>
                     Within the UrbanTree unit, the air undergoes a multi-stage process. After passing through the advanced nanofiber mechanical stages which strip away heavy particulate matter (PM10 and PM2.5), the air is channeled through the biological filtration zone.
@@ -161,7 +164,7 @@
                     <li><strong>Natural Humidification:</strong> The process naturally regulates the humidity of the expelled air, creating a fresher, more comfortable microclimate within the 50-meter safety zone.</li>
                 </ul>
 
-                <h2>The Future is Hybrid</h2>
+                <h2 class="type-h2">The Future is Hybrid</h2>
 
                 <p>
                     The smartest cities of tomorrow won't just rely on cold steel and silicon. They will rely on hybrid technologies that marry the brute force of mechanical engineering with the elegant, sustainable efficiency of biological processes.

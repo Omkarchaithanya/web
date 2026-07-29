@@ -2,32 +2,54 @@ import { apiFetch, setAccessToken } from './api.js';
 import { config } from './config.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Role switching — credentials come from env only (never hardcoded)
-    const roleTabs = document.querySelectorAll('.role-tab');
-    roleTabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-            roleTabs.forEach(t => t.classList.remove('active'));
-            tab.classList.add('active');
+    let selectedRole = 'super';
 
-            const role = tab.dataset.role;
-            const emailInput = document.getElementById('email');
-            const passInput = document.getElementById('password');
-            const account =
-                role === 'super' ? config.demoAccounts.super :
-                role === 'govt' ? config.demoAccounts.govt :
-                role === 'tech' ? config.demoAccounts.tech :
-                null;
+    const roleMeta = {
+        super: { account: config.demoAccounts.super },
+        govt: { account: config.demoAccounts.govt },
+        tech: { account: config.demoAccounts.tech },
+    };
 
-            if (account?.email) emailInput.value = account.email;
-            if (account?.password) passInput.value = account.password;
+    function applyRole(role) {
+        const meta = roleMeta[role] || roleMeta.super;
+        selectedRole = role;
+
+        document.querySelectorAll('.role-tab').forEach(tab => {
+            const isActive = tab.dataset.role === role;
+            tab.classList.toggle('active', isActive);
+            tab.setAttribute('aria-selected', isActive ? 'true' : 'false');
+        });
+
+        const emailInput = document.getElementById('email');
+        const passInput = document.getElementById('password');
+        if (!emailInput || !passInput) return;
+
+        const account = meta.account;
+        if (account?.email) emailInput.value = account.email;
+        if (account?.password) passInput.value = account.password;
+
+        emailInput.placeholder =
+            role === 'govt' ? 'govt.admin@example.com' :
+            role === 'tech' ? 'technician@example.com' :
+            'super.admin@example.com';
+    }
+
+    document.querySelectorAll('.role-tab').forEach(tab => {
+        tab.addEventListener('click', (event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            applyRole(tab.dataset.role || 'super');
         });
     });
+
+    applyRole(selectedRole);
 
     const toggleIcon = document.getElementById('toggle-password-icon');
     if (toggleIcon) {
         toggleIcon.addEventListener('click', () => {
             const pw = document.getElementById('password');
             const icon = document.getElementById('eye-icon');
+            if (!pw || !icon) return;
             if (pw.type === 'password') {
                 pw.type = 'text';
                 icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"/>';
@@ -50,8 +72,10 @@ document.addEventListener('DOMContentLoaded', () => {
     async function handleLogin() {
         const btn = document.getElementById('login-btn');
         const text = document.getElementById('btn-text');
-        const email = document.getElementById('email').value;
-        const password = document.getElementById('password').value;
+        const email = document.getElementById('email')?.value?.trim();
+        const password = document.getElementById('password')?.value;
+
+        if (!btn || !text) return;
 
         if (!email || !password) {
             btn.style.background = '#ef4444';
@@ -78,6 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (data.user) {
                     sessionStorage.setItem('urbantree_user', JSON.stringify(data.user));
                 }
+                sessionStorage.setItem('urbantree_role', selectedRole);
                 text.textContent = '✓ Redirecting...';
                 setTimeout(() => {
                     window.location.href = config.routes.monitoringPage;

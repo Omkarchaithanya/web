@@ -58,9 +58,9 @@
             border-radius: 30px;
             border: 1px solid rgba(16, 185, 129, 0.4);
             background: rgba(16, 185, 129, 0.08);
-            font-size: 11px;
+            font-size: var(--text-eyebrow, 0.7rem);
             font-weight: 700;
-            letter-spacing: 0.25em;
+            letter-spacing: 0.2em;
             color: #10b981;
             text-transform: uppercase;
             margin-bottom: 20px;
@@ -261,19 +261,14 @@
         /* ── ALTERNATING SECTIONS ── */
         .section-light {
             background: #e8e8e8;
-            padding: 100px 0;
+            padding-block: var(--section-pad-y);
             position: relative;
             overflow: hidden;
         }
 
-        . {
-            background: #f0f4f1;
-            padding: 100px 0;
-        }
-
         .section-dark {
             background: #0a0a0a;
-            padding: 100px 0;
+            padding-block: var(--section-pad-y);
             position: relative;
             overflow: hidden;
         }
@@ -320,15 +315,15 @@
                 <div class="hero-animate" style="animation-delay:0.1s;">
                     <span class="section-label">Technology</span>
                 </div>
-                <h1 class="hero-animate"
-                    style="font-family:'Sora',sans-serif;font-size:clamp(2.8rem,6vw,5.5rem);font-weight:800;color:#ffffff;line-height:1.05;margin-bottom:1.5rem;animation-delay:0.2s;">
+                <h1 class="hero-animate type-h1 text-white mb-6"
+                    style="animation-delay:0.2s;">
                     Powered By<br>
                     <span
                         style="background:linear-gradient(135deg,#10b981,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Bio-Mechanical</span><br>
                     Air Intelligence
                 </h1>
-                <p class="hero-animate"
-                    style="font-size:1.1rem;color:#94a3b8;max-width:600px;line-height:1.85;margin-bottom:2.5rem;animation-delay:0.35s;">
+                <p class="hero-animate type-lead"
+                    style="color:#94a3b8;max-width:600px;margin-bottom:2.5rem;animation-delay:0.35s;">
                     A next-generation purification ecosystem combining advanced engineering, intelligent airflow
                     systems, and biological purification to create breathable Air Pocket environments.
                 </p>
@@ -349,25 +344,25 @@
                 style="animation-delay:0.65s;">
                 <div>
                     <div
-                        style="font-family:'Sora',sans-serif;font-size:clamp(2rem,4vw,3rem);font-weight:800;background:linear-gradient(135deg,#10b981,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">
+                        class="type-h2" style="background:linear-gradient(135deg,#10b981,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">
                         9</div>
                     <div style="font-size:13px;color:#6b7280;margin-top:4px;font-weight:500;">Purification Stages</div>
                 </div>
                 <div>
                     <div
-                        style="font-family:'Sora',sans-serif;font-size:clamp(2rem,4vw,3rem);font-weight:800;background:linear-gradient(135deg,#10b981,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">
+                        class="type-h2" style="background:linear-gradient(135deg,#10b981,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">
                         99.97%</div>
                     <div style="font-size:13px;color:#6b7280;margin-top:4px;font-weight:500;">Particle Capture</div>
                 </div>
                 <div>
                     <div
-                        style="font-family:'Sora',sans-serif;font-size:clamp(2rem,4vw,3rem);font-weight:800;background:linear-gradient(135deg,#10b981,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">
+                        class="type-h2" style="background:linear-gradient(135deg,#10b981,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">
                         0.3µ</div>
                     <div style="font-size:13px;color:#6b7280;margin-top:4px;font-weight:500;">Min Particle Size</div>
                 </div>
                 <div>
                     <div
-                        style="font-family:'Sora',sans-serif;font-size:clamp(2rem,4vw,3rem);font-weight:800;background:linear-gradient(135deg,#10b981,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">
+                        class="type-h2" style="background:linear-gradient(135deg,#10b981,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">
                         Hybrid</div>
                     <div style="font-size:13px;color:#6b7280;margin-top:4px;font-weight:500;">Solar + Grid Power</div>
                 </div>
@@ -376,17 +371,16 @@
     </section>
 
     <!-- ═══ SECTION 1: SYSTEM ARCHITECTURE ═══ -->
-    <section id="architecture" data-navbar-theme="dark">
+    <section id="architecture" class="section-band" data-navbar-theme="dark">
         <div class="max-w-7xl mx-auto px-6 lg:px-12">
 
             <div class="text-center mb-16">
                 <span class="section-label fade-up">System Architecture</span>
-                <h2 class="fade-up"
-                    style="font-family:'Sora',sans-serif;font-size:clamp(2rem,4vw,3rem);font-weight:800;line-height:1.15;margin-bottom:1rem;">
+                <h2 class="fade-up type-h2 text-slate-900 mb-4">
                     Engineered In Multiple<br>Purification Layers
                 </h2>
-                <p class="fade-up"
-                    style="color: #9ca3af;max-width:640px;margin:0 auto;line-height:1.85;font-size:0.97rem;">
+                <p class="fade-up type-body text-slate-600"
+                    style="max-width:640px;margin:0 auto;">
                     UrbanTree operates through a multi-stage architecture designed to maximize purification efficiency
                     while maintaining sustainable energy consumption.
                 </p>
@@ -426,7 +420,7 @@
     </section>
 
     <!-- ═══ SECTION 2: TECHNOLOGY COMPONENTS (HUD GRID) ═══ -->
-<section class="section-dark relative" id="components" data-navbar-theme="dark" style="background-color:#050505; overflow:hidden; padding: 120px 0;">
+<section class="section-dark relative" id="components" data-navbar-theme="dark" style="background-color:#050505; overflow:hidden;">
     
     <style>
     /* Pillars of Innovation — match design mockup */
@@ -473,9 +467,9 @@
 
     .screenshot-title {
         font-family: 'Sora', sans-serif;
-        font-size: clamp(2.6rem, 5vw, 4.25rem);
+        font-size: var(--text-h2);
         font-weight: 800;
-        line-height: 1.05;
+        line-height: 1.1;
         margin: 0 0 18px;
         letter-spacing: -0.02em;
     }
@@ -773,7 +767,7 @@
                     <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                     Core Philosophy
                 </div>
-                <h2 class="screenshot-title">Pillars of<br><span>Innovation</span></h2>
+                <h2 class="screenshot-title type-h2">Pillars of<br><span>Innovation</span></h2>
                 <div class="screenshot-subtitle">Engineering a Sustainable Tomorrow</div>
             </div>
             <div class="header-right">
@@ -892,7 +886,7 @@
     </div>
 </section>
 <!-- ═══ IMPACT & APPLICATIONS ═══ -->
-    <section class="section-light relative bg-slate-50" id="applications" data-navbar-theme="light" style="padding-bottom:100px;">
+    <section class="section-light relative bg-slate-50" id="applications" data-navbar-theme="light">
         <style>
             .impact-card {
                 position: relative;
@@ -963,11 +957,10 @@
         <div class="max-w-7xl mx-auto px-6 lg:px-12 pt-20">
             <div class="text-center mb-20">
                 <span class="section-label fade-up">Real-World Deployments</span>
-                <h2 class="fade-up"
-                    style="font-family:'Sora',sans-serif;font-size:clamp(2rem,4vw,3rem);font-weight:800;color:#111827;line-height:1.15;">
+                <h2 class="fade-up type-h2 text-gray-900">
                     Impact & <span style="color:#10b981;">Applications</span>
                 </h2>
-                <p class="fade-up mt-5 max-w-2xl mx-auto" style="color:#6b7280;line-height:1.8;font-size:1.05rem;">
+                <p class="fade-up type-lead mt-5 max-w-2xl mx-auto" style="color:#6b7280;">
                     From bustling metropolitan streets to serene educational campuses, our highly adaptable bio-systems
                     are designed to integrate anywhere breathing happens.
                 </p>
@@ -1059,11 +1052,10 @@
                 <span class="section-label fade-up"
                     style="background:rgba(16,185,129,0.1);border-color:rgba(16,185,129,0.4);">Data-Driven
                     Outcomes</span>
-                <h2 class="fade-up"
-                    style="font-family:'Sora',sans-serif;font-size:clamp(2rem,4vw,3rem);font-weight:800;color:#ffffff;line-height:1.15;">
+                <h2 class="fade-up type-h2 text-white">
                     Performance & Metrics
                 </h2>
-                <p class="fade-up mt-5 max-w-2xl mx-auto" style="color:#cbd5e1;line-height:1.8;font-size:1.05rem;">
+                <p class="fade-up type-lead mt-5 max-w-2xl mx-auto" style="color:#cbd5e1;">
                     We focus purely on the data and the outcome. Our verifiable performance metrics provide B2B buyers
                     and government entities with the hard numbers they need.
                 </p>
@@ -1123,15 +1115,14 @@
             <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
                 <span class="section-label fade-up"
                     style="background:rgba(16,185,129,0.1);border-color:rgba(16,185,129,0.4);">Deploy UrbanTree</span>
-                <h2 class="fade-up"
-                    style="font-family:'Sora',sans-serif;font-size:clamp(2rem,4vw,3rem);font-weight:800;color:#ffffff;line-height:1.15;margin-bottom:1.2rem;">
+                <h2 class="fade-up type-h2 text-white mb-5">
                     Ready to Deploy<br>
                     <span
                         style="background:linear-gradient(135deg,#10b981,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Clean
                         Air Technology?</span>
                 </h2>
-                <p class="fade-up"
-                    style="color:#94a3b8;font-size:1rem;line-height:1.8;margin-bottom:2.5rem;max-width:520px;margin-left:auto;margin-right:auto;">
+                <p class="fade-up type-body"
+                    style="color:#94a3b8;margin-bottom:2.5rem;max-width:520px;margin-left:auto;margin-right:auto;">
                     Contact us to explore how UrbanTree's innovative purification ecosystem can transform air quality in
                     your urban environment.
                 </p>
@@ -1165,7 +1156,7 @@
                     style="display:inline-block;padding:4px 14px;border-radius:20px;border:1px solid rgba(16,185,129,0.4);background:rgba(16,185,129,0.08);font-size:10px;font-weight:700;letter-spacing:0.2em;color:#10b981;text-transform:uppercase;margin-bottom:16px;">
                     Legal</div>
                 <h2
-                    style="font-family:'Sora',sans-serif;font-size:1.8rem;font-weight:800;color:#ffffff;margin-bottom:28px;">
+                    class="type-h2 text-white" style="margin-bottom:28px;">
                     Privacy Policy</h2>
                 <div
                     style="font-family:'Inter',sans-serif;font-size:0.9rem;color:#94a3b8;line-height:1.8;display:flex;flex-direction:column;gap:22px;">
@@ -1236,7 +1227,7 @@
                     style="display:inline-block;padding:4px 14px;border-radius:20px;border:1px solid rgba(16,185,129,0.4);background:rgba(16,185,129,0.08);font-size:10px;font-weight:700;letter-spacing:0.2em;color:#10b981;text-transform:uppercase;margin-bottom:16px;">
                     Legal</div>
                 <h2
-                    style="font-family:'Sora',sans-serif;font-size:1.8rem;font-weight:800;color:#ffffff;margin-bottom:28px;">
+                    class="type-h2 text-white" style="margin-bottom:28px;">
                     Terms & Conditions</h2>
                 <div
                     style="font-family:'Inter',sans-serif;font-size:0.9rem;color:#94a3b8;line-height:1.8;display:flex;flex-direction:column;gap:22px;">
@@ -1293,7 +1284,7 @@
                     style="display:inline-block;padding:4px 14px;border-radius:20px;border:1px solid rgba(16,185,129,0.4);background:rgba(16,185,129,0.08);font-size:10px;font-weight:700;letter-spacing:0.2em;color:#10b981;text-transform:uppercase;margin-bottom:16px;">
                     Legal</div>
                 <h2
-                    style="font-family:'Sora',sans-serif;font-size:1.8rem;font-weight:800;color:#ffffff;margin-bottom:28px;">
+                    class="type-h2 text-white" style="margin-bottom:28px;">
                     Disclaimer</h2>
                 <div
                     style="font-family:'Inter',sans-serif;font-size:0.9rem;color:#94a3b8;line-height:1.8;display:flex;flex-direction:column;gap:22px;">
@@ -1335,7 +1326,7 @@
                     style="display:inline-block;padding:4px 14px;border-radius:20px;border:1px solid rgba(16,185,129,0.4);background:rgba(16,185,129,0.08);font-size:10px;font-weight:700;letter-spacing:0.2em;color:#10b981;text-transform:uppercase;margin-bottom:16px;">
                     Legal</div>
                 <h2
-                    style="font-family:'Sora',sans-serif;font-size:1.8rem;font-weight:800;color:#ffffff;margin-bottom:28px;">
+                    class="type-h2 text-white" style="margin-bottom:28px;">
                     Cookie Policy</h2>
                 <div
                     style="font-family:'Inter',sans-serif;font-size:0.9rem;color:#94a3b8;line-height:1.8;display:flex;flex-direction:column;gap:22px;">
@@ -1381,7 +1372,7 @@
                     style="display:inline-block;padding:4px 14px;border-radius:20px;border:1px solid rgba(16,185,129,0.4);background:rgba(16,185,129,0.08);font-size:10px;font-weight:700;letter-spacing:0.2em;color:#10b981;text-transform:uppercase;margin-bottom:16px;">
                     Legal</div>
                 <h2
-                    style="font-family:'Sora',sans-serif;font-size:1.8rem;font-weight:800;color:#ffffff;margin-bottom:28px;">
+                    class="type-h2 text-white" style="margin-bottom:28px;">
                     Intellectual Property Notice</h2>
                 <div
                     style="font-family:'Inter',sans-serif;font-size:0.9rem;color:#94a3b8;line-height:1.8;display:flex;flex-direction:column;gap:22px;">

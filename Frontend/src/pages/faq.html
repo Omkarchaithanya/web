@@ -62,10 +62,9 @@
             letter-spacing: 0.05em;
         }
         .faq-q-text {
-            font-family: 'Sora', sans-serif;
-            font-size: 15px;
+            font-family: var(--font-serif, 'Sora', sans-serif);
+            font-size: var(--text-body, 1rem);
             font-weight: 600;
-            
             flex: 1;
             line-height: 1.4;
         }
@@ -97,10 +96,10 @@
             padding: 0 1.6rem 1.4rem calc(1.6rem + 36px + 1rem);
         }
         .faq-answer-inner p {
-            font-family: 'Inter', sans-serif;
-            font-size: 14px;
+            font-family: var(--font-sans, 'Inter', sans-serif);
+            font-size: var(--text-body, 1rem);
             color: #9ca3af;
-            line-height: 1.8;
+            line-height: 1.75;
         }
         .fade-up {
             opacity: 0;
@@ -134,11 +133,11 @@
 
         <!-- Header -->
         <div class="fade-up" style="text-align:center; margin-bottom:3.5rem;">
-            <span style="font-family:'Inter',sans-serif; font-size:11px; font-weight:700; letter-spacing:0.3em; text-transform:uppercase; color:#10b981; display:block; margin-bottom:1rem;">Support</span>
-            <h1 style="font-family:'Sora',sans-serif; font-size:clamp(2.2rem,5vw,3.5rem); font-weight:800;  line-height:1.1; margin-bottom:1rem;">
+            <span class="type-eyebrow" style="color:#10b981; display:block; margin-bottom:1rem;">Support</span>
+            <h1 class="type-h1" style="margin-bottom:1rem;">
                 Frequently Asked<br><span style="color:#10b981;">Questions</span>
             </h1>
-            <p style="font-family:'Inter',sans-serif; font-size:15px; color:#6b7280; max-width:480px; margin:0 auto; line-height:1.7;">
+            <p class="type-lead" style="color:#6b7280; max-width:480px; margin:0 auto;">
                 Everything you need to know about UrbanTree and Bio-Mechanical Air Purification technology.
             </p>
         </div>
@@ -222,8 +221,8 @@
 
         <!-- Bottom CTA -->
         <div class="fade-up" style="text-align:center; margin-top:3.5rem; padding:2.5rem; background:rgba(255,255,255,0.5); backdrop-filter:blur(20px); border:1px solid rgba(255,255,255,0.6); border-radius:20px;">
-            <p style="font-family:'Sora',sans-serif; font-size:1.1rem; font-weight:700;  margin-bottom:0.5rem;">Still have questions?</p>
-            <p style="font-family:'Inter',sans-serif; font-size:13px; color:#6b7280; margin-bottom:1.4rem;">Our team is happy to help with anything not covered here.</p>
+            <p class="type-h3" style="margin-bottom:0.5rem;">Still have questions?</p>
+            <p class="type-caption" style="color:#6b7280; margin-bottom:1.4rem;">Our team is happy to help with anything not covered here.</p>
             <a href="../index.html#enquiry" style="display:inline-block; padding:12px 28px; background:#10b981; color:white; font-family:'Sora',sans-serif; font-size:13px; font-weight:700; border-radius:50px; text-decoration:none; transition:all 0.3s;" onmouseover="this.style.background='#059669'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 25px rgba(16,185,129,0.35)'" onmouseout="this.style.background='#10b981'; this.style.transform='translateY(0)'; this.style.boxShadow='none'">
                 Contact Us →
             </a>

@@ -26,9 +26,9 @@
         }
         
         .legal-section { margin-bottom: 3rem; background: #fff; padding: 3.5rem; border-radius: 1rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); }
-        .legal-section h2 { font-family: 'Sora', sans-serif; font-size: 2rem; font-weight: 800; margin-bottom: 1.5rem;  }
-        .legal-section h3 { font-family: 'Sora', sans-serif; font-size: 1.25rem; font-weight: 700; margin-top: 2rem; margin-bottom: 1rem; color: #374151; }
-        .legal-section p { margin-bottom: 1.25rem; color: #9ca3af; line-height: 1.6; }
+        .legal-section h2 { font-family: var(--font-serif, 'Sora', sans-serif); font-size: var(--text-h2); font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 1.5rem; }
+        .legal-section h3 { font-family: var(--font-serif, 'Sora', sans-serif); font-size: var(--text-h3); font-weight: 700; line-height: 1.25; letter-spacing: -0.01em; margin-top: 2rem; margin-bottom: 1rem; color: #374151; }
+        .legal-section p { margin-bottom: 1.25rem; color: #9ca3af; font-size: var(--text-body); line-height: 1.75; }
         .legal-section ul { list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1.25rem; color: #9ca3af; }
         .legal-section li { margin-bottom: 0.5rem; }
     </style>
@@ -81,24 +81,24 @@
     </div>
 
     <!-- ═══ HEADER ═══ -->
-    <header class="pt-40 pb-16 bg-[#0a0a0a] relative overflow-hidden">
+    <header class="pt-40 bg-[#0a0a0a] relative overflow-hidden" style="padding-bottom: var(--section-pad-y);">
         <div class="absolute inset-0">
             <div class="absolute inset-0 bg-gradient-to-b from-[#4a9e3f]/20 to-transparent opacity-30"></div>
             <div class="absolute w-full h-px bg-gradient-to-r from-transparent via-[#4a9e3f]/30 to-transparent bottom-0"></div>
         </div>
         <div class="max-w-6xl mx-auto px-6 relative z-10">
-            <h1 style="font-family:'Sora',sans-serif;font-size:2.5rem;font-weight:800;color:#ffffff;line-height:1.2;margin-bottom:1rem;">Disclaimer</h1>
+            <h1 class="type-h1 text-white mb-4">Disclaimer</h1>
         </div>
     </header>
 
     <!-- ═══ CONTENT ═══ -->
-    <main class="max-w-4xl mx-auto px-6 py-16">
+    <main class="max-w-4xl mx-auto px-6 section-band">
         <div class="legal-section">
-            <h2>Disclaimer</h2>
-            <h3>General Information</h3>
+            <h2 class="type-h2">Disclaimer</h2>
+            <h3 class="type-h3">General Information</h3>
             <p>The information provided on this website is intended for general informational and educational purposes only.</p>
 
-            <h3>Environmental Performance</h3>
+            <h3 class="type-h3">Environmental Performance</h3>
             <p>Air purification efficiency, AQI improvement, pollutant reduction, and environmental performance may vary depending on:</p>
             <ul>
                 <li>Environmental conditions</li>
@@ -109,22 +109,22 @@
                 <li>Maintenance practices</li>
             </ul>
 
-            <h3>No Medical Claims</h3>
+            <h3 class="type-h3">No Medical Claims</h3>
             <p>UrbanTree is an environmental air purification and monitoring system and is not intended to diagnose, treat, cure, or prevent any medical condition or disease.</p>
 
-            <h3>Technology Development Disclaimer</h3>
+            <h3 class="type-h3">Technology Development Disclaimer</h3>
             <p>Certain product visuals, simulations, concepts, deployment models, and future roadmap representations displayed on the website may represent prototype-stage, conceptual, or evolving technologies subject to ongoing research and engineering development.</p>
 
-            <h3>Third-Party Information</h3>
+            <h3 class="type-h3">Third-Party Information</h3>
             <p>External references, third-party integrations, or linked services are provided for convenience only.</p>
 
-            <h3>Limitation of Responsibility</h3>
+            <h3 class="type-h3">Limitation of Responsibility</h3>
             <p>Users and organizations are advised to evaluate deployment suitability based on their own environmental, operational, and regulatory requirements.</p>
 
-            <h3>Data Usage & Attribution</h3>
+            <h3 class="type-h3">Data Usage & Attribution</h3>
             <p>AQI and environmental data presented on this website are intended for research, analysis, demonstration, and public awareness purposes only. Data are obtained from official government agencies and other reliable publicly available sources wherever applicable. UrbanTree does not claim ownership of third-party datasets, and all rights remain with the respective source organizations.</p>
 
-            <h3>Legal Disclaimer</h3>
+            <h3 class="type-h3">Legal Disclaimer</h3>
             <p>UrbanTree provides environmental information for educational and decision-support purposes only. Users are advised to refer to the respective government authorities for official air quality advisories and regulatory information.</p>
         </div>
     </main>

@@ -58,11 +58,17 @@ const initIndex = () => {
     const heroTypingText = document.getElementById('hero-typing-text');
     const heroTypingCursor = document.getElementById('hero-typing-cursor');
     let heroVideoStarted = false;
+    let heroAudioUnlocked = false;
 
     if (heroVideo) {
         heroVideo.loop = false;
+        heroVideo.muted = false;
+        heroVideo.defaultMuted = false;
+        heroVideo.volume = 1;
         heroVideo.playsInline = true;
         heroVideo.setAttribute('playsinline', '');
+        heroVideo.removeAttribute('muted');
+        heroVideo.preload = 'auto';
         heroVideo.addEventListener('ended', () => { heroVideo.pause(); });
     }
 
@@ -95,6 +101,59 @@ const initIndex = () => {
         }, 650);
     }
 
+    function ensureHeroSound() {
+        if (!heroVideo) return;
+        heroVideo.muted = false;
+        heroVideo.defaultMuted = false;
+        heroVideo.volume = 1;
+        heroVideo.removeAttribute('muted');
+    }
+
+    function unlockHeroAudioFromGesture() {
+        if (!heroVideo || heroAudioUnlocked) return;
+        heroAudioUnlocked = true;
+        ensureHeroSound();
+
+        // Prime playback under the user gesture so later autoplay can keep sound
+        const prevTime = heroVideo.currentTime;
+        const prevVolume = heroVideo.volume;
+        heroVideo.volume = 0;
+        const unlockPlay = heroVideo.play();
+        if (unlockPlay && typeof unlockPlay.then === 'function') {
+            unlockPlay.then(() => {
+                if (!heroVideoStarted) {
+                    heroVideo.pause();
+                    try { heroVideo.currentTime = prevTime || 0; } catch (_) { /* ignore */ }
+                }
+                heroVideo.volume = prevVolume || 1;
+            }).catch(() => {
+                heroVideo.volume = prevVolume || 1;
+            });
+        } else {
+            heroVideo.volume = prevVolume || 1;
+        }
+    }
+
+    ['pointerdown', 'touchstart', 'keydown', 'click'].forEach((eventName) => {
+        window.addEventListener(eventName, unlockHeroAudioFromGesture, {
+            capture: true,
+            passive: true,
+            once: true,
+        });
+    });
+
+    function attachSilentUnmuteFallback() {
+        const unmuteNow = () => {
+            ensureHeroSound();
+            if (heroVideo && heroVideo.paused && heroVideoStarted) {
+                heroVideo.play().catch(() => { });
+            }
+        };
+        ['pointerdown', 'touchstart', 'keydown', 'click', 'scroll'].forEach((eventName) => {
+            window.addEventListener(eventName, unmuteNow, { capture: true, passive: true, once: true });
+        });
+    }
+
     window.startHeroVideo = function () {
         if (!heroVideo || heroVideoStarted) return;
         heroVideoStarted = true;
@@ -108,21 +167,20 @@ const initIndex = () => {
             if (heroClickPrompt) heroClickPrompt.style.display = 'none';
         }, 500);
 
-        const playVideo = () => {
-            const playPromise = heroVideo.play();
-            if (playPromise && typeof playPromise.then === 'function') {
-                playPromise.catch(() => {
-                    // Browsers block unmuted autoplay — fall back to muted so it still starts
-                    heroVideo.muted = true;
-                    heroVideo.play().catch(() => { });
-                });
-            }
-        };
+        ensureHeroSound();
 
-        // Prefer sound; muted fallback if autoplay policy blocks it
-        heroVideo.muted = false;
-        heroVideo.volume = 1;
-        playVideo();
+        const playPromise = heroVideo.play();
+        if (playPromise && typeof playPromise.then === 'function') {
+            playPromise.catch(() => {
+                // Policy may require a muted start; restore sound immediately after playback begins
+                heroVideo.muted = true;
+                heroVideo.play().then(() => {
+                    ensureHeroSound();
+                    attachSilentUnmuteFallback();
+                }).catch(() => { });
+            });
+        }
+
         heroVideo.addEventListener('ended', revealHeroText, { once: true });
     };
 
@@ -139,7 +197,7 @@ const initIndex = () => {
                 if (heroTypingCursor) {
                     heroTypingCursor.style.animation = 'heroCursorBlink 0.8s steps(2, start) infinite';
                 }
-                // After typing finishes, autoplay the hero video
+                // Autoplay after typing — sound if gesture already unlocked, else unmute ASAP
                 setTimeout(() => {
                     if (typeof window.startHeroVideo === 'function') {
                         window.startHeroVideo();
@@ -356,13 +414,92 @@ const initIndex = () => {
     if (productSection) {
         let introPlayed = false;
         let introAutoScrolled = false;
+        let brandScrollTimer = 0;
+        let userCancelledAutoScroll = false;
+        const isCompactViewport = () => window.matchMedia('(max-width: 1024px)').matches;
 
         function scrollToWhatIsUrbanTree() {
-            if (introAutoScrolled) return;
+            if (introAutoScrolled || userCancelledAutoScroll) return;
             const nextSection = document.getElementById('what-is-urbantree');
             if (!nextSection) return;
             introAutoScrolled = true;
-            nextSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+            const top =
+                nextSection.getBoundingClientRect().top +
+                (window.scrollY || window.pageYOffset || 0);
+            window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+
+            // Retry once if smooth scroll was interrupted / didn't land
+            window.setTimeout(() => {
+                const stillFar = Math.abs(nextSection.getBoundingClientRect().top) > 80;
+                if (stillFar && !userCancelledAutoScroll) {
+                    nextSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }, 700);
+        }
+
+        const LEAF_PATHS = [
+            'M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 1 8.3C18.4 16.5 15.2 20 11 20Z',
+            'M17 8C8 10 5.9 16.17 3.82 21.67L5.71 22L6.66 19.7C7.14 19.87 7.64 20 8 20C19 20 22 3 22 3C21 5 14 5.25 9 6.25C4 7.25 2 11.5 2 13.5C2 15.5 3.75 17.25 3.75 17.25C7 8 17 8 17 8Z',
+            'M12 2C8 6 5 10 5 14a7 7 0 0 0 14 0c0-4-3-8-7-12zm0 18a5 5 0 0 1-5-5c0-2.5 1.8-5.5 5-9.2 3.2 3.7 5 6.7 5 9.2a5 5 0 0 1-5 5z',
+        ];
+        const LEAF_COLORS = ['#4ade80', '#378b2e', '#86efac', '#4a9e3f', '#22c55e'];
+
+        function startIntroWindLeaves() {
+            const layer = document.getElementById('intro-wind-leaves');
+            if (!layer) return;
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+            if (!layer.dataset.ready) {
+                const count = isCompactViewport() ? 12 : 18;
+                const frag = document.createDocumentFragment();
+
+                for (let i = 0; i < count; i += 1) {
+                    const leaf = document.createElement('div');
+                    leaf.className = 'intro-wind-leaf';
+                    leaf.setAttribute('aria-hidden', 'true');
+
+                    const size = 16 + Math.random() * (isCompactViewport() ? 22 : 34);
+                    const duration = 7 + Math.random() * 9;
+                    const delay = Math.random() * -duration;
+                    const startX = -15 + Math.random() * 70;
+                    const startY = -18 + Math.random() * 40;
+                    const driftX = 55 + Math.random() * 70;
+                    const driftY = 70 + Math.random() * 55;
+                    const rot0 = -40 + Math.random() * 80;
+                    const rot1 = rot0 + (220 + Math.random() * 280) * (Math.random() > 0.45 ? 1 : -1);
+                    const opacity = 0.45 + Math.random() * 0.45;
+                    const scale = 0.75 + Math.random() * 0.55;
+                    const path = LEAF_PATHS[i % LEAF_PATHS.length];
+                    const color = LEAF_COLORS[i % LEAF_COLORS.length];
+
+                    leaf.style.setProperty('--leaf-size', `${size.toFixed(1)}px`);
+                    leaf.style.setProperty('--leaf-color', color);
+                    leaf.style.setProperty('--leaf-opacity', opacity.toFixed(2));
+                    leaf.style.setProperty('--leaf-scale', scale.toFixed(2));
+                    leaf.style.setProperty('--leaf-x0', `${startX.toFixed(1)}vw`);
+                    leaf.style.setProperty('--leaf-y0', `${startY.toFixed(1)}vh`);
+                    leaf.style.setProperty('--leaf-x1', `${(startX + driftX).toFixed(1)}vw`);
+                    leaf.style.setProperty('--leaf-y1', `${(startY + driftY).toFixed(1)}vh`);
+                    leaf.style.setProperty('--leaf-r0', `${rot0.toFixed(0)}deg`);
+                    leaf.style.setProperty('--leaf-r1', `${rot1.toFixed(0)}deg`);
+                    leaf.style.animationDuration = `${duration.toFixed(2)}s`;
+                    leaf.style.animationDelay = `${delay.toFixed(2)}s`;
+
+                    leaf.innerHTML = `<svg viewBox="0 0 24 24" fill="currentColor"><path d="${path}"/></svg>`;
+                    frag.appendChild(leaf);
+                }
+
+                layer.appendChild(frag);
+                layer.dataset.ready = '1';
+            }
+
+            layer.classList.add('active');
+        }
+
+        function stopIntroWindLeaves() {
+            const layer = document.getElementById('intro-wind-leaves');
+            if (layer) layer.classList.remove('active');
         }
 
         function showStaticBrand(introBrandReveal, overlay) {
@@ -376,20 +513,32 @@ const initIndex = () => {
                 introBrandReveal.classList.add('active');
                 introBrandReveal.setAttribute('aria-hidden', 'false');
             }
+            startIntroWindLeaves();
         }
 
-        let brandScrollTimer = 0;
-        const cancelIntroAutoScroll = () => {
-            if (brandScrollTimer) {
-                clearTimeout(brandScrollTimer);
-                brandScrollTimer = 0;
-            }
-            introAutoScrolled = true;
-        };
-        window.addEventListener('wheel', cancelIntroAutoScroll, { passive: true, once: true });
-        window.addEventListener('touchstart', cancelIntroAutoScroll, { passive: true, once: true });
-
-        const isCompactViewport = () => window.matchMedia('(max-width: 1024px)').matches;
+        function armAutoScrollCancel() {
+            const cancelIntroAutoScroll = () => {
+                if (brandScrollTimer) {
+                    clearTimeout(brandScrollTimer);
+                    brandScrollTimer = 0;
+                }
+                userCancelledAutoScroll = true;
+                introAutoScrolled = true;
+            };
+            window.addEventListener('wheel', cancelIntroAutoScroll, { passive: true, once: true });
+            window.addEventListener('touchstart', cancelIntroAutoScroll, { passive: true, once: true });
+            window.addEventListener('keydown', (event) => {
+                if (
+                    event.key === 'ArrowDown' ||
+                    event.key === 'ArrowUp' ||
+                    event.key === 'PageDown' ||
+                    event.key === 'PageUp' ||
+                    event.key === ' '
+                ) {
+                    cancelIntroAutoScroll();
+                }
+            }, { passive: true, once: true });
+        }
 
         const productObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -432,9 +581,12 @@ const initIndex = () => {
                         introBrandReveal.style.opacity = '';
                     }
 
+                    // Leaves blow from the first cinematic word onward
+                    startIntroWindLeaves();
+
                     let i = 0;
-                    const wordHoldMs = isCompactViewport() ? 900 : 1100;
-                    const brandHoldMs = isCompactViewport() ? 1600 : 1800;
+                    const wordHoldMs = isCompactViewport() ? 650 : 780;
+                    const brandHoldMs = isCompactViewport() ? 1200 : 1400;
 
                     function playIntroBrandReveal() {
                         if (!introBrandReveal) {
@@ -447,18 +599,20 @@ const initIndex = () => {
                         introBrandReveal.setAttribute('aria-hidden', 'false');
                         void introBrandReveal.offsetWidth;
                         introBrandReveal.classList.add('active');
+                        // Only cancel auto-scroll if the user intervenes after URBAN Tree appears
+                        armAutoScrollCancel();
                         brandScrollTimer = window.setTimeout(scrollToWhatIsUrbanTree, brandHoldMs);
                     }
 
                     function showNextWord() {
                         if (!wordEl || !overlay) return;
                         if (i >= words.length) {
-                            overlay.style.transition = 'opacity 0.4s ease';
+                            overlay.style.transition = 'opacity 0.28s ease';
                             overlay.style.opacity = '0';
                             setTimeout(() => {
                                 overlay.style.display = 'none';
                                 playIntroBrandReveal();
-                            }, 400);
+                            }, 280);
                             return;
                         }
                         wordEl.style.transition = 'none';
@@ -466,37 +620,40 @@ const initIndex = () => {
                         wordEl.style.transform = 'scale(0.9) translateY(16px)';
                         wordEl.textContent = words[i];
                         setTimeout(() => {
-                            wordEl.style.transition = 'opacity 0.3s ease, transform 0.4s cubic-bezier(0.2,0.8,0.2,1)';
+                            wordEl.style.transition = 'opacity 0.22s ease, transform 0.3s cubic-bezier(0.2,0.8,0.2,1)';
                             wordEl.style.opacity = '1';
                             wordEl.style.transform = 'scale(1) translateY(0)';
-                        }, 40);
+                        }, 30);
                         i += 1;
                         setTimeout(showNextWord, wordHoldMs);
                     }
                     showNextWord();
 
-                } else if (!introPlayed) {
-                    if (overlay) {
-                        overlay.style.display = 'none';
-                        overlay.style.opacity = '0';
-                    }
-                    if (introBrandReveal) {
-                        introBrandReveal.classList.remove('active');
-                        introBrandReveal.style.display = 'none';
-                        introBrandReveal.style.opacity = '';
-                    }
-                    productSection.querySelectorAll('.cinema-reveal').forEach(el => {
-                        el.style.opacity = '0';
-                        el.style.transform = 'translateY(30px)';
-                    });
-                    const brandName = document.getElementById('urbantree-name');
-                    if (brandName) {
-                        brandName.style.opacity = '0';
-                        brandName.style.transform = 'scale(0.7)';
+                } else {
+                    if (!entry.isIntersecting) stopIntroWindLeaves();
+                    if (!introPlayed) {
+                        if (overlay) {
+                            overlay.style.display = 'none';
+                            overlay.style.opacity = '0';
+                        }
+                        if (introBrandReveal) {
+                            introBrandReveal.classList.remove('active');
+                            introBrandReveal.style.display = 'none';
+                            introBrandReveal.style.opacity = '';
+                        }
+                        productSection.querySelectorAll('.cinema-reveal').forEach(el => {
+                            el.style.opacity = '0';
+                            el.style.transform = 'translateY(30px)';
+                        });
+                        const brandName = document.getElementById('urbantree-name');
+                        if (brandName) {
+                            brandName.style.opacity = '0';
+                            brandName.style.transform = 'scale(0.7)';
+                        }
                     }
                 }
             });
-        }, { threshold: 0.35, root: null });
+        }, { threshold: 0.45, root: null });
         productObserver.observe(productSection);
     }
 
@@ -714,8 +871,7 @@ document.addEventListener('click', function (e) {
             <div class="tech-tabs-grid" role="tablist" aria-label="UrbanTree purification stages">
                 ${techSteps.map(item => `
                     <button class="tech-step-tab" type="button" role="tab" data-tech-step="${item.step}" aria-selected="${item.step === 1 ? 'true' : 'false'}">
-                        <span class="tech-tab-num">${String(item.step).padStart(2, '0')}</span>
-                        <span>${item.title}</span>
+                        ${item.title}
                     </button>
                 `).join('')}
             </div>
@@ -723,11 +879,6 @@ document.addEventListener('click', function (e) {
                 <div class="tech-detail-kicker" id="tech-detail-kicker"></div>
                 <h3 class="tech-detail-title" id="tech-detail-title"></h3>
                 <p class="tech-detail-copy" id="tech-detail-copy"></p>
-                <div class="tech-detail-badges">
-                    <span class="tech-detail-badge">Hybrid purification</span>
-                    <span class="tech-detail-badge">Outdoor ready</span>
-                    <span class="tech-detail-badge">Bio-mechanical system</span>
-                </div>
             </div>
         `;
 

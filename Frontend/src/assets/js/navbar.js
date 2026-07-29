@@ -15,6 +15,7 @@ const initNavbar = () => {
     const NAV_OFFSET = 80;
     let currentTheme = null;
     let scrollIdleTimer = null;
+    let isMenuOpen = false;
 
     const path = window.location.pathname.replace(/\\/g, '/');
     const isHomepage =
@@ -28,6 +29,27 @@ const initNavbar = () => {
             return scrollTarget.scrollTop;
         }
         return window.scrollY || window.pageYOffset || 0;
+    }
+
+    function setMenuState(open) {
+        if (!mobileMenuBtn || !mobileMenuOverlay || !mobileMenuIcon) return;
+
+        isMenuOpen = open;
+        mobileMenuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+
+        if (open) {
+            mobileMenuOverlay.classList.remove('translate-x-full');
+            mobileMenuIcon.innerHTML =
+                '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>';
+            document.body.style.overflow = 'hidden';
+            navbar.classList.add('mobile-menu-open');
+        } else {
+            mobileMenuOverlay.classList.add('translate-x-full');
+            mobileMenuIcon.innerHTML =
+                '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>';
+            document.body.style.overflow = '';
+            navbar.classList.remove('mobile-menu-open');
+        }
     }
 
     function updateNavbarTheme(theme) {
@@ -65,8 +87,14 @@ const initNavbar = () => {
         }
 
         if (isHomepage) {
-            const atHeroTop = getScrollY() < 24;
-            navbar.classList.toggle('navbar-at-top', atHeroTop);
+            const heroSection = document.getElementById('hero-section');
+            const overHero = Boolean(
+                heroSection &&
+                heroSection.getBoundingClientRect().bottom > NAV_OFFSET + 40
+            );
+            navbar.classList.toggle('navbar-at-top', overHero);
+            navbar.classList.toggle('navbar-transparent', overHero);
+            navbar.classList.remove('navbar-deferred');
         }
     }
 
@@ -120,29 +148,6 @@ const initNavbar = () => {
             link.classList.add('active');
         }
     });
-
-    let isMenuOpen = false;
-
-    function setMenuState(open) {
-        if (!mobileMenuBtn || !mobileMenuOverlay || !mobileMenuIcon) return;
-
-        isMenuOpen = open;
-        mobileMenuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
-
-        if (open) {
-            mobileMenuOverlay.classList.remove('translate-x-full');
-            mobileMenuIcon.innerHTML =
-                '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>';
-            document.body.style.overflow = 'hidden';
-            navbar.classList.add('mobile-menu-open');
-        } else {
-            mobileMenuOverlay.classList.add('translate-x-full');
-            mobileMenuIcon.innerHTML =
-                '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>';
-            document.body.style.overflow = '';
-            navbar.classList.remove('mobile-menu-open');
-        }
-    }
 
     if (mobileMenuBtn && mobileMenuOverlay) {
         mobileMenuBtn.addEventListener('click', (event) => {

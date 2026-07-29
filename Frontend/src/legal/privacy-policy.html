@@ -26,9 +26,9 @@
         }
         
         .legal-section { margin-bottom: 3rem; background: #fff; padding: 3.5rem; border-radius: 1rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); }
-        .legal-section h2 { font-family: 'Sora', sans-serif; font-size: 2rem; font-weight: 800; margin-bottom: 1.5rem;  }
-        .legal-section h3 { font-family: 'Sora', sans-serif; font-size: 1.25rem; font-weight: 700; margin-top: 2rem; margin-bottom: 1rem; color: #374151; }
-        .legal-section p { margin-bottom: 1.25rem; color: #9ca3af; line-height: 1.6; }
+        .legal-section h2 { font-family: var(--font-serif, 'Sora', sans-serif); font-size: var(--text-h2); font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 1.5rem; }
+        .legal-section h3 { font-family: var(--font-serif, 'Sora', sans-serif); font-size: var(--text-h3); font-weight: 700; line-height: 1.25; letter-spacing: -0.01em; margin-top: 2rem; margin-bottom: 1rem; color: #374151; }
+        .legal-section p { margin-bottom: 1.25rem; color: #9ca3af; font-size: var(--text-body); line-height: 1.75; }
         .legal-section ul { list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1.25rem; color: #9ca3af; }
         .legal-section li { margin-bottom: 0.5rem; }
     </style>
@@ -81,24 +81,24 @@
     </div>
 
     <!-- ═══ HEADER ═══ -->
-    <header class="pt-40 pb-16 bg-[#0a0a0a] relative overflow-hidden">
+    <header class="pt-40 bg-[#0a0a0a] relative overflow-hidden" style="padding-bottom: var(--section-pad-y);">
         <div class="absolute inset-0">
             <div class="absolute inset-0 bg-gradient-to-b from-[#4a9e3f]/20 to-transparent opacity-30"></div>
             <div class="absolute w-full h-px bg-gradient-to-r from-transparent via-[#4a9e3f]/30 to-transparent bottom-0"></div>
         </div>
         <div class="max-w-6xl mx-auto px-6 relative z-10">
-            <h1 style="font-family:'Sora',sans-serif;font-size:2.5rem;font-weight:800;color:#ffffff;line-height:1.2;margin-bottom:1rem;">Privacy Policy</h1>
+            <h1 class="type-h1 text-white mb-4">Privacy Policy</h1>
         </div>
     </header>
 
     <!-- ═══ CONTENT ═══ -->
-    <main class="max-w-4xl mx-auto px-6 py-16">
+    <main class="max-w-4xl mx-auto px-6 section-band">
         <div class="legal-section">
-            <h2>Privacy Policy</h2>
-            <h3>Introduction</h3>
+            <h2 class="type-h2">Privacy Policy</h2>
+            <h3 class="type-h3">Introduction</h3>
             <p>UrbanTree powered by SunEx Technologies respects your privacy and is committed to protecting any information shared through our website, enquiry forms, consultations, and communication channels.</p>
             
-            <h3>Information We Collect</h3>
+            <h3 class="type-h3">Information We Collect</h3>
             <ul>
                 <li>Name</li>
                 <li>Email address</li>
@@ -109,7 +109,7 @@
                 <li>IP address and cookies</li>
             </ul>
 
-            <h3>How We Use Information</h3>
+            <h3 class="type-h3">How We Use Information</h3>
             <ul>
                 <li>Respond to enquiries</li>
                 <li>Provide consultations</li>
@@ -119,10 +119,10 @@
                 <li>Support customer communication</li>
             </ul>
 
-            <h3>Data Protection</h3>
+            <h3 class="type-h3">Data Protection</h3>
             <p>We implement reasonable technical and organizational measures to protect user information from unauthorized access, misuse, disclosure, or loss.</p>
 
-            <h3>Third-Party Services</h3>
+            <h3 class="type-h3">Third-Party Services</h3>
             <p>Our website may use:</p>
             <ul>
                 <li>Google Analytics</li>
@@ -131,10 +131,10 @@
                 <li>Third-party communication tools</li>
             </ul>
 
-            <h3>Cookies Policy</h3>
+            <h3 class="type-h3">Cookies Policy</h3>
             <p>UrbanTree may use cookies and analytics technologies to improve website functionality and user experience.</p>
 
-            <h3>User Rights</h3>
+            <h3 class="type-h3">User Rights</h3>
             <p>Users may request:</p>
             <ul>
                 <li>Access to stored information</li>
@@ -143,7 +143,7 @@
                 <li>Withdrawal of consent</li>
             </ul>
 
-            <h3>Contact Information</h3>
+            <h3 class="type-h3">Contact Information</h3>
             <p>For privacy-related concerns: <a href="mailto:privacy@urbantree.com" class="text-brand-emerald font-semibold hover:underline">privacy@urbantree.com</a></p>
         </div>
     </main>
