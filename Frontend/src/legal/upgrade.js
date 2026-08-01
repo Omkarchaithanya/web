@@ -1,17 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terms & Conditions | UrbanTree</title>
-    <link rel="icon" type="image/png" href="/assets/images/shared/logo.png">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="/assets/css/tailwind.css">
-    <link rel="stylesheet" href="/assets/css/index.css">
+const fs = require('fs');
+const path = require('path');
+
+const files = [
+    'privacy-policy.html',
+    'terms.html',
+    'cookie-policy.html',
+    'disclaimer.html',
+    'environmental-statement.html',
+    'intellectual-property.html'
+];
+
+const newStyle = `    <link rel="stylesheet" href="/assets/css/tailwind.css">
     <style>
         html { scroll-behavior: smooth; }
         body { font-family: 'Inter', sans-serif; background: #050505; color: #94a3b8; }
@@ -36,15 +35,18 @@
         .legal-content ul li { position: relative; padding-left: 2rem; margin-bottom: 1rem; font-size: 1.05rem; line-height: 1.6; }
         .legal-content ul li::before { content: ''; position: absolute; left: 0.25rem; top: 0.75rem; width: 0.4rem; height: 0.4rem; background-color: #4ade80; border-radius: 50%; box-shadow: 0 0 10px rgba(74, 222, 128, 0.8); }
         .legal-content strong { color: #e2e8f0; font-weight: 600; }
-    </style>
-</head>
-<body class="antialiased">
+    </style>`;
 
-        {{> navbar }}
-    <script type="module" src="/assets/js/navbar.js"></script>
+const getNewHeaderAndMain = (title, description, contentHtml, fileName) => {
+    const getNavClass = (target) => {
+        if (fileName === target) {
+            return "px-5 py-4 rounded-xl font-semibold text-[15px] transition-all border-l-[3px] shadow-[inset_0_0_20px_rgba(34,197,94,0.15)] bg-[#22c55e]/10 text-[#4ade80] border-[#4ade80]";
+        }
+        return "px-5 py-4 rounded-xl font-medium text-[15px] transition-all border-l-[3px] text-gray-400 hover:bg-white/5 hover:text-white border-transparent hover:border-gray-600";
+    };
 
-    <!-- ═══ HEADER ═══ -->
-    <header data-navbar-theme="dark" class="pt-40 pb-20 bg-[#050505] relative overflow-hidden">
+    return `    <!-- ═══ HEADER ═══ -->
+    <header class="pt-40 pb-20 bg-[#050505] relative overflow-hidden">
         <!-- Ultra-Premium glowing background -->
         <div class="absolute inset-0 pointer-events-none">
             <!-- Grid pattern -->
@@ -62,15 +64,15 @@
                 <span class="w-2 h-2 rounded-full bg-[#4ade80] shadow-[0_0_10px_rgba(74,222,128,1)] relative"><span class="absolute inset-0 rounded-full bg-[#4ade80] animate-ping opacity-50"></span></span> 
                 Legal & Compliance Hub
             </div>
-            <h1 class="text-4xl md:text-5xl lg:text-7xl font-extrabold text-white mb-6 tracking-tight" style="font-family:'Sora',sans-serif;">Terms of Service</h1>
+            <h1 class="text-4xl md:text-5xl lg:text-7xl font-extrabold text-white mb-6 tracking-tight" style="font-family:'Sora',sans-serif;">${title}</h1>
             <p class="text-gray-400 text-lg md:text-xl max-w-2xl leading-relaxed font-light">
-                Review the terms and conditions governing your use of the UrbanTree website and services.
+                ${description}
             </p>
         </div>
     </header>
 
     <!-- ═══ CONTENT ═══ -->
-    <main data-navbar-theme="dark" class="py-24 relative z-10 bg-[#020202]">
+    <main class="py-24 relative z-10 bg-[#020202]">
         <div class="max-w-7xl mx-auto px-6 flex flex-col lg:flex-row gap-12 lg:gap-20">
             
             <!-- Sidebar Navigation -->
@@ -81,12 +83,12 @@
                         Documents Directory
                     </h4>
                     <nav class="flex flex-col gap-2">
-                        <a href="privacy-policy.html" class="px-5 py-4 rounded-xl font-medium text-[15px] transition-all border-l-[3px] text-gray-400 hover:bg-white/5 hover:text-white border-transparent hover:border-gray-600 group flex items-center justify-between">Privacy Policy <span class="opacity-0 group-hover:opacity-100 transition-opacity">→</span></a>
-                        <a href="terms.html" class="px-5 py-4 rounded-xl font-semibold text-[15px] transition-all border-l-[3px] shadow-[inset_0_0_20px_rgba(34,197,94,0.15)] bg-[#22c55e]/10 text-[#4ade80] border-[#4ade80] group flex items-center justify-between">Terms of Service <span class="opacity-0 group-hover:opacity-100 transition-opacity">→</span></a>
-                        <a href="cookie-policy.html" class="px-5 py-4 rounded-xl font-medium text-[15px] transition-all border-l-[3px] text-gray-400 hover:bg-white/5 hover:text-white border-transparent hover:border-gray-600 group flex items-center justify-between">Cookie Policy <span class="opacity-0 group-hover:opacity-100 transition-opacity">→</span></a>
-                        <a href="disclaimer.html" class="px-5 py-4 rounded-xl font-medium text-[15px] transition-all border-l-[3px] text-gray-400 hover:bg-white/5 hover:text-white border-transparent hover:border-gray-600 group flex items-center justify-between">Disclaimer <span class="opacity-0 group-hover:opacity-100 transition-opacity">→</span></a>
-                        <a href="environmental-statement.html" class="px-5 py-4 rounded-xl font-medium text-[15px] transition-all border-l-[3px] text-gray-400 hover:bg-white/5 hover:text-white border-transparent hover:border-gray-600 group flex items-center justify-between">Environmental Statement <span class="opacity-0 group-hover:opacity-100 transition-opacity">→</span></a>
-                        <a href="intellectual-property.html" class="px-5 py-4 rounded-xl font-medium text-[15px] transition-all border-l-[3px] text-gray-400 hover:bg-white/5 hover:text-white border-transparent hover:border-gray-600 group flex items-center justify-between">Intellectual Property <span class="opacity-0 group-hover:opacity-100 transition-opacity">→</span></a>
+                        <a href="privacy-policy.html" class="${getNavClass('privacy-policy.html')} group flex items-center justify-between">Privacy Policy <span class="opacity-0 group-hover:opacity-100 transition-opacity">→</span></a>
+                        <a href="terms.html" class="${getNavClass('terms.html')} group flex items-center justify-between">Terms of Service <span class="opacity-0 group-hover:opacity-100 transition-opacity">→</span></a>
+                        <a href="cookie-policy.html" class="${getNavClass('cookie-policy.html')} group flex items-center justify-between">Cookie Policy <span class="opacity-0 group-hover:opacity-100 transition-opacity">→</span></a>
+                        <a href="disclaimer.html" class="${getNavClass('disclaimer.html')} group flex items-center justify-between">Disclaimer <span class="opacity-0 group-hover:opacity-100 transition-opacity">→</span></a>
+                        <a href="environmental-statement.html" class="${getNavClass('environmental-statement.html')} group flex items-center justify-between">Environmental Statement <span class="opacity-0 group-hover:opacity-100 transition-opacity">→</span></a>
+                        <a href="intellectual-property.html" class="${getNavClass('intellectual-property.html')} group flex items-center justify-between">Intellectual Property <span class="opacity-0 group-hover:opacity-100 transition-opacity">→</span></a>
                     </nav>
                 </div>
             </aside>
@@ -101,7 +103,7 @@
                         <div>
                             <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-6" style="font-family:'Sora',sans-serif;">Introduction</h2>
                             <p class="text-gray-400 leading-[1.9] text-[1.15rem] max-w-2xl font-light">
-                                Review the terms and conditions governing your use of the UrbanTree website and services.
+                                ${description}
                             </p>
                         </div>
                         <div class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/5 border border-white/5 text-gray-300 text-sm font-medium whitespace-nowrap">
@@ -111,48 +113,7 @@
                     </div>
                     
                     <div class="legal-content">
-                        <h3 class="type-h3">Acceptance of Terms</h3>
-            <p>By accessing or using the UrbanTree website, users agree to comply with these Terms & Conditions.</p>
-
-            <h3 class="type-h3">Intellectual Property</h3>
-            <p>All website content including:</p>
-            <ul>
-                <li>Designs</li>
-                <li>Logos</li>
-                <li>Technology concepts</li>
-                <li>Graphics</li>
-                <li>Text</li>
-                <li>Product descriptions</li>
-                <li>Visual assets</li>
-            </ul>
-            <p>are the intellectual property of SunEx Technologies unless otherwise stated.</p>
-
-            <h3 class="type-h3">Website Usage</h3>
-            <p>Users agree not to:</p>
-            <ul>
-                <li>Misuse website content</li>
-                <li>Attempt unauthorized access</li>
-                <li>Copy proprietary technology descriptions</li>
-                <li>Distribute misleading information</li>
-            </ul>
-
-            <h3 class="type-h3">Product & Technology Information</h3>
-            <p>All technical descriptions, visual representations, concepts, and environmental performance information are provided for informational purposes and may evolve through ongoing research and development.</p>
-
-            <h3 class="type-h3">Limitation of Liability</h3>
-            <p>SunEx Technologies shall not be liable for:</p>
-            <ul>
-                <li>Website interruptions</li>
-                <li>Technical inaccuracies</li>
-                <li>Third-party service failures</li>
-                <li>Indirect or consequential damages</li>
-            </ul>
-
-            <h3 class="type-h3">External Links</h3>
-            <p>The website may contain third-party links. UrbanTree is not responsible for external content or policies.</p>
-
-            <h3 class="type-h3">Changes to Terms</h3>
-            <p>We reserve the right to modify these terms at any time without prior notice.</p>
+                        ${contentHtml}
 
                         <!-- Premium Contact Box -->
                         <div class="mt-20 p-10 md:p-12 bg-gradient-to-br from-[#0b1210] to-[#070b09] border border-[#22c55e]/20 rounded-3xl relative overflow-hidden shadow-[inset_0_0_40px_rgba(34,197,94,0.05)] group hover:border-[#4ade80]/40 transition-colors duration-500">
@@ -175,10 +136,57 @@
                 </div>
             </div>
         </div>
-    </main>
+    </main>`;
+};
 
-    <!-- ═══ FOOTER ═══ -->
-    {{> footer }}
+const titles = {
+    'privacy-policy.html': 'Privacy Policy',
+    'terms.html': 'Terms of Service',
+    'cookie-policy.html': 'Cookie Policy',
+    'disclaimer.html': 'Disclaimer',
+    'environmental-statement.html': 'Environmental Statement',
+    'intellectual-property.html': 'Intellectual Property Notice'
+};
+
+const descriptions = {
+    'privacy-policy.html': "Learn about how UrbanTree collects, uses, and protects your personal data when you interact with our platform and services.",
+    'terms.html': "Review the terms and conditions governing your use of the UrbanTree website and services.",
+    'cookie-policy.html': "Learn how UrbanTree uses cookies and similar technologies to improve your experience.",
+    'disclaimer.html': "Read our legal disclaimer regarding the use of our website and services.",
+    'environmental-statement.html': "Discover UrbanTree's commitment to environmental sustainability and clean air infrastructure.",
+    'intellectual-property.html': "Information regarding the intellectual property rights of UrbanTree and SunEx Technologies."
+};
+
+files.forEach(file => {
+    let content = fs.readFileSync(path.join(__dirname, file), 'utf8');
     
-</body>
-</html>
+    // Replace styles
+    content = content.replace(/<link rel="stylesheet" href="\/assets\/css\/tailwind.css">[\s\S]*?<\/style>/, newStyle);
+    
+    // For privacy-policy, the regex needs to match the previously generated new structure or the old one.
+    // Let's use a robust match for the inner content.
+    // Previously we had <div class="legal-content"> ... </div>
+    // Or <div class="legal-section"> ... </div>
+    
+    let innerHtml = '';
+    const matchLegalContent = content.match(/<div class="legal-content">([\s\S]*?)<div class="mt-14/);
+    if (matchLegalContent) {
+        innerHtml = matchLegalContent[1].trim();
+    } else {
+        const matchLegalSection = content.match(/<div class="legal-section">[\s\S]*?<h2[^>]*>.*?<\/h2>([\s\S]*?)<\/div>\s*<\/div><\/main>/);
+        if (matchLegalSection) {
+            innerHtml = matchLegalSection[1].trim();
+        }
+    }
+    
+    if (innerHtml) {
+        let newHeaderMain = getNewHeaderAndMain(titles[file], descriptions[file], innerHtml, file);
+        // Replace old header and main
+        content = content.replace(/<!-- ═══ HEADER ═══ -->[\s\S]*?<\/main>/, newHeaderMain);
+        
+        fs.writeFileSync(path.join(__dirname, file), content);
+        console.log("Updated", file);
+    } else {
+        console.log("Could not find content in", file);
+    }
+});

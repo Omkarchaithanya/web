@@ -24,3 +24,4 @@
   --text-caption: 0.75rem;
 }
 
+@custom-variant dark (&:where(.dark, .dark *));

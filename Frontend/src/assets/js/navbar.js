@@ -95,6 +95,11 @@ const initNavbar = () => {
             navbar.classList.toggle('navbar-at-top', overHero);
             navbar.classList.toggle('navbar-transparent', overHero);
             navbar.classList.remove('navbar-deferred');
+        } else if (path.includes('/legal/')) {
+            const isAtTop = getScrollY() < 50;
+            navbar.classList.toggle('navbar-at-top', isAtTop);
+            navbar.classList.toggle('navbar-transparent', isAtTop);
+            navbar.classList.remove('navbar-deferred');
         }
     }
 

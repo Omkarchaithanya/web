@@ -11,9 +11,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/assets/css/tailwind.css">
+    <link rel="stylesheet" href="/assets/css/index.css">
     <style>
         html { scroll-behavior: smooth; }
-        body { font-family: 'Inter', sans-serif; background: #e8e8e8;  }
+        body { font-family: 'Inter', sans-serif; background: #050505; color: #94a3b8; }
         #navbar { transition: background 0.3s ease, backdrop-filter 0.3s ease; }
         .nav-enquiry-btn {
             color: #ffffff;
@@ -25,167 +26,160 @@
             color: #ffffff;
         }
         
-        .legal-section { margin-bottom: 3rem; background: #fff; padding: 3.5rem; border-radius: 1rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); }
-        .legal-section h2 { font-family: var(--font-serif, 'Sora', sans-serif); font-size: var(--text-h2); font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 1.5rem; }
-        .legal-section h3 { font-family: var(--font-serif, 'Sora', sans-serif); font-size: var(--text-h3); font-weight: 700; line-height: 1.25; letter-spacing: -0.01em; margin-top: 2rem; margin-bottom: 1rem; color: #374151; }
-        .legal-section p { margin-bottom: 1.25rem; color: #9ca3af; font-size: var(--text-body); line-height: 1.75; }
-        .legal-section ul { list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1.25rem; color: #9ca3af; }
-        .legal-section li { margin-bottom: 0.5rem; }
+        .legal-content h2, .legal-content h3 { font-family: 'Sora', sans-serif; font-weight: 700; color: #f8fafc; margin-top: 3.5rem; margin-bottom: 1.5rem; letter-spacing: -0.01em; }
+        .legal-content h2 { font-size: 1.75rem; }
+        .legal-content h3 { font-size: 1.5rem; }
+        .legal-content p { color: #94a3b8; font-size: 1.05rem; line-height: 1.8; margin-bottom: 1.75rem; }
+        .legal-content a { color: #4ade80; text-decoration: none; transition: color 0.2s; }
+        .legal-content a:hover { color: #22c55e; text-decoration: underline; }
+        .legal-content ul { list-style-type: none; padding-left: 0; margin-bottom: 2.5rem; color: #cbd5e1; }
+        .legal-content ul li { position: relative; padding-left: 2rem; margin-bottom: 1rem; font-size: 1.05rem; line-height: 1.6; }
+        .legal-content ul li::before { content: ''; position: absolute; left: 0.25rem; top: 0.75rem; width: 0.4rem; height: 0.4rem; background-color: #4ade80; border-radius: 50%; box-shadow: 0 0 10px rgba(74, 222, 128, 0.8); }
+        .legal-content strong { color: #e2e8f0; font-weight: 600; }
     </style>
 </head>
 <body class="antialiased">
 
-    <!-- ═══ NAVBAR ═══ -->
-    <nav class="fixed w-full z-50 px-6 py-5 flex items-center transition-all duration-300 bg-black/85 backdrop-blur-md shadow-lg" id="navbar">
-        <div class="z-20 flex items-center gap-4 w-1/4">
-            <a href="../index.html" class="flex items-center gap-4">
-                <img src="/assets/images/shared/logo.png" alt="UrbanTree Logo" class="h-16 w-auto transition-all duration-300" id="nav-logo">
-                <div class="leading-snug hidden lg:block" style="font-family:'Montserrat',sans-serif;">
-                    <div id="navbar-brand-name" class="text-2xl font-medium tracking-wide text-white transition-colors duration-300" style="transform:translateX(-3px);">URBAN<span style="color:#22c55e;font-weight:500;">Tree</span></div>
-                    <div id="navbar-tagline" class="text-[11px] font-medium tracking-wide text-white transition-colors duration-300">The City. Reimagined.</div>
-                </div>
-            </a>
-        </div>
-
-        <div class="hidden md:flex justify-center flex-1 space-x-10 text-[15px] font-medium z-20">
-            <a href="../index.html" class="nav-link text-white hover:text-brand-emerald transition-colors duration-300">Home</a>
-            <a href="../pages/technology.html" class="nav-link text-white hover:text-brand-emerald transition-colors duration-300">Technology</a>
-            <a href="../pages/about.html" class="nav-link text-white hover:text-brand-emerald transition-colors duration-300">About Us</a>
-            <a href="../pages/blog.html" class="nav-link text-white hover:text-brand-emerald transition-colors duration-300">Blog</a>
-        </div>
-
-        <div class="z-20 flex justify-end w-1/4">
-            <a href="/index.html#enquiry"
-                class="nav-enquiry-btn inline-flex items-center justify-center gap-2 px-6 py-2 rounded-full border text-[13px] font-medium tracking-wide transition-all duration-300">
-                Enquiry
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
-                </svg>
-            </a>
-        </div>
-    </nav>
-    <!-- Mobile Menu Overlay -->
-    <div id="mobile-menu-overlay" class="fixed inset-0 bg-black/95 backdrop-blur-xl z-[45] transform translate-x-full transition-transform duration-300 flex flex-col pt-24 px-6 pb-8 h-[100dvh] overflow-y-auto lg:hidden">
-        <nav class="flex flex-col gap-6 text-center">
-            <a href="/index.html" class="mobile-link text-xl font-medium text-white hover:text-green-400 transition-colors">Home</a>
-            <a href="/pages/technology.html" class="mobile-link text-xl font-medium text-white/70 hover:text-white transition-colors">Technology</a>
-            <a href="/pages/about.html" class="mobile-link text-xl font-medium text-white/70 hover:text-white transition-colors">About Us</a>
-            <a href="/pages/blog.html" class="mobile-link text-xl font-medium text-white/70 hover:text-white transition-colors">Blog</a>
-        </nav>
-        <div class="mt-auto flex flex-col gap-4 pt-10">
-            <a href="/index.html#enquiry" class="mobile-link w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-green-500 hover:bg-green-400 text-black font-semibold transition-all duration-300">
-                Enquire Now
-            </a>
-        </div>
-    </div>
+        {{> navbar }}
+    <script type="module" src="/assets/js/navbar.js"></script>
 
     <!-- ═══ HEADER ═══ -->
-    <header class="pt-40 bg-[#0a0a0a] relative overflow-hidden" style="padding-bottom: var(--section-pad-y);">
-        <div class="absolute inset-0">
-            <div class="absolute inset-0 bg-gradient-to-b from-[#4a9e3f]/20 to-transparent opacity-30"></div>
-            <div class="absolute w-full h-px bg-gradient-to-r from-transparent via-[#4a9e3f]/30 to-transparent bottom-0"></div>
+    <header data-navbar-theme="dark" class="pt-40 pb-20 bg-[#050505] relative overflow-hidden">
+        <!-- Ultra-Premium glowing background -->
+        <div class="absolute inset-0 pointer-events-none">
+            <!-- Grid pattern -->
+            <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTAgMGg0MHY0MEgweiIgZmlsbD0ibm9uZSIvPjxwYXRoIGQ9Ik0wIDM5aDQwTTAgMHY0ME0zOSAwLjk5OTk5OXY0ME0wLjAwMDAwMSAwLjAwMDAwMWg0MCIgc3Ryb2tlPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMDMpIiBzdHJva2Utd2lkdGg9IjEiLz48L3N2Zz4=')] opacity-50"></div>
+            
+            <div class="absolute -left-[10%] top-0 bottom-0 w-[60%] bg-[url('/assets/images/about/original_tree_city.png')] bg-cover bg-left opacity-10 mix-blend-screen" style="mask-image: linear-gradient(to right, black, transparent);"></div>
+            <!-- Glows -->
+            <div class="absolute left-[-10%] top-[10%] w-[400px] h-[400px] bg-[#064e3b] rounded-full blur-[150px] opacity-60"></div>
+            <div class="absolute right-0 top-[-20%] w-[600px] h-[600px] bg-green-500/10 rounded-full blur-[150px]"></div>
+            
+            <div class="absolute bottom-0 w-full h-px bg-gradient-to-r from-transparent via-[#22c55e]/30 to-transparent"></div>
         </div>
-        <div class="max-w-6xl mx-auto px-6 relative z-10">
-            <h1 class="type-h1 text-white mb-4">Privacy Policy</h1>
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="inline-flex items-center gap-3 px-5 py-2 rounded-full border border-[#22c55e]/30 bg-[#22c55e]/10 text-[#4ade80] text-[11px] font-bold tracking-[0.25em] uppercase mb-8 shadow-[0_0_20px_rgba(34,197,94,0.15)] backdrop-blur-md">
+                <span class="w-2 h-2 rounded-full bg-[#4ade80] shadow-[0_0_10px_rgba(74,222,128,1)] relative"><span class="absolute inset-0 rounded-full bg-[#4ade80] animate-ping opacity-50"></span></span> 
+                Legal & Compliance Hub
+            </div>
+            <h1 class="text-4xl md:text-5xl lg:text-7xl font-extrabold text-white mb-6 tracking-tight" style="font-family:'Sora',sans-serif;">Privacy Policy</h1>
+            <p class="text-gray-400 text-lg md:text-xl max-w-2xl leading-relaxed font-light">
+                Learn about how UrbanTree collects, uses, and protects your personal data when you interact with our platform and services.
+            </p>
         </div>
     </header>
 
     <!-- ═══ CONTENT ═══ -->
-    <main class="site-container section-band"><div class="max-w-4xl mx-auto">
-        <div class="legal-section">
-            <h2 class="type-h2">Privacy Policy</h2>
-            <h3 class="type-h3">Introduction</h3>
-            <p>UrbanTree powered by SunEx Technologies respects your privacy and is committed to protecting any information shared through our website, enquiry forms, consultations, and communication channels.</p>
+    <main data-navbar-theme="dark" class="py-24 relative z-10 bg-[#020202]">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col lg:flex-row gap-12 lg:gap-20">
             
-            <h3 class="type-h3">Information We Collect</h3>
-            <ul>
-                <li>Name</li>
-                <li>Email address</li>
-                <li>Phone number</li>
-                <li>Company/Organization name</li>
-                <li>Project requirements</li>
-                <li>Device/browser analytics</li>
-                <li>IP address and cookies</li>
-            </ul>
+            <!-- Sidebar Navigation -->
+            <aside class="lg:w-[340px] shrink-0 relative z-20">
+                <div class="sticky top-32 bg-[#0b1210]/60 backdrop-blur-xl rounded-3xl p-6 md:p-8 border border-white/5 shadow-[0_0_50px_rgba(0,0,0,0.5)]">
+                    <h4 class="text-[11px] font-extrabold tracking-[0.2em] text-[#4ade80] uppercase mb-8 flex items-center gap-3 border-b border-white/5 pb-6">
+                        <svg class="w-5 h-5 text-[#4ade80]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                        Documents Directory
+                    </h4>
+                    <nav class="flex flex-col gap-2">
+                        <a href="privacy-policy.html" class="px-5 py-4 rounded-xl font-semibold text-[15px] transition-all border-l-[3px] shadow-[inset_0_0_20px_rgba(34,197,94,0.15)] bg-[#22c55e]/10 text-[#4ade80] border-[#4ade80] group flex items-center justify-between">Privacy Policy <span class="opacity-0 group-hover:opacity-100 transition-opacity">→</span></a>
+                        <a href="terms.html" class="px-5 py-4 rounded-xl font-medium text-[15px] transition-all border-l-[3px] text-gray-400 hover:bg-white/5 hover:text-white border-transparent hover:border-gray-600 group flex items-center justify-between">Terms of Service <span class="opacity-0 group-hover:opacity-100 transition-opacity">→</span></a>
+                        <a href="cookie-policy.html" class="px-5 py-4 rounded-xl font-medium text-[15px] transition-all border-l-[3px] text-gray-400 hover:bg-white/5 hover:text-white border-transparent hover:border-gray-600 group flex items-center justify-between">Cookie Policy <span class="opacity-0 group-hover:opacity-100 transition-opacity">→</span></a>
+                        <a href="disclaimer.html" class="px-5 py-4 rounded-xl font-medium text-[15px] transition-all border-l-[3px] text-gray-400 hover:bg-white/5 hover:text-white border-transparent hover:border-gray-600 group flex items-center justify-between">Disclaimer <span class="opacity-0 group-hover:opacity-100 transition-opacity">→</span></a>
+                        <a href="environmental-statement.html" class="px-5 py-4 rounded-xl font-medium text-[15px] transition-all border-l-[3px] text-gray-400 hover:bg-white/5 hover:text-white border-transparent hover:border-gray-600 group flex items-center justify-between">Environmental Statement <span class="opacity-0 group-hover:opacity-100 transition-opacity">→</span></a>
+                        <a href="intellectual-property.html" class="px-5 py-4 rounded-xl font-medium text-[15px] transition-all border-l-[3px] text-gray-400 hover:bg-white/5 hover:text-white border-transparent hover:border-gray-600 group flex items-center justify-between">Intellectual Property <span class="opacity-0 group-hover:opacity-100 transition-opacity">→</span></a>
+                    </nav>
+                </div>
+            </aside>
 
-            <h3 class="type-h3">How We Use Information</h3>
-            <ul>
-                <li>Respond to enquiries</li>
-                <li>Provide consultations</li>
-                <li>Improve website experience</li>
-                <li>Share product/service updates</li>
-                <li>Analyze website traffic and performance</li>
-                <li>Support customer communication</li>
-            </ul>
+            <!-- Policy Content -->
+            <div class="lg:flex-1 relative">
+                <!-- Decorative element behind content -->
+                <div class="absolute -top-20 -right-20 w-96 h-96 bg-[#22c55e]/5 rounded-full blur-[100px] pointer-events-none"></div>
+                
+                <div class="relative bg-[#0a0c0e]/80 backdrop-blur-2xl rounded-3xl p-8 md:p-16 border border-white/5 shadow-[0_30px_60px_rgba(0,0,0,0.4)]">
+                    <div class="border-b border-white/10 pb-10 mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
+                        <div>
+                            <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-6" style="font-family:'Sora',sans-serif;">Introduction</h2>
+                            <p class="text-gray-400 leading-[1.9] text-[1.15rem] max-w-2xl font-light">
+                                Learn about how UrbanTree collects, uses, and protects your personal data when you interact with our platform and services.
+                            </p>
+                        </div>
+                        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/5 border border-white/5 text-gray-300 text-sm font-medium whitespace-nowrap">
+                            <svg class="w-4 h-4 text-[#4ade80]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                            Effective: Aug 2026
+                        </div>
+                    </div>
+                    
+                    <div class="legal-content">
+                        <h3>Information We Collect</h3>
+                        <p>When you interact with our platform, we may collect the following types of information to better serve your needs and improve our urban air infrastructure offerings:</p>
+                        <ul>
+                            <li><strong>Personal Identification:</strong> Name, Email address, and Phone number.</li>
+                            <li><strong>Professional Details:</strong> Company or Organization name.</li>
+                            <li><strong>Project Context:</strong> Specific project requirements or consultation details.</li>
+                            <li><strong>Technical Data:</strong> Device and browser analytics, IP addresses, and cookie data for website optimization.</li>
+                        </ul>
 
-            <h3 class="type-h3">Data Protection</h3>
-            <p>We implement reasonable technical and organizational measures to protect user information from unauthorized access, misuse, disclosure, or loss.</p>
+                        <h3>How We Use Your Information</h3>
+                        <p>We process the data we collect primarily to facilitate our services and improve user experience. Specifically, we use it to:</p>
+                        <ul>
+                            <li>Respond promptly to your enquiries and requests.</li>
+                            <li>Provide tailored consultations for clean-air infrastructure deployments.</li>
+                            <li>Continuously improve our website's functionality and user experience.</li>
+                            <li>Share relevant product, service, and environmental impact updates.</li>
+                            <li>Analyze website traffic and performance metrics securely.</li>
+                            <li>Maintain seamless and supportive customer communication.</li>
+                        </ul>
 
-            <h3 class="type-h3">Third-Party Services</h3>
-            <p>Our website may use:</p>
-            <ul>
-                <li>Google Analytics</li>
-                <li>Embedded maps</li>
-                <li>Cloud hosting services</li>
-                <li>Third-party communication tools</li>
-            </ul>
+                        <h3>Data Protection & Security</h3>
+                        <p>Security is paramount. We implement robust, industry-standard technical and organizational measures to protect your personal information from unauthorized access, accidental loss, misuse, disclosure, or alteration. Data is stored on secure servers with strict access controls.</p>
 
-            <h3 class="type-h3">Cookies Policy</h3>
-            <p>UrbanTree may use cookies and analytics technologies to improve website functionality and user experience.</p>
+                        <h3>Third-Party Services</h3>
+                        <p>To provide a seamless experience, our website occasionally integrates with trusted third-party providers. These may include:</p>
+                        <ul>
+                            <li><strong>Google Analytics</strong> (for performance insights)</li>
+                            <li><strong>Embedded mapping services</strong> (for location contexts)</li>
+                            <li><strong>Secure cloud hosting infrastructure</strong></li>
+                            <li><strong>Enterprise communication and CRM tools</strong></li>
+                        </ul>
 
-            <h3 class="type-h3">User Rights</h3>
-            <p>Users may request:</p>
-            <ul>
-                <li>Access to stored information</li>
-                <li>Correction of data</li>
-                <li>Deletion of information</li>
-                <li>Withdrawal of consent</li>
-            </ul>
+                        <h3>Cookies Policy Integration</h3>
+                        <p>UrbanTree utilizes cookies and similar tracking technologies to analyze trends, administer the website, track users' movements around the site, and gather demographic information. For comprehensive details, please refer to our dedicated <a href="cookie-policy.html" class="text-green-600 font-semibold hover:underline">Cookie Policy</a>.</p>
 
-            <h3 class="type-h3">Contact Information</h3>
-            <p>For privacy-related concerns: <a href="mailto:privacy@urbantree.com" class="text-brand-emerald font-semibold hover:underline">privacy@urbantree.com</a></p>
+                        <h3>Your Rights Regarding Your Data</h3>
+                        <p>You maintain full control over your personal data. At any time, users may formally request:</p>
+                        <ul>
+                            <li>Access to the specific information we have stored about you.</li>
+                            <li>Correction of any inaccurate or incomplete data.</li>
+                            <li>Complete deletion of your information from our active records.</li>
+                            <li>Withdrawal of previously granted consent for data processing.</li>
+                        </ul>
+
+                        <!-- Premium Contact Box -->
+                        <div class="mt-20 p-10 md:p-12 bg-gradient-to-br from-[#0b1210] to-[#070b09] border border-[#22c55e]/20 rounded-3xl relative overflow-hidden shadow-[inset_0_0_40px_rgba(34,197,94,0.05)] group hover:border-[#4ade80]/40 transition-colors duration-500">
+                            <!-- Background pattern -->
+                            <div class="absolute inset-0 opacity-10 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9IiM0YWRlODAiLz48L3N2Zz4=')]"></div>
+                            <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-[#4ade80]/10 rounded-full blur-[50px] group-hover:bg-[#4ade80]/20 transition-colors duration-500"></div>
+                            
+                            <div class="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+                                <div>
+                                    <h3 class="text-2xl font-bold text-white mb-2" style="font-family:'Sora',sans-serif; margin-top:0;">Need Clarification?</h3>
+                                    <p class="text-gray-400 mb-0 font-light text-lg">Our compliance team is ready to assist with any legal or privacy concerns.</p>
+                                </div>
+                                <a href="mailto:legal@urbantree.com" class="shrink-0 inline-flex items-center justify-center gap-3 px-8 py-4 bg-[#4ade80] !text-black hover:!text-black !no-underline font-bold rounded-2xl hover:bg-[#22c55e] transition-all hover:scale-105 hover:shadow-[0_0_30px_rgba(74,222,128,0.4)]">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                                    legal@urbantree.com
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div></main>
+    </main>
 
     <!-- ═══ FOOTER ═══ -->
     {{> footer }}
-    <script>
-        // Mobile Menu Logic
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
-        const mobileMenuIcon = document.getElementById('mobile-menu-icon');
-        let isMenuOpen = false;
-
-        if (mobileMenuBtn && mobileMenuOverlay) {
-            mobileMenuBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                isMenuOpen = !isMenuOpen;
-                if (isMenuOpen) {
-                    mobileMenuOverlay.classList.remove('translate-x-full');
-                    mobileMenuIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>';
-                    document.body.style.overflow = 'hidden';
-                } else {
-                    mobileMenuOverlay.classList.add('translate-x-full');
-                    mobileMenuIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>';
-                    document.body.style.overflow = '';
-                }
-            });
-
-            // Close menu when clicking outside links (optional, for better UX)
-            mobileMenuOverlay.addEventListener('click', (e) => {
-                if(e.target === mobileMenuOverlay && isMenuOpen) {
-                    mobileMenuBtn.click();
-                }
-            });
-        }
-        
-        const mobileLinks = document.querySelectorAll('.mobile-link');
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                if (isMenuOpen) mobileMenuBtn.click();
-            });
-        });
-    </script>
+    
 </body>
 </html>

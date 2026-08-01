@@ -167,19 +167,8 @@ const initIndex = () => {
             if (heroClickPrompt) heroClickPrompt.style.display = 'none';
         }, 500);
 
-        ensureHeroSound();
-
-        const playPromise = heroVideo.play();
-        if (playPromise && typeof playPromise.then === 'function') {
-            playPromise.catch(() => {
-                // Policy may require a muted start; restore sound immediately after playback begins
-                heroVideo.muted = true;
-                heroVideo.play().then(() => {
-                    ensureHeroSound();
-                    attachSilentUnmuteFallback();
-                }).catch(() => { });
-            });
-        }
+        heroVideo.muted = true;
+        heroVideo.play().catch(() => {});
 
         heroVideo.addEventListener('ended', revealHeroText, { once: true });
     };
