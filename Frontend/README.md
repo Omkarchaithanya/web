@@ -122,15 +122,19 @@ The repository follows an industry-standard static site architecture:
 
 ```text
 /
-├── public/          # Static assets served directly (images, videos, robots.txt)
-├── src/             # Application source code
-│   ├── assets/      # Application scripts (js), stylesheets (css), and icons
-│   ├── legal/       # Legal HTML pages (privacy policy, terms, etc.)
-│   ├── pages/       # Core HTML pages (about, blog, faq, monitoring, technology)
-│   ├── partials/    # Reusable Handlebars partials (navbar, footer)
-│   └── index.html   # Main Application Entry Point / Landing Page
-├── package.json     # Node dependencies & project scripts
-└── vite.config.js   # Vite build configuration and routing
+├── src/               # Application source code (component-based)
+│   ├── about/         # About page (HTML, images)
+│   ├── blog/          # Blog portal & posts
+│   ├── faq/           # FAQ page
+│   ├── home/          # Landing page assets and scripts
+│   ├── legal/         # Legal HTML pages (privacy policy, terms, etc.)
+│   ├── login/         # Authentication interface
+│   ├── monitoring/    # Live AQI Dashboard & telemetry
+│   ├── shared/        # Shared assets (CSS, JS, Partials like Navbar/Footer)
+│   ├── technology/    # Technology showcase
+│   └── index.html     # Main Application Entry Point / Landing Page
+├── package.json       # Node dependencies & project scripts
+└── vite.config.js     # Vite build configuration and routing
 ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>

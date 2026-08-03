@@ -25,8 +25,8 @@ export const config = Object.freeze({
         newsletter: '/newsletter',
         authLogin: '/auth/login',
         authRefresh: '/auth/refresh',
-        loginPage: '/pages/login.html',
-        monitoringPage: 'monitoring.html',
+        loginPage: '/login/',
+        monitoringPage: '/monitoring/',
     }),
     demoAccounts: Object.freeze({
         super: {
