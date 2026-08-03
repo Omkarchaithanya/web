@@ -1,0 +1,1794 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technology | UrbanTree by SunEx Technologies</title>
+    <link rel="icon" type="image/png" href="/shared/images/logo.png">
+    <meta name="description"
+        content="UrbanTree's bio-mechanical air purification technology — 9-stage multi-layer purification system combining advanced engineering and biological intelligence.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/shared/css/tailwind.css">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #e8e8e8;
+
+            overflow-x: hidden;
+        }
+
+        /* ── NAVBAR REMOVED FROM CSS TO ALLOW JS TOGGLE ── */
+
+        /* ── FADE UP ── */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(36px);
+            transition: opacity 0.9s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ── HOVER GLOW ── */
+        .hover-glow-emerald {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .hover-glow-emerald:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 25px rgba(16, 185, 129, 0.6), 0 0 50px rgba(16, 185, 129, 0.3);
+            background-color: #10b981 !important;
+        }
+
+        /* ── SECTION LABEL ── */
+        .section-label {
+            display: inline-block;
+            padding: 5px 18px;
+            border-radius: 30px;
+            border: 1px solid rgba(16, 185, 129, 0.4);
+            background: rgba(16, 185, 129, 0.08);
+            font-size: var(--text-eyebrow, 0.7rem);
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            color: #10b981;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        /* ── HERO ── */
+        #tech-hero {
+            background: #0a0a0a;
+            min-height: 100vh;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-grid {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(16, 185, 129, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(16, 185, 129, 0.05) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+        }
+
+        /* ── COMPONENT CARD ── */
+        .component-card {
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(16px);
+            border-radius: 24px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .component-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #10b981, #06b6d4);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .component-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .component-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 24px 50px rgba(16, 185, 129, 0.1);
+            border-color: rgba(16, 185, 129, 0.3);
+        }
+
+        /* ── IMAGE PLACEHOLDER ── */
+        .img-placeholder {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.08), rgba(6, 182, 212, 0.05));
+            border: 2px dashed rgba(16, 185, 129, 0.25);
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            color: #10b981;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+
+        /* ── DARK CARD ── */
+        .dark-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            transition: all 0.3s ease;
+            color: #ffffff;
+        }
+
+        .dark-card:hover {
+            background: rgba(16, 185, 129, 0.08);
+            border-color: rgba(16, 185, 129, 0.3);
+        }
+
+        .dark-card h3 {
+            color: #ffffff;
+        }
+
+        .stat-number {
+            font-family: 'Sora', sans-serif;
+            font-weight: 800;
+            background: linear-gradient(135deg, #10b981, #06b6d4);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: #10b981;
+            line-height: 1.1;
+        }
+
+        .metric-icon {
+            width: 56px;
+            height: 56px;
+            margin: 0 auto 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            border: 1px solid rgba(16, 185, 129, 0.35);
+            background: rgba(16, 185, 129, 0.08);
+            color: #10b981;
+            transition: transform 0.3s ease;
+        }
+
+        .group:hover .metric-icon {
+            transform: scale(1.1);
+        }
+
+        .metric-icon svg {
+            width: 28px;
+            height: 28px;
+        }
+
+        /* ── STEP NUMBER ── */
+        .step-num-circle {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #10b981, #06b6d4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Sora', sans-serif;
+            font-weight: 800;
+            font-size: 16px;
+            color: white;
+            flex-shrink: 0;
+            box-shadow: 0 4px 16px rgba(16, 185, 129, 0.4);
+        }
+
+        /* ── HERO ANIMATE ── */
+        @keyframes heroIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-animate {
+            animation: heroIn 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+        }
+
+        /* ── FLOATING ORB ── */
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            animation: orbFloat 8s ease-in-out infinite;
+        }
+
+        @keyframes orbFloat {
+
+            0%,
+            100% {
+                transform: translateY(0);
+                opacity: 0.5;
+            }
+
+            50% {
+                transform: translateY(-25px);
+                opacity: 1;
+            }
+        }
+
+        /* scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0a0a0a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #10b981;
+            border-radius: 3px;
+        }
+
+        /* ── ALTERNATING SECTIONS ── */
+        .section-light {
+            background: #e8e8e8;
+            padding-block: var(--section-pad-y);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-dark {
+            background: #0a0a0a;
+            padding-block: var(--section-pad-y);
+            position: relative;
+            overflow: hidden;
+        }
+    </style>
+    <link rel="icon" type="image/png" href="/shared/images/logo.png">
+
+    <style id="navbar-dynamic-colors">
+        .nav-text-dark {}
+
+        .nav-text-dark-light {
+            color: #374151;
+        }
+    </style>
+    <link rel="stylesheet" href="/shared/css/index.css">
+</head>
+
+<body class="antialiased">
+
+    <!-- ═══ NAVBAR ═══ -->
+    <!-- ADAPTIVE NAVBAR -->
+
+    {{> navbar }}
+    <script type="module" src="/shared/js/navbar.js"></script>
+
+
+
+    
+    
+    <!-- ═══ HERO ═══ -->
+    <style id="tech-hero-styles">
+        /* ── FADE UP ── */
+        .fade-up { opacity: 0; transform: translateY(36px); transition: opacity 0.9s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1); }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+        /* ── TECH HERO (mockup match) ── */
+        #tech-hero {
+            --ah-green: #7CFC4A;
+            --ah-green-soft: #9de764;
+            background: #050505;
+            min-height: auto;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            overflow: hidden;
+            padding: clamp(6.5rem, 10vh, 7.5rem) 0 clamp(1.75rem, 3vh, 2.25rem);
+        }
+
+        @media (min-width: 1024px) {
+            #tech-hero { min-height: min(92vh, 850px); }
+        }
+
+        .ah-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            background:
+                radial-gradient(ellipse 55% 50% at 68% 42%, rgba(34, 197, 94, 0.16), transparent 62%),
+                radial-gradient(ellipse 40% 35% at 12% 70%, rgba(16, 185, 129, 0.08), transparent 60%),
+                radial-gradient(circle at 80% 85%, rgba(45, 212, 191, 0.06), transparent 45%),
+                #050505;
+        }
+
+        .ah-bg::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(16, 185, 129, 0.035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(16, 185, 129, 0.035) 1px, transparent 1px);
+            background-size: 72px 72px;
+            mask-image: radial-gradient(ellipse 70% 60% at 65% 45%, #000 20%, transparent 75%);
+            -webkit-mask-image: radial-gradient(ellipse 70% 60% at 65% 45%, #000 20%, transparent 75%);
+            opacity: 0.7;
+        }
+
+        .ah-shell {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: var(--section-max, 90rem);
+            margin-inline: auto;
+            padding-inline: var(--site-gutter, clamp(1.25rem, 3.5vw, 4rem));
+            box-sizing: border-box;
+        }
+
+        .ah-main {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        @media (min-width: 1024px) {
+            .ah-main { grid-template-columns: 1fr 1fr; gap: 4rem; }
+        }
+
+        .ah-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 999px;
+            border: 1px solid rgba(124, 252, 74, 0.2);
+            background: rgba(10, 20, 15, 0.6);
+            color: var(--ah-green);
+            font-family: var(--font-sans, 'Inter', sans-serif);
+            font-size: var(--text-eyebrow, 0.65rem);
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+        .ah-badge svg { width: 12px; height: 12px; flex-shrink: 0; color: var(--ah-green); }
+
+        .ah-title {
+            color: #ffffff;
+            margin: 0 0 1rem;
+            font-size: clamp(2.1rem, 4.2vw, 3.25rem);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.05;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+        .ah-title-accent {
+            display: block;
+            color: var(--ah-green);
+        }
+
+        .ah-lead {
+            color: #9ca3af;
+            max-width: 34rem;
+            margin: 0 0 1.5rem;
+            font-size: clamp(1rem, 1.1vw, 1.05rem);
+            line-height: 1.6;
+        }
+        .ah-lead em { font-style: normal; color: var(--ah-green); font-weight: 600; }
+
+        .ah-actions { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; }
+        .ah-btn {
+            display: inline-flex; align-items: center; gap: 0.6rem;
+            padding: 0.8rem 1.5rem; border-radius: 999px; font-family: 'Sora', sans-serif;
+            font-size: 0.85rem; font-weight: 700; text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .ah-btn svg { width: 18px; height: 18px; flex-shrink: 0; }
+        .ah-btn--primary {
+            background: var(--ah-green); color: #000;
+            box-shadow: 0 0 20px rgba(124, 252, 74, 0.3);
+        }
+        .ah-btn--primary:hover {
+            background: #8cdb52; transform: translateY(-2px);
+        }
+        .ah-btn--ghost {
+            background: rgba(0, 0, 0, 0.4); color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        .ah-btn--ghost:hover {
+            border-color: rgba(124, 252, 74, 0.5); 
+            transform: translateY(-2px);
+        }
+
+        /* Stats bar */
+        .ah-stats {
+            margin-top: clamp(2rem, 5vh, 4rem);
+            border-radius: 1rem;
+            border: 1px solid rgba(124, 252, 74, 0.3);
+            background: rgba(5, 10, 8, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .ah-stats-grid {
+            display: grid; gap: 1.5rem; position: relative; z-index: 1;
+            grid-template-columns: repeat(2, 1fr);
+        }
+        @media (min-width: 768px) {
+            .ah-stats-grid { grid-template-columns: repeat(4, 1fr); gap: 2rem; }
+            .ah-stat:not(:last-child)::after {
+                content: ''; position: absolute; right: -1rem; top: 10%; height: 80%;
+                width: 1px; background: rgba(255,255,255,0.05);
+            }
+        }
+        .ah-stat { display: flex; align-items: flex-start; gap: 1rem; position: relative; }
+        .ah-stat-icon {
+            width: 44px; height: 44px; border-radius: 50%;
+            border: 1px solid rgba(124, 252, 74, 0.3);
+            display: flex; align-items: center; justify-content: center; color: var(--ah-green);
+            flex-shrink: 0;
+        }
+        .ah-stat-icon svg { width: 20px; height: 20px; }
+        .ah-stat-value {
+            font-family: var(--font-sans, 'Inter', sans-serif); font-weight: 800; font-size: 1.5rem;
+            color: #ffffff; letter-spacing: -0.02em; line-height: 1; margin-bottom: 0.25rem;
+        }
+        .ah-stat-title { font-family: 'Inter', sans-serif; font-size: 0.75rem; font-weight: 700; color: #fff; margin-bottom: 0.25rem; }
+        .ah-stat-desc { font-size: 0.7rem; color: #9ca3af; line-height: 1.5; }
+        .ah-stat-desc span { color: var(--ah-green); font-weight: 600; }
+
+        /* Floating Graphic Area */
+        .ah-graphic {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .ah-graphic img {
+            width: 100%;
+            height: auto;
+            display: block;
+            filter: drop-shadow(0 0 40px rgba(124, 252, 74, 0.2));
+            transform: scale(1.15);
+            mask-image: radial-gradient(circle at 50% 50%, black 50%, transparent 75%);
+            -webkit-mask-image: radial-gradient(circle at 50% 50%, black 50%, transparent 75%);
+        }
+        .tech-callout {
+            position: absolute;
+            background: rgba(5, 10, 8, 0.85);
+            border: 1px solid rgba(124, 252, 74, 0.3);
+            border-radius: 8px;
+            padding: 0.6rem 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            backdrop-filter: blur(10px);
+            z-index: 10;
+            white-space: nowrap;
+        }
+        .callout-icon { color: var(--ah-green); display: flex; align-items: center; justify-content: center; }
+        .callout-icon svg { width: 18px; height: 18px; }
+        .callout-text { display: flex; flex-direction: column; }
+        .callout-label { font-size: 0.55rem; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.1em; line-height: 1; margin-bottom: 0.2rem; }
+        .callout-value { font-size: 0.85rem; font-weight: 700; color: #fff; line-height: 1; font-family: 'Inter', sans-serif; }
+        .callout-value.green { color: var(--ah-green); }
+        
+        /* Connector lines - mimicking the exact image style */
+        .tech-callout::after { content: ''; position: absolute; background: rgba(124, 252, 74, 0.5); z-index: -1; }
+        .tech-callout::before { content: ''; position: absolute; width: 4px; height: 4px; background: var(--ah-green); border-radius: 50%; z-index: 11; }
+        
+        .callout-tl { top: 15%; left: -8%; }
+        .callout-tl::after { width: 30px; height: 1px; right: -30px; top: 50%; } 
+        .callout-tl::before { right: -32px; top: calc(50% - 1.5px); }
+        
+        .callout-tr { top: 8%; right: -8%; }
+        .callout-tr::after { width: 30px; height: 1px; left: -30px; top: 50%; } 
+        .callout-tr::before { left: -32px; top: calc(50% - 1.5px); }
+        
+        .callout-bl { bottom: 35%; left: -12%; }
+        .callout-bl::after { width: 30px; height: 1px; right: -30px; top: 50%; } 
+        .callout-bl::before { right: -32px; top: calc(50% - 1.5px); }
+        
+        .callout-br { bottom: 42%; right: -12%; }
+        .callout-br::after { width: 30px; height: 1px; left: -30px; top: 50%; } 
+        .callout-br::before { left: -32px; top: calc(50% - 1.5px); }
+
+        @keyframes float-subtle {
+            0%, 100% { translate: 0 0px; }
+            50% { translate: 0 -8px; }
+        }
+        
+        .tech-callout {
+            animation: float-subtle 6s ease-in-out infinite;
+        }
+        .callout-tl { top: 15%; left: -8%; animation-delay: 0s; }
+        .callout-tr { top: 8%; right: -8%; animation-delay: 1.5s; }
+        .callout-bl { bottom: 35%; left: -12%; animation-delay: 3s; }
+        .callout-br { bottom: 42%; right: -12%; animation-delay: 4.5s; }
+
+        @media (max-width: 1023px) {
+            .tech-callout { transform: scale(0.8); }
+            .callout-tl { left: -5%; }
+            .callout-tr { right: -5%; }
+            .callout-bl { left: -5%; bottom: 20%; }
+            .callout-br { right: -5%; bottom: 25%; }
+        }
+    </style>
+
+    <section id="tech-hero" data-navbar-theme="dark">
+        <div class="ah-bg" aria-hidden="true"></div>
+
+        <div class="ah-shell">
+            <div class="ah-main">
+                <div class="ah-copy hero-animate">
+                    <div class="ah-badge">
+                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <circle cx="12" cy="12" r="8" />
+                        </svg>
+                        ABOUT URBANTREE
+                    </div>
+
+                    <h1 class="ah-title type-h1">
+                        Engineering<br>
+                        <span class="ah-title-accent">Cleaner Futures</span>
+                        For Urban Living
+                    </h1>
+
+                    <p class="ah-lead type-lead">
+                        UrbanTree is part of SunEx Technologies, focused on building 
+                        <em>intelligent clean-air infrastructure</em> for healthier and future-ready cities.
+                    </p>
+
+                    <div class="ah-actions">
+                        <a href="#architecture" class="ah-btn ah-btn--primary">
+                            Explore System
+                            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="width:16px;height:16px;"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"/></svg>
+                        </a>
+                        <a href="#components" class="ah-btn ah-btn--ghost">
+                            Pillars of Innovation
+                        </a>
+                    </div>
+                </div>
+
+                <div class="ah-graphic hero-animate" style="animation-delay: 0.2s">
+                    <img src="/assets/images/eco_city_dome.png" alt="Bio-Mechanical Dome">
+                    
+                    <div class="tech-callout callout-tl fade-up" style="animation-delay: 0.4s">
+                        <div class="callout-icon">
+                            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+                        </div>
+                        <div class="callout-text">
+                            <div class="callout-label">BIO FILTRATION</div>
+                            <div class="callout-value green">ACTIVE</div>
+                        </div>
+                    </div>
+
+                    <div class="tech-callout callout-bl fade-up" style="animation-delay: 0.5s">
+                        <div class="callout-icon">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h12a3 3 0 000-6H9M3 14h16a3 3 0 010 6h-6M3 18h6a3 3 0 000-6H5" /></svg>
+                        </div>
+                        <div class="callout-text">
+                            <div class="callout-label">AIRFLOW SYNC</div>
+                            <div class="callout-value green">OPTIMAL</div>
+                        </div>
+                    </div>
+
+                    <div class="tech-callout callout-tr fade-up" style="animation-delay: 0.6s">
+                        <div class="callout-text text-right">
+                            <div class="callout-label">CLEAN AIR OUTPUT</div>
+                            <div class="callout-value green">99.97%</div>
+                        </div>
+                        <div class="callout-icon">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3v18h18M7 15l4-4 4 4 6-6" /></svg>
+                        </div>
+                    </div>
+
+                    <div class="tech-callout callout-br fade-up" style="animation-delay: 0.7s">
+                        <div class="callout-icon">
+                            <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/></svg>
+                        </div>
+                        <div class="callout-text">
+                            <div class="callout-label">PARTICLE CAPTURE</div>
+                            <div class="callout-value green">0.3µm</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ah-stats hero-animate" style="animation-delay:0.28s">
+                <div class="ah-stats-grid">
+                    <div class="ah-stat">
+                        <div class="ah-stat-icon">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                        </div>
+                        <div>
+                            <div class="ah-stat-value">2.5+</div>
+                            <div class="ah-stat-title">Years of R&amp;D</div>
+                            <div class="ah-stat-desc">Researching the future<br>of clean air.</div>
+                        </div>
+                    </div>
+
+                    <div class="ah-stat">
+                        <div class="ah-stat-icon">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.7"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/></svg>
+                        </div>
+                        <div>
+                            <div class="ah-stat-value">9</div>
+                            <div class="ah-stat-title">Purification Stages</div>
+                            <div class="ah-stat-desc">Multi-layered defense<br>for pure air.</div>
+                        </div>
+                    </div>
+
+                    <div class="ah-stat">
+                        <div class="ah-stat-icon">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        </div>
+                        <div>
+                            <div class="ah-stat-value">99.97%</div>
+                            <div class="ah-stat-title">Particle Capture</div>
+                            <div class="ah-stat-desc">Captures ultra-fine particles<br>as small as <span>0.3µm</span>.</div>
+                        </div>
+                    </div>
+
+                    <div class="ah-stat">
+                        <div class="ah-stat-icon">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                        </div>
+                        <div>
+                            <div class="ah-stat-value">Hybrid</div>
+                            <div class="ah-stat-title">Ultra Efficient</div>
+                            <div class="ah-stat-desc">Solar + Grid power<br>for sustainable cities.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- ═══ SECTION 1: SYSTEM ARCHITECTURE ═══ -->
+    <section id="architecture" class="section-band" data-navbar-theme="dark">
+        <div class="site-container">
+
+            <div class="text-center mb-16">
+                <span class="section-label fade-up">System Architecture</span>
+                <h2 class="fade-up type-h2 text-slate-900 mb-4">
+                    Engineered In Multiple<br>Purification Layers
+                </h2>
+                <p class="fade-up type-body text-slate-600"
+                    style="max-width:640px;margin:0 auto;">
+                    UrbanTree operates through a multi-stage architecture designed to maximize purification efficiency
+                    while maintaining sustainable energy consumption.
+                </p>
+            </div>
+
+            <!-- Architecture image placeholder -->
+            <video src="/videos/architecture_designed.mp4" autoplay loop muted playsinline
+                style="width:100%;height:auto;border-radius:12px;margin-bottom:60px;box-shadow:0 10px 30px rgba(0,0,0,0.1);"></video>
+
+            <!-- 9-stage flow -->
+            <div style="display:grid;grid-template-columns:repeat(9,1fr);gap:8px;align-items:center;">
+                <!-- steps -->
+                <script>
+                    const stages = [
+                        { n: '01', label: 'Atmospheric Intake', color: '#10b981' },
+                        { n: '02', label: 'Mechanical Filtration', color: '#0ea5e9' },
+                        { n: '03', label: 'Prefilter Layer', color: '#10b981' },
+                        { n: '04', label: 'Carbon Filter', color: '#f59e0b' },
+                        { n: '05', label: 'HEPA Filter', color: '#10b981' },
+                        { n: '06', label: 'Bio-Purification', color: '#4ade80' },
+                        { n: '07', label: 'UV Chamber', color: '#818cf8' },
+                        { n: '08', label: 'Clean Air Out', color: '#06b6d4' },
+                        { n: '09', label: 'Smart Sensors', color: '#10b981' },
+                    ];
+                    document.write(stages.map((s, i) => `
+                    <div style="text-align:center;">
+                        <a href="#comp-${i + 1}" style="text-decoration:none;">
+                            <div style="width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,${s.color}22,${s.color}11);border:2px solid ${s.color}55;display:flex;align-items:center;justify-content:center;margin:0 auto 8px;font-family:'Sora',sans-serif;font-weight:800;font-size:13px;color:${s.color};transition:all 0.3s ease;" onmouseover="this.style.background='${s.color}33';this.style.borderColor='${s.color}'" onmouseout="this.style.background='linear-gradient(135deg,${s.color}22,${s.color}11)';this.style.borderColor='${s.color}55'">${s.n}</div>
+                            <div style="font-size:10px;color:#6b7280;font-weight:600;line-height:1.3;">${s.label}</div>
+                        </a>
+                    </div>
+                `).join('<div style="display:flex;align-items:center;justify-content:center;padding-bottom:24px;"><div style="height:2px;width:100%;background:linear-gradient(90deg,rgba(16,185,129,0.3),rgba(6,182,212,0.3));border-radius:1px;"></div></div>'));
+                </script>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ═══ SECTION 2: TECHNOLOGY COMPONENTS (HUD GRID) ═══ -->
+<section class="section-dark relative" id="components" data-navbar-theme="dark" style="background-color:#050505; overflow:hidden;">
+    
+    <style>
+    /* Pillars of Innovation — match design mockup */
+    .screenshot-layout {
+        font-family: 'Inter', sans-serif;
+        color: white;
+    }
+
+    .screenshot-header {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 32px;
+        align-items: center;
+        margin-bottom: 56px;
+        position: relative;
+        z-index: 10;
+    }
+    @media (min-width: 1024px) {
+        .screenshot-header {
+            grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+            gap: 48px;
+        }
+    }
+
+    .pill-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        border: 1px solid rgba(16,185,129,0.35);
+        border-radius: 999px;
+        padding: 6px 14px;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        color: #10b981;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+        background: rgba(16,185,129,0.06);
+    }
+    .pill-tag svg {
+        width: 14px;
+        height: 14px;
+    }
+
+    .screenshot-title {
+        font-family: 'Sora', sans-serif;
+        font-size: var(--text-h2);
+        font-weight: 800;
+        line-height: 1.1;
+        margin: 0 0 18px;
+        letter-spacing: -0.02em;
+    }
+    .screenshot-title span {
+        color: #10b981;
+    }
+
+    .screenshot-subtitle {
+        font-size: 1rem;
+        color: #d1d5db;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        white-space: nowrap;
+    }
+    .screenshot-subtitle::before,
+    .screenshot-subtitle::after {
+        content: '';
+        height: 1px;
+        flex: 1;
+        max-width: 72px;
+        background: linear-gradient(90deg, transparent, rgba(16,185,129,0.55));
+    }
+    .screenshot-subtitle::after {
+        background: linear-gradient(90deg, rgba(16,185,129,0.55), transparent);
+    }
+
+    .header-right {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+    .header-right-copy {
+        font-size: 0.95rem;
+        color: #9ca3af;
+        line-height: 1.75;
+        max-width: 240px;
+        flex-shrink: 0;
+        margin: 0;
+    }
+    .header-right-copy span {
+        color: #10b981;
+    }
+
+    .hero-graphic-container {
+        position: relative;
+        flex: 1;
+        min-width: 0;
+        max-width: 340px;
+        aspect-ratio: 1;
+        margin-left: auto;
+    }
+    .hero-graphic-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        mix-blend-mode: screen;
+        -webkit-mask-image: radial-gradient(circle closest-side, black 65%, transparent 100%);
+        mask-image: radial-gradient(circle closest-side, black 65%, transparent 100%);
+    }
+
+    .screenshot-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+        position: relative;
+        z-index: 10;
+        align-items: stretch;
+    }
+    @media (min-width: 1024px) {
+        .screenshot-grid {
+            grid-template-columns: 1fr 96px 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 28px 16px;
+        }
+    }
+
+    .ss-card {
+        background: rgba(8, 12, 16, 0.85);
+        border: 1px solid rgba(16, 185, 129, 0.18);
+        border-radius: 20px;
+        padding: 26px 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        position: relative;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        height: 100%;
+        min-height: 0;
+        box-sizing: border-box;
+    }
+    @media (min-width: 640px) {
+        .ss-card {
+            flex-direction: row;
+            align-items: flex-start;
+        }
+    }
+    @media (min-width: 1024px) {
+        .ss-card-1 { grid-column: 1; grid-row: 1; }
+        .ss-card-2 { grid-column: 3; grid-row: 1; }
+        .ss-card-3 { grid-column: 1; grid-row: 2; }
+        .ss-card-4 { grid-column: 3; grid-row: 2; }
+    }
+    .ss-card:hover {
+        border-color: rgba(16, 185, 129, 0.45);
+        box-shadow: 0 0 36px rgba(16, 185, 129, 0.12);
+    }
+
+    .ss-icon-wrapper {
+        width: 84px;
+        height: 84px;
+        border-radius: 50%;
+        border: 1px solid rgba(16, 185, 129, 0.35);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        position: relative;
+        background: radial-gradient(circle at center, rgba(16,185,129,0.12), transparent 70%);
+        box-shadow: inset 0 0 18px rgba(16, 185, 129, 0.12), 0 0 16px rgba(16,185,129,0.15);
+    }
+    .ss-icon-wrapper img {
+        width: 42px;
+        height: 42px;
+        object-fit: contain;
+        mix-blend-mode: screen;
+    }
+
+    .ss-content {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+    }
+
+    .ss-number-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        color: #10b981;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+    }
+    .ss-num {
+        background: rgba(16, 185, 129, 0.15);
+        padding: 3px 8px;
+        border-radius: 4px;
+    }
+
+    .ss-card h3 {
+        font-family: 'Sora', sans-serif;
+        font-size: 1.35rem;
+        font-weight: 700;
+        color: white;
+        margin: 0 0 10px;
+    }
+    .ss-card p {
+        font-size: 0.88rem;
+        color: #9ca3af;
+        line-height: 1.65;
+        margin: 0 0 18px;
+        flex-grow: 1;
+    }
+
+    .ss-stats {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: auto;
+    }
+    .ss-stat-box {
+        border: 1px solid rgba(16, 185, 129, 0.22);
+        border-radius: 8px;
+        padding: 10px 12px;
+        display: flex;
+        flex-direction: column;
+        min-width: 108px;
+        background: rgba(0,0,0,0.35);
+    }
+    .ss-stat-val {
+        color: #10b981;
+        font-size: 1.1rem;
+        font-weight: 700;
+        margin-bottom: 2px;
+    }
+    .ss-stat-lbl {
+        font-size: 0.62rem;
+        color: #6b7280;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+    }
+
+    .center-hud-col {
+        display: none;
+    }
+    @media (min-width: 1024px) {
+        .center-hud-col {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            grid-column: 2;
+            grid-row: 1 / 3;
+            z-index: 15;
+        }
+    }
+
+    .hud-node {
+        width: 88px;
+        height: 88px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 20;
+    }
+    .hud-node-circle {
+        position: absolute;
+        inset: 0;
+        border: 1px solid rgba(16, 185, 129, 0.5);
+        border-radius: 50%;
+        box-shadow: 0 0 24px rgba(16,185,129,0.25);
+        background: rgba(5,10,8,0.9);
+    }
+    .hud-node-circle-inner {
+        position: absolute;
+        inset: 12px;
+        border: 1px dashed rgba(16, 185, 129, 0.35);
+        border-radius: 50%;
+        animation: spinSlow 20s linear infinite;
+    }
+    .hud-node-icon {
+        width: 34px;
+        height: 34px;
+        object-fit: contain;
+        position: relative;
+        z-index: 1;
+        mix-blend-mode: screen;
+    }
+    @keyframes spinSlow { 100% { transform: rotate(360deg); } }
+
+    .connection-overlay {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 5;
+        grid-column: 1 / -1;
+        grid-row: 1 / -1;
+    }
+    @media (max-width: 1023px) {
+        .connection-overlay { display: none; }
+    }
+    .conn-path {
+        fill: none;
+        stroke: rgba(16, 185, 129, 0.45);
+        stroke-width: 1.5;
+        stroke-dasharray: 3 5;
+        filter: drop-shadow(0 0 4px rgba(16,185,129,0.35));
+    }
+    .conn-dot {
+        fill: #10b981;
+        filter: drop-shadow(0 0 4px rgba(16,185,129,0.8));
+    }
+
+    @media (max-width: 767px) {
+        .header-right {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .header-right-copy {
+            max-width: none;
+        }
+        .hero-graphic-container {
+            max-width: 260px;
+            margin: 0 auto;
+        }
+        .screenshot-subtitle {
+            white-space: normal;
+            flex-wrap: wrap;
+        }
+    }
+    </style>
+
+    <div class="site-container w-full relative z-10 screenshot-layout">
+        
+        <!-- HEADER -->
+        <div class="screenshot-header fade-up">
+            <div class="header-left">
+                <div class="pill-tag">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    Core Philosophy
+                </div>
+                <h2 class="screenshot-title type-h2">Pillars of<br><span>Innovation</span></h2>
+                <div class="screenshot-subtitle">Engineering a Sustainable Tomorrow</div>
+            </div>
+            <div class="header-right">
+                <p class="header-right-copy">
+                    We integrate biomimicry, artificial intelligence, and sustainable design to create a <span>revolutionary environmental ecosystem.</span>
+                </p>
+                <div class="hero-graphic-container">
+                    <img src="/technology/images/hero_eco_city.png" alt="Futuristic Eco City Hologram">
+                </div>
+            </div>
+        </div>
+
+        <!-- GRID -->
+        <div class="screenshot-grid fade-up">
+            
+            <!-- SVG Connection Lines — from card inner edges to center node -->
+            <svg class="connection-overlay" preserveAspectRatio="none" viewBox="0 0 1000 600">
+                <path class="conn-path" d="M 430,150 H 470 L 500,270"></path>
+                <circle class="conn-dot" cx="430" cy="150" r="3.5"></circle>
+                <path class="conn-path" d="M 430,450 H 470 L 500,330"></path>
+                <circle class="conn-dot" cx="430" cy="450" r="3.5"></circle>
+                <path class="conn-path" d="M 570,150 H 530 L 500,270"></path>
+                <circle class="conn-dot" cx="570" cy="150" r="3.5"></circle>
+                <path class="conn-path" d="M 570,450 H 530 L 500,330"></path>
+                <circle class="conn-dot" cx="570" cy="450" r="3.5"></circle>
+                <circle class="conn-dot" cx="500" cy="270" r="4"></circle>
+                <circle class="conn-dot" cx="500" cy="330" r="4"></circle>
+            </svg>
+
+            <!-- Card 1 -->
+            <div class="ss-card ss-card-1">
+                <div class="ss-icon-wrapper">
+                    <img src="/technology/images/icon_butterfly.png" alt="">
+                </div>
+                <div class="ss-content">
+                    <div class="ss-number-tag"><span class="ss-num">01</span> PRIMARY FILTRATION</div>
+                    <h3>Bio-Mimetic Engineering</h3>
+                    <p>Utilizing biologically-inspired nano-structures—replicating butterfly wings—to naturally absorb airborne pollutants at the molecular level.</p>
+                    <div class="ss-stats">
+                        <div class="ss-stat-box">
+                            <span class="ss-stat-val">500x</span>
+                            <span class="ss-stat-lbl">More Effective</span>
+                        </div>
+                        <div class="ss-stat-box">
+                            <span class="ss-stat-val">0.3μ</span>
+                            <span class="ss-stat-lbl">Particle Capture</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MIDDLE COLUMN (HUD) -->
+            <div class="center-hud-col">
+                <div class="hud-node">
+                    <div class="hud-node-circle"></div>
+                    <div class="hud-node-circle-inner"></div>
+                    <img class="hud-node-icon" src="/technology/images/icon_center_leaf.png" alt="">
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="ss-card ss-card-2">
+                <div class="ss-icon-wrapper">
+                    <img src="/technology/images/icon_brain.png" alt="">
+                </div>
+                <div class="ss-content">
+                    <div class="ss-number-tag"><span class="ss-num">02</span> NEURAL NET</div>
+                    <h3>Adaptive AI Intelligence</h3>
+                    <p>Smart sensors dynamically adjust purification intensity in real-time, integrating global datasets to predict and intercept smog.</p>
+                    <div class="ss-stats">
+                        <div class="ss-stat-box">
+                            <span class="ss-stat-val">LIVE</span>
+                            <span class="ss-stat-lbl">WHO 2024 AQI SYNC</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="ss-card ss-card-3">
+                <div class="ss-icon-wrapper">
+                    <img src="/technology/images/icon_recycle.png" alt="">
+                </div>
+                <div class="ss-content">
+                    <div class="ss-number-tag"><span class="ss-num">03</span> LIFECYCLE</div>
+                    <h3>Sustainable Architecture</h3>
+                    <p>Built with advanced, recyclable materials that actively reduce the need for toxic, disposable filters found in traditional purifiers.</p>
+                    <div class="ss-stats">
+                        <div class="ss-stat-box">
+                            <span class="ss-stat-val">100%</span>
+                            <span class="ss-stat-lbl">Recyclable Base</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="ss-card ss-card-4">
+                <div class="ss-icon-wrapper">
+                    <img src="/technology/images/icon_waveform.png" alt="">
+                </div>
+                <div class="ss-content">
+                    <div class="ss-number-tag"><span class="ss-num">04</span> ACOUSTICS</div>
+                    <h3>Whisper-Quiet Operation</h3>
+                    <p>Utilizing tremor-inspired passive ventilation mechanics, we've bypassed energy-heavy, loud mechanical fans to purify silently.</p>
+                    <div class="ss-stats">
+                        <div class="ss-stat-box">
+                            <span class="ss-stat-val">&lt;30</span>
+                            <span class="ss-stat-lbl">DECIBELS</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+<!-- ═══ IMPACT & APPLICATIONS ═══ -->
+    <section class="section-light relative bg-slate-50" id="applications" data-navbar-theme="light">
+        <style>
+            .impact-card {
+                position: relative;
+                border-radius: 32px;
+                overflow: hidden;
+                cursor: pointer;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            }
+
+            .impact-card img {
+                transition: transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1);
+            }
+
+            .impact-card:hover img {
+                transform: scale(1.08);
+            }
+
+            .impact-overlay {
+                position: absolute;
+                inset: 0;
+                background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.4) 50%, transparent 100%);
+                opacity: 0.8;
+                transition: opacity 0.5s ease;
+            }
+
+            .impact-card:hover .impact-overlay {
+                opacity: 0.95;
+            }
+
+            .impact-content {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                padding: 40px;
+                transform: translateY(30px);
+                transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+                color: #ffffff;
+            }
+
+            .impact-content h3 {
+                color: #ffffff !important;
+            }
+
+            .impact-content .impact-badge {
+                color: #ffffff;
+            }
+
+            .impact-card:hover .impact-content {
+                transform: translateY(0);
+            }
+
+            .impact-desc {
+                opacity: 0;
+                height: 0;
+                overflow: hidden;
+                transition: opacity 0.5s ease, height 0.5s ease;
+                color: #d1d5db;
+            }
+
+            .impact-card:hover .impact-desc {
+                opacity: 1;
+                height: auto;
+                margin-top: 12px;
+            }
+        </style>
+
+        <div class="site-container pt-20">
+            <div class="text-center mb-20">
+                <span class="section-label fade-up">Real-World Deployments</span>
+                <h2 class="fade-up type-h2 text-gray-900">
+                    Impact & <span style="color:#10b981;">Applications</span>
+                </h2>
+                <p class="fade-up type-lead mt-5 max-w-2xl mx-auto" style="color:#6b7280;">
+                    From bustling metropolitan streets to serene educational campuses, our highly adaptable bio-systems
+                    are designed to integrate anywhere breathing happens.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- App 1 -->
+                <div class="impact-card h-[400px] fade-up">
+                    <img src="/technology/images/tech_impact_smartcity.png" alt="Smart Cities"
+                        class="w-full h-full object-cover">
+                    <div class="impact-overlay"></div>
+                    <div class="impact-content">
+                        <div class="flex items-center gap-3 mb-2">
+                            <span
+                                class="impact-badge bg-emerald-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">Urban
+                                Edge</span>
+                        </div>
+                        <h3 class="text-white type-h2 font-['Sora']">Smart Cities</h3>
+                        <div class="impact-desc font-medium">
+                            Creating breathable safe zones in heavily congested urban centers. Our units protect
+                            citizens from toxic vehicular emissions, industrial smog, and soaring urban heat islands.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- App 2 -->
+                <div class="impact-card h-[400px] fade-up" style="transition-delay:0.1s;">
+                    <img src="/technology/images/tech_impact_corporate.png" alt="Corporate Campuses"
+                        class="w-full h-full object-cover">
+                    <div class="impact-overlay"></div>
+                    <div class="impact-content">
+                        <div class="flex items-center gap-3 mb-2">
+                            <span
+                                class="impact-badge bg-blue-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">Wellness</span>
+                        </div>
+                        <h3 class="text-white type-h2 font-['Sora']">Corporate Campuses</h3>
+                        <div class="impact-desc font-medium">
+                            Enhancing employee well-being and cognitive productivity by establishing clean air bubbles
+                            across tech parks, courtyards, and outdoor collaborative spaces.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- App 3 -->
+                <div class="impact-card h-[400px] fade-up" style="transition-delay:0.2s;">
+                    <img src="/technology/images/tech_impact_hospital.png" alt="Healthcare Facilities"
+                        class="w-full h-full object-cover">
+                    <div class="impact-overlay"></div>
+                    <div class="impact-content">
+                        <div class="flex items-center gap-3 mb-2">
+                            <span
+                                class="impact-badge bg-cyan-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">Protection</span>
+                        </div>
+                        <h3 class="text-white type-h2 font-['Sora']">Healthcare Facilities</h3>
+                        <div class="impact-desc font-medium">
+                            Providing an extra layer of critical atmospheric protection outside hospitals, ensuring
+                            vulnerable patients, visitors, and healthcare workers breathe safely from the moment they
+                            arrive.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- App 4 -->
+                <div class="impact-card h-[400px] fade-up" style="transition-delay:0.3s;">
+                    <img src="/technology/images/tech_impact_school.png" alt="Educational Institutions"
+                        class="w-full h-full object-cover">
+                    <div class="impact-overlay"></div>
+                    <div class="impact-content">
+                        <div class="flex items-center gap-3 mb-2">
+                            <span
+                                class="impact-badge bg-amber-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">Future
+                                Generation</span>
+                        </div>
+                        <h3 class="text-white type-h2 font-['Sora']">Educational Institutions</h3>
+                        <div class="impact-desc font-medium">
+                            Ensuring safe, clean environments for schools and universities. We protect growing lungs
+                            during outdoor recess, physical education, and open-air studies.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ PERFORMANCE & METRICS ═══ -->
+    <section class="section-dark" id="performance" data-navbar-theme="dark">
+        <div class="site-container relative z-10">
+            <div class="text-center mb-16">
+                <span class="section-label fade-up"
+                    style="background:rgba(16,185,129,0.1);border-color:rgba(16,185,129,0.4);">Data-Driven
+                    Outcomes</span>
+                <h2 class="fade-up type-h2 text-white">
+                    Performance & Metrics
+                </h2>
+                <p class="fade-up type-lead mt-5 max-w-2xl mx-auto" style="color:#cbd5e1;">
+                    We focus purely on the data and the outcome. Our verifiable performance metrics provide B2B buyers
+                    and government entities with the hard numbers they need.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Metric 1 -->
+                <div class="dark-card p-10 rounded-3xl text-center fade-up group"
+                    style="border:1px solid rgba(16,185,129,0.2);">
+                    <div class="metric-icon" aria-hidden="true">
+                        <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="8"></circle>
+                            <circle cx="12" cy="12" r="3.5"></circle>
+                            <path stroke-linecap="round" d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22"></path>
+                        </svg>
+                    </div>
+                    <div class="stat-number mb-2" style="font-size:3.5rem;">50m</div>
+                    <h3 class="type-h3 text-white mb-4">Clean Air Bubble</h3>
+                    <p class="type-body text-slate-400">Visualizing the extensive radius of pure, breathable air
+                        generated continuously by a single UrbanTree unit.</p>
+                </div>
+
+                <!-- Metric 2 -->
+                <div class="dark-card p-10 rounded-3xl text-center fade-up group"
+                    style="transition-delay:0.1s; border:1px solid rgba(6,182,212,0.2);">
+                    <div class="metric-icon" aria-hidden="true" style="border-color:rgba(6,182,212,0.4);background:rgba(6,182,212,0.08);color:#06b6d4;">
+                        <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 12h6.75M3.75 7.5h10.5M3.75 16.5h4.5M14.25 9.75c1.5-1.5 3.75-1.5 5.25 0s1.5 3.75 0 5.25"></path>
+                        </svg>
+                    </div>
+                    <div class="stat-number mb-2" style="font-size:3.5rem;">10K</div>
+                    <h3 class="type-h3 text-white mb-4">Cubic Meters / Hour</h3>
+                    <p class="type-body text-slate-400">Highlighting the sheer volume of polluted air processed
+                        and purified at maximum operational capacity.</p>
+                </div>
+
+                <!-- Metric 3 -->
+                <div class="dark-card p-10 rounded-3xl text-center fade-up group"
+                    style="transition-delay:0.2s; border:1px solid rgba(16,185,129,0.2);">
+                    <div class="metric-icon" aria-hidden="true">
+                        <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"></path>
+                        </svg>
+                    </div>
+                    <div class="stat-number mb-2" style="font-size:3.5rem;">99.9%</div>
+                    <h3 class="type-h3 text-white mb-4">Particulate Removal</h3>
+                    <p class="type-body text-slate-400">Emphasizing the total eradication of PM2.5, PM10, and VOCs
+                        without exposing the underlying filtration mechanics.</p>
+                </div>
+            </div>
+        </div>
+        <!-- ═══ CTA ═══ -->
+        <section class="section-dark" data-navbar-theme="dark">
+            <div
+                style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:700px;height:400px;background:radial-gradient(ellipse,rgba(16,185,129,0.1) 0%,transparent 70%);pointer-events:none;">
+            </div>
+            <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+                <span class="section-label fade-up"
+                    style="background:rgba(16,185,129,0.1);border-color:rgba(16,185,129,0.4);">Deploy UrbanTree</span>
+                <h2 class="fade-up type-h2 text-white mb-5">
+                    Ready to Deploy<br>
+                    <span
+                        style="background:linear-gradient(135deg,#10b981,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Clean
+                        Air Technology?</span>
+                </h2>
+                <p class="fade-up type-body"
+                    style="color:#94a3b8;margin-bottom:2.5rem;max-width:520px;margin-left:auto;margin-right:auto;">
+                    Contact us to explore how UrbanTree's innovative purification ecosystem can transform air quality in
+                    your urban environment.
+                </p>
+                <div class="fade-up flex flex-wrap gap-4 justify-center">
+                    <a href="../index.html#enquiry"
+                        class="hover-glow-emerald px-10 py-4 bg-emerald-500 text-white rounded-full font-semibold shadow-lg shadow-emerald-500/30 transition-all duration-300 text-sm">
+                        Make an Enquiry
+                    </a>
+                    <a href="../pages/about.html"
+                        class="px-10 py-4 bg-white/10 border border-white/20 text-white rounded-full font-semibold hover:bg-white/20 transition-all duration-300 text-sm">
+                        About Us
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        {{> footer }}
+
+
+        <!-- ═══ ALL LEGAL MODALS ═══ -->
+
+        <!-- Privacy -->
+        <div id="privacy-modal"
+            style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.7);backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:20px;"
+            onclick="if(event.target===this)closePrivacy()">
+            <div
+                style="background:#0f1a14;border:1px solid rgba(16,185,129,0.25);border-radius:24px;max-width:680px;width:100%;max-height:85vh;overflow-y:auto;padding:40px;position:relative;">
+                <button onclick="closePrivacy()"
+                    style="position:absolute;top:20px;right:20px;background:rgba(255,255,255,0.08);border:none;color:#9ca3af;width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;">&#215;</button>
+                <div
+                    style="display:inline-block;padding:4px 14px;border-radius:20px;border:1px solid rgba(16,185,129,0.4);background:rgba(16,185,129,0.08);font-size:10px;font-weight:700;letter-spacing:0.2em;color:#10b981;text-transform:uppercase;margin-bottom:16px;">
+                    Legal</div>
+                <h2
+                    class="type-h2 text-white" style="margin-bottom:28px;">
+                    Privacy Policy</h2>
+                <div
+                    style="font-family:'Inter',sans-serif;font-size:0.9rem;color:#94a3b8;line-height:1.8;display:flex;flex-direction:column;gap:22px;">
+                    <div>
+                        <h3
+                            style="font-family:'Sora',sans-serif;font-size:1rem;font-weight:700;color:#f1f5f9;margin-bottom:8px;">
+                            Introduction</h3>
+                        <p>UrbanTree powered by SunEx Technologies respects your privacy and is committed to protecting
+                            any information shared through our website, enquiry forms, consultations, and communication
+                            channels.</p>
+                    </div>
+                    <div>
+                        <h3
+                            style="font-family:'Sora',sans-serif;font-size:1rem;font-weight:700;color:#f1f5f9;margin-bottom:8px;">
+                            Information We Collect</h3>
+                        <ul style="list-style:none;display:flex;flex-direction:column;gap:6px;">
+                            <li style="display:flex;align-items:center;gap:8px;"><span
+                                    style="width:6px;height:6px;border-radius:50%;background:#10b981;flex-shrink:0;"></span>Name
+                            </li>
+                            <li style="display:flex;align-items:center;gap:8px;"><span
+                                    style="width:6px;height:6px;border-radius:50%;background:#10b981;flex-shrink:0;"></span>Email
+                                address</li>
+                            <li style="display:flex;align-items:center;gap:8px;"><span
+                                    style="width:6px;height:6px;border-radius:50%;background:#10b981;flex-shrink:0;"></span>Phone
+                                number</li>
+                            <li style="display:flex;align-items:center;gap:8px;"><span
+                                    style="width:6px;height:6px;border-radius:50%;background:#10b981;flex-shrink:0;"></span>Company
+                                / Organization name</li>
+                            <li style="display:flex;align-items:center;gap:8px;"><span
+                                    style="width:6px;height:6px;border-radius:50%;background:#10b981;flex-shrink:0;"></span>Project
+                                requirements</li>
+                            <li style="display:flex;align-items:center;gap:8px;"><span
+                                    style="width:6px;height:6px;border-radius:50%;background:#10b981;flex-shrink:0;"></span>Device
+                                / browser analytics</li>
+                            <li style="display:flex;align-items:center;gap:8px;"><span
+                                    style="width:6px;height:6px;border-radius:50%;background:#10b981;flex-shrink:0;"></span>IP
+                                address and cookies</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3
+                            style="font-family:'Sora',sans-serif;font-size:1rem;font-weight:700;color:#f1f5f9;margin-bottom:8px;">
+                            Data Protection</h3>
+                        <p>We implement reasonable technical and organizational measures to protect user information
+                            from unauthorized access, misuse, disclosure, or loss.</p>
+                    </div>
+                    <div
+                        style="background:rgba(16,185,129,0.06);border:1px solid rgba(16,185,129,0.2);border-radius:14px;padding:16px 20px;">
+                        <h3
+                            style="font-family:'Sora',sans-serif;font-size:1rem;font-weight:700;color:#f1f5f9;margin-bottom:6px;">
+                            Contact</h3>
+                        <p>For privacy-related concerns: <a href="mailto:{{PRIVACY_EMAIL}}" data-config-email="privacy"
+                                style="color:#10b981;font-weight:600;">{{PRIVACY_EMAIL}}</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Terms -->
+        <div id="terms-modal"
+            style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.7);backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:20px;"
+            onclick="if(event.target===this)closeTerms()">
+            <div
+                style="background:#0f1a14;border:1px solid rgba(16,185,129,0.25);border-radius:24px;max-width:680px;width:100%;max-height:85vh;overflow-y:auto;padding:40px;position:relative;">
+                <button onclick="closeTerms()"
+                    style="position:absolute;top:20px;right:20px;background:rgba(255,255,255,0.08);border:none;color:#9ca3af;width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;">&#215;</button>
+                <div
+                    style="display:inline-block;padding:4px 14px;border-radius:20px;border:1px solid rgba(16,185,129,0.4);background:rgba(16,185,129,0.08);font-size:10px;font-weight:700;letter-spacing:0.2em;color:#10b981;text-transform:uppercase;margin-bottom:16px;">
+                    Legal</div>
+                <h2
+                    class="type-h2 text-white" style="margin-bottom:28px;">
+                    Terms & Conditions</h2>
+                <div
+                    style="font-family:'Inter',sans-serif;font-size:0.9rem;color:#94a3b8;line-height:1.8;display:flex;flex-direction:column;gap:22px;">
+                    <div>
+                        <h3
+                            style="font-family:'Sora',sans-serif;font-size:1rem;font-weight:700;color:#f1f5f9;margin-bottom:8px;">
+                            Acceptance of Terms</h3>
+                        <p>By accessing or using the UrbanTree website, users agree to comply with these Terms &
+                            Conditions.</p>
+                    </div>
+                    <div>
+                        <h3
+                            style="font-family:'Sora',sans-serif;font-size:1rem;font-weight:700;color:#f1f5f9;margin-bottom:8px;">
+                            Intellectual Property</h3>
+                        <p style="margin-bottom:10px;">All website content is the intellectual property of SunEx
+                            Technologies unless otherwise stated.</p>
+                        <ul style="list-style:none;display:flex;flex-direction:column;gap:6px;">
+                            <li style="display:flex;align-items:center;gap:8px;"><span
+                                    style="width:6px;height:6px;border-radius:50%;background:#10b981;flex-shrink:0;"></span>Designs
+                                &amp; Logos</li>
+                            <li style="display:flex;align-items:center;gap:8px;"><span
+                                    style="width:6px;height:6px;border-radius:50%;background:#10b981;flex-shrink:0;"></span>Technology
+                                Concepts</li>
+                            <li style="display:flex;align-items:center;gap:8px;"><span
+                                    style="width:6px;height:6px;border-radius:50%;background:#10b981;flex-shrink:0;"></span>Graphics
+                                &amp; Text</li>
+                            <li style="display:flex;align-items:center;gap:8px;"><span
+                                    style="width:6px;height:6px;border-radius:50%;background:#10b981;flex-shrink:0;"></span>Product
+                                Descriptions</li>
+                            <li style="display:flex;align-items:center;gap:8px;"><span
+                                    style="width:6px;height:6px;border-radius:50%;background:#10b981;flex-shrink:0;"></span>Visual
+                                Assets</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3
+                            style="font-family:'Sora',sans-serif;font-size:1rem;font-weight:700;color:#f1f5f9;margin-bottom:8px;">
+                            Changes to Terms</h3>
+                        <p>We reserve the right to modify these terms at any time without prior notice.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Disclaimer -->
+        <div id="disclaimer-modal"
+            style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.7);backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:20px;"
+            onclick="if(event.target===this)closeDisclaimer()">
+            <div
+                style="background:#0f1a14;border:1px solid rgba(16,185,129,0.25);border-radius:24px;max-width:680px;width:100%;max-height:85vh;overflow-y:auto;padding:40px;position:relative;">
+                <button onclick="closeDisclaimer()"
+                    style="position:absolute;top:20px;right:20px;background:rgba(255,255,255,0.08);border:none;color:#9ca3af;width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;">&#215;</button>
+                <div
+                    style="display:inline-block;padding:4px 14px;border-radius:20px;border:1px solid rgba(16,185,129,0.4);background:rgba(16,185,129,0.08);font-size:10px;font-weight:700;letter-spacing:0.2em;color:#10b981;text-transform:uppercase;margin-bottom:16px;">
+                    Legal</div>
+                <h2
+                    class="type-h2 text-white" style="margin-bottom:28px;">
+                    Disclaimer</h2>
+                <div
+                    style="font-family:'Inter',sans-serif;font-size:0.9rem;color:#94a3b8;line-height:1.8;display:flex;flex-direction:column;gap:22px;">
+                    <div>
+                        <h3
+                            style="font-family:'Sora',sans-serif;font-size:1rem;font-weight:700;color:#f1f5f9;margin-bottom:8px;">
+                            General Information</h3>
+                        <p>The information provided on this website is intended for general informational and
+                            educational purposes only.</p>
+                    </div>
+                    <div>
+                        <h3
+                            style="font-family:'Sora',sans-serif;font-size:1rem;font-weight:700;color:#f1f5f9;margin-bottom:8px;">
+                            No Medical Claims</h3>
+                        <p>UrbanTree is an environmental air purification and monitoring system and is not intended to
+                            diagnose, treat, cure, or prevent any medical condition or disease.</p>
+                    </div>
+                    <div>
+                        <h3
+                            style="font-family:'Sora',sans-serif;font-size:1rem;font-weight:700;color:#f1f5f9;margin-bottom:8px;">
+                            Technology Development</h3>
+                        <p>Certain product visuals, simulations, concepts, and future roadmap representations may
+                            represent prototype-stage or evolving technologies subject to ongoing research and
+                            development.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cookie -->
+        <div id="cookie-modal"
+            style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.7);backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:20px;"
+            onclick="if(event.target===this)closeCookie()">
+            <div
+                style="background:#0f1a14;border:1px solid rgba(16,185,129,0.25);border-radius:24px;max-width:680px;width:100%;max-height:85vh;overflow-y:auto;padding:40px;position:relative;">
+                <button onclick="closeCookie()"
+                    style="position:absolute;top:20px;right:20px;background:rgba(255,255,255,0.08);border:none;color:#9ca3af;width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;">&#215;</button>
+                <div
+                    style="display:inline-block;padding:4px 14px;border-radius:20px;border:1px solid rgba(16,185,129,0.4);background:rgba(16,185,129,0.08);font-size:10px;font-weight:700;letter-spacing:0.2em;color:#10b981;text-transform:uppercase;margin-bottom:16px;">
+                    Legal</div>
+                <h2
+                    class="type-h2 text-white" style="margin-bottom:28px;">
+                    Cookie Policy</h2>
+                <div
+                    style="font-family:'Inter',sans-serif;font-size:0.9rem;color:#94a3b8;line-height:1.8;display:flex;flex-direction:column;gap:22px;">
+                    <div>
+                        <h3
+                            style="font-family:'Sora',sans-serif;font-size:1rem;font-weight:700;color:#f1f5f9;margin-bottom:8px;">
+                            Cookies Policy</h3>
+                        <p>UrbanTree may use cookies and analytics technologies to improve website functionality and
+                            user experience.</p>
+                    </div>
+                    <div>
+                        <h3
+                            style="font-family:'Sora',sans-serif;font-size:1rem;font-weight:700;color:#f1f5f9;margin-bottom:8px;">
+                            User Rights</h3>
+                        <ul style="list-style:none;display:flex;flex-direction:column;gap:6px;">
+                            <li style="display:flex;align-items:center;gap:8px;"><span
+                                    style="width:6px;height:6px;border-radius:50%;background:#10b981;flex-shrink:0;"></span>Access
+                                to stored information</li>
+                            <li style="display:flex;align-items:center;gap:8px;"><span
+                                    style="width:6px;height:6px;border-radius:50%;background:#10b981;flex-shrink:0;"></span>Correction
+                                of data</li>
+                            <li style="display:flex;align-items:center;gap:8px;"><span
+                                    style="width:6px;height:6px;border-radius:50%;background:#10b981;flex-shrink:0;"></span>Deletion
+                                of information</li>
+                            <li style="display:flex;align-items:center;gap:8px;"><span
+                                    style="width:6px;height:6px;border-radius:50%;background:#10b981;flex-shrink:0;"></span>Withdrawal
+                                of consent</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- IP Notice -->
+        <div id="ip-modal"
+            style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.7);backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:20px;"
+            onclick="if(event.target===this)closeIP()">
+            <div
+                style="background:#0f1a14;border:1px solid rgba(16,185,129,0.25);border-radius:24px;max-width:680px;width:100%;max-height:85vh;overflow-y:auto;padding:40px;position:relative;">
+                <button onclick="closeIP()"
+                    style="position:absolute;top:20px;right:20px;background:rgba(255,255,255,0.08);border:none;color:#9ca3af;width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;">&#215;</button>
+                <div
+                    style="display:inline-block;padding:4px 14px;border-radius:20px;border:1px solid rgba(16,185,129,0.4);background:rgba(16,185,129,0.08);font-size:10px;font-weight:700;letter-spacing:0.2em;color:#10b981;text-transform:uppercase;margin-bottom:16px;">
+                    Legal</div>
+                <h2
+                    class="type-h2 text-white" style="margin-bottom:28px;">
+                    Intellectual Property Notice</h2>
+                <div
+                    style="font-family:'Inter',sans-serif;font-size:0.9rem;color:#94a3b8;line-height:1.8;display:flex;flex-direction:column;gap:22px;">
+                    <div>
+                        <h3
+                            style="font-family:'Sora',sans-serif;font-size:1rem;font-weight:700;color:#f1f5f9;margin-bottom:8px;">
+                            Intellectual Property</h3>
+                        <p style="margin-bottom:10px;">All website content is the intellectual property of SunEx
+                            Technologies unless otherwise stated:</p>
+                        <ul style="list-style:none;display:flex;flex-direction:column;gap:6px;">
+                            <li style="display:flex;align-items:center;gap:8px;"><span
+                                    style="width:6px;height:6px;border-radius:50%;background:#10b981;flex-shrink:0;"></span>Designs
+                                &amp; Logos</li>
+                            <li style="display:flex;align-items:center;gap:8px;"><span
+                                    style="width:6px;height:6px;border-radius:50%;background:#10b981;flex-shrink:0;"></span>Technology
+                                Concepts</li>
+                            <li style="display:flex;align-items:center;gap:8px;"><span
+                                    style="width:6px;height:6px;border-radius:50%;background:#10b981;flex-shrink:0;"></span>Graphics
+                                &amp; Text</li>
+                            <li style="display:flex;align-items:center;gap:8px;"><span
+                                    style="width:6px;height:6px;border-radius:50%;background:#10b981;flex-shrink:0;"></span>Product
+                                Descriptions</li>
+                            <li style="display:flex;align-items:center;gap:8px;"><span
+                                    style="width:6px;height:6px;border-radius:50%;background:#10b981;flex-shrink:0;"></span>Visual
+                                Assets</li>
+                        </ul>
+                    </div>
+                    <div
+                        style="background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.2);border-radius:14px;padding:16px 20px;">
+                        <p style="color:#fca5a5;">Unauthorized reproduction, duplication, reverse engineering,
+                            distribution, or commercial use is strictly prohibited.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+            }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+            document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(a => {
+                a.addEventListener('click', e => {
+                    const target = document.querySelector(a.getAttribute('href'));
+                    if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+                });
+            });
+
+            // Modal functions
+            function openPrivacy() { document.getElementById('privacy-modal').style.display = 'flex'; document.body.style.overflow = 'hidden'; }
+            function closePrivacy() { document.getElementById('privacy-modal').style.display = 'none'; document.body.style.overflow = ''; }
+            function openTerms() { document.getElementById('terms-modal').style.display = 'flex'; document.body.style.overflow = 'hidden'; }
+            function closeTerms() { document.getElementById('terms-modal').style.display = 'none'; document.body.style.overflow = ''; }
+            function openDisclaimer() { document.getElementById('disclaimer-modal').style.display = 'flex'; document.body.style.overflow = 'hidden'; }
+            function closeDisclaimer() { document.getElementById('disclaimer-modal').style.display = 'none'; document.body.style.overflow = ''; }
+            function openCookie() { document.getElementById('cookie-modal').style.display = 'flex'; document.body.style.overflow = 'hidden'; }
+            function closeCookie() { document.getElementById('cookie-modal').style.display = 'none'; document.body.style.overflow = ''; }
+            function openIP() { document.getElementById('ip-modal').style.display = 'flex'; document.body.style.overflow = 'hidden'; }
+            function closeIP() { document.getElementById('ip-modal').style.display = 'none'; document.body.style.overflow = ''; }
+            document.addEventListener('keydown', e => {
+                if (e.key === 'Escape') { closePrivacy(); closeTerms(); closeDisclaimer(); closeCookie(); closeIP(); }
+            });
+        </script>
+    <script>
+        // Mobile Menu Logic
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+        const mobileMenuIcon = document.getElementById('mobile-menu-icon');
+        let isMenuOpen = false;
+
+        if (mobileMenuBtn && mobileMenuOverlay) {
+            mobileMenuBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                isMenuOpen = !isMenuOpen;
+                if (isMenuOpen) {
+                    mobileMenuOverlay.classList.remove('translate-x-full');
+                    mobileMenuIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>';
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    mobileMenuOverlay.classList.add('translate-x-full');
+                    mobileMenuIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>';
+                    document.body.style.overflow = '';
+                }
+            });
+
+            // Close menu when clicking outside links (optional, for better UX)
+            mobileMenuOverlay.addEventListener('click', (e) => {
+                if(e.target === mobileMenuOverlay && isMenuOpen) {
+                    mobileMenuBtn.click();
+                }
+            });
+        }
+        
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (isMenuOpen) mobileMenuBtn.click();
+            });
+        });
+    </script>
+</body>
+
+</html>
+
+

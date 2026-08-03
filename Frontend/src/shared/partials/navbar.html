@@ -1,0 +1,79 @@
+<nav id="navbar" class="fixed top-0 w-full z-50 fluid-navbar box-border theme-dark" aria-label="Main navigation">
+    <div class="site-container">
+        <div class="flex items-center py-3 w-full max-w-full box-border">
+            <!-- Logo -->
+            <div class="flex-1 flex justify-start">
+                <a href="index.html"
+                    class="flex items-center gap-2 lg:gap-3 group transition-opacity duration-500 hover:opacity-80 logo-wrapper"
+                    style="text-decoration: none;">
+                    <img src="/shared/images/logo.png" alt="URBAN Tree Logo" class="fluid-logo-img"
+                        style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));">
+                    <div class="logo-wrapper">
+                        <div class="logo flex items-baseline gap-1 logo-wrapper">
+                            <span class="logo-urban font-bold fluid-logo-text tracking-tight truncate">URBAN</span><span
+                                class="logo-tree font-bold fluid-logo-text tracking-tight truncate">Tree</span>
+                        </div>
+                        <p
+                            class="logo-tagline fluid-logo-tagline uppercase tracking-wider block font-semibold truncate mt-0.5">
+                            THE CITY. REIMAGINED.
+                        </p>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Desktop Navigation -->
+            <div class="hidden lg:flex flex-1 justify-center items-center gap-6 xl:gap-8 shrink-0">
+                <a href="/"
+                    class="nav-link active fluid-nav-link font-semibold transition-colors duration-300">Home</a>
+                <a href="/technology/"
+                    class="nav-link fluid-nav-link font-semibold transition-colors duration-300">Technology</a>
+                <a href="/about/"
+                    class="nav-link fluid-nav-link font-semibold transition-colors duration-300">About Us</a>
+                <a href="/blog/"
+                    class="nav-link fluid-nav-link font-semibold transition-colors duration-300">Blog</a>
+            </div>
+
+            <!-- Desktop Enquiry & Mobile Toggle -->
+            <div class="flex-1 flex justify-end items-center gap-4 nav-actions-wrapper">
+                <a href="/index.html#enquiry"
+                    class="nav-enquiry-btn hidden lg:inline-flex items-center justify-center gap-2 px-6 py-2 rounded-full border text-[13px] font-medium tracking-wide transition-all duration-300">
+                    Enquiry
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+                    </svg>
+                </a>
+                <!-- Hamburger Button -->
+                <button id="mobile-menu-btn" type="button" class="lg:hidden p-2 focus:outline-none shrink-0"
+                    aria-label="Toggle menu" aria-controls="mobile-menu-overlay" aria-expanded="false">
+                    <svg id="mobile-menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Mobile Menu Overlay -->
+<div id="mobile-menu-overlay"
+    class="fixed inset-0 bg-black/95 backdrop-blur-xl z-[45] transform translate-x-full transition-transform duration-300 flex flex-col pt-24 px-6 pb-8 h-[100dvh] overflow-y-auto lg:hidden">
+    <nav class="flex flex-col gap-6 text-center">
+        <a href="/"
+            class="mobile-link text-lg font-medium text-white hover:text-green-400 transition-colors">Home</a>
+        <a href="/technology/"
+            class="mobile-link text-lg font-medium text-white/70 hover:text-white transition-colors">Technology</a>
+        <a href="/about/"
+            class="mobile-link text-lg font-medium text-white/70 hover:text-white transition-colors">About Us</a>
+        <a href="/blog/"
+            class="mobile-link text-lg font-medium text-white/70 hover:text-white transition-colors">Blog</a>
+    </nav>
+    <div class="mt-auto flex flex-col gap-4 pt-10">
+        <a href="/index.html#enquiry"
+            class="mobile-link w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-green-500 hover:bg-green-400 text-black font-semibold transition-all duration-300">
+            Enquire Now
+        </a>
+    </div>
+</div>

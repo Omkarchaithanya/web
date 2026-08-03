@@ -122,16 +122,15 @@ The repository follows an industry-standard static site architecture:
 
 ```text
 /
-├── css/             # Compiled styles and custom stylesheets
-├── js/              # Application logic and UI interactivity scripts
-├── images/          # Raster and vector image assets (logos, icons, photos)
-├── videos/          # Embedded video assets (e.g., moss.mp4)
-├── index.html       # Application Entry Point / Landing Page
-├── about.html       # Corporate Information
-├── faq.html         # Frequently Asked Questions
-├── login.html       # Authentication Portal
-├── monitoring.html  # Live AQI Dashboard
-└── technology.html  # System Architecture Details
+├── public/          # Static assets served directly (images, videos, robots.txt)
+├── src/             # Application source code
+│   ├── assets/      # Application scripts (js), stylesheets (css), and icons
+│   ├── legal/       # Legal HTML pages (privacy policy, terms, etc.)
+│   ├── pages/       # Core HTML pages (about, blog, faq, monitoring, technology)
+│   ├── partials/    # Reusable Handlebars partials (navbar, footer)
+│   └── index.html   # Main Application Entry Point / Landing Page
+├── package.json     # Node dependencies & project scripts
+└── vite.config.js   # Vite build configuration and routing
 ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>

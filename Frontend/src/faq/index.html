@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ — UrbanTree by SunEx Technologies</title>
+    <link rel="icon" type="image/png" href="/shared/images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Montserrat:wght@400;500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/shared/css/tailwind.css">
+    <style>
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+        }
+        .faq-item {
+            background: rgba(255,255,255,0.03);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+        }
+        .faq-item:hover {
+            box-shadow: 0 8px 30px rgba(16,185,129,0.1);
+            border-color: rgba(16,185,129,0.2);
+        }
+        .faq-item.open {
+            border-color: rgba(16,185,129,0.3);
+            box-shadow: 0 8px 30px rgba(16,185,129,0.12);
+        }
+        .faq-question {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 1.4rem 1.6rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            text-align: left;
+            transition: background 0.2s;
+        }
+        .faq-question:hover { background: rgba(16,185,129,0.03); }
+        .faq-number {
+            font-family: 'Inter', sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            color: #10b981;
+            background: rgba(16,185,129,0.1);
+            border: 1px solid rgba(16,185,129,0.2);
+            border-radius: 6px;
+            padding: 3px 8px;
+            flex-shrink: 0;
+            letter-spacing: 0.05em;
+        }
+        .faq-q-text {
+            font-family: var(--font-serif, 'Sora', sans-serif);
+            font-size: var(--text-body, 1rem);
+            font-weight: 600;
+            flex: 1;
+            line-height: 1.4;
+        }
+        .faq-icon {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: rgba(16,185,129,0.08);
+            border: 1px solid rgba(16,185,129,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+        }
+        .faq-item.open .faq-icon {
+            background: #10b981;
+            border-color: #10b981;
+            transform: rotate(45deg);
+        }
+        .faq-item.open .faq-icon svg { color: white; }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1);
+        }
+        .faq-answer.open { max-height: 300px; }
+        .faq-answer-inner {
+            padding: 0 1.6rem 1.4rem calc(1.6rem + 36px + 1rem);
+        }
+        .faq-answer-inner p {
+            font-family: var(--font-sans, 'Inter', sans-serif);
+            font-size: var(--text-body, 1rem);
+            color: #9ca3af;
+            line-height: 1.75;
+        }
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s cubic-bezier(0.2,0.8,0.2,1), transform 0.7s cubic-bezier(0.2,0.8,0.2,1);
+        }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
+        .orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            pointer-events: none;
+            z-index: 0;
+        }
+    </style>
+    <link rel="icon" type="image/png" href="/shared/images/logo.png">
+    <link rel="stylesheet" href="/shared/css/index.css">
+</head>
+<body>
+
+    <div class="orb" style="width:500px;height:500px;background:rgba(16,185,129,0.07);top:-100px;right:-100px;"></div>
+    <div class="orb" style="width:400px;height:400px;background:rgba(6,182,212,0.05);bottom:100px;left:-100px;"></div>
+
+    <!-- NAVBAR -->
+    
+    {{> navbar }}
+    <script type="module" src="/shared/js/navbar.js"></script>
+
+    <!-- MAIN CONTENT -->
+    <main class="site-container" style="padding-top:8rem; padding-bottom:5rem; position:relative; z-index:10;" data-navbar-theme="dark">
+        <div style="max-width:48rem; margin:0 auto;">
+
+        <!-- Header -->
+        <div class="fade-up" style="text-align:center; margin-bottom:3.5rem;">
+            <span class="type-eyebrow" style="color:#10b981; display:block; margin-bottom:1rem;">Support</span>
+            <h1 class="type-h1 mb-4">
+                Frequently Asked<br><span style="color:#10b981;">Questions</span>
+            </h1>
+            <p class="type-lead" style="color:#6b7280; max-width:480px; margin:0 auto;">
+                Everything you need to know about UrbanTree and Bio-Mechanical Air Purification technology.
+            </p>
+        </div>
+
+        <!-- FAQ Items -->
+        <div style="display:flex; flex-direction:column; gap:12px;">
+
+            <div class="faq-item fade-up" style="transition-delay:0.05s;">
+                <button class="faq-question">
+                    <span class="faq-number">01</span>
+                    <span class="faq-q-text">What is UrbanTree?</span>
+                    <span class="faq-icon"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" style="color:#10b981;"><path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M5 12h14"/></svg></span>
+                </button>
+                <div class="faq-answer"><div class="faq-answer-inner"><p>UrbanTree is an advanced bio-mechanical air purification ecosystem developed by SunEx Technologies to improve urban air quality through intelligent filtration, biological purification, and AI-driven environmental monitoring. The system is designed to create healthier breathable Air Pocket environments in outdoor and semi-outdoor urban spaces.</p></div></div>
+            </div>
+
+            <div class="faq-item fade-up" style="transition-delay:0.1s;">
+                <button class="faq-question">
+                    <span class="faq-number">02</span>
+                    <span class="faq-q-text">How does breathable Air Pocket technology work?</span>
+                    <span class="faq-icon"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" style="color:#10b981;"><path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M5 12h14"/></svg></span>
+                </button>
+                <div class="faq-answer"><div class="faq-answer-inner"><p>UrbanTree creates localized breathable Air Pocket zones by continuously drawing polluted air through multiple purification stages and redistributing cleaner air within the effective coverage area of the system. This helps improve surrounding air quality and environmental comfort in high-footfall urban environments.</p></div></div>
+            </div>
+
+            <div class="faq-item fade-up" style="transition-delay:0.15s;">
+                <button class="faq-question">
+                    <span class="faq-number">03</span>
+                    <span class="faq-q-text">Is UrbanTree solar powered?</span>
+                    <span class="faq-icon"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" style="color:#10b981;"><path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M5 12h14"/></svg></span>
+                </button>
+                <div class="faq-answer"><div class="faq-answer-inner"><p>Yes. UrbanTree is designed with a hybrid energy architecture that integrates both conventional grid supply and solar power systems to support energy-efficient and sustainable operation.</p></div></div>
+            </div>
+
+            <div class="faq-item fade-up" style="transition-delay:0.2s;">
+                <button class="faq-question">
+                    <span class="faq-number">04</span>
+                    <span class="faq-q-text">What pollutants can UrbanTree help reduce?</span>
+                    <span class="faq-icon"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" style="color:#10b981;"><path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M5 12h14"/></svg></span>
+                </button>
+                <div class="faq-answer"><div class="faq-answer-inner"><p>UrbanTree is designed to reduce airborne pollutants including PM2.5, PM10, dust particles, VOCs, smoke, odors, airborne microorganisms, and other environmental contaminants commonly found in urban and industrial environments.</p></div></div>
+            </div>
+
+            <div class="faq-item fade-up" style="transition-delay:0.25s;">
+                <button class="faq-question">
+                    <span class="faq-number">05</span>
+                    <span class="faq-q-text">How does the Bio-Purification Core function?</span>
+                    <span class="faq-icon"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" style="color:#10b981;"><path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M5 12h14"/></svg></span>
+                </button>
+                <div class="faq-answer"><div class="faq-answer-inner"><p>The Bio-Purification Core utilizes a moss-based biological purification chamber that naturally absorbs airborne pollutants while supporting sustainable environmental air treatment.</p></div></div>
+            </div>
+
+            <div class="faq-item fade-up" style="transition-delay:0.3s;">
+                <button class="faq-question">
+                    <span class="faq-number">06</span>
+                    <span class="faq-q-text">Does UrbanTree monitor air quality in real time?</span>
+                    <span class="faq-icon"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" style="color:#10b981;"><path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M5 12h14"/></svg></span>
+                </button>
+                <div class="faq-answer"><div class="faq-answer-inner"><p>Yes. UrbanTree includes an AI-driven Smart Sensor Network that continuously monitors air quality, environmental conditions, system performance, and purification efficiency in real time.</p></div></div>
+            </div>
+
+            <div class="faq-item fade-up" style="transition-delay:0.35s;">
+                <button class="faq-question">
+                    <span class="faq-number">07</span>
+                    <span class="faq-q-text">How does UrbanTree improve AQI levels?</span>
+                    <span class="faq-icon"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" style="color:#10b981;"><path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M5 12h14"/></svg></span>
+                </button>
+                <div class="faq-answer"><div class="faq-answer-inner"><p>UrbanTree improves AQI by continuously filtering and purifying polluted air using multi-stage filtration technologies, biological purification systems, and intelligent environmental management.</p></div></div>
+            </div>
+
+            <div class="faq-item fade-up" style="transition-delay:0.4s;">
+                <button class="faq-question">
+                    <span class="faq-number">08</span>
+                    <span class="faq-q-text">How is UrbanTree different from traditional air purifiers?</span>
+                    <span class="faq-icon"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" style="color:#10b981;"><path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M5 12h14"/></svg></span>
+                </button>
+                <div class="faq-answer"><div class="faq-answer-inner"><p>Unlike conventional indoor air purifiers, UrbanTree is designed as a scalable urban environmental infrastructure solution capable of creating breathable Air Pocket environments in large public, outdoor, and smart-city spaces using AI-driven and bio-mechanical purification technologies.</p></div></div>
+            </div>
+
+        </div>
+
+        <!-- Bottom CTA -->
+        <div class="fade-up" style="text-align:center; margin-top:3.5rem; padding:2.5rem; background:rgba(255,255,255,0.03); backdrop-filter:blur(20px); border:1px solid rgba(255,255,255,0.1); border-radius:20px;">
+            <p class="type-h3" style="margin-bottom:0.5rem;">Still have questions?</p>
+            <p class="type-caption" style="color:#6b7280; margin-bottom:1.4rem;">Our team is happy to help with anything not covered here.</p>
+            <a href="../index.html#enquiry" style="display:inline-block; padding:12px 28px; background:#10b981; color:white; font-family:'Sora',sans-serif; font-size:13px; font-weight:700; border-radius:50px; text-decoration:none; transition:all 0.3s;" onmouseover="this.style.background='#059669'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 25px rgba(16,185,129,0.35)'" onmouseout="this.style.background='#10b981'; this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                Contact Us →
+            </a>
+        </div>
+
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    {{> footer }}
+
+    <script type="module" src="/faq/faq.js"></script>
+</body>
+</html>
+

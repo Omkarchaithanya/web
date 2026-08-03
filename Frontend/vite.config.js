@@ -23,14 +23,14 @@ export default defineConfig(({ mode }) => {
       rollupOptions: {
         input: {
           main: resolve(__dirname, 'src/index.html'),
-          about: resolve(__dirname, 'src/pages/about.html'),
-          blog: resolve(__dirname, 'src/pages/blog.html'),
-          'blog-bio': resolve(__dirname, 'src/pages/blog-bio-mimicry.html'),
-          'blog-smart': resolve(__dirname, 'src/pages/blog-smart-cities.html'),
-          faq: resolve(__dirname, 'src/pages/faq.html'),
-          login: resolve(__dirname, 'src/pages/login.html'),
-          monitoring: resolve(__dirname, 'src/pages/monitoring.html'),
-          technology: resolve(__dirname, 'src/pages/technology.html'),
+          about: resolve(__dirname, 'src/about/index.html'),
+          blog: resolve(__dirname, 'src/blog/index.html'),
+          'blog-bio': resolve(__dirname, 'src/blog/posts/blog-bio-mimicry.html'),
+          'blog-smart': resolve(__dirname, 'src/blog/posts/blog-smart-cities.html'),
+          faq: resolve(__dirname, 'src/faq/index.html'),
+          login: resolve(__dirname, 'src/login/index.html'),
+          monitoring: resolve(__dirname, 'src/monitoring/index.html'),
+          technology: resolve(__dirname, 'src/technology/index.html'),
           'cookie-policy': resolve(__dirname, 'src/legal/cookie-policy.html'),
           disclaimer: resolve(__dirname, 'src/legal/disclaimer.html'),
           environmental: resolve(__dirname, 'src/legal/environmental-statement.html'),
@@ -43,7 +43,7 @@ export default defineConfig(({ mode }) => {
     plugins: [
       tailwindcss(),
       handlebars({
-        partialDirectory: resolve(__dirname, 'src/partials'),
+        partialDirectory: resolve(__dirname, 'src/shared/partials'),
         context: {
           SITE_URL: env.VITE_SITE_URL || '',
           CONTACT_EMAIL: env.VITE_CONTACT_EMAIL || '',
