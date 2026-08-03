@@ -7537,13 +7537,14 @@
             data-modal-bg="enquiry-modal"
         >
             <div
-                class="bg-white w-full max-w-5xl rounded-3xl shadow-2xl relative overflow-hidden flex flex-col md:flex-row"
-                style="max-height: 90vh; overflow-y: auto"
+                class="w-full max-w-5xl rounded-3xl shadow-2xl relative overflow-y-auto custom-scrollbar"
+                style="max-height: 90vh; transform: translateZ(0); -webkit-transform: translateZ(0);"
             >
-                <!-- Left Panel -->
-                <div
-                    class="w-full md:w-[40%] bg-[#082013] text-white p-10 flex flex-col relative overflow-hidden min-h-[400px] rounded-t-3xl md:rounded-tr-none md:rounded-l-3xl isolate"
-                >
+                <div class="bg-white w-full min-h-full flex flex-col md:flex-row">
+                    <!-- Left Panel -->
+                    <div
+                        class="w-full md:w-[40%] bg-[#082013] text-white p-10 flex flex-col relative overflow-hidden min-h-[400px] rounded-t-3xl md:rounded-tr-none md:rounded-l-3xl isolate"
+                    >
                     <div class="z-10 relative">
                         <div
                             class="inline-flex items-center gap-2 bg-[#123920] px-3 py-1.5 rounded-md border border-[#1d4c2d] mb-8"
@@ -7966,6 +7967,7 @@
                     </form>
                 </div>
             </div>
+        </div>
         </div>
         <script type="module" src="/home/js/index-interactions.js"></script>
         <script type="module" src="/home/js/index-showcase.js"></script>
